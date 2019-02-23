@@ -12,7 +12,21 @@ class HomeBottomInputViewController: UIViewController {
     @IBOutlet fileprivate weak var profileView: UIView!
     @IBOutlet fileprivate weak var commentTextField: UITextField!
     
+    @objc func dismissKeyboard() {
+        commentTextField?.resignFirstResponder()
+    }
+    
     @IBAction func onRegisterCommentBtnTapped(_ sender: UIButton) {
         
+    }
+}
+
+extension HomeBottomInputViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        (parent as? HomeViewController)?.isKeyboardToggled = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        (parent as? HomeViewController)?.isKeyboardToggled = false
     }
 }
