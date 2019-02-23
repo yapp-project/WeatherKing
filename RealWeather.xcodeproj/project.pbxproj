@@ -23,6 +23,7 @@
 		CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */; };
 		CEB189DE2221866C00A1BB38 /* HomeTopDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DD2221866C00A1BB38 /* HomeTopDataController.swift */; };
 		CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */; };
+		CEDD98EB2221A6B400AF7D8C /* HomeBottomInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDD98EA2221A6B400AF7D8C /* HomeBottomInputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWApiRequest.swift; sourceTree = "<group>"; };
 		CEB189DD2221866C00A1BB38 /* HomeTopDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopDataController.swift; sourceTree = "<group>"; };
 		CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentDataController.swift; sourceTree = "<group>"; };
+		CEDD98EA2221A6B400AF7D8C /* HomeBottomInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomInputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */,
 				CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */,
 				CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */,
+				CEDD98EA2221A6B400AF7D8C /* HomeBottomInputViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
 				CE20388F22216E7D00ED9BA7 /* HomeTopViewController.swift in Sources */,
 				CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */,
+				CEDD98EB2221A6B400AF7D8C /* HomeBottomInputViewController.swift in Sources */,
 				CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */,
 				CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */,
 			);
