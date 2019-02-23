@@ -90,7 +90,7 @@
                                         <attributedString key="attributedText">
                                             <fragment content="눈오고 짱추움 패딩입어요!">
                                                 <attributes>
-                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <font key="NSFont" size="36" name="AppleSDGothicNeo-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
@@ -227,13 +227,14 @@
                             <constraint firstItem="bVJ-XQ-hvB" firstAttribute="trailing" secondItem="NX3-h8-cog" secondAttribute="trailing" id="5VD-kr-26d"/>
                             <constraint firstItem="k3o-FN-KxE" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" id="5dN-mI-74L"/>
                             <constraint firstItem="Bxx-Jz-7Sg" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" constant="15" id="80o-KV-JUM"/>
-                            <constraint firstItem="ZDc-2E-AeF" firstAttribute="top" secondItem="bVJ-XQ-hvB" secondAttribute="top" constant="63" id="8eB-2v-z4f"/>
+                            <constraint firstItem="ZDc-2E-AeF" firstAttribute="top" secondItem="fiT-k0-Hny" secondAttribute="top" constant="63" id="8eB-2v-z4f"/>
                             <constraint firstItem="Fgq-ZP-cga" firstAttribute="top" secondItem="8Rl-OG-PPL" secondAttribute="bottom" id="B4v-qE-lkM"/>
                             <constraint firstItem="bVJ-XQ-hvB" firstAttribute="trailing" secondItem="vNF-VT-uBB" secondAttribute="trailing" constant="68" id="HJt-cJ-ZPT"/>
                             <constraint firstItem="bVJ-XQ-hvB" firstAttribute="trailing" secondItem="8Rl-OG-PPL" secondAttribute="trailing" id="Mmp-sc-qDh"/>
-                            <constraint firstItem="bVJ-XQ-hvB" firstAttribute="bottom" secondItem="k3o-FN-KxE" secondAttribute="bottom" id="UiP-Gv-KXI"/>
+                            <constraint firstAttribute="bottom" secondItem="k3o-FN-KxE" secondAttribute="bottom" id="UiP-Gv-KXI"/>
+                            <constraint firstItem="k3o-FN-KxE" firstAttribute="top" secondItem="fiT-k0-Hny" secondAttribute="top" id="YuO-fO-CRC"/>
                             <constraint firstItem="8Rl-OG-PPL" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" id="ZnL-91-oCL"/>
-                            <constraint firstItem="8Rl-OG-PPL" firstAttribute="top" secondItem="bVJ-XQ-hvB" secondAttribute="top" id="bPK-rf-zSd"/>
+                            <constraint firstItem="8Rl-OG-PPL" firstAttribute="top" secondItem="fiT-k0-Hny" secondAttribute="top" id="bPK-rf-zSd"/>
                             <constraint firstItem="NX3-h8-cog" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" id="cGU-oN-Fbp"/>
                             <constraint firstItem="bVJ-XQ-hvB" firstAttribute="bottom" secondItem="NX3-h8-cog" secondAttribute="bottom" id="cKu-sb-1u1"/>
                             <constraint firstItem="ZDc-2E-AeF" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" id="ccS-gV-6Zf"/>
