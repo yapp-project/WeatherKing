@@ -31,8 +31,13 @@ class HomeTopViewController: UIViewController {
     @IBOutlet fileprivate weak var smallTempLabel: UILabel!
     @IBOutlet fileprivate weak var smallDescLabel: UILabel!
     @IBOutlet fileprivate weak var smallDustLabel: UILabel!
+    @IBOutlet fileprivate weak var lineView: UIView!
     
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    
+    var viewsToTransform: [UIView] {
+        return [headerView, smallTitleView, bigTitleView, lineView]
+    }
     
     var timeWeatherDatasource: [HomeTopTimeWeatherData] = []
     

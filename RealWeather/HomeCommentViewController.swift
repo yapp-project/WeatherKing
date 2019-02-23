@@ -12,6 +12,10 @@ class HomeCommentViewController: UIViewController {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     fileprivate var datasource: [Comment] = []
     
+    var scrollView: UIScrollView {
+        return collectionView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpDummyData()
@@ -25,6 +29,20 @@ class HomeCommentViewController: UIViewController {
         comment1.likeCount = 99
         
         datasource = [
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
+            comment1,
             comment1,
             comment1,
             comment1,
@@ -65,11 +83,17 @@ extension HomeCommentViewController: UICollectionViewDelegate {
 
 extension HomeCommentViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 200, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 462, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 80)
+    }
+}
+
+extension HomeCommentViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        (parent as? HomeViewController)?.scrollTopView(scrollView)
     }
 }
 
