@@ -20,6 +20,9 @@
 		CE20389322216FB300ED9BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE20389222216FB300ED9BA7 /* Main.storyboard */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* Comment.swift */; };
+		CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */; };
+		CEB189DE2221866C00A1BB38 /* HomeTopDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DD2221866C00A1BB38 /* HomeTopDataController.swift */; };
+		CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		CE20389222216FB300ED9BA7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
 		CEB189D72221845500A1BB38 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWApiRequest.swift; sourceTree = "<group>"; };
+		CEB189DD2221866C00A1BB38 /* HomeTopDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopDataController.swift; sourceTree = "<group>"; };
+		CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 				CEB189D62221844500A1BB38 /* Model */,
 				CE20388D22216E4500ED9BA7 /* Home */,
 				CE20389022216E9400ED9BA7 /* Storyboard */,
+				CEB189DA222185C700A1BB38 /* Util */,
 				CE20389122216EAC00ED9BA7 /* Supporting Files */,
 			);
 			path = RealWeather;
@@ -141,7 +148,9 @@
 			isa = PBXGroup;
 			children = (
 				CE20388922216D9A00ED9BA7 /* HomeViewController.swift */,
+				CEB189DD2221866C00A1BB38 /* HomeTopDataController.swift */,
 				CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */,
+				CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */,
 				CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */,
 			);
 			name = Home;
@@ -173,6 +182,14 @@
 				CEB189D72221845500A1BB38 /* Comment.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		CEB189DA222185C700A1BB38 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,8 +327,11 @@
 			files = (
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,
 				CEB189D82221845500A1BB38 /* Comment.swift in Sources */,
+				CEB189DE2221866C00A1BB38 /* HomeTopDataController.swift in Sources */,
+				CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */,
 				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
 				CE20388F22216E7D00ED9BA7 /* HomeTopViewController.swift in Sources */,
+				CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */,
 				CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */,
 				CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */,
 			);
