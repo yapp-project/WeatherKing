@@ -17,6 +17,9 @@
 		CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388922216D9A00ED9BA7 /* HomeViewController.swift */; };
 		CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388B22216DB900ED9BA7 /* RootViewController.swift */; };
 		CE20388F22216E7D00ED9BA7 /* HomeTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */; };
+		CE20389322216FB300ED9BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE20389222216FB300ED9BA7 /* Main.storyboard */; };
+		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
+		CEB189D82221845500A1BB38 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* Comment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		CE20388922216D9A00ED9BA7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE20388B22216DB900ED9BA7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopViewController.swift; sourceTree = "<group>"; };
+		CE20389222216FB300ED9BA7 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
+		CEB189D72221845500A1BB38 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,7 @@
 			children = (
 				CE203859222164A200ED9BA7 /* AppDelegate.swift */,
 				CE20388B22216DB900ED9BA7 /* RootViewController.swift */,
+				CEB189D62221844500A1BB38 /* Model */,
 				CE20388D22216E4500ED9BA7 /* Home */,
 				CE20389022216E9400ED9BA7 /* Storyboard */,
 				CE20389122216EAC00ED9BA7 /* Supporting Files */,
@@ -134,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				CE20388922216D9A00ED9BA7 /* HomeViewController.swift */,
+				CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */,
 				CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */,
 			);
 			name = Home;
@@ -142,6 +150,7 @@
 		CE20389022216E9400ED9BA7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				CE20389222216FB300ED9BA7 /* Main.storyboard */,
 				CE20385D222164A200ED9BA7 /* Home.storyboard */,
 				CE203887222168D500ED9BA7 /* HomeTop.storyboard */,
 			);
@@ -156,6 +165,14 @@
 				CE203865222164A400ED9BA7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CEB189D62221844500A1BB38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CEB189D72221845500A1BB38 /* Comment.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE203864222164A400ED9BA7 /* LaunchScreen.storyboard in Resources */,
+				CE20389322216FB300ED9BA7 /* Main.storyboard in Resources */,
 				CE203888222168D500ED9BA7 /* HomeTop.storyboard in Resources */,
 				CE203861222164A400ED9BA7 /* Assets.xcassets in Resources */,
 				CE20385F222164A200ED9BA7 /* Home.storyboard in Resources */,
@@ -291,6 +309,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,
+				CEB189D82221845500A1BB38 /* Comment.swift in Sources */,
+				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
 				CE20388F22216E7D00ED9BA7 /* HomeTopViewController.swift in Sources */,
 				CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */,
 				CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */,

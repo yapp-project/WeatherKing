@@ -10,5 +10,12 @@ import Foundation
 import UIKit
 
 class RootViewController: UIViewController {
+    fileprivate var homeNavigationController: UINavigationController!
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Home" {
+            homeNavigationController = segue.destination as? UINavigationController
+        }
+    }
 }
+
