@@ -42,7 +42,7 @@ class HomeTopViewController: UIViewController {
     var todayWeather: [TodayWeather] = []
     
     var viewsToTransform: [UIView] {
-        return [headerView, smallTitleView, bigTitleView, lineView]
+        return [headerView, smallTitleView, bigTitleView, lineView, collectionView]
     }
     
     var foldView: UIView {
@@ -59,12 +59,14 @@ class HomeTopViewController: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        foldView.alpha = 0.0
         
         dataController.requestData { [weak self] data in
             if let weather = data {
                 self?.todayWeather = weather.todayWeather
                 self?.bigTempLabel.text = weather.temperature
-                self?.bigDescLabel.text = weather.comment
+//                self?.bigDescLabel.text = weather.comment
+                self?.bigDescLabel.text = "추운날씨! 패딩입어요~"
                 self?.collectionView.reloadData()
             }
         }

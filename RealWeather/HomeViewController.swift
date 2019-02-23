@@ -59,6 +59,7 @@ extension HomeViewController {
         if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             keyboardHeight = keyboardRect.height
         }
+        isKeyboardToggled = true
     }
     
     @objc func dismissKeyboard() {

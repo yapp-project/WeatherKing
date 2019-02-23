@@ -23,6 +23,7 @@ class HomeBottomInputViewController: UIViewController {
         
         (parent as? HomeViewController)?.registerComment(commentText)
         (parent as? HomeViewController)?.isKeyboardToggled = false
+        commentTextField.text = nil
         dismissKeyboard()
     }
 }
