@@ -9,18 +9,22 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    @IBOutlet fileprivate weak var commentContainerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var commentContainer: UIView!
     @IBOutlet fileprivate weak var topContainer: UIView!
+    @IBOutlet fileprivate weak var topContainerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var inputContainer: UIView!
     @IBOutlet fileprivate weak var inputContainerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var tapGestureRecognizableView: UIView!
+    @IBOutlet fileprivate weak var homeScrollView: UIScrollView!
     
+    fileprivate let maxTopViewHeight: CGFloat = 462
+    fileprivate let minTopViewHeight: CGFloat = 124
     fileprivate var bottomInputViewController: HomeBottomInputViewController!
     fileprivate var commentViewController: HomeCommentViewController!
     fileprivate var topViewController: HomeTopViewController!
     fileprivate var notification: NotificationCenter = NotificationCenter.default
     fileprivate var keyboardHeight: CGFloat = 0
+    fileprivate var previousScrollOffset: CGPoint = .zero
     
     var isKeyboardToggled: Bool = false {
         didSet {
@@ -33,6 +37,7 @@ class HomeViewController: UIViewController {
         prepareObservers()
         prepareKeyboardResign()
         updateBottomInputView()
+        updateScrollView(commentViewController.scrollView)
     }
     
     fileprivate func prepareObservers() {
@@ -58,7 +63,7 @@ extension HomeViewController {
 }
 
 extension HomeViewController {
-    func updateBottomInputView() {
+    fileprivate func updateBottomInputView() {
         if isKeyboardToggled {
             tapGestureRecognizableView.isHidden = false
             view.bringSubviewToFront(tapGestureRecognizableView)
@@ -68,6 +73,54 @@ extension HomeViewController {
             view.sendSubviewToBack(tapGestureRecognizableView)
             inputContainerHeight.constant = 60
         }
+    }
+    
+    fileprivate func updateScrollView(_ scrollView: UIScrollView) {
+        homeScrollView.addGestureRecognizer(scrollView.panGestureRecognizer)
+    }
+}
+
+extension HomeViewController {
+    func scrollTopView(_ scrollView: UIScrollView) {
+        let scrollOffset: CGFloat = scrollView.contentOffset.y
+        let scrollAmount: CGFloat = abs(scrollOffset - previousScrollOffset.y)
+        let isNeutral: Bool = scrollOffset <= 0
+        let isScrollUp: Bool = scrollOffset > previousScrollOffset.y
+        let isScrollDown: Bool = scrollOffset < previousScrollOffset.y
+        let isTopViewOpening: Bool = scrollOffset < maxTopViewHeight
+        
+        if isNeutral {
+            let newHeight: CGFloat = maxTopViewHeight
+            let translationOffset: CGFloat = scrollOffset
+            let alpha: CGFloat = 1.0
+            
+            topContainerHeight.constant = newHeight
+            topContainer.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
+            topContainer.alpha = alpha
+            
+        } else if isScrollUp {
+            let newHeight: CGFloat = max(minTopViewHeight, min(maxTopViewHeight, topContainerHeight.constant - scrollAmount))
+            let translationOffset: CGFloat = (maxTopViewHeight - newHeight) / 2
+            let alpha: CGFloat = (newHeight - minTopViewHeight) / maxTopViewHeight
+            
+            topContainerHeight.constant = newHeight
+            topViewController.viewsToTransform.forEach {
+                $0.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
+                $0.alpha = alpha
+            }
+            
+        } else if isScrollDown, isTopViewOpening {
+            let newHeight: CGFloat = max(minTopViewHeight, min(maxTopViewHeight, topContainerHeight.constant + scrollAmount))
+            let translationOffset: CGFloat = (maxTopViewHeight - newHeight) / 2
+            let alpha: CGFloat = newHeight / maxTopViewHeight
+            
+            topContainerHeight.constant = newHeight
+            topViewController.viewsToTransform.forEach {
+                $0.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
+                $0.alpha = alpha
+            }
+        }
+        previousScrollOffset = scrollView.contentOffset
     }
 }
 
