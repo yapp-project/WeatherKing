@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE203859222164A200ED9BA7 /* AppDelegate.swift */; };
-		CE20385C222164A200ED9BA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20385B222164A200ED9BA7 /* ViewController.swift */; };
 		CE20385F222164A200ED9BA7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE20385D222164A200ED9BA7 /* Home.storyboard */; };
 		CE203861222164A400ED9BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE203860222164A400ED9BA7 /* Assets.xcassets */; };
 		CE203864222164A400ED9BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE203862222164A400ED9BA7 /* LaunchScreen.storyboard */; };
 		CE20386F222164A400ED9BA7 /* RealWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20386E222164A400ED9BA7 /* RealWeatherTests.swift */; };
 		CE20387A222164A500ED9BA7 /* RealWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE203879222164A500ED9BA7 /* RealWeatherUITests.swift */; };
 		CE203888222168D500ED9BA7 /* HomeTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE203887222168D500ED9BA7 /* HomeTop.storyboard */; };
+		CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388922216D9A00ED9BA7 /* HomeViewController.swift */; };
+		CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388B22216DB900ED9BA7 /* RootViewController.swift */; };
+		CE20388F22216E7D00ED9BA7 /* HomeTopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		CE203856222164A200ED9BA7 /* RealWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE203859222164A200ED9BA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE20385B222164A200ED9BA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CE20385E222164A200ED9BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		CE203860222164A400ED9BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE203863222164A400ED9BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		CE203879222164A500ED9BA7 /* RealWeatherUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealWeatherUITests.swift; sourceTree = "<group>"; };
 		CE20387B222164A500ED9BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE203887222168D500ED9BA7 /* HomeTop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeTop.storyboard; sourceTree = "<group>"; };
+		CE20388922216D9A00ED9BA7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CE20388B22216DB900ED9BA7 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTopViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				CE203859222164A200ED9BA7 /* AppDelegate.swift */,
-				CE20385B222164A200ED9BA7 /* ViewController.swift */,
-				CE20385D222164A200ED9BA7 /* Home.storyboard */,
-				CE203887222168D500ED9BA7 /* HomeTop.storyboard */,
-				CE203860222164A400ED9BA7 /* Assets.xcassets */,
-				CE203862222164A400ED9BA7 /* LaunchScreen.storyboard */,
-				CE203865222164A400ED9BA7 /* Info.plist */,
+				CE20388B22216DB900ED9BA7 /* RootViewController.swift */,
+				CE20388D22216E4500ED9BA7 /* Home */,
+				CE20389022216E9400ED9BA7 /* Storyboard */,
+				CE20389122216EAC00ED9BA7 /* Supporting Files */,
 			);
 			path = RealWeather;
 			sourceTree = "<group>";
@@ -126,6 +128,34 @@
 				CE20387B222164A500ED9BA7 /* Info.plist */,
 			);
 			path = RealWeatherUITests;
+			sourceTree = "<group>";
+		};
+		CE20388D22216E4500ED9BA7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CE20388922216D9A00ED9BA7 /* HomeViewController.swift */,
+				CE20388E22216E7D00ED9BA7 /* HomeTopViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		CE20389022216E9400ED9BA7 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CE20385D222164A200ED9BA7 /* Home.storyboard */,
+				CE203887222168D500ED9BA7 /* HomeTop.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		CE20389122216EAC00ED9BA7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE203860222164A400ED9BA7 /* Assets.xcassets */,
+				CE203862222164A400ED9BA7 /* LaunchScreen.storyboard */,
+				CE203865222164A400ED9BA7 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +290,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE20385C222164A200ED9BA7 /* ViewController.swift in Sources */,
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,
+				CE20388F22216E7D00ED9BA7 /* HomeTopViewController.swift in Sources */,
+				CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */,
+				CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
