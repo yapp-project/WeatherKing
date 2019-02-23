@@ -48,6 +48,10 @@ class HomeViewController: UIViewController {
         let recognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tapGestureRecognizableView?.addGestureRecognizer(recognizer)
     }
+    
+    func registerComment(_ text: String) {
+        commentViewController.registerComment(text)
+    }
 }
 
 extension HomeViewController {
@@ -108,6 +112,7 @@ extension HomeViewController {
                 $0.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
                 $0.alpha = alpha
             }
+            topViewController.foldView.alpha = 1.0 - alpha
             
         } else if isScrollDown, isTopViewOpening {
             let newHeight: CGFloat = max(minTopViewHeight, min(maxTopViewHeight, topContainerHeight.constant + scrollAmount))
@@ -119,6 +124,7 @@ extension HomeViewController {
                 $0.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
                 $0.alpha = alpha
             }
+            topViewController.foldView.alpha = 1.0 - alpha
         }
         previousScrollOffset = scrollView.contentOffset
     }

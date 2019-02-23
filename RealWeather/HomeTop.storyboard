@@ -73,6 +73,47 @@
                                     <constraint firstItem="UfN-5q-Ftb" firstAttribute="top" secondItem="8Rl-OG-PPL" secondAttribute="top" constant="15" id="u2f-pW-01q"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQG-R5-JMu" userLabel="FoldDescriptionView">
+                                <rect key="frame" x="15" y="30" width="360" height="77"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLB-2U-ihB">
+                                        <rect key="frame" x="0.0" y="0.0" width="76.5" height="74.5"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="62"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="14°  /  10° " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1p-fg-uPV">
+                                        <rect key="frame" x="94.5" y="10" width="46" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어제보다 쌀쌀해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqQ-R6-tA9">
+                                        <rect key="frame" x="94.5" y="25.5" width="79.5" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지 보통" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnV-hF-KbB">
+                                        <rect key="frame" x="94.5" y="41" width="60" height="13.5"/>
+                                        <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="11"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="a1p-fg-uPV" firstAttribute="leading" secondItem="aLB-2U-ihB" secondAttribute="trailing" constant="18" id="6dX-aR-D5L"/>
+                                    <constraint firstItem="HnV-hF-KbB" firstAttribute="leading" secondItem="AqQ-R6-tA9" secondAttribute="leading" id="Gt7-P7-pfM"/>
+                                    <constraint firstItem="aLB-2U-ihB" firstAttribute="top" secondItem="ZQG-R5-JMu" secondAttribute="top" id="IgT-iS-LJi"/>
+                                    <constraint firstItem="AqQ-R6-tA9" firstAttribute="leading" secondItem="a1p-fg-uPV" secondAttribute="leading" id="agx-72-Qit"/>
+                                    <constraint firstItem="HnV-hF-KbB" firstAttribute="top" secondItem="AqQ-R6-tA9" secondAttribute="bottom" constant="2" id="hbd-am-Xuw"/>
+                                    <constraint firstItem="a1p-fg-uPV" firstAttribute="top" secondItem="aLB-2U-ihB" secondAttribute="top" constant="10" id="mZU-Ej-mPO"/>
+                                    <constraint firstAttribute="height" constant="77" id="u7C-JW-MCJ"/>
+                                    <constraint firstItem="AqQ-R6-tA9" firstAttribute="top" secondItem="a1p-fg-uPV" secondAttribute="bottom" constant="2" id="wDo-la-hpj"/>
+                                    <constraint firstItem="aLB-2U-ihB" firstAttribute="leading" secondItem="ZQG-R5-JMu" secondAttribute="leading" id="wQy-bF-fOt"/>
+                                </constraints>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgq-ZP-cga" userLabel="MainDescriptionVIew">
                                 <rect key="frame" x="0.0" y="63" width="375" height="200"/>
                                 <subviews>
@@ -232,6 +273,8 @@
                             <constraint firstItem="k3o-FN-KxE" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" id="5dN-mI-74L"/>
                             <constraint firstItem="Bxx-Jz-7Sg" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" constant="15" id="80o-KV-JUM"/>
                             <constraint firstItem="Fgq-ZP-cga" firstAttribute="top" secondItem="8Rl-OG-PPL" secondAttribute="bottom" id="B4v-qE-lkM"/>
+                            <constraint firstItem="ZQG-R5-JMu" firstAttribute="leading" secondItem="bVJ-XQ-hvB" secondAttribute="leading" constant="15" id="Chs-Sf-pdQ"/>
+                            <constraint firstItem="ZQG-R5-JMu" firstAttribute="top" secondItem="bVJ-XQ-hvB" secondAttribute="top" constant="30" id="HF7-JG-5Dw"/>
                             <constraint firstItem="bVJ-XQ-hvB" firstAttribute="trailing" secondItem="vNF-VT-uBB" secondAttribute="trailing" constant="68" id="HJt-cJ-ZPT"/>
                             <constraint firstItem="bVJ-XQ-hvB" firstAttribute="trailing" secondItem="8Rl-OG-PPL" secondAttribute="trailing" id="Mmp-sc-qDh"/>
                             <constraint firstAttribute="bottom" secondItem="k3o-FN-KxE" secondAttribute="bottom" id="UiP-Gv-KXI"/>
@@ -249,6 +292,7 @@
                             <constraint firstItem="Fgq-ZP-cga" firstAttribute="trailing" secondItem="8Rl-OG-PPL" secondAttribute="trailing" id="pdT-Du-S4n"/>
                             <constraint firstItem="Bxx-Jz-7Sg" firstAttribute="top" secondItem="vNF-VT-uBB" secondAttribute="bottom" constant="8" id="szT-1o-v0S"/>
                             <constraint firstItem="ZDc-2E-AeF" firstAttribute="top" secondItem="8Rl-OG-PPL" secondAttribute="bottom" id="wpU-h4-KoU"/>
+                            <constraint firstItem="bVJ-XQ-hvB" firstAttribute="trailing" secondItem="ZQG-R5-JMu" secondAttribute="trailing" id="yBH-Gs-0Mo"/>
                             <constraint firstItem="Fgq-ZP-cga" firstAttribute="leading" secondItem="8Rl-OG-PPL" secondAttribute="leading" id="z7T-ku-hee"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bVJ-XQ-hvB"/>
@@ -261,6 +305,7 @@
                         <outlet property="bigTempLabel" destination="J8m-Xo-ZH1" id="cBn-Ye-PQE"/>
                         <outlet property="bigTitleView" destination="Fgq-ZP-cga" id="Ps2-CG-qdL"/>
                         <outlet property="collectionView" destination="NX3-h8-cog" id="Nt7-hW-sYQ"/>
+                        <outlet property="foldTitleView" destination="ZQG-R5-JMu" id="YTz-pj-I1U"/>
                         <outlet property="headerLocationLabel" destination="iMb-Qp-PP7" id="D2k-Ff-2HQ"/>
                         <outlet property="headerTimeLabel" destination="H1C-DJ-NUW" id="JxQ-sY-cWJ"/>
                         <outlet property="headerView" destination="8Rl-OG-PPL" id="9pe-eX-I2j"/>
