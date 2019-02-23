@@ -17,7 +17,13 @@ class HomeBottomInputViewController: UIViewController {
     }
     
     @IBAction func onRegisterCommentBtnTapped(_ sender: UIButton) {
+        guard let commentText = commentTextField.text else {
+            return
+        }
         
+        (parent as? HomeViewController)?.registerComment(commentText)
+        (parent as? HomeViewController)?.isKeyboardToggled = false
+        dismissKeyboard()
     }
 }
 

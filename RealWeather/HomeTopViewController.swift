@@ -32,6 +32,7 @@ class HomeTopViewController: UIViewController {
     @IBOutlet fileprivate weak var smallDescLabel: UILabel!
     @IBOutlet fileprivate weak var smallDustLabel: UILabel!
     @IBOutlet fileprivate weak var lineView: UIView!
+    @IBOutlet fileprivate weak var foldTitleView: UIView!
     
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     
@@ -42,6 +43,10 @@ class HomeTopViewController: UIViewController {
     
     var viewsToTransform: [UIView] {
         return [headerView, smallTitleView, bigTitleView, lineView]
+    }
+    
+    var foldView: UIView {
+        return foldTitleView
     }
     
     var homeTopData: HomeTopData? {
@@ -117,5 +122,4 @@ class HomeTopTimeWeatherCell: UICollectionViewCell {
         timeLabel.text = weather.time
         tempLabel.text = String(weather.temp) + "˚"
     }
-    
 }

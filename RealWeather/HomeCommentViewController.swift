@@ -25,7 +25,7 @@ class HomeCommentViewController: UIViewController {
         let comment1: Comment = Comment()
         comment1.name = "하이"
         comment1.commentText = "테스트징"
-        comment1.time = Date().timeIntervalSince1970
+        comment1.time = "2시간 전"
         comment1.likeCount = 99
         
         datasource = [
@@ -56,6 +56,21 @@ class HomeCommentViewController: UIViewController {
         ]
         collectionView.reloadData()
     }
+    
+    // MARK: 추후 구조 수정
+    func registerComment(_ text: String) {
+        let dummyComment = Comment()
+        dummyComment.commentText = text
+        dummyComment.name = "프로출근러"
+        dummyComment.profileImage = nil
+        dummyComment.likeCount = Int.random(in: 0..<100)
+        
+        datasource.append(dummyComment)
+        collectionView.reloadData()
+        
+        let lastIndex = datasource.count - 1
+        collectionView.scrollToItem(at: IndexPath(item: lastIndex, section: 0), at: .bottom, animated: true)
+    }
 }
 
 extension HomeCommentViewController: UICollectionViewDataSource {
@@ -83,7 +98,7 @@ extension HomeCommentViewController: UICollectionViewDelegate {
 
 extension HomeCommentViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 462, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 462, left: 0, bottom: 90, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -107,7 +122,7 @@ class HomeCommentCell: UICollectionViewCell {
     
     func updateUI(with comment: Comment) {
         profileImageView.image = comment.profileImage
-        likeImageView.image = comment.isLiked ? comment.profileImage : comment.profileImage
+//        likeImageView.image = comment.isLiked ? comment.profileImage : comment.profileImage
         nameLabel.text = comment.name
         commentLabel.text = comment.commentText
         timeLabel.text = "\(comment.time)" // 추후 변경 필요

@@ -14,5 +14,5 @@ class Comment {
     var likeCount: Int = 0
     var name: String = ""
     var commentText: String = ""
-    var time: TimeInterval = 0
+    var time: String = "1시간 전"
 }
