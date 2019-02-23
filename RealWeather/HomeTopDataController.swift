@@ -16,10 +16,10 @@ class HomeTopDataController {
   private let requestor: RWApiRequest = RWApiRequest()
   
   func requestData(completion: @escaping (Weather?) -> Void) {
-    let request = URLRequest(url: URL(string: "http://localhost:3000/weather")!)
+    let request = URLRequest(url: URL(string: "http://127.0.0.1:3000/weather")!)
     
     requestor.cancel()
-    requestor.baseURLPath = "http://localhost:3000/weather"
+    requestor.baseURLPath = "http://127.0.0.1:3000/weather"
     requestor.fetch(with: request) { [weak self] data, error in
       let completionInMainThread = { (completion: @escaping (Weather?) -> Void, result: Weather?) in
         DispatchQueue.main.async {
