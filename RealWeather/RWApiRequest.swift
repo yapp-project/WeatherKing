@@ -103,10 +103,9 @@ extension RWApiRequest {
             
             self?.retryCount = 0
         }
-        
         dataTask?.resume()
     }
-    
+  
     private func retry(of request: URLRequest, error: Error?, completion: @escaping RWApiResult) {
         guard retryCount < Constant.maximumRetryCount else {
             completion(nil, error)
