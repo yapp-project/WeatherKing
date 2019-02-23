@@ -112,7 +112,7 @@ extension HomeViewController {
         } else if isScrollDown, isTopViewOpening {
             let newHeight: CGFloat = max(minTopViewHeight, min(maxTopViewHeight, topContainerHeight.constant + scrollAmount))
             let translationOffset: CGFloat = (maxTopViewHeight - newHeight) / 2
-            let alpha: CGFloat = (newHeight - minTopViewHeight) / maxTopViewHeight
+            let alpha: CGFloat = newHeight / maxTopViewHeight
             
             topContainerHeight.constant = newHeight
             topViewController.viewsToTransform.forEach {
