@@ -17,7 +17,7 @@ class HomeCommentDataController {
         requestor.cancel()
         requestor.baseURLPath = "https://jsonplaceholder.typicode.com/comments"
         requestor.fetch(with: queryItems) { [weak self] data, error in
-            let completionInMainThread = { (completion: @escaping (WeatherData?) -> Void, result: WeatherData?) in
+            let completionInMainThread = { (completion: @escaping (Comment?) -> Void, result: Comment?) in
                 DispatchQueue.main.async {
                     completion(result)
                 }
@@ -29,8 +29,8 @@ class HomeCommentDataController {
             }
             
             do {
-                let calendar: CalendarData? = try self?.parseWeather(with: data)
-                completionInMainThread(completion, calendar)
+                let comment: Comment? = try self?.parseComments(with: data)
+                completionInMainThread(completion, comment)
             } catch {
                 completionInMainThread(completion, nil)
             }

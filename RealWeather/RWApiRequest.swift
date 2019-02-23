@@ -84,7 +84,7 @@ extension RWApiRequest {
 }
 
 extension RWApiRequest {
-    public func fetch(with request: URLRequest, completion: @escaping TCApiResult) {
+    public func fetch(with request: URLRequest, completion: @escaping RWApiResult) {
         dataTask = urlSession.dataTask(with: request) { [weak self] data, response, error in
             guard error == nil else {
                 completion(nil, error)

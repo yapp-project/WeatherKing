@@ -33,8 +33,8 @@ class HomeTopDataController {
             }
             
             do {
-                let calendar: CalendarData? = try self?.parseWeather(with: data)
-                completionInMainThread(completion, calendar)
+                let weather: WeatherData? = try self?.parseWeather(with: data)
+                completionInMainThread(completion, weather)
             } catch {
                 completionInMainThread(completion, nil)
             }
