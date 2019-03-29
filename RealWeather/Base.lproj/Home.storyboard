@@ -28,6 +28,10 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="W5q-CK-R6j"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="IBp-40-9Hc"/>
+                                </connections>
                             </collectionView>
                             <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSQ-Cm-Xzo">
                                 <rect key="frame" x="0.0" y="613" width="375" height="667"/>

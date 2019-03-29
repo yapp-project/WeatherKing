@@ -17,6 +17,14 @@ class RootViewController: UIViewController {
     fileprivate var homeNavigationController: UINavigationController!
     fileprivate var homeNavigationBarViewController: HomeNavigationBarViewController!
     
+    var drawerWidth: CGFloat {
+        let drawerRatio: CGFloat = drawerViewWidth.constant
+        let screenWidth: CGFloat = UIScreen.main.bounds.width
+        return screenWidth * drawerRatio
+    }
+    
+    var isDrawerOpen: Bool = false
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Home" {
             homeNavigationController = segue.destination as? UINavigationController
@@ -29,22 +37,36 @@ class RootViewController: UIViewController {
 }
 
 extension RootViewController {
+    
+    func finishDraggingDrawer() {
+        if isDrawerOpen {
+            closeDrawer()
+        } else {
+            openDrawer()
+        }
+    }
+    
+    func moveDrawer(offset: CGFloat) {
+        drawerViewLeading.constant = min(drawerWidth, max(0, drawerViewLeading.constant + offset))
+    }
+    
     func openDrawer() {
-        let drawerRatio: CGFloat = drawerViewWidth.constant
-        let screenWidth: CGFloat = UIScreen.main.bounds.width
-        let drawerWidth: CGFloat = screenWidth * drawerRatio
         drawerViewLeading.constant = drawerWidth
         
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
             self?.view.layoutIfNeeded()
+        }) { [weak self] _ in
+            self?.isDrawerOpen = true
         }
     }
     
     func closeDrawer() {
         drawerViewLeading.constant = 0
         
-        UIView.animate(withDuration: 0.5) { [weak self] in
+        UIView.animate(withDuration: 0.5, animations: { [weak self] in
             self?.view.layoutIfNeeded()
+        }) { [weak self] _ in
+            self?.isDrawerOpen = false
         }
     }
 }
