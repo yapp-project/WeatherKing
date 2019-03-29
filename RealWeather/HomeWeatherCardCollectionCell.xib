@@ -31,6 +31,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="A6E-Yg-ZGP" id="BsN-3n-Ypw"/>
+                                    <outlet property="delegate" destination="A6E-Yg-ZGP" id="pDl-NI-m9c"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,6 +55,9 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="eUi-xm-Xp8"/>
             <size key="customSize" width="281" height="121"/>
+            <connections>
+                <outlet property="collectionView" destination="QMb-AB-Owk" id="f52-DD-7xu"/>
+            </connections>
             <point key="canvasLocation" x="199.27536231884059" y="50.558035714285715"/>
         </collectionViewCell>
     </objects>

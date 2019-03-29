@@ -10,5 +10,8 @@ import UIKit
 
 class HomeBestCommentCell: UICollectionViewCell {
     
+    func updateView(comment: Comment?) {
+        
+    }
 }
 

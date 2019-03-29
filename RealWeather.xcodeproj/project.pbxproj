@@ -28,6 +28,7 @@
 		CE31EB40224E81BF005CA188 /* HomeWeatherCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31EB3F224E81BF005CA188 /* HomeWeatherCardCell.swift */; };
 		CE31EB42224E81EB005CA188 /* HomeBestCommentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31EB41224E81EB005CA188 /* HomeBestCommentCollectionCell.swift */; };
 		CE31EB44224E8205005CA188 /* HomeBestCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31EB43224E8205005CA188 /* HomeBestCommentCell.swift */; };
+		CE31EB46224E92E1005CA188 /* WeatherCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31EB45224E92E1005CA188 /* WeatherCard.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* Comment.swift */; };
 		CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */; };
@@ -84,6 +85,7 @@
 		CE31EB3F224E81BF005CA188 /* HomeWeatherCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWeatherCardCell.swift; sourceTree = "<group>"; };
 		CE31EB41224E81EB005CA188 /* HomeBestCommentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBestCommentCollectionCell.swift; sourceTree = "<group>"; };
 		CE31EB43224E8205005CA188 /* HomeBestCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBestCommentCell.swift; sourceTree = "<group>"; };
+		CE31EB45224E92E1005CA188 /* WeatherCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCard.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
 		CEB189D72221845500A1BB38 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWApiRequest.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			children = (
 				CEB189D72221845500A1BB38 /* Comment.swift */,
 				74415A002221B86A00AA3D67 /* Weather.swift */,
+				CE31EB45224E92E1005CA188 /* WeatherCard.swift */,
 				74415A022221B8E000AA3D67 /* TodayWeather.swift */,
 			);
 			name = Model;
@@ -404,6 +407,7 @@
 				74415A012221B86A00AA3D67 /* Weather.swift in Sources */,
 				CE31EB3E224E819B005CA188 /* HomeWeatherCardCollectionCell.swift in Sources */,
 				CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */,
+				CE31EB46224E92E1005CA188 /* WeatherCard.swift in Sources */,
 				CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */,
 				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
 				CE31EB40224E81BF005CA188 /* HomeWeatherCardCell.swift in Sources */,

@@ -18,10 +18,47 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Tw-bX-2xN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="rIz-3J-VCp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vs9-Xl-mxm">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="pdG-OX-yAH" id="BSL-K9-YhP"/>
+                                    <outlet property="delegate" destination="pdG-OX-yAH" id="HLO-Hh-115"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rIz-3J-VCp" firstAttribute="top" secondItem="7Tw-bX-2xN" secondAttribute="top" id="VkN-hC-g08"/>
+                            <constraint firstItem="rIz-3J-VCp" firstAttribute="leading" secondItem="7Tw-bX-2xN" secondAttribute="leading" id="Yat-8u-cm0"/>
+                            <constraint firstAttribute="bottom" secondItem="rIz-3J-VCp" secondAttribute="bottom" id="jd4-SG-VLi"/>
+                            <constraint firstAttribute="trailing" secondItem="rIz-3J-VCp" secondAttribute="trailing" id="p1C-Q0-qIz"/>
+                        </constraints>
+                    </view>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="7Tw-bX-2xN" firstAttribute="top" secondItem="pdG-OX-yAH" secondAttribute="top" id="VXz-c6-Swd"/>
+                <constraint firstAttribute="trailing" secondItem="7Tw-bX-2xN" secondAttribute="trailing" id="hKU-hB-tL3"/>
+                <constraint firstItem="7Tw-bX-2xN" firstAttribute="leading" secondItem="pdG-OX-yAH" secondAttribute="leading" id="oaT-za-kES"/>
+                <constraint firstAttribute="bottom" secondItem="7Tw-bX-2xN" secondAttribute="bottom" id="xAT-Lq-lcP"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="BuV-oV-KB9"/>
             <size key="customSize" width="254" height="101"/>
-            <point key="canvasLocation" x="292.75362318840581" y="-114.17410714285714"/>
+            <connections>
+                <outlet property="collectionView" destination="rIz-3J-VCp" id="wyB-VE-tv9"/>
+            </connections>
+            <point key="canvasLocation" x="292.02898550724638" y="-114.50892857142857"/>
         </collectionViewCell>
     </objects>
 </document>

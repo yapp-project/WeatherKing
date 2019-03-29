@@ -18,7 +18,19 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                 <rect key="frame" x="0.0" y="0.0" width="254" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U62-f9-uK0">
+                        <rect key="frame" x="0.0" y="0.0" width="254" height="101"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="U62-f9-uK0" firstAttribute="leading" secondItem="8AP-0e-gWd" secondAttribute="leading" id="6ZS-XS-WG6"/>
+                <constraint firstItem="U62-f9-uK0" firstAttribute="top" secondItem="8AP-0e-gWd" secondAttribute="top" id="7U5-a2-ikI"/>
+                <constraint firstAttribute="bottom" secondItem="U62-f9-uK0" secondAttribute="bottom" id="Ore-Ke-MEv"/>
+                <constraint firstAttribute="trailing" secondItem="U62-f9-uK0" secondAttribute="trailing" id="zgS-XN-sLK"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="3ya-Xw-QFd"/>
             <size key="customSize" width="254" height="101"/>
             <point key="canvasLocation" x="292.75362318840581" y="-114.17410714285714"/>

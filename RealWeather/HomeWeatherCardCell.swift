@@ -10,4 +10,7 @@ import UIKit
 
 class HomeWeatherCardCell: UICollectionViewCell {
     
+    func updateView(card: WeatherCard?) {
+        
+    }
 }

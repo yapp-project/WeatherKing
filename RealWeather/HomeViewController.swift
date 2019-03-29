@@ -57,10 +57,7 @@ class HomeViewController: UIViewController {
     }
     
     fileprivate func prepareCells() {
-        homeCellDatasource.forEach {
-            let collectionNib: UINib = UINib(nibName: $0.identifier, bundle: nil)
-            collectionView.register(collectionNib, forCellWithReuseIdentifier: $0.identifier)
-        }
+        collectionView.register(cellTypes: homeCellDatasource)
     }
     
     fileprivate func prepareObservers() {
@@ -105,3 +102,12 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension UICollectionView {
+    // Home 이외에서도 사용될 경우 CellType으로 통합
+    func register(cellTypes: [HomeCellType]) {
+        cellTypes.forEach {
+            let nib: UINib = UINib(nibName: $0.identifier, bundle: nil)
+            register(nib, forCellWithReuseIdentifier: $0.identifier)
+        }
+    }
+}
