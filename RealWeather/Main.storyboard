@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gpz-3N-PJb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gpz-3N-PJb">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,20 +24,46 @@
                                     <segue destination="7z5-BV-naK" kind="embed" identifier="Home" id="hxv-yn-fpD"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4d-2b-VoE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="hGh-aK-bHL"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="6TF-3H-dqG" kind="embed" identifier="HomeNavigationBar" id="mAC-Fl-3mL"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JQe-vo-K86">
+                                <rect key="frame" x="-376" y="0.0" width="376" height="667"/>
+                                <connections>
+                                    <segue destination="mVn-Ee-0ye" kind="embed" identifier="Drawer" id="eZm-l0-o7R"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="JQe-vo-K86" firstAttribute="width" secondItem="MUS-AO-8nY" secondAttribute="width" constant="0.80000000000000004" id="8cO-J0-vT3"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="leading" secondItem="MUS-AO-8nY" secondAttribute="leading" id="AS9-uh-UiU"/>
+                            <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="c4d-2b-VoE" secondAttribute="trailing" id="Aae-9q-u1m"/>
+                            <constraint firstAttribute="bottom" secondItem="JQe-vo-K86" secondAttribute="bottom" id="NRY-r0-dYL"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="trailing" secondItem="MUS-AO-8nY" secondAttribute="trailing" id="Xus-59-ikl"/>
+                            <constraint firstItem="JQe-vo-K86" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="Z6j-7Y-QhS"/>
+                            <constraint firstItem="JQe-vo-K86" firstAttribute="trailing" secondItem="d5J-lt-mFp" secondAttribute="leading" id="hlo-U7-Fcv"/>
+                            <constraint firstItem="c4d-2b-VoE" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="iNK-sa-8o7"/>
+                            <constraint firstItem="c4d-2b-VoE" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" id="nXT-0S-l0S"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" constant="20" id="qhH-zW-B6m"/>
                             <constraint firstAttribute="bottom" secondItem="iQP-P0-PwP" secondAttribute="bottom" id="x3y-iA-hb1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d5J-lt-mFp"/>
                     </view>
+                    <connections>
+                        <outlet property="drawerViewLeading" destination="hlo-U7-Fcv" id="evZ-Ai-z9X"/>
+                        <outlet property="drawerViewWidth" destination="8cO-J0-vT3" id="tS4-ha-oJ0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-19-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-95" y="130"/>
+            <point key="canvasLocation" x="-90" y="121"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oAR-fg-qk7">
@@ -63,6 +89,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t2M-Na-XlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653" y="570"/>
+        </scene>
+        <!--DrawerViewController-->
+        <scene sceneID="NUp-i8-qJu">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xsi-xT-3b5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Settings" referencedIdentifier="DrawerViewController" id="mVn-Ee-0ye" sceneMemberID="viewController"/>
+            </objects>
+            <point key="canvasLocation" x="-91" y="569"/>
+        </scene>
+        <!--Home Navigation Bar View Controller-->
+        <scene sceneID="qYy-Lm-Xnj">
+            <objects>
+                <viewController storyboardIdentifier="HomeNavigationBarViewController" id="6TF-3H-dqG" customClass="HomeNavigationBarViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rM3-lo-3mN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HomeNavigationBAr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vpz-LY-J1D">
+                                <rect key="frame" x="166" y="40" width="155" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ru-Ig-kSK">
+                                <rect key="frame" x="20" y="35" width="49" height="30"/>
+                                <state key="normal" title="Drawer"/>
+                                <connections>
+                                    <action selector="onOpenDrawerBtnTapped:" destination="6TF-3H-dqG" eventType="touchUpInside" id="rq4-5Q-k4O"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Vpz-LY-J1D" firstAttribute="centerY" secondItem="rM3-lo-3mN" secondAttribute="centerY" id="5wd-x9-yLF"/>
+                            <constraint firstItem="7Ru-Ig-kSK" firstAttribute="centerY" secondItem="rM3-lo-3mN" secondAttribute="centerY" id="a6j-Te-LTf"/>
+                            <constraint firstItem="7Ru-Ig-kSK" firstAttribute="leading" secondItem="rM3-lo-3mN" secondAttribute="leading" constant="20" id="sFd-1q-Dt0"/>
+                            <constraint firstItem="Vpz-LY-J1D" firstAttribute="centerX" secondItem="rM3-lo-3mN" secondAttribute="centerX" id="sIa-3I-SOH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gdh-hJ-W21" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652.79999999999995" y="-308.54572713643182"/>
         </scene>
     </scenes>
 </document>
