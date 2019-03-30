@@ -24,6 +24,9 @@ class HomeWeatherDustCardCell: UICollectionViewCell {
         cardView.backgroundColor = card?.type.color
         titleLabel.text = card?.type.title
         imageView.image = card?.type.image
+        descriptionLabel.text = card?.type.dustDescription
+        estimatedTempLabel.text = card?.type.ultraDustDescription
+        minMaxTempLabel.text = ""
     }
     
     func flipCard() {

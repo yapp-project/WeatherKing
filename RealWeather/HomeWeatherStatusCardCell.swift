@@ -25,6 +25,7 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
         titleLabel.text = card?.title
         imageView.image = card?.type.image
         descriptionLabel.text = card?.description
+        
     }
     
     func flipCard() {

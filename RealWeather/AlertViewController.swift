@@ -46,8 +46,8 @@ class AlertViewController: UIViewController {
     let morningDatePicker = UIDatePicker()
     let nightDatePicker = UIDatePicker()
     let toolbar = UIToolbar()
-    var morningTimeText: String? = "오전 7 : 00"
-    var nightTimeText: String? = "오후 10 : 00"
+    var morningTimeText: String? = "오전 7:00"
+    var nightTimeText: String? = "오후 10:00"
     var menuDatasource: [AlertSettingCellType] = AlertSettingCellType.allCases
     var isAllday: Bool?
     
@@ -62,7 +62,7 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.rowHeight = 60
         morningDatePicker.datePickerMode = .time
         morningDatePicker.addTarget(self, action: #selector(self.morningPickerChange(_:)), for: .valueChanged)
         
@@ -147,6 +147,10 @@ extension AlertViewController: UITableViewDataSource {
             }
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
 

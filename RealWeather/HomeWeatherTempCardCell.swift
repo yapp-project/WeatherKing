@@ -32,9 +32,35 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         // MARK: 더미 데이터 삽입
         let dummyData1 = WeatherTempTimeData()
         dummyData1.timeTitle = "지금"
-        dummyData1.weatherImage = nil
-        dummyData1.temperature = 20
-        timeTempDatas = [dummyData1]
+        dummyData1.weatherImage = UIImage(named: "icCloudCopy7")
+        dummyData1.temperature = 10
+        
+        let dummyData2 = WeatherTempTimeData()
+        dummyData2.timeTitle = "늦은밤"
+        dummyData2.weatherImage = UIImage(named: "icCloudRain")
+        dummyData2.temperature = 12
+        
+        let dummyData3 = WeatherTempTimeData()
+        dummyData3.timeTitle = "한밤"
+        dummyData3.weatherImage = UIImage(named: "icCloudRain")
+        dummyData3.temperature = 12
+        
+        let dummyData4 = WeatherTempTimeData()
+        dummyData4.timeTitle = "새벽"
+        dummyData4.weatherImage = UIImage(named: "icCloudRain")
+        dummyData4.temperature = 10
+        
+        let dummyData5 = WeatherTempTimeData()
+        dummyData5.timeTitle = "아침"
+        dummyData5.weatherImage = UIImage(named: "icCloudRain")
+        dummyData5.temperature = 10
+        
+        let dummyData6 = WeatherTempTimeData()
+        dummyData6.timeTitle = "늦은 오전"
+        dummyData6.weatherImage = UIImage(named: "icCloudCopy7")
+        dummyData6.temperature = 10
+        
+        timeTempDatas = [dummyData1, dummyData2, dummyData3, dummyData4, dummyData5, dummyData6]
         tableView.reloadData()
         
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
@@ -88,7 +114,7 @@ class HomeWeatherTempCardBackCell: UITableViewCell {
     
     func updateView(data: WeatherTempTimeData) {
         timeLabel.text = data.timeTitle
-//        weatherImageView.image = data.weatherImage
+        weatherImageView.image = data.weatherImage
         tempLabel.text = data.temperature.tempFormat
     }
 }
