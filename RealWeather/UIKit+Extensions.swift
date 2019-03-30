@@ -20,7 +20,8 @@ extension CALayer {
         } else {
             let dx = -spread
             let rect = bounds.insetBy(dx: dx, dy: dx)
-            shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).cgPath
+            shadowPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+//            shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).cgPath
         }
     }
 }
@@ -93,6 +94,9 @@ extension UIColor {
             a: a
         )
     }
+    class var grayText: UIColor {
+        return UIColor(red: 173, green: 181, blue: 189)
+    }
     
     class var charcoalGrey: UIColor {
         return UIColor(red: 52.0 / 255.0, green: 58.0 / 255.0, blue: 64.0 / 255.0, alpha: 1.0)
@@ -129,6 +133,7 @@ extension UIColor {
     class var white50: UIColor {
         return UIColor(white: 1.0, alpha: 0.5)
     }
+
 }
 
 extension Int {
@@ -136,3 +141,5 @@ extension Int {
         return "\(self)°"
     }
 }
+
+

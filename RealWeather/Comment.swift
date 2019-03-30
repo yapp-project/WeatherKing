@@ -13,16 +13,18 @@ class Comment: NSObject {
     var comment: String = ""
     var distance: Int = 0
     var time: Int = 0
-    var goodCount: Int = 0
-    var badCount: Int = 0
+    var likeCount: Int = 0
+    var hateCount: Int = 0
+    var isLike: Bool = false
+    var isHate: Bool = false
     
-    init(name: String, comment: String, distance: Int, time: Int, goodCount: Int, badCount: Int) {
+    init(name: String, comment: String, distance: Int, time: Int, likeCount: Int, hateCount: Int) {
         self.name = name
         self.comment = comment
         self.distance = distance
         self.time = time
-        self.goodCount = goodCount
-        self.badCount = badCount
+        self.likeCount = likeCount
+        self.hateCount = hateCount
     }
     
     override init() {}

@@ -7,9 +7,14 @@
 //
 
 import UIKit
-
-protocol CellDelegate {
+enum CommentEmotion {
+    case like
+    case hate
+}
+protocol CommentCellDelegate {
     func detectTouch()
+    func settingComment(index: Int)
+    func setCommentEmotion(_ emotion: CommentEmotion, index: Int)
 }
 
 class CommentCell: UICollectionViewCell {
@@ -17,25 +22,49 @@ class CommentCell: UICollectionViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var goodCountLabel: UILabel!
-    @IBOutlet weak var badCountLabel: UILabel!
+    @IBOutlet weak var hateBtn: CommentLikeButton!
+    @IBOutlet weak var likeBtn: CommentLikeButton!
     
-    var delegate: CellDelegate?
+    var delegate: CommentCellDelegate?
+    var indexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        likeBtn.isLike = true
+        hateBtn.isLike = false
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.detectTouch()
     }
     
-    func fill(_ comment: Comment) {
+    @IBAction func settingComment(_ sender: Any) {
+        print("bt!!")
+        guard let indexPath = self.indexPath else { return }
+        delegate?.settingComment(index: indexPath.item)
+    }
+    
+    @IBAction func likeComment(_ sender: Any) {
+        likeBtn.isChecked = !likeBtn.isChecked
+        guard let indexPath = self.indexPath else { return }
+        delegate?.setCommentEmotion(.like, index: indexPath.item)
+    }
+    
+    @IBAction func hateComment(_ sender: Any) {
+        hateBtn.isChecked = !hateBtn.isChecked
+        guard let indexPath = self.indexPath else { return }
+        delegate?.setCommentEmotion(.hate, index: indexPath.item)
+    }
+    
+    func fill(_ comment: Comment, indexPath: IndexPath) {
         nameLabel.text = comment.name
         commentLabel.text = comment.comment
-        distanceLabel.text = String(comment.distance)
-        timeLabel.text = String(comment.time)
-        goodCountLabel.text = String(comment.goodCount)
-        badCountLabel.text = String(comment.badCount)
+        distanceLabel.text = String(comment.distance) + "km"
+        timeLabel.text = String(comment.time) + "분"
+        likeBtn.isChecked = comment.isLike
+        hateBtn.isChecked = comment.isHate
+        likeBtn.setTitle(String(comment.likeCount), for: .normal)
+        hateBtn.setTitle(String(comment.hateCount), for: .normal)
+        self.indexPath = indexPath
     }
 }

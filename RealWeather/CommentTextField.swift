@@ -14,6 +14,8 @@ protocol CommentTextFieldDelegate {
 
 class CommentTextField: UITextField, UITextFieldDelegate {
     
+    var commentDelegate: CommentTextFieldDelegate?
+    
     override func awakeFromNib() {
         initView()
     }
@@ -45,14 +47,16 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         self.leftViewMode = ViewMode.always
         self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.bgColor.cgColor
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 12
         self.borderStyle = .none
         
         self.delegate = self
     }
     
     @objc func registerComment(_ sender: UIButton) {
-        
+        commentDelegate?.registerComment()
+        self.text = ""
+        self.endEditing(true)
     }
     
 }
