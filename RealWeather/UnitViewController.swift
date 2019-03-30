@@ -8,10 +8,13 @@
 
 import UIKit
 
+
 class UnitViewController: UIViewController {
     var unit = ["℃","℉"]
-    var unitCheck = ["",""]
-    
+    var unitCheck = ["check",""]
+    var image: UIImage?
+    var titleColor: UIColor? = UIColor(red: 52, green: 58, blue: 64)
+    var checkImage: UIImage?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +35,8 @@ extension UnitViewController: UITableViewDataSource {
         
         cell.unitCheck.image = UIImage(named: unitCheck[indexPath.row])
         cell.unitLabel.text = unit[indexPath.row]
+        cell.unitLabel.tag = indexPath.row
+        
         
         return cell
     }
@@ -42,12 +47,21 @@ extension UnitViewController: UITableViewDataSource {
 
 extension UnitViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         print("click \(unit[indexPath.row])")
-        let vc = UnitTableViewCell()
         
-        if unit[indexPath.row] == "℃" {
-//            vc.unitLabel.textColor = UIColor(red: 78, green: 92, blue: 239, alpha: 1)
-//            vc.unitCheck.image = UIImage(named: "check")
+        if indexPath.row == 0 {
+            tableView.reloadData()
+            unitCheck.removeAll()
+            unitCheck.insert("check", at: 0)
+            unitCheck.insert("", at: 1)
+        } else if indexPath.row == 1 {
+            tableView.reloadData()
+            unitCheck.remove(at: 0)
+            unitCheck.insert("", at: 0)
+            unitCheck.insert("check", at: 1)
+        } else {
+            print("else")
         }
     }
 }
@@ -55,4 +69,9 @@ extension UnitViewController: UITableViewDelegate {
 class UnitTableViewCell: UITableViewCell {
     @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var unitCheck: UIImageView!
+    
+    func update(title: String, check: UIImage) {
+        self.unitLabel.text = title
+        self.unitCheck.image = check
+    }
 }
