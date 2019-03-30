@@ -57,12 +57,24 @@ extension UIColor {
         return UIColor(red: 56.0 / 255.0, green: 217.0 / 255.0, blue: 169.0 / 255.0, alpha: 1.0)
     }
     
-    class var shadowColor80: UIColor {
-        return UIColor(red: 173.0 / 255.0, green: 181.0 / 255.0, blue: 189.0 / 255.0, alpha: 0.8)
+    class var cardShadowColor: UIColor {
+        return UIColor(red: 52.0 / 255.0, green: 58.0 / 255.0, blue: 64.0 / 255.0, alpha: 0.36)
     }
     
     class var shadowColor30: UIColor {
         return UIColor(red: 173.0 / 255.0, green: 181.0 / 255.0, blue: 189.0 / 255.0, alpha: 0.3)
+    }
+    
+    class var white80: UIColor {
+        return UIColor(white: 1.0, alpha: 0.8)
+    }
+    
+    class var white30: UIColor {
+        return UIColor(white: 1.0, alpha: 0.3)
+    }
+    
+    class var white50: UIColor {
+        return UIColor(white: 1.0, alpha: 0.5)
     }
 }
 

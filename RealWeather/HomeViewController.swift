@@ -35,7 +35,7 @@ public enum HomeCellType {
         case .weatherCardCollection:
             return CGSize(width: UIScreen.main.bounds.width, height: 410)
         case .weatherCard:
-            return CGSize(width: 240, height: 360)
+            return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
             return CGSize(width: 24, height: 17)
         case .bestCommentCollection:
@@ -48,6 +48,7 @@ public enum HomeCellType {
 
 class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var backgroundColorView: UIView!
     @IBOutlet fileprivate weak var commentContainer: UIView!
     
     fileprivate let homeDataController: HomeDataController = HomeDataController()

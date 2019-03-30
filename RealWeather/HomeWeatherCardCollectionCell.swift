@@ -105,14 +105,18 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+        if collectionView == menuCollectionView {
+            return UIEdgeInsets(top: 0, left: 60, bottom: 0, right: 60)
+        } else {
+            return .zero
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         if collectionView == menuCollectionView {
             return 36
         } else {
-            return 20
+            return 0
         }
     }
 }

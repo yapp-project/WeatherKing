@@ -13,9 +13,9 @@ class HomeWeatherMenuCell: UICollectionViewCell {
     
     func updateView(isSelected: Bool, title: String) {
         if isSelected {
-            titleLabel.textColor = .charcoalGrey
+            titleLabel.textColor = .white80
         } else {
-            titleLabel.textColor = .lightBlueGrey
+            titleLabel.textColor = .white30
         }
         titleLabel?.text = title
     }

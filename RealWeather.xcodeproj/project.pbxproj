@@ -16,7 +16,6 @@
 		CE20386F222164A400ED9BA7 /* RealWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20386E222164A400ED9BA7 /* RealWeatherTests.swift */; };
 		CE20387A222164A500ED9BA7 /* RealWeatherUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE203879222164A500ED9BA7 /* RealWeatherUITests.swift */; };
 		CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388922216D9A00ED9BA7 /* HomeViewController.swift */; };
-		CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388B22216DB900ED9BA7 /* RootViewController.swift */; };
 		CE20389322216FB300ED9BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE20389222216FB300ED9BA7 /* Main.storyboard */; };
 		CE31EB2D224E4D3B005CA188 /* HomeComment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE31EB2C224E4D3B005CA188 /* HomeComment.storyboard */; };
 		CE31EB31224E4D6F005CA188 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE31EB30224E4D6F005CA188 /* Settings.storyboard */; };
@@ -32,6 +31,7 @@
 		CE31EB48224EAA5A005CA188 /* HomeWeatherMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE31EB47224EAA5A005CA188 /* HomeWeatherMenuCell.xib */; };
 		CE31EB4A224EAE30005CA188 /* HomeWeatherMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31EB49224EAE30005CA188 /* HomeWeatherMenuCell.swift */; };
 		CE31EB4D224EB042005CA188 /* UIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE31EB4C224EB042005CA188 /* UIKit+Extensions.swift */; };
+		CE522F4C224F91FE000C26BF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE20388B22216DB900ED9BA7 /* RootViewController.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* Comment.swift */; };
 		CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */; };
@@ -434,7 +434,7 @@
 				CE31EB4D224EB042005CA188 /* UIKit+Extensions.swift in Sources */,
 				CE31EB44224E8205005CA188 /* HomeBestCommentCell.swift in Sources */,
 				CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */,
-				CE20388C22216DB900ED9BA7 /* RootViewController.swift in Sources */,
+				CE522F4C224F91FE000C26BF /* RootViewController.swift in Sources */,
 				74415A032221B8E000AA3D67 /* TodayWeather.swift in Sources */,
 				CE31EB42224E81EB005CA188 /* HomeBestCommentCollectionCell.swift in Sources */,
 				CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */,
