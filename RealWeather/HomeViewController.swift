@@ -104,15 +104,22 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
         
         if let weatherCollectionCell = cell as? HomeWeatherCardCollectionCell {
-            var dummyCard: WeatherTempCard = WeatherTempCard()
-            dummyCard.mainColor = .lightishBlue
+            let dummyCard: WeatherTempCard = WeatherTempCard()
             dummyCard.currentTemp = 30
             dummyCard.description = "어제보다 포근해요"
             dummyCard.estimatedTemp = 33
             dummyCard.minTemp = 29
             dummyCard.maxTemp = 33
             
-            weatherCollectionCell.cardDatasource.updateValue([dummyCard, dummyCard, dummyCard], forKey: .today)
+            let dummyCard2: WeatherStatusCard = WeatherStatusCard()
+            dummyCard2.title = "추적추적 추적비"
+            dummyCard2.description = "강수량 220mm"
+            dummyCard2.type = .rain
+            
+            let dummyCard3: WeatherDustCard = WeatherDustCard()
+            dummyCard3.type = .worse
+            
+            weatherCollectionCell.cardDatasource.updateValue([dummyCard, dummyCard2, dummyCard3], forKey: .today)
             weatherCollectionCell.selectedMenu = .today
         } else if let bestCommentCollectionCell = cell as? HomeBestCommentCollectionCell {
             var dummyComment1: Comment = Comment()

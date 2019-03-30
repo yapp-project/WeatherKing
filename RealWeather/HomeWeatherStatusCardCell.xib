@@ -123,25 +123,31 @@
                             <constraint firstAttribute="bottom" secondItem="BoD-gQ-2jv" secondAttribute="bottom" constant="16.600000000000001" id="q5O-73-gp8"/>
                             <constraint firstItem="DHc-hp-fPb" firstAttribute="top" secondItem="nhE-CC-KYY" secondAttribute="bottom" constant="28" id="ttF-Sn-scX"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="20.600000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXV-VM-al0">
                         <rect key="frame" x="60" y="16.5" width="255" height="357"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지금은 30°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO3-CI-Py5">
-                                <rect key="frame" x="24" y="40" width="122" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소복소복 소복눈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yO3-CI-Py5">
+                                <rect key="frame" x="24" y="40" width="177" height="34"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warm" translatesAutoresizingMaskIntoConstraints="NO" id="Q0A-r3-Xqa">
-                                <rect key="frame" x="49" y="141" width="206" height="186"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud_snow" translatesAutoresizingMaskIntoConstraints="NO" id="Q0A-r3-Xqa">
+                                <rect key="frame" x="0.0" y="147" width="255" height="210"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="206" id="DjL-Be-7Wk"/>
-                                    <constraint firstAttribute="height" constant="186" id="lPh-UT-Xhf"/>
+                                    <constraint firstAttribute="width" constant="255" id="DjL-Be-7Wk"/>
+                                    <constraint firstAttribute="height" constant="210" id="lPh-UT-Xhf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어제보다 포근해요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHB-zA-41N">
-                                <rect key="frame" x="24" y="82" width="115" height="19.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="딱 적당히 내리고 있어요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHB-zA-41N">
+                                <rect key="frame" x="24" y="82" width="156" height="20"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -150,22 +156,22 @@
                                 <rect key="frame" x="54" y="168.5" width="54.5" height="18"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29° / 33°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipz-fg-ZCm">
-                                <rect key="frame" x="77" y="105.5" width="48" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ipz-fg-ZCm">
+                                <rect key="frame" x="63" y="106" width="29.5" height="16"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="체감 33° " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYy-r1-UUy">
-                                <rect key="frame" x="24" y="105.5" width="48" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="적설량" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYy-r1-UUy">
+                                <rect key="frame" x="24" y="106" width="34" height="16"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.31759470699999998" green="0.35950374600000001" blue="0.90201312300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.2196078431372549" green="0.85098039215686272" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="Q0A-r3-Xqa" secondAttribute="bottom" constant="30" id="48b-iH-Sqc"/>
+                            <constraint firstAttribute="bottom" secondItem="Q0A-r3-Xqa" secondAttribute="bottom" id="48b-iH-Sqc"/>
                             <constraint firstAttribute="height" constant="356.60000000000002" id="6cP-7W-hnh"/>
                             <constraint firstAttribute="width" constant="255" id="9Vh-Aj-gHt"/>
                             <constraint firstItem="Ipz-fg-ZCm" firstAttribute="centerY" secondItem="NYy-r1-UUy" secondAttribute="centerY" id="Ciw-AY-j8c"/>
@@ -217,7 +223,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="cloud_snow" width="255" height="210"/>
         <image name="icInfoCopy2" width="15" height="15"/>
-        <image name="warm" width="206" height="186"/>
     </resources>
 </document>

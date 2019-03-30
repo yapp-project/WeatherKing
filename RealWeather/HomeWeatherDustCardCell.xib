@@ -203,6 +203,12 @@
                             <constraint firstItem="I6h-MV-cHq" firstAttribute="top" secondItem="UfP-r2-KNC" secondAttribute="bottom" constant="25" id="wlI-ts-mmY"/>
                             <constraint firstItem="UfP-r2-KNC" firstAttribute="top" secondItem="IgP-Tg-acP" secondAttribute="bottom" constant="7" id="ziC-D4-v8Z"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="20.600000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ci1-7c-WxM">
                         <rect key="frame" x="60" y="16.5" width="255" height="357"/>

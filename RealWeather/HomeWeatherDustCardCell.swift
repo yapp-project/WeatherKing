@@ -21,12 +21,9 @@ class HomeWeatherDustCardCell: UICollectionViewCell {
     
     func updateView(card: WeatherDustCard?) {
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
-        cardView.backgroundColor = card?.mainColor
-        titleLabel.text = "지금은 " + (card?.currentTemp.tempFormat ?? "")
-        imageView.image = card?.image
-        descriptionLabel.text = card?.description
-        estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
-        minMaxTempLabel.text = (card?.minTemp.tempFormat ?? "") + " / " + (card?.maxTemp.tempFormat ?? "")
+        cardView.backgroundColor = card?.type.color
+        titleLabel.text = card?.type.title
+        imageView.image = card?.type.image
     }
     
     func flipCard() {

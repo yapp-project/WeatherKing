@@ -133,6 +133,26 @@ extension UIColor {
     class var white50: UIColor {
         return UIColor(white: 1.0, alpha: 0.5)
     }
+    
+    class var dodgerBlue: UIColor {
+        return UIColor(red: 77.0 / 255.0, green: 171.0 / 255.0, blue: 247.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var boringGreen: UIColor {
+        return UIColor(red: 81.0 / 255.0, green: 207.0 / 255.0, blue: 102.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var mango: UIColor {
+        return UIColor(red: 1.0, green: 146.0 / 255.0, blue: 43.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var salmon: UIColor {
+        return UIColor(red: 1.0, green: 107.0 / 255.0, blue: 107.0 / 255.0, alpha: 1.0)
+    }
+    
+    class var gunmetal: UIColor {
+        return UIColor(red: 73.0 / 255.0, green: 80.0 / 255.0, blue: 87.0 / 255.0, alpha: 1.0)
+    }
 
 }
 
