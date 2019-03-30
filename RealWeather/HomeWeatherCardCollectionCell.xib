@@ -54,7 +54,8 @@
                                 </connections>
                             </collectionView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="8yU-d5-3D2">
-                                <rect key="frame" x="152" y="363" width="71" height="37"/>
+                                <rect key="frame" x="152" y="378" width="71" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.67843137249999996" green="0.70980392160000005" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="currentPageIndicatorTintColor" red="0.31759470699999998" green="0.35950374600000001" blue="0.90201312300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </pageControl>
                         </subviews>
@@ -68,7 +69,7 @@
                             <constraint firstItem="EoL-aM-eh7" firstAttribute="leading" secondItem="OXL-dy-isZ" secondAttribute="leading" id="fU0-3b-gsx"/>
                             <constraint firstItem="QMb-AB-Owk" firstAttribute="leading" secondItem="OXL-dy-isZ" secondAttribute="leading" id="qsW-1j-pGp"/>
                             <constraint firstItem="QMb-AB-Owk" firstAttribute="top" secondItem="EoL-aM-eh7" secondAttribute="bottom" constant="12" id="wHb-7A-RaM"/>
-                            <constraint firstItem="8yU-d5-3D2" firstAttribute="bottom" secondItem="QMb-AB-Owk" secondAttribute="bottom" id="zVm-jz-NUE"/>
+                            <constraint firstItem="8yU-d5-3D2" firstAttribute="bottom" secondItem="QMb-AB-Owk" secondAttribute="bottom" constant="15" id="zVm-jz-NUE"/>
                         </constraints>
                     </view>
                 </subviews>

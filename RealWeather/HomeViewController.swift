@@ -42,7 +42,7 @@ public enum HomeCellType {
     var size: CGSize {
         switch self {
         case .weatherCardCollection:
-            return CGSize(width: UIScreen.main.bounds.width, height: 410)
+            return CGSize(width: UIScreen.main.bounds.width, height: 420)
         case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherCompareCard:
             return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
