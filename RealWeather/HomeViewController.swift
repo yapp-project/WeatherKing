@@ -59,6 +59,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         prepareObservers()
         prepareCells()
+        updateView()
     }
     
     fileprivate func prepareCells() {
@@ -67,6 +68,12 @@ class HomeViewController: UIViewController {
     
     fileprivate func prepareObservers() {
         
+    }
+}
+
+extension HomeViewController {
+    func updateView() {
+        commentContainer.layer.applySketchShadow(color: .shadowColor30, alpha: 1.0, x: 0, y: -2, blur: 9, spread: 0)
     }
 }
 
@@ -95,6 +102,9 @@ extension HomeViewController: UICollectionViewDataSource {
             weatherCollectionCell.cardDatasource.updateValue([dummyCard, dummyCard, dummyCard], forKey: .today)
             weatherCollectionCell.selectedMenu = .today
         } else if let bestCommentCollectionCell = cell as? HomeBestCommentCollectionCell {
+            var dummyComment1: Comment = Comment()
+            
+            bestCommentCollectionCell.comments = [dummyComment1, dummyComment1]
 //            bestCommentCollectionCell.comments = comments
         }
 
