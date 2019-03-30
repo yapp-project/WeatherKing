@@ -30,6 +30,7 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var cardCollectionView: UICollectionView!
     @IBOutlet fileprivate weak var pageControl: UIPageControl!
     
+    var bgControlDelegate: HomeBGColorControlDelegate?
     var menuDatasource: [HomeWeatherMenu] = HomeWeatherMenu.allCases
     var cardDatasource: [HomeWeatherMenu: [WeatherCard]] = [:]
     var selectedMenu: HomeWeatherMenu = .today {
@@ -42,7 +43,10 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
     var cards: [WeatherCard] = [] {
         didSet {
             pageControl.numberOfPages = cards.count
+            pageControl.currentPage = 0
             cardCollectionView?.reloadData()
+            cardCollectionView?.setContentOffset(.zero, animated: true)
+            updateThemeColor(with: cards.first)
         }
     }
     
@@ -162,5 +166,20 @@ extension HomeWeatherCardCollectionCell: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page: Int = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         pageControl.currentPage = page
+        
+        if cards.indices.contains(page) {
+            updateThemeColor(with: cards[page])
+        }
+    }
+}
+
+extension HomeWeatherCardCollectionCell {
+    func updateThemeColor(with card: WeatherCard?) {
+        guard let card = card else {
+            return
+        }
+        
+        bgControlDelegate?.updateThemeColor(card.mainColor)
+        pageControl.currentPageIndicatorTintColor = card.mainColor
     }
 }

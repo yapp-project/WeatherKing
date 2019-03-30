@@ -10,8 +10,8 @@ import UIKit
 
 // TODO: 디자인 & 설계 제대로 나오면 전부 재설계 필요
 
-class WeatherCard {
-
+protocol WeatherCard {
+    var mainColor: UIColor { get }
 }
 
 public enum WeatherDustType {
@@ -39,30 +39,30 @@ public enum WeatherDustType {
     var dustDescription: String {
         switch self {
         case .good:
-            return "좋음"
+            return "미세먼지 좋음"
         case .notBad:
-            return "좋음"
+            return "미세먼지 좋음"
         case .bad:
-            return "나쁨"
+            return "미세먼지 나쁨"
         case .worse:
-            return "매우나쁨"
+            return "미세먼지 매우나쁨"
         case .worst:
-            return "최악"
+            return "미세먼지 최악"
         }
     }
     
     var ultraDustDescription: String {
         switch self {
         case .good:
-            return "좋음"
+            return "초미세먼지 좋음"
         case .notBad:
-            return "보통"
+            return "초미세먼지 보통"
         case .bad:
-            return "나쁨"
+            return "초미세먼지 나쁨"
         case .worse:
-            return "매우나쁨"
+            return "초미세먼지 매우나쁨"
         case .worst:
-            return "매우나쁨"
+            return "초미세먼지 매우나쁨"
         }
     }
     
@@ -98,6 +98,10 @@ public enum WeatherDustType {
 }
 
 class WeatherDustCard: WeatherCard {
+    var mainColor: UIColor {
+        return type.color
+    }
+    
     // 컬러 여러가지
 //    let mainColor: UIColor = .lightishBlue
     var type: WeatherDustType = .good
@@ -148,6 +152,7 @@ class WeatherTempCard: WeatherCard {
 
 class WeatherTempTimeData {
     var timeTitle: String = ""
+    var isCurrent: Bool = true
     var weatherImage: UIImage?
     var temperature: Int = 0
 }
@@ -188,6 +193,7 @@ class WeatherStatusCard: WeatherCard {
     
     var title: String = ""
     var description: String = ""
+    var estimatedDegree: String = ""
 }
 
 class WeatherStatusData {
