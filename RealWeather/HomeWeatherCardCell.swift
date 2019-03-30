@@ -9,6 +9,7 @@
 import UIKit
 
 class HomeWeatherCardCell: UICollectionViewCell {
+    @IBOutlet fileprivate weak var cardView: UIView!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var imageView: UIImageView!
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
@@ -16,9 +17,9 @@ class HomeWeatherCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var minMaxTempLabel: UILabel!
     
     func updateView(card: WeatherCard?) {
-        layer.applySketchShadow(color: .shadowColor80, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
-        backgroundColor = card?.mainColor
-        titleLabel.text = "지금은" + (card?.currentTemp.tempFormat ?? "")
+        cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
+        cardView.backgroundColor = card?.mainColor
+        titleLabel.text = "지금은 " + (card?.currentTemp.tempFormat ?? "")
         imageView.image = card?.image
         descriptionLabel.text = card?.description
         estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
