@@ -15,8 +15,26 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
     @IBOutlet fileprivate weak var estimatedTempLabel: UILabel!
     @IBOutlet fileprivate weak var minMaxTempLabel: UILabel!
+    @IBOutlet fileprivate weak var backView: UIView!
+    @IBOutlet fileprivate weak var tableView: UITableView!
     
-    func updateView(card: WeatherCard?) {
+    var timeTempDatas: [WeatherTempTimeData] = []
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let nib: UINib = UINib(nibName: "HomeWeatherTempCardBackCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "HomeWeatherTempCardBackCell")
+    }
+    
+    func updateView(card: WeatherTempCard?) {
+        // MARK: 더미 데이터 삽입
+        let dummyData1 = WeatherTempTimeData()
+        dummyData1.timeTitle = "지금"
+        dummyData1.weatherImage = nil
+        dummyData1.temperature = 20
+        timeTempDatas = [dummyData1]
+        tableView.reloadData()
+        
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
         cardView.backgroundColor = card?.mainColor
         titleLabel.text = "지금은 " + (card?.currentTemp.tempFormat ?? "")
@@ -26,3 +44,32 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         minMaxTempLabel.text = (card?.minTemp.tempFormat ?? "") + " / " + (card?.maxTemp.tempFormat ?? "")
     }
 }
+
+extension HomeWeatherTempCardCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return timeTempDatas.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeWeatherTempCardBackCell", for: indexPath)
+        
+        if let backCell = cell as? HomeWeatherTempCardBackCell {
+            backCell.updateView(data: timeTempDatas[indexPath.item])
+        }
+        
+        return cell
+    }
+}
+
+class HomeWeatherTempCardBackCell: UITableViewCell {
+    @IBOutlet fileprivate weak var timeLabel: UILabel!
+    @IBOutlet fileprivate weak var weatherImageView: UIImageView!
+    @IBOutlet fileprivate weak var tempLabel: UILabel!
+    
+    func updateView(data: WeatherTempTimeData) {
+        timeLabel.text = data.timeTitle
+//        weatherImageView.image = data.weatherImage
+        tempLabel.text = data.temperature.tempFormat
+    }
+}
+

@@ -10,7 +10,10 @@ import UIKit
 
 public enum HomeCellType {
     case weatherCardCollection
-    case weatherCard
+    case weatherTempCard
+    case weatherStatusCard
+    case weatherDustCard
+    case weatherCompareCard
     case weatherMenu
     case bestCommentCollection
     case bestComment
@@ -19,8 +22,14 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return "HomeWeatherCardCollectionCell"
-        case .weatherCard:
-            return "HomeWeatherCardCell"
+        case .weatherTempCard:
+            return "HomeWeatherTempCardCell"
+        case .weatherStatusCard:
+            return "HomeWeatherStatusCardCell"
+        case .weatherDustCard:
+            return "HomeWeatherDustCardCell"
+        case .weatherCompareCard:
+            return "HomeWeatherCompareCardCell"
         case .weatherMenu:
             return "HomeWeatherMenuCell"
         case .bestCommentCollection:
@@ -34,13 +43,11 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return CGSize(width: UIScreen.main.bounds.width, height: 410)
-        case .weatherCard:
+        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherCompareCard:
             return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
             return CGSize(width: 24, height: 17)
-        case .bestCommentCollection:
-            return CGSize(width: UIScreen.main.bounds.width, height: 90)
-        case .bestComment:
+        case .bestCommentCollection, .bestComment:
             return CGSize(width: UIScreen.main.bounds.width, height: 90)
         }
     }
@@ -92,7 +99,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
         
         if let weatherCollectionCell = cell as? HomeWeatherCardCollectionCell {
-            var dummyCard: WeatherCard = WeatherCard()
+            var dummyCard: WeatherTempCard = WeatherTempCard()
             dummyCard.mainColor = .lightishBlue
             dummyCard.currentTemp = 30
             dummyCard.description = "어제보다 포근해요"
@@ -128,7 +135,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         return homeCellDatasource[indexPath.item].size
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
     }
 }

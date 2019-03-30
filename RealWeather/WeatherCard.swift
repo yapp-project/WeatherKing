@@ -17,3 +17,40 @@ class WeatherCard {
     var minTemp: Int = 0
     var maxTemp: Int = 0
 }
+
+class WeatherDustCard: WeatherCard {
+    var dustDatas: [WeatherDustData] = []
+}
+
+class WeatherDustData {
+    var type: String = ""
+    var description: String = ""
+    var degree: Double = 0
+    var format: String = ""
+}
+
+
+class WeatherTempCard: WeatherCard {
+    var timeTempDatas: [WeatherTempTimeData] = []
+}
+
+class WeatherTempTimeData {
+    var timeTitle: String = ""
+    var weatherImage: UIImage?
+    var temperature: Int = 0
+}
+
+class WeatherStatusCard: WeatherCard {
+    var statusDatas: [WeatherStatusData] = []
+}
+
+class WeatherStatusData {
+    var type: String = ""
+    var description: String = ""
+    var degree: Double = 0
+    var format: String = ""
+}
+
+class WeatherCompareCard: WeatherCard {
+    
+}
