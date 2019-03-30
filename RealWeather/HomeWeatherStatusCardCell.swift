@@ -1,5 +1,5 @@
 //
-//  HomeWeatherCardCell.swift
+//  HomeWeatherStatusCardCell.swift
 //  RealWeather
 //
 //  Created by SangDon Kim on 30/03/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeWeatherCardCell: UICollectionViewCell {
+class HomeWeatherStatusCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var cardView: UIView!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var imageView: UIImageView!
