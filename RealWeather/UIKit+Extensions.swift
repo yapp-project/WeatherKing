@@ -20,8 +20,8 @@ extension CALayer {
         } else {
             let dx = -spread
             let rect = bounds.insetBy(dx: dx, dy: dx)
-            shadowPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 20)).cgPath
-//            shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).cgPath
+//            shadowPath = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topRight, .topLeft], cornerRadii: CGSize(width: 20, height: 50)).cgPath
+            shadowPath = UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).cgPath
         }
     }
 }
@@ -52,6 +52,8 @@ extension UIView {
         mask.path = path.cgPath
         self.layer.mask = mask
     }
+    
+    
     
     func addBorder(side: ViewBorder, color: CGColor, thickness: CGFloat) {
         

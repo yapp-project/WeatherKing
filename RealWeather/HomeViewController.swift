@@ -79,13 +79,13 @@ class HomeViewController: UIViewController {
     fileprivate func prepareObservers() {
         
     }
+
 }
 
 extension HomeViewController {
     func updateView() {
-        commentView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.3, x: 0, y: -2, blur: 9, spread: 0)
+//        commentView.layer.applySketchShadow(color: UIColor.black, alpha: 0.3, x: 0, y: -2, blur: 9, spread: 0)
 //        commentView.layer.cornerRadius = 20
-     
         commentBtn.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
     }
 }
