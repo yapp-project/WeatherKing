@@ -76,7 +76,7 @@
                             <constraint firstItem="sha-SK-tFY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UsW-hT-tM5"/>
                             <constraint firstAttribute="top" secondItem="ZL8-Bx-3eA" secondAttribute="top" id="Zy8-Db-7E6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="ZL8-Bx-3eA" secondAttribute="leading" id="a53-4D-tkj"/>
-                            <constraint firstItem="sha-SK-tFY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="70" id="c2K-vh-IWg"/>
+                            <constraint firstItem="sha-SK-tFY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="c2K-vh-IWg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
