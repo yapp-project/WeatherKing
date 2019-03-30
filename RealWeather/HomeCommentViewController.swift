@@ -98,12 +98,6 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
         return header
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
-   
-
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollOffsetY = scrollView.contentOffset.y
         
@@ -113,12 +107,6 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
             self.dismiss(animated: true, completion: nil)
         }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-
-    
 }
 
 extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDelegate, CommentCellDelegate {
@@ -145,7 +133,11 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
         }
     }
     
-    
+    func registerComment() {
+        guard let text = commentTextField.text, text.isEmpty == false else {
+            return
+        }
+        
         commentList.insert(Comment(name: "이름", comment: text, distance: 1, time: 1, likeCount: 0, hateCount: 0), at: 0)
         commentCollectionView.reloadData()
         self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
