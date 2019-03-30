@@ -9,6 +9,10 @@
 import UIKit
 
 class DrawerViewController: UIViewController {
+    
+    var menuName = ["단위","알림 설정","피드백 보내기","앱 평가하기"]
+    var menuImg = ["icDegree","icNotification","icFeedback","icReview"]
+    
     fileprivate var previousTouchLocation: CGFloat?
 }
 
@@ -49,4 +53,42 @@ extension DrawerViewController {
         (parent as? RootViewController)?.finishDraggingDrawer()
         super.touchesCancelled(touches, with: event)
     }
+}
+
+extension DrawerViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return menuName.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath) as! MenuCollectionViewCell
+        
+        cell.cellImage.image = UIImage(named: menuImg[indexPath.row])
+        cell.cellName.text = menuName[indexPath.row]
+        
+        return cell
+    }
+}
+
+extension DrawerViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("click \(menuName[indexPath.row])")
+        
+        if menuName[indexPath.row] == "단위" {
+            let stroyboard:UIStoryboard = self.storyboard!
+            let nextView = stroyboard.instantiateViewController(withIdentifier: "unitNavigation")
+            self.present(nextView,animated: true,completion: nil)
+        } else if menuName[indexPath.row] == "알림 설정" {
+            let stroyboard:UIStoryboard = self.storyboard!
+            let nextView = stroyboard.instantiateViewController(withIdentifier: "alertNavigation")
+            self.present(nextView,animated: true,completion: nil)
+        }
+    }
+}
+
+class MenuCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var cellImage: UIImageView!
+    @IBOutlet weak var cellName: UILabel!
+    
 }
