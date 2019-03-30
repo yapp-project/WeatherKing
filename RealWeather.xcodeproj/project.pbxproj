@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		741C8E4E224FA155001007AB /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E4D224FA155001007AB /* CommentCell.swift */; };
+		741C8E50224FA1C0001007AB /* CommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E4F224FA1C0001007AB /* CommentHeaderView.swift */; };
+		741C8E52224FA252001007AB /* CommentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E51224FA252001007AB /* CommentTextField.swift */; };
 		74415A012221B86A00AA3D67 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74415A002221B86A00AA3D67 /* Weather.swift */; };
 		74415A032221B8E000AA3D67 /* TodayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74415A022221B8E000AA3D67 /* TodayWeather.swift */; };
 		CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE203859222164A200ED9BA7 /* AppDelegate.swift */; };
@@ -61,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		741C8E4D224FA155001007AB /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		741C8E4F224FA1C0001007AB /* CommentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderView.swift; sourceTree = "<group>"; };
+		741C8E51224FA252001007AB /* CommentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextField.swift; sourceTree = "<group>"; };
 		74415A002221B86A00AA3D67 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		74415A022221B8E000AA3D67 /* TodayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeather.swift; sourceTree = "<group>"; };
 		CE203856222164A200ED9BA7 /* RealWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,8 +192,8 @@
 		CE20388D22216E4500ED9BA7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CE20388922216D9A00ED9BA7 /* HomeViewController.swift */,
 				CEB189DD2221866C00A1BB38 /* HomeDataController.swift */,
+				CE20388922216D9A00ED9BA7 /* HomeViewController.swift */,
 				CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */,
 				CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */,
 				CED56D09224A919E008CFD82 /* HomeNavigationBarViewController.swift */,
@@ -196,6 +202,9 @@
 				CE31EB49224EAE30005CA188 /* HomeWeatherMenuCell.swift */,
 				CE31EB41224E81EB005CA188 /* HomeBestCommentCollectionCell.swift */,
 				CE31EB43224E8205005CA188 /* HomeBestCommentCell.swift */,
+				741C8E4D224FA155001007AB /* CommentCell.swift */,
+				741C8E4F224FA1C0001007AB /* CommentHeaderView.swift */,
+				741C8E51224FA252001007AB /* CommentTextField.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -420,7 +429,9 @@
 				CED56D13224A9671008CFD82 /* UserManager.swift in Sources */,
 				CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */,
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,
+				741C8E4E224FA155001007AB /* CommentCell.swift in Sources */,
 				CEB189D82221845500A1BB38 /* Comment.swift in Sources */,
+				741C8E52224FA252001007AB /* CommentTextField.swift in Sources */,
 				CEB189DE2221866C00A1BB38 /* HomeDataController.swift in Sources */,
 				74415A012221B86A00AA3D67 /* Weather.swift in Sources */,
 				CE31EB3E224E819B005CA188 /* HomeWeatherCardCollectionCell.swift in Sources */,
@@ -429,6 +440,7 @@
 				CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */,
 				CE31EB4A224EAE30005CA188 /* HomeWeatherMenuCell.swift in Sources */,
 				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
+				741C8E50224FA1C0001007AB /* CommentHeaderView.swift in Sources */,
 				CE31EB40224E81BF005CA188 /* HomeWeatherCardCell.swift in Sources */,
 				CED56D08224A90EB008CFD82 /* DrawerViewController.swift in Sources */,
 				CE31EB4D224EB042005CA188 /* UIKit+Extensions.swift in Sources */,
@@ -613,7 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = AL9L4NE9HL;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,7 +644,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = AL9L4NE9HL;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

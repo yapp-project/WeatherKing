@@ -22,20 +22,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                 <color key="backgroundColor" red="0.31759470701217651" green="0.35950374603271484" blue="0.90201312303543091" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <containerView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSQ-Cm-Xzo">
-                                <rect key="frame" x="0.0" y="613" width="375" height="667"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="QSc-Bt-Wsm" kind="embed" identifier="HomeComment" id="um5-46-NML"/>
-                                </connections>
-                            </containerView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sha-SK-tFY">
-                                <rect key="frame" x="0.0" y="70" width="375" height="543"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="567"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="30" id="pV6-bx-d7C">
                                     <size key="itemSize" width="50" height="50"/>
@@ -49,22 +37,27 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="IBp-40-9Hc"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="And-li-VcT">
+                                <rect key="frame" x="43" y="596" width="281" height="71"/>
+                                <state key="normal" title="날씨 톡톡"/>
+                                <connections>
+                                    <segue destination="QSc-Bt-Wsm" kind="presentation" id="zev-Cu-yug"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8hr-xn-WEd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oSQ-Cm-Xzo" secondAttribute="top" constant="54" id="Axt-Ni-01a"/>
-                            <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L7n-sz-KsS"/>
+                            <constraint firstItem="And-li-VcT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="432-fn-glw"/>
+                            <constraint firstItem="And-li-VcT" firstAttribute="top" secondItem="sha-SK-tFY" secondAttribute="bottom" id="4CI-Ny-NLN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZL8-Bx-3eA" secondAttribute="trailing" id="Oeu-Fl-HGv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="And-li-VcT" secondAttribute="trailing" id="Q1M-tf-yGO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sha-SK-tFY" secondAttribute="trailing" id="QIB-Oc-G6F"/>
                             <constraint firstItem="ZL8-Bx-3eA" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="QTb-JD-BbD"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UsW-hT-tM5"/>
                             <constraint firstAttribute="top" secondItem="ZL8-Bx-3eA" secondAttribute="top" id="Zy8-Db-7E6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="ZL8-Bx-3eA" secondAttribute="leading" id="a53-4D-tkj"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="70" id="c2K-vh-IWg"/>
-                            <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="cVn-c1-y8o"/>
-                            <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="top" secondItem="sha-SK-tFY" secondAttribute="bottom" id="ctb-sN-mBF"/>
-                            <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="xc2-Xa-REb"/>
+                            <constraint firstItem="And-li-VcT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eAA-md-afu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -72,7 +65,6 @@
                     <connections>
                         <outlet property="backgroundColorView" destination="ZL8-Bx-3eA" id="BDA-zs-OaO"/>
                         <outlet property="collectionView" destination="sha-SK-tFY" id="WaK-m4-4oY"/>
-                        <outlet property="commentContainer" destination="oSQ-Cm-Xzo" id="g8u-qU-UAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

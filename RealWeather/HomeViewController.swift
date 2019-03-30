@@ -74,7 +74,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     func updateView() {
-        commentContainer.layer.applySketchShadow(color: .shadowColor30, alpha: 1.0, x: 0, y: -2, blur: 9, spread: 0)
+//        commentContainer.layer.applySketchShadow(color: .shadowColor30, alpha: 1.0, x: 0, y: -2, blur: 9, spread: 0)
     }
 }
 

@@ -26,6 +26,13 @@ extension CALayer {
 }
 
 extension UIView {
+    enum ViewBorder {
+        case left
+        case right
+        case top
+        case bottom
+    }
+    
     @objc var borderColor: UIColor? {
         get {
             if let borderColor = layer.borderColor {
@@ -37,9 +44,55 @@ extension UIView {
             layer.borderColor = newValue?.cgColor
         }
     }
+    
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
+    
+    func addBorder(side: ViewBorder, color: CGColor, thickness: CGFloat) {
+        
+        let border = CALayer()
+        border.backgroundColor = color
+        
+        switch side {
+        case .left:
+            border.frame = CGRect(x: 0, y: 0, width: thickness, height: frame.height)
+        case .right:
+            border.frame = CGRect(x: frame.width - thickness, y: 0, width: thickness, height: frame.height)
+        case .top:
+            border.frame = CGRect(x: 0, y: 0, width: frame.width, height: thickness)
+        case .bottom:
+            border.frame = CGRect(x: 0, y: frame.height - thickness, width: frame.width, height: thickness)
+        }
+        layer.addSublayer(border)
+    }
 }
 
 extension UIColor {
+    static let bgColor = UIColor(red: 170, green: 177, blue: 185)
+    static let CellBgColor = UIColor(red: 226, green: 226, blue: 230)
+    static let mainColor = UIColor(red: 80, green: 97, blue: 236)
+    
+    convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
+        self.init(
+            red: CGFloat(red) / 255.0,
+            green: CGFloat(green) / 255.0,
+            blue: CGFloat(blue) / 255.0,
+            alpha: a
+        )
+    }
+    
+    convenience init(hex: Int, a: CGFloat = 1.0) {
+        self.init(
+            red: (hex >> 16) & 0xFF,
+            green: (hex >> 8) & 0xFF,
+            blue: hex & 0xFF,
+            a: a
+        )
+    }
     
     class var charcoalGrey: UIColor {
         return UIColor(red: 52.0 / 255.0, green: 58.0 / 255.0, blue: 64.0 / 255.0, alpha: 1.0)
