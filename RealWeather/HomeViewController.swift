@@ -11,8 +11,9 @@ import UIKit
 public enum HomeCellType {
     case weatherCardCollection
     case weatherCard
+    case weatherMenu
     case bestCommentCollection
-    case bestCommentCell
+    case bestComment
     
     var identifier: String {
         switch self {
@@ -20,9 +21,11 @@ public enum HomeCellType {
             return "HomeWeatherCardCollectionCell"
         case .weatherCard:
             return "HomeWeatherCardCell"
+        case .weatherMenu:
+            return "HomeWeatherMenuCell"
         case .bestCommentCollection:
             return "HomeBestCommentCollectionCell"
-        case .bestCommentCell:
+        case .bestComment:
             return "HomeBestCommentCell"
         }
     }
@@ -30,13 +33,15 @@ public enum HomeCellType {
     var size: CGSize {
         switch self {
         case .weatherCardCollection:
-            return CGSize(width: UIScreen.main.bounds.width, height: 0)
+            return CGSize(width: UIScreen.main.bounds.width, height: 410)
         case .weatherCard:
-            return CGSize(width: UIScreen.main.bounds.width, height: 0)
+            return CGSize(width: 240, height: 360)
+        case .weatherMenu:
+            return CGSize(width: 24, height: 17)
         case .bestCommentCollection:
-            return CGSize(width: UIScreen.main.bounds.width, height: 0)
-        case .bestCommentCell:
-            return CGSize(width: UIScreen.main.bounds.width, height: 0)
+            return CGSize(width: UIScreen.main.bounds.width, height: 90)
+        case .bestComment:
+            return CGSize(width: UIScreen.main.bounds.width, height: 90)
         }
     }
 }
@@ -46,7 +51,7 @@ class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var commentContainer: UIView!
     
     fileprivate let homeDataController: HomeDataController = HomeDataController()
-    fileprivate let homeCellDatasource: [HomeCellType] = [.weatherCardCollection, .bestCommentCollection]
+    fileprivate let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
     fileprivate var commentViewController: HomeCommentViewController!
     fileprivate var notification: NotificationCenter = NotificationCenter.default
     
@@ -77,6 +82,21 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellType: HomeCellType = homeCellDatasource[indexPath.item]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+        
+        if let weatherCollectionCell = cell as? HomeWeatherCardCollectionCell {
+            var dummyCard: WeatherCard = WeatherCard()
+            dummyCard.mainColor = .lightishBlue
+            dummyCard.currentTemp = 30
+            dummyCard.description = "어제보다 포근해요"
+            dummyCard.estimatedTemp = 33
+            dummyCard.minTemp = 29
+            dummyCard.maxTemp = 33
+            
+            weatherCollectionCell.cardDatasource.updateValue([dummyCard, dummyCard, dummyCard], forKey: .today)
+            weatherCollectionCell.selectedMenu = .today
+        } else if let bestCommentCollectionCell = cell as? HomeBestCommentCollectionCell {
+//            bestCommentCollectionCell.comments = comments
+        }
 
         return cell
     }

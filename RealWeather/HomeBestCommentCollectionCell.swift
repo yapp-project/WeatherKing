@@ -13,7 +13,7 @@ class HomeBestCommentCollectionCell: UICollectionViewCell {
     
     var comments: [Comment] = [] {
         didSet {
-            collectionView?.register(cellTypes: [.bestCommentCell])
+            collectionView?.register(cellTypes: [.bestComment])
             collectionView?.reloadData()
         }
     }
@@ -25,7 +25,7 @@ extension HomeBestCommentCollectionCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellType: HomeCellType = .bestCommentCell
+        let cellType: HomeCellType = .bestComment
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
         
         if let commentCell = cell as? HomeBestCommentCell {
@@ -44,7 +44,7 @@ extension HomeBestCommentCollectionCell: UICollectionViewDelegate {
 
 extension HomeBestCommentCollectionCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return HomeCellType.bestCommentCell.size
+        return HomeCellType.bestComment.size
     }
 }
 

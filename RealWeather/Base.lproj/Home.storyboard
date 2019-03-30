@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sha-SK-tFY">
-                                <rect key="frame" x="0.0" y="100" width="375" height="513"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sha-SK-tFY">
+                                <rect key="frame" x="0.0" y="46" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pV6-bx-d7C">
                                     <size key="itemSize" width="50" height="50"/>
@@ -47,7 +47,7 @@
                             <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="L7n-sz-KsS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sha-SK-tFY" secondAttribute="trailing" id="QIB-Oc-G6F"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UsW-hT-tM5"/>
-                            <constraint firstItem="sha-SK-tFY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="100" id="c2K-vh-IWg"/>
+                            <constraint firstItem="sha-SK-tFY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="46" id="c2K-vh-IWg"/>
                             <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="cVn-c1-y8o"/>
                             <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="top" secondItem="sha-SK-tFY" secondAttribute="bottom" id="ctb-sN-mBF"/>
                             <constraint firstItem="oSQ-Cm-Xzo" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="xc2-Xa-REb"/>

@@ -8,42 +8,111 @@
 
 import UIKit
 
+public enum HomeWeatherMenu: CaseIterable {
+    case today
+    case tomorrow
+    case week
+    
+    var title: String {
+        switch self {
+        case .today:
+            return "오늘"
+        case .tomorrow:
+            return "내일"
+        case .week:
+            return "주간"
+        }
+    }
+}
+
 class HomeWeatherCardCollectionCell: UICollectionViewCell {
-    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var menuCollectionView: UICollectionView!
+    @IBOutlet fileprivate weak var cardCollectionView: UICollectionView!
+    
+    var menuDatasource: [HomeWeatherMenu] = HomeWeatherMenu.allCases
+    var cardDatasource: [HomeWeatherMenu: [WeatherCard]] = [:]
+    var selectedMenu: HomeWeatherMenu = .today {
+        didSet {
+            menuCollectionView?.reloadData()
+            cards = cardDatasource[selectedMenu] ?? []
+        }
+    }
     
     var cards: [WeatherCard] = [] {
         didSet {
-            collectionView?.register(cellTypes: [.weatherCard])
-            collectionView?.reloadData()
+            cardCollectionView?.reloadData()
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        menuCollectionView?.register(cellTypes: [.weatherMenu])
+        cardCollectionView?.register(cellTypes: [.weatherCard])
     }
 }
 
 extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cards.count
+        if collectionView == menuCollectionView {
+            return menuDatasource.count
+        } else {
+            return cards.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellType: HomeCellType = .weatherCard
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
-        
-        if let cardCell = cell as? HomeWeatherCardCell {
-            cardCell.updateView(card: cards[indexPath.item])
+        if collectionView == menuCollectionView {
+            let cellType: HomeCellType = .weatherMenu
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            
+            if let menuCell = cell as? HomeWeatherMenuCell {
+                let title: String = menuDatasource[indexPath.item].title
+                let isSelected: Bool = menuDatasource[indexPath.item] == selectedMenu
+                menuCell.updateView(isSelected: isSelected, title: title)
+            }
+            
+            return cell
+        } else {
+            let cellType: HomeCellType = .weatherCard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            
+            if let cardCell = cell as? HomeWeatherCardCell {
+                cardCell.updateView(card: cards[indexPath.item])
+            }
+            
+            return cell
         }
-        
-        return cell
     }
 }
 
 extension HomeWeatherCardCollectionCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if collectionView == menuCollectionView {
+            selectedMenu = menuDatasource[indexPath.item]
+        } else {
+            
+        }
     }
 }
 
 extension HomeWeatherCardCollectionCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return HomeCellType.weatherCard.size
+        if collectionView == menuCollectionView {
+            return HomeCellType.weatherMenu.size
+        } else {
+            return HomeCellType.weatherCard.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 40)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == menuCollectionView {
+            return 36
+        } else {
+            return 20
+        }
     }
 }
