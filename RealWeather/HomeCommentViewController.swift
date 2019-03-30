@@ -15,6 +15,8 @@ class HomeCommentViewController: UIViewController {
     @IBOutlet weak var textFieldView: UIView!
     
     private var commentList: [Comment] = []
+    private var currentRange: Range = .recent
+    
     private let dataController = HomeDataController()
     
     override func viewDidLoad() {
@@ -23,6 +25,11 @@ class HomeCommentViewController: UIViewController {
         self.commentCollectionView.delegate = self
         self.commentTextField.commentDelegate = self
   
+
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpGesture(_:)))
+        swipe.direction = .down
+        commentCollectionView.addGestureRecognizer(swipe)
+        
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
         
         commentList.append(Comment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 5, time: 1, likeCount: 121, hateCount: 50))
@@ -60,6 +67,10 @@ class HomeCommentViewController: UIViewController {
     @objc func disappearKeyboard(notification: NSNotification) {
         self.commentTextFieldBottomConstraint.constant = 0
     }
+    
+    @objc func swipeUpGesture(_ sender: UISwipeGestureRecognizer) {
+        print("ee!")
+    }
 }
 
 extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -82,6 +93,7 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "commentHeader", for: indexPath) as? CommentHeaderView else { fatalError() }
         header.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+        
         header.delegate = self
         return header
     }
@@ -91,6 +103,21 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
    
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollOffsetY = scrollView.contentOffset.y
+        
+        if(scrollOffsetY < -100)
+        {
+            print("down!!")
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+
     
 }
 
@@ -118,20 +145,30 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
         }
     }
     
-    func registerComment() {
-        guard let text = commentTextField.text else { return }
-        commentList.append(Comment(name: "이름", comment: text, distance: 5, time: 5, likeCount: 5, hateCount: 5))
+    
+        commentList.insert(Comment(name: "이름", comment: text, distance: 1, time: 1, likeCount: 0, hateCount: 0), at: 0)
         commentCollectionView.reloadData()
+        self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     func settingComment(index: Int) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "댓글 신고하기", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        commentList.forEach { index in
-            
+        if commentList[index].name == "이름" {
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "댓글 삭제하기", style: .default, handler: { [unowned self]_ in
+                self.commentList.remove(at: index)
+                self.commentCollectionView.reloadData()
+                self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+            }))
+            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
+        else {
+            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "댓글 신고하기", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     func setRange(_ range: Range) {

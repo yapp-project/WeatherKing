@@ -26,6 +26,11 @@ class CommentHeaderView: UICollectionReusableView {
         super.awakeFromNib()
         self.roundCorners(corners: [.topLeft, .topRight], radius: 20)
         self.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.3, x: 0, y: -2, blur: 9, spread: 0)
+        
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipe))
+//        swipeLeft.direction =
+//        self.addGestureRecognizer(swipeLeft)
+        
     }
     
     

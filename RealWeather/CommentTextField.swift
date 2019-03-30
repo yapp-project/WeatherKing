@@ -15,6 +15,7 @@ protocol CommentTextFieldDelegate {
 class CommentTextField: UITextField, UITextFieldDelegate {
     
     var commentDelegate: CommentTextFieldDelegate?
+    var registerButton: UIButton!
     
     override func awakeFromNib() {
         initView()
@@ -37,8 +38,15 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         button.setTitleColor(UIColor.mainColor, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 50, height: self.frame.height)
         button.addTarget(self, action: #selector(registerComment(_:)), for: .touchUpInside)
+        registerButton = UIButton(type: .custom)
+        registerButton.setTitle("등록", for: .normal)
+        registerButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 15)
+        registerButton.setTitleColor(UIColor.mainColor, for: .normal)
+        registerButton.frame = CGRect(x: 0, y: 0, width: 50, height: self.frame.height)
+        registerButton.addTarget(self, action: #selector(registerComment(_:)), for: .touchUpInside)
         
         self.rightView = button
+        self.rightView = registerButton
         self.rightViewMode = .always
         
         let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: self.frame.height))
