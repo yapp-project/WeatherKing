@@ -54,6 +54,9 @@
 		CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D09224A919E008CFD82 /* HomeNavigationBarViewController.swift */; };
 		CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D10224A9652008CFD82 /* LocationManager.swift */; };
 		CED56D13224A9671008CFD82 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D12224A9671008CFD82 /* UserManager.swift */; };
+		E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CD224F949700ECCEC3 /* UnitViewController.swift */; };
+		E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */; };
+		E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +130,9 @@
 		CED56D09224A919E008CFD82 /* HomeNavigationBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBarViewController.swift; sourceTree = "<group>"; };
 		CED56D10224A9652008CFD82 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		CED56D12224A9671008CFD82 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		E12698CD224F949700ECCEC3 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
+		E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlldayAlertViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +310,9 @@
 			isa = PBXGroup;
 			children = (
 				CED56D07224A90EB008CFD82 /* DrawerViewController.swift */,
+				E12698CD224F949700ECCEC3 /* UnitViewController.swift */,
+				E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */,
+				E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -462,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */,
 				CED56D13224A9671008CFD82 /* UserManager.swift in Sources */,
 				CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */,
 				741C8E56224FC828001007AB /* CommentLikeButton.swift in Sources */,
@@ -471,12 +481,14 @@
 				741C8E52224FA252001007AB /* CommentTextField.swift in Sources */,
 				CEB189DE2221866C00A1BB38 /* HomeDataController.swift in Sources */,
 				74415A012221B86A00AA3D67 /* Weather.swift in Sources */,
+				E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */,
 				CE31EB3E224E819B005CA188 /* HomeWeatherCardCollectionCell.swift in Sources */,
 				CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */,
 				CE522F50224F9A52000C26BF /* HomeWeatherStatusCardCell.swift in Sources */,
 				CE31EB46224E92E1005CA188 /* WeatherCard.swift in Sources */,
 				CE522F5C224FC085000C26BF /* HomeWeatherCompareCardCell.swift in Sources */,
 				CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */,
+				E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */,
 				CE522F52224F9A5E000C26BF /* HomeWeatherDustCardCell.swift in Sources */,
 				CE31EB4A224EAE30005CA188 /* HomeWeatherMenuCell.swift in Sources */,
 				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
@@ -666,7 +678,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AL9L4NE9HL;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -685,7 +697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AL9L4NE9HL;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
