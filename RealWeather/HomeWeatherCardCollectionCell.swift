@@ -28,6 +28,7 @@ public enum HomeWeatherMenu: CaseIterable {
 class HomeWeatherCardCollectionCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var menuCollectionView: UICollectionView!
     @IBOutlet fileprivate weak var cardCollectionView: UICollectionView!
+    @IBOutlet fileprivate weak var pageControl: UIPageControl!
     
     var menuDatasource: [HomeWeatherMenu] = HomeWeatherMenu.allCases
     var cardDatasource: [HomeWeatherMenu: [WeatherCard]] = [:]
@@ -40,6 +41,7 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
     
     var cards: [WeatherCard] = [] {
         didSet {
+            pageControl.numberOfPages = cards.count
             cardCollectionView?.reloadData()
         }
     }
@@ -47,7 +49,7 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         menuCollectionView?.register(cellTypes: [.weatherMenu])
-        cardCollectionView?.register(cellTypes: [.weatherCard])
+        cardCollectionView?.register(cellTypes: [.weatherTempCard, .weatherCompareCard, .weatherDustCard, .weatherStatusCard])
     }
 }
 
@@ -61,6 +63,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         if collectionView == menuCollectionView {
             let cellType: HomeCellType = .weatherMenu
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
@@ -70,17 +73,45 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
                 let isSelected: Bool = menuDatasource[indexPath.item] == selectedMenu
                 menuCell.updateView(isSelected: isSelected, title: title)
             }
-            
             return cell
-        } else {
-            let cellType: HomeCellType = .weatherCard
+            
+        } else if let tempCard = cards[indexPath.item] as? WeatherTempCard {
+            let cellType: HomeCellType = .weatherTempCard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
             
-            if let cardCell = cell as? HomeWeatherCardCell {
-                cardCell.updateView(card: cards[indexPath.item])
+            if let cardCell = cell as? HomeWeatherTempCardCell {
+                cardCell.updateView(card: tempCard)
             }
-            
             return cell
+            
+        } else if let compareCard = cards[indexPath.item] as? WeatherCompareCard {
+            let cellType: HomeCellType = .weatherCompareCard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            
+            if let cardCell = cell as? HomeWeatherCompareCardCell {
+                cardCell.updateView(card: compareCard)
+            }
+            return cell
+            
+        } else if let statusCard = cards[indexPath.item] as? WeatherStatusCard {
+            let cellType: HomeCellType = .weatherStatusCard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            
+            if let cardCell = cell as? HomeWeatherStatusCardCell {
+                cardCell.updateView(card: statusCard)
+            }
+            return cell
+            
+        } else if let dustCard = cards[indexPath.item] as? WeatherDustCard {
+            let cellType: HomeCellType = .weatherDustCard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            
+            if let cardCell = cell as? HomeWeatherDustCardCell {
+                cardCell.updateView(card: dustCard)
+            }
+            return cell
+        } else {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: HomeCellType.weatherTempCard.identifier, for: indexPath)
         }
     }
 }
@@ -90,7 +121,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDelegate {
         if collectionView == menuCollectionView {
             selectedMenu = menuDatasource[indexPath.item]
         } else {
-            
+            // 카드 뒤집기
         }
     }
 }
@@ -100,7 +131,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDelegateFlowLayout {
         if collectionView == menuCollectionView {
             return HomeCellType.weatherMenu.size
         } else {
-            return HomeCellType.weatherCard.size
+            return HomeCellType.weatherTempCard.size
         }
     }
     
@@ -118,5 +149,12 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDelegateFlowLayout {
         } else {
             return 0
         }
+    }
+}
+
+extension HomeWeatherCardCollectionCell: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page: Int = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        pageControl.currentPage = page
     }
 }
