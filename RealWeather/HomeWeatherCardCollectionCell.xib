@@ -24,7 +24,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EoL-aM-eh7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="pkV-mt-Y9z"/>
                                 </constraints>
@@ -39,9 +39,9 @@
                                     <outlet property="delegate" destination="A6E-Yg-ZGP" id="XpS-dg-2hu"/>
                                 </connections>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QMb-AB-Owk">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="QMb-AB-Owk">
                                 <rect key="frame" x="0.0" y="29" width="375" height="371"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="0pF-cW-ndH">
                                     <size key="itemSize" width="240" height="360"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -53,16 +53,22 @@
                                     <outlet property="delegate" destination="A6E-Yg-ZGP" id="pDl-NI-m9c"/>
                                 </connections>
                             </collectionView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="8yU-d5-3D2">
+                                <rect key="frame" x="152" y="363" width="71" height="37"/>
+                                <color key="currentPageIndicatorTintColor" red="0.31759470699999998" green="0.35950374600000001" blue="0.90201312300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QMb-AB-Owk" secondAttribute="trailing" id="7Zz-w0-R42"/>
                             <constraint firstItem="EoL-aM-eh7" firstAttribute="top" secondItem="OXL-dy-isZ" secondAttribute="top" id="KKB-jv-ooE"/>
                             <constraint firstAttribute="trailing" secondItem="EoL-aM-eh7" secondAttribute="trailing" id="MJH-Mz-Sp7"/>
                             <constraint firstAttribute="bottom" secondItem="QMb-AB-Owk" secondAttribute="bottom" id="QPZ-M2-z52"/>
+                            <constraint firstItem="8yU-d5-3D2" firstAttribute="centerX" secondItem="QMb-AB-Owk" secondAttribute="centerX" id="bRP-7k-aAt"/>
                             <constraint firstItem="EoL-aM-eh7" firstAttribute="leading" secondItem="OXL-dy-isZ" secondAttribute="leading" id="fU0-3b-gsx"/>
                             <constraint firstItem="QMb-AB-Owk" firstAttribute="leading" secondItem="OXL-dy-isZ" secondAttribute="leading" id="qsW-1j-pGp"/>
                             <constraint firstItem="QMb-AB-Owk" firstAttribute="top" secondItem="EoL-aM-eh7" secondAttribute="bottom" constant="12" id="wHb-7A-RaM"/>
+                            <constraint firstItem="8yU-d5-3D2" firstAttribute="bottom" secondItem="QMb-AB-Owk" secondAttribute="bottom" id="zVm-jz-NUE"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -78,8 +84,9 @@
             <connections>
                 <outlet property="cardCollectionView" destination="QMb-AB-Owk" id="XKg-3F-4np"/>
                 <outlet property="menuCollectionView" destination="EoL-aM-eh7" id="Zr6-uH-CJa"/>
+                <outlet property="pageControl" destination="8yU-d5-3D2" id="B17-p4-1fO"/>
             </connections>
-            <point key="canvasLocation" x="199.27536231884059" y="50.558035714285715"/>
+            <point key="canvasLocation" x="199.27536231884059" y="50.223214285714285"/>
         </collectionViewCell>
     </objects>
 </document>

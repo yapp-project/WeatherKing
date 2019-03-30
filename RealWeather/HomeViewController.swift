@@ -10,7 +10,10 @@ import UIKit
 
 public enum HomeCellType {
     case weatherCardCollection
-    case weatherCard
+    case weatherTempCard
+    case weatherStatusCard
+    case weatherDustCard
+    case weatherCompareCard
     case weatherMenu
     case bestCommentCollection
     case bestComment
@@ -19,8 +22,14 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return "HomeWeatherCardCollectionCell"
-        case .weatherCard:
-            return "HomeWeatherCardCell"
+        case .weatherTempCard:
+            return "HomeWeatherTempCardCell"
+        case .weatherStatusCard:
+            return "HomeWeatherStatusCardCell"
+        case .weatherDustCard:
+            return "HomeWeatherDustCardCell"
+        case .weatherCompareCard:
+            return "HomeWeatherCompareCardCell"
         case .weatherMenu:
             return "HomeWeatherMenuCell"
         case .bestCommentCollection:
@@ -34,13 +43,11 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return CGSize(width: UIScreen.main.bounds.width, height: 410)
-        case .weatherCard:
-            return CGSize(width: 240, height: 360)
+        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherCompareCard:
+            return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
             return CGSize(width: 24, height: 17)
-        case .bestCommentCollection:
-            return CGSize(width: UIScreen.main.bounds.width, height: 90)
-        case .bestComment:
+        case .bestCommentCollection, .bestComment:
             return CGSize(width: UIScreen.main.bounds.width, height: 90)
         }
     }
@@ -48,8 +55,11 @@ public enum HomeCellType {
 
 class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var backgroundColorView: UIView!
     @IBOutlet fileprivate weak var commentContainer: UIView!
     
+    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var commentBtn: UIButton!
     fileprivate let homeDataController: HomeDataController = HomeDataController()
     fileprivate let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
     fileprivate var commentViewController: HomeCommentViewController!
@@ -73,7 +83,10 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     func updateView() {
-        commentContainer.layer.applySketchShadow(color: .shadowColor30, alpha: 1.0, x: 0, y: -2, blur: 9, spread: 0)
+        commentView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.3, x: 0, y: -2, blur: 9, spread: 0)
+//        commentView.layer.cornerRadius = 20
+     
+        commentBtn.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
     }
 }
 
@@ -91,7 +104,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
         
         if let weatherCollectionCell = cell as? HomeWeatherCardCollectionCell {
-            var dummyCard: WeatherCard = WeatherCard()
+            var dummyCard: WeatherTempCard = WeatherTempCard()
             dummyCard.mainColor = .lightishBlue
             dummyCard.currentTemp = 30
             dummyCard.description = "어제보다 포근해요"
@@ -127,7 +140,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         return homeCellDatasource[indexPath.item].size
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
     }
 }
