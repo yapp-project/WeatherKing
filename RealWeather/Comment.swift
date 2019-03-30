@@ -8,11 +8,24 @@
 
 import UIKit
 
-class Comment {
-    var profileImage: UIImage?
-    var isLiked: Bool = false
-    var likeCount: Int = 0
+class Comment: NSObject {
     var name: String = ""
-    var commentText: String = ""
-    var time: String = "1시간 전"
+    var comment: String = ""
+    var distance: Int = 0
+    var time: Int = 0
+    var likeCount: Int = 0
+    var hateCount: Int = 0
+    var isLike: Bool = false
+    var isHate: Bool = false
+    
+    init(name: String, comment: String, distance: Int, time: Int, likeCount: Int, hateCount: Int) {
+        self.name = name
+        self.comment = comment
+        self.distance = distance
+        self.time = time
+        self.likeCount = likeCount
+        self.hateCount = hateCount
+    }
+    
+    override init() {}
 }

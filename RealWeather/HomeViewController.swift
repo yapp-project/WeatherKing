@@ -58,6 +58,8 @@ class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var backgroundColorView: UIView!
     @IBOutlet fileprivate weak var commentContainer: UIView!
     
+    @IBOutlet weak var commentView: UIView!
+    @IBOutlet weak var commentBtn: UIButton!
     fileprivate let homeDataController: HomeDataController = HomeDataController()
     fileprivate let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
     fileprivate var commentViewController: HomeCommentViewController!
@@ -81,7 +83,10 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     func updateView() {
-        commentContainer.layer.applySketchShadow(color: .shadowColor30, alpha: 1.0, x: 0, y: -2, blur: 9, spread: 0)
+        commentView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.3, x: 0, y: -2, blur: 9, spread: 0)
+//        commentView.layer.cornerRadius = 20
+     
+        commentBtn.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0)
     }
 }
 

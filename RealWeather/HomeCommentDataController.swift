@@ -36,6 +36,10 @@ class HomeCommentDataController {
             }
         }
     }
+    
+    func setComment(_ comment: Comment, completion: @escaping () -> Void) {
+        completion()
+    }
 }
 
 extension HomeCommentDataController {
