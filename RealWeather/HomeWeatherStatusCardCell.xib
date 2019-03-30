@@ -205,6 +205,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="backView" destination="NKW-U8-S97" id="HZg-V1-EYw"/>
                 <outlet property="cardView" destination="VXV-VM-al0" id="Cwl-jc-dZa"/>
                 <outlet property="descriptionLabel" destination="kHB-zA-41N" id="D2m-ST-VHt"/>
                 <outlet property="estimatedTempLabel" destination="NYy-r1-UUy" id="OPe-Nk-YkR"/>

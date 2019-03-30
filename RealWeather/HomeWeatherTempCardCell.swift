@@ -24,6 +24,8 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         super.awakeFromNib()
         let nib: UINib = UINib(nibName: "HomeWeatherTempCardBackCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "HomeWeatherTempCardBackCell")
+        backView.isHidden = true
+        backView.alpha = 0.0
     }
     
     func updateView(card: WeatherTempCard?) {
@@ -42,6 +44,24 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         descriptionLabel.text = card?.description
         estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
         minMaxTempLabel.text = (card?.minTemp.tempFormat ?? "") + " / " + (card?.maxTemp.tempFormat ?? "")
+    }
+    
+    func flipCard() {
+        if backView.isHidden {
+            self.backView.isHidden = false
+            self.contentView.bringSubviewToFront(self.backView)
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.backView.alpha = 1.0
+            }
+        } else {
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.backView.alpha = 0.0
+            }) { _ in
+                self.backView.isHidden = true
+                self.contentView.sendSubviewToBack(self.backView)
+            }
+        }
     }
 }
 

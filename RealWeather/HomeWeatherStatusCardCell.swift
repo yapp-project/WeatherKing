@@ -15,6 +15,7 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var descriptionLabel: UILabel!
     @IBOutlet fileprivate weak var estimatedTempLabel: UILabel!
     @IBOutlet fileprivate weak var minMaxTempLabel: UILabel!
+    @IBOutlet fileprivate weak var backView: UIView!
     
     var statusDatas: [WeatherStatusData] = []
     
@@ -26,6 +27,24 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
         descriptionLabel.text = card?.description
         estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
         minMaxTempLabel.text = (card?.minTemp.tempFormat ?? "") + " / " + (card?.maxTemp.tempFormat ?? "")
+    }
+    
+    func flipCard() {
+        if backView.isHidden {
+            self.backView.isHidden = false
+            self.contentView.bringSubviewToFront(self.backView)
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.backView.alpha = 1.0
+            }
+        } else {
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.backView.alpha = 0.0
+            }) { _ in
+                self.backView.isHidden = true
+                self.contentView.sendSubviewToBack(self.backView)
+            }
+        }
     }
 }
 

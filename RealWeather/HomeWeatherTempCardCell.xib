@@ -73,7 +73,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="warm" translatesAutoresizingMaskIntoConstraints="NO" id="48L-Dk-yMk">
-                                <rect key="frame" x="49" y="141" width="206.00000000000006" height="186"/>
+                                <rect key="frame" x="49" y="141" width="206" height="186"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="186" id="GC7-HK-Lji"/>
                                     <constraint firstAttribute="width" constant="206" id="LC7-Hr-9bl"/>
