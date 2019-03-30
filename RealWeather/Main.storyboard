@@ -13,7 +13,7 @@
         <!--Root View Controller-->
         <scene sceneID="z6W-HX-PA7">
             <objects>
-                <viewController id="Gpz-3N-PJb" customClass="RootViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="main" id="Gpz-3N-PJb" customClass="RootViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MUS-AO-8nY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
