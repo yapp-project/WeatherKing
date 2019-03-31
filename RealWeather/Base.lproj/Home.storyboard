@@ -23,7 +23,7 @@
                                 <color key="backgroundColor" red="0.31759470701217651" green="0.35950374603271484" blue="0.90201312303543091" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sha-SK-tFY">
-                                <rect key="frame" x="0.0" y="90" width="375" height="523"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="30" minimumInteritemSpacing="30" id="pV6-bx-d7C">
                                     <size key="itemSize" width="50" height="50"/>
@@ -37,18 +37,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="IBp-40-9Hc"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="952-x4-vKb">
-                                <rect key="frame" x="0.0" y="613" width="375" height="54"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="952-x4-vKb">
+                                <rect key="frame" x="0.0" y="613" width="375" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="And-li-VcT">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="And-li-VcT">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="54" id="2RB-RT-Gg8"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="2RB-RT-Gg8"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="18"/>
+                                        <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="날씨 톡톡">
                                             <color key="titleColor" red="0.20392156859999999" green="0.2274509804" blue="0.25098039220000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" red="0.67843137254901964" green="0.70980392156862748" blue="0.74117647058823533" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <segue destination="QSc-Bt-Wsm" kind="presentation" id="zev-Cu-yug"/>
@@ -57,26 +57,33 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="And-li-VcT" secondAttribute="bottom" id="0Ig-k1-ywv"/>
                                     <constraint firstItem="And-li-VcT" firstAttribute="leading" secondItem="952-x4-vKb" secondAttribute="leading" id="0oo-M7-QqT"/>
+                                    <constraint firstAttribute="height" constant="100" id="N1b-6p-RHM"/>
+                                    <constraint firstItem="And-li-VcT" firstAttribute="top" secondItem="952-x4-vKb" secondAttribute="top" id="YaT-FI-ruk"/>
                                     <constraint firstAttribute="trailing" secondItem="And-li-VcT" secondAttribute="trailing" id="gPt-UA-XKs"/>
-                                    <constraint firstItem="And-li-VcT" firstAttribute="top" secondItem="952-x4-vKb" secondAttribute="top" id="giP-w8-Luv"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="54" id="yXi-92-22Q"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="952-x4-vKb" firstAttribute="top" secondItem="sha-SK-tFY" secondAttribute="bottom" id="DC9-bD-0ej"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="952-x4-vKb" secondAttribute="trailing" id="ISy-An-T0U"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="952-x4-vKb" secondAttribute="bottom" id="KC8-e9-E6h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZL8-Bx-3eA" secondAttribute="trailing" id="Oeu-Fl-HGv"/>
                             <constraint firstItem="952-x4-vKb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PzE-md-lRI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sha-SK-tFY" secondAttribute="trailing" id="QIB-Oc-G6F"/>
                             <constraint firstItem="ZL8-Bx-3eA" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="QTb-JD-BbD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="952-x4-vKb" secondAttribute="top" constant="54" id="T4E-xY-iQk"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UsW-hT-tM5"/>
                             <constraint firstAttribute="top" secondItem="ZL8-Bx-3eA" secondAttribute="top" id="Zy8-Db-7E6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="ZL8-Bx-3eA" secondAttribute="leading" id="a53-4D-tkj"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="c2K-vh-IWg"/>
+                            <constraint firstAttribute="bottom" secondItem="sha-SK-tFY" secondAttribute="bottom" id="iRg-9X-XqB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -85,7 +92,7 @@
                         <outlet property="backgroundColorView" destination="ZL8-Bx-3eA" id="BDA-zs-OaO"/>
                         <outlet property="collectionView" destination="sha-SK-tFY" id="WaK-m4-4oY"/>
                         <outlet property="commentBtn" destination="And-li-VcT" id="66R-6D-Rgn"/>
-                        <outlet property="commentView" destination="952-x4-vKb" id="s0t-8C-mrA"/>
+                        <outlet property="commentContainer" destination="952-x4-vKb" id="fCx-Y8-fzY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
