@@ -24,11 +24,12 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         super.awakeFromNib()
         let nib: UINib = UINib(nibName: "HomeWeatherTempCardBackCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "HomeWeatherTempCardBackCell")
-        backView.isHidden = true
-        backView.alpha = 0.0
     }
     
     func updateView(card: WeatherTempCard?) {
+        backView.isHidden = true
+        backView.alpha = 0.0
+        
         // MARK: 더미 데이터 삽입
         let dummyData1 = WeatherTempTimeData()
         dummyData1.timeTitle = "지금"

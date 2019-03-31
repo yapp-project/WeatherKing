@@ -27,6 +27,8 @@ class HomeWeatherDustCardCell: UICollectionViewCell {
         descriptionLabel.text = card?.type.dustDescription
         estimatedTempLabel.text = card?.type.ultraDustDescription
         minMaxTempLabel.text = ""
+        backView.isHidden = true
+        backView.alpha = 0.0
     }
     
     func flipCard() {
