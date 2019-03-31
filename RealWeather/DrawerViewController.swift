@@ -14,6 +14,12 @@ class DrawerViewController: UIViewController {
     var menuImg = ["icDegree","icNotification","icFeedback","icReview"]
     
     fileprivate var previousTouchLocation: CGFloat?
+    
+    @IBAction func ModifiyNicknameAction(_ sender: Any) {
+        if let nextView = storyboard?.instantiateViewController(withIdentifier: "settingNick") {
+            present(nextView,animated: true,completion: nil)
+        }
+    }
 }
 
 extension DrawerViewController {
