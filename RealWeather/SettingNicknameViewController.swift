@@ -1,5 +1,5 @@
 //
-//  NickNameViewController.swift
+//  SettingNicknameViewController.swift
 //  RealWeather
 //
 //  Created by yoo on 2019. 3. 31..
@@ -8,37 +8,37 @@
 
 import UIKit
 
-class NickNameViewController: UIViewController {
+class SettingNicknameViewController: UIViewController {
     @IBOutlet weak var nickField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        nickField.keyboardType = .default
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.AcrionBar))
-        
+        let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.BarAction))
         toolbar.items = [doneBtn]
         nickField.inputAccessoryView = toolbar
+        
     }
     
-    @objc func AcrionBar() {
+    @objc func BarAction() {
         view.endEditing(true)
     }
-    @IBAction func okBtn(_ sender: Any) {
-        let stroyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextView = stroyboard.instantiateViewController(withIdentifier: "main")
-        
-        self.present(nextView,animated: true,completion: nil)
+    
+    @IBAction func backAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 }
 
-extension NickNameViewController: UITextFieldDelegate {
+extension SettingNicknameViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let text = nickField.text else { return true }
         let newLength = text.characters.count + string.characters.count - range.length
         return newLength <= 8
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("aaaaaaaaaaaaaa")
     }
 }
