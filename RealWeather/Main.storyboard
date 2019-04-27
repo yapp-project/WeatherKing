@@ -21,7 +21,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQP-P0-PwP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
-                                    <segue destination="7z5-BV-naK" kind="embed" identifier="Home" id="hxv-yn-fpD"/>
+                                    <segue destination="M8u-ya-cfd" kind="embed" identifier="Home" id="Cei-2B-Qmb"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4d-2b-VoE">
@@ -65,30 +65,15 @@
             </objects>
             <point key="canvasLocation" x="-90" y="121"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="oAR-fg-qk7">
-            <objects>
-                <navigationController navigationBarHidden="YES" id="7z5-BV-naK" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hnh-ag-46u">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="M8u-ya-cfd" kind="relationship" relationship="rootViewController" id="XWv-PZ-NvO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0gb-Wu-qsO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="654" y="121"/>
-        </scene>
         <!--Home-->
         <scene sceneID="btY-eJ-dXl">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="Home" id="M8u-ya-cfd" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Home" id="M8u-ya-cfd" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="xSh-d1-909"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t2M-Na-XlK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="653" y="570"/>
+            <point key="canvasLocation" x="470" y="145"/>
         </scene>
         <!--DrawerViewController-->
         <scene sceneID="NUp-i8-qJu">
