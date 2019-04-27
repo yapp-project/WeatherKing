@@ -50,6 +50,10 @@ public enum HomeCellType {
     }
 }
 
+protocol WeatherCardCell: class {
+    func flipCard()
+}
+
 protocol HomeBGColorControlDelegate {
     func updateThemeColor(_ color: UIColor)
 }

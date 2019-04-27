@@ -47,6 +47,7 @@
 		CE72AC582274776C00D77543 /* WeatherStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC572274776C00D77543 /* WeatherStatusCard.swift */; };
 		CE72AC5A227477A700D77543 /* WeatherDustCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC59227477A700D77543 /* WeatherDustCard.swift */; };
 		CE72AC5C2274798F00D77543 /* WeatherWeekCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC5B2274798F00D77543 /* WeatherWeekCard.swift */; };
+		CE72AC5E2274801200D77543 /* WeatherLifeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC5D2274801200D77543 /* WeatherLifeCard.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* Comment.swift */; };
 		CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */; };
@@ -129,6 +130,7 @@
 		CE72AC572274776C00D77543 /* WeatherStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStatusCard.swift; sourceTree = "<group>"; };
 		CE72AC59227477A700D77543 /* WeatherDustCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDustCard.swift; sourceTree = "<group>"; };
 		CE72AC5B2274798F00D77543 /* WeatherWeekCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWeekCard.swift; sourceTree = "<group>"; };
+		CE72AC5D2274801200D77543 /* WeatherLifeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLifeCard.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
 		CEB189D72221845500A1BB38 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWApiRequest.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				CE31EB45224E92E1005CA188 /* WeatherCard.swift */,
 				74415A022221B8E000AA3D67 /* TodayWeather.swift */,
 				CE72AC552274772300D77543 /* WeatherTempCard.swift */,
+				CE72AC5D2274801200D77543 /* WeatherLifeCard.swift */,
 				CE72AC572274776C00D77543 /* WeatherStatusCard.swift */,
 				CE72AC59227477A700D77543 /* WeatherDustCard.swift */,
 				CE72AC5B2274798F00D77543 /* WeatherWeekCard.swift */,
@@ -503,6 +506,7 @@
 				CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */,
 				CE72AC582274776C00D77543 /* WeatherStatusCard.swift in Sources */,
 				741C8E56224FC828001007AB /* CommentLikeButton.swift in Sources */,
+				CE72AC5E2274801200D77543 /* WeatherLifeCard.swift in Sources */,
 				CE72AC5A227477A700D77543 /* WeatherDustCard.swift in Sources */,
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,
 				741C8E4E224FA155001007AB /* CommentCell.swift in Sources */,

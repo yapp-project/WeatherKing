@@ -117,11 +117,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDelegate {
         if collectionView == menuCollectionView {
             selectedMenu = menuDatasource[indexPath.item]
             // TODO: protocol로 flipcard 하나로 묶을 것
-        } else if let cardCell = collectionView.cellForItem(at: indexPath) as? HomeWeatherTempCardCell {
-            cardCell.flipCard()
-        } else if let cardCell = collectionView.cellForItem(at: indexPath) as? HomeWeatherStatusCardCell {
-            cardCell.flipCard()
-        } else if let cardCell = collectionView.cellForItem(at: indexPath) as? HomeWeatherDustCardCell {
+        } else if let cardCell = collectionView.cellForItem(at: indexPath) as? WeatherCardCell {
             cardCell.flipCard()
         }
     }

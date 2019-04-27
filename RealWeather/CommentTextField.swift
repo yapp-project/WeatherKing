@@ -30,7 +30,6 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         
     }
     
-    
     private func initView() {
         let button = UIButton(type: .custom)
         button.setTitle("등록", for: .normal)
@@ -38,6 +37,7 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         button.setTitleColor(UIColor.mainColor, for: .normal)
         button.frame = CGRect(x: 0, y: 0, width: 50, height: self.frame.height)
         button.addTarget(self, action: #selector(registerComment(_:)), for: .touchUpInside)
+        
         registerButton = UIButton(type: .custom)
         registerButton.setTitle("등록", for: .normal)
         registerButton.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-SemiBold", size: 15)

@@ -28,7 +28,9 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
         backView.isHidden = true
         backView.alpha = 0.0
     }
-    
+}
+
+extension HomeWeatherStatusCardCell: WeatherCardCell {
     func flipCard() {
         if backView.isHidden {
             self.backView.isHidden = false

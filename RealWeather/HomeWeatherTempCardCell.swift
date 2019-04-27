@@ -72,7 +72,9 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
         minMaxTempLabel.text = (card?.minTemp.tempFormat ?? "") + " / " + (card?.maxTemp.tempFormat ?? "")
     }
-    
+}
+
+extension HomeWeatherTempCardCell: WeatherCardCell {
     func flipCard() {
         if backView.isHidden {
             self.backView.isHidden = false

@@ -13,8 +13,7 @@ class CommentLikeButton: UIButton {
         didSet {
             if isLike {
                 self.setImage(UIImage(named: "icLikeDown"), for: .normal)
-            }
-            else {
+            } else {
                 self.setImage(UIImage(named: "icHateDown"), for: .normal)
             }
         }
@@ -33,8 +32,7 @@ class CommentLikeButton: UIButton {
                 if isLike {
                     self.setImage(UIImage(named: "icLikeUp"), for: .normal)
                     self.setTitleColor(UIColor.mainColor, for: .normal)
-                }
-                else {
+                } else {
                     self.setImage(UIImage(named: "icHateUp"), for: .normal)
                     self.setTitleColor(UIColor.mainColor, for: .normal)
                 }
@@ -43,8 +41,7 @@ class CommentLikeButton: UIButton {
                 if isLike {
                     self.setImage(UIImage(named: "icLikeDown"), for: .normal)
                     self.setTitleColor(UIColor.grayText, for: .normal)
-                }
-                else {
+                } else {
                     self.setImage(UIImage(named: "icHateDown"), for: .normal)
                     self.setTitleColor(UIColor.grayText, for: .normal)
                 }
