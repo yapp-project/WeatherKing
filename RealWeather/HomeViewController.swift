@@ -13,7 +13,6 @@ public enum HomeCellType {
     case weatherTempCard
     case weatherStatusCard
     case weatherDustCard
-    case weatherCompareCard
     case weatherMenu
     case bestCommentCollection
     case bestComment
@@ -28,8 +27,6 @@ public enum HomeCellType {
             return "HomeWeatherStatusCardCell"
         case .weatherDustCard:
             return "HomeWeatherDustCardCell"
-        case .weatherCompareCard:
-            return "HomeWeatherCompareCardCell"
         case .weatherMenu:
             return "HomeWeatherMenuCell"
         case .bestCommentCollection:
@@ -43,7 +40,7 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return CGSize(width: UIScreen.main.bounds.width, height: 420)
-        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherCompareCard:
+        case .weatherTempCard, .weatherStatusCard, .weatherDustCard:
             return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
             return CGSize(width: 24, height: 17)

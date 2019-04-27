@@ -40,11 +40,13 @@
 		CE522F54224F9AEE000C26BF /* HomeWeatherTempCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE522F53224F9AEE000C26BF /* HomeWeatherTempCardCell.xib */; };
 		CE522F56224F9AFD000C26BF /* HomeWeatherStatusCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE522F55224F9AFD000C26BF /* HomeWeatherStatusCardCell.xib */; };
 		CE522F58224F9B0F000C26BF /* HomeWeatherDustCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE522F57224F9B0F000C26BF /* HomeWeatherDustCardCell.xib */; };
-		CE522F5A224FC050000C26BF /* HomeWeatherCompareCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE522F59224FC050000C26BF /* HomeWeatherCompareCardCell.xib */; };
-		CE522F5C224FC085000C26BF /* HomeWeatherCompareCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE522F5B224FC085000C26BF /* HomeWeatherCompareCardCell.swift */; };
 		CE522F5E224FDD11000C26BF /* HomeWeatherTempCardBackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE522F5D224FDD11000C26BF /* HomeWeatherTempCardBackCell.xib */; };
 		CE522F60224FE69D000C26BF /* HomeWeatherStatusCardBackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE522F5F224FE69D000C26BF /* HomeWeatherStatusCardBackCell.xib */; };
 		CE522F62224FE76F000C26BF /* HomeWeatherDustCardBackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE522F61224FE76F000C26BF /* HomeWeatherDustCardBackCell.xib */; };
+		CE72AC562274772300D77543 /* WeatherTempCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC552274772300D77543 /* WeatherTempCard.swift */; };
+		CE72AC582274776C00D77543 /* WeatherStatusCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC572274776C00D77543 /* WeatherStatusCard.swift */; };
+		CE72AC5A227477A700D77543 /* WeatherDustCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC59227477A700D77543 /* WeatherDustCard.swift */; };
+		CE72AC5C2274798F00D77543 /* WeatherWeekCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC5B2274798F00D77543 /* WeatherWeekCard.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* Comment.swift */; };
 		CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */; };
@@ -120,11 +122,13 @@
 		CE522F53224F9AEE000C26BF /* HomeWeatherTempCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherTempCardCell.xib; sourceTree = "<group>"; };
 		CE522F55224F9AFD000C26BF /* HomeWeatherStatusCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherStatusCardCell.xib; sourceTree = "<group>"; };
 		CE522F57224F9B0F000C26BF /* HomeWeatherDustCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherDustCardCell.xib; sourceTree = "<group>"; };
-		CE522F59224FC050000C26BF /* HomeWeatherCompareCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherCompareCardCell.xib; sourceTree = "<group>"; };
-		CE522F5B224FC085000C26BF /* HomeWeatherCompareCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWeatherCompareCardCell.swift; sourceTree = "<group>"; };
 		CE522F5D224FDD11000C26BF /* HomeWeatherTempCardBackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherTempCardBackCell.xib; sourceTree = "<group>"; };
 		CE522F5F224FE69D000C26BF /* HomeWeatherStatusCardBackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherStatusCardBackCell.xib; sourceTree = "<group>"; };
 		CE522F61224FE76F000C26BF /* HomeWeatherDustCardBackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherDustCardBackCell.xib; sourceTree = "<group>"; };
+		CE72AC552274772300D77543 /* WeatherTempCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTempCard.swift; sourceTree = "<group>"; };
+		CE72AC572274776C00D77543 /* WeatherStatusCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherStatusCard.swift; sourceTree = "<group>"; };
+		CE72AC59227477A700D77543 /* WeatherDustCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDustCard.swift; sourceTree = "<group>"; };
+		CE72AC5B2274798F00D77543 /* WeatherWeekCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherWeekCard.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
 		CEB189D72221845500A1BB38 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWApiRequest.swift; sourceTree = "<group>"; };
@@ -234,7 +238,6 @@
 				CED56D09224A919E008CFD82 /* HomeNavigationBarViewController.swift */,
 				CE31EB3D224E819B005CA188 /* HomeWeatherCardCollectionCell.swift */,
 				CE522F4D224F9A2D000C26BF /* HomeWeatherTempCardCell.swift */,
-				CE522F5B224FC085000C26BF /* HomeWeatherCompareCardCell.swift */,
 				CE522F4F224F9A52000C26BF /* HomeWeatherStatusCardCell.swift */,
 				CE522F51224F9A5E000C26BF /* HomeWeatherDustCardCell.swift */,
 				CE31EB49224EAE30005CA188 /* HomeWeatherMenuCell.swift */,
@@ -277,7 +280,6 @@
 				CE31EB34224E7B4D005CA188 /* HomeWeatherCardCollectionCell.xib */,
 				CE522F53224F9AEE000C26BF /* HomeWeatherTempCardCell.xib */,
 				CE522F5D224FDD11000C26BF /* HomeWeatherTempCardBackCell.xib */,
-				CE522F59224FC050000C26BF /* HomeWeatherCompareCardCell.xib */,
 				CE522F55224F9AFD000C26BF /* HomeWeatherStatusCardCell.xib */,
 				CE522F5F224FE69D000C26BF /* HomeWeatherStatusCardBackCell.xib */,
 				CE522F57224F9B0F000C26BF /* HomeWeatherDustCardCell.xib */,
@@ -304,6 +306,10 @@
 				74415A002221B86A00AA3D67 /* Weather.swift */,
 				CE31EB45224E92E1005CA188 /* WeatherCard.swift */,
 				74415A022221B8E000AA3D67 /* TodayWeather.swift */,
+				CE72AC552274772300D77543 /* WeatherTempCard.swift */,
+				CE72AC572274776C00D77543 /* WeatherStatusCard.swift */,
+				CE72AC59227477A700D77543 /* WeatherDustCard.swift */,
+				CE72AC5B2274798F00D77543 /* WeatherWeekCard.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -455,7 +461,6 @@
 				CE31EB2D224E4D3B005CA188 /* HomeComment.storyboard in Resources */,
 				CE522F58224F9B0F000C26BF /* HomeWeatherDustCardCell.xib in Resources */,
 				CE522F56224F9AFD000C26BF /* HomeWeatherStatusCardCell.xib in Resources */,
-				CE522F5A224FC050000C26BF /* HomeWeatherCompareCardCell.xib in Resources */,
 				CE20389322216FB300ED9BA7 /* Main.storyboard in Resources */,
 				CE31EB35224E7B4D005CA188 /* HomeWeatherCardCollectionCell.xib in Resources */,
 				CE522F54224F9AEE000C26BF /* HomeWeatherTempCardCell.xib in Resources */,
@@ -496,7 +501,9 @@
 				E12698D52250042D00ECCEC3 /* StartViewController.swift in Sources */,
 				CED56D13224A9671008CFD82 /* UserManager.swift in Sources */,
 				CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */,
+				CE72AC582274776C00D77543 /* WeatherStatusCard.swift in Sources */,
 				741C8E56224FC828001007AB /* CommentLikeButton.swift in Sources */,
+				CE72AC5A227477A700D77543 /* WeatherDustCard.swift in Sources */,
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,
 				741C8E4E224FA155001007AB /* CommentCell.swift in Sources */,
 				CEB189D82221845500A1BB38 /* Comment.swift in Sources */,
@@ -508,7 +515,7 @@
 				CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */,
 				CE522F50224F9A52000C26BF /* HomeWeatherStatusCardCell.swift in Sources */,
 				CE31EB46224E92E1005CA188 /* WeatherCard.swift in Sources */,
-				CE522F5C224FC085000C26BF /* HomeWeatherCompareCardCell.swift in Sources */,
+				CE72AC562274772300D77543 /* WeatherTempCard.swift in Sources */,
 				CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */,
 				E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */,
 				CE522F52224F9A5E000C26BF /* HomeWeatherDustCardCell.swift in Sources */,
@@ -521,6 +528,7 @@
 				CE522F4E224F9A2D000C26BF /* HomeWeatherTempCardCell.swift in Sources */,
 				CE31EB44224E8205005CA188 /* HomeBestCommentCell.swift in Sources */,
 				CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */,
+				CE72AC5C2274798F00D77543 /* WeatherWeekCard.swift in Sources */,
 				E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */,
 				CE522F4C224F91FE000C26BF /* RootViewController.swift in Sources */,
 				74415A032221B8E000AA3D67 /* TodayWeather.swift in Sources */,
@@ -701,14 +709,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F54V6AATW5;
+				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -720,14 +728,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F54V6AATW5;
+				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
