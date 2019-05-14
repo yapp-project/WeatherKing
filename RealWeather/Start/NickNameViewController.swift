@@ -9,7 +9,8 @@
 import UIKit
 
 class NickNameViewController: UIViewController {
-    @IBOutlet weak var nickField: UITextField!
+    @IBOutlet private weak var nickField: UITextField!
+    static let segueIdentifier: String = "NickName"
     
     override func viewDidLoad() {
         super.viewDidLoad()
