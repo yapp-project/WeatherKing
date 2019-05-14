@@ -24,14 +24,30 @@ class CommentCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var hateBtn: CommentLikeButton!
     @IBOutlet weak var likeBtn: CommentLikeButton!
+    @IBOutlet weak var crownImg: UIImageView!
+    @IBOutlet weak var crownImgWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nameLabelLeadingConstraint: NSLayoutConstraint!
     
     var delegate: CommentCellDelegate?
     var indexPath: IndexPath?
+    var isHiddenCrown: Bool = true {
+        didSet {
+            if isHiddenCrown {
+                crownImgWidthConstraint.constant = 0
+                nameLabelLeadingConstraint.constant = 0
+            }
+            else {
+                crownImgWidthConstraint.constant = 12
+                nameLabelLeadingConstraint.constant = 4
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         likeBtn.isLike = true
         hateBtn.isLike = false
+        isHiddenCrown = true
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

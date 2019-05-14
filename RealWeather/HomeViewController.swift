@@ -88,7 +88,13 @@ class HomeViewController: UIViewController {
 extension HomeViewController {
     func updateView() {
         commentContainer.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 1, x: 0, y: -2, blur: 9, spread: 0)
-
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeComment(_:)))
+        swipeGesture.direction = .up
+        commentBtn.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc func swipeComment(_ sender: UISwipeGestureRecognizer) {
+        self.performSegue(withIdentifier: "commentSegue", sender: nil)
     }
 }
 

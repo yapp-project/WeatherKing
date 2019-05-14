@@ -60,7 +60,6 @@
 		E12698D52250042D00ECCEC3 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D42250042D00ECCEC3 /* StartViewController.swift */; };
 		E12698D72250044A00ECCEC3 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E12698D62250044A00ECCEC3 /* Start.storyboard */; };
 		E12698D92250196A00ECCEC3 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D82250196A00ECCEC3 /* NickNameViewController.swift */; };
-		E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,7 +139,6 @@
 		E12698D42250042D00ECCEC3 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		E12698D62250044A00ECCEC3 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		E12698D82250196A00ECCEC3 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
-		E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNicknameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,7 +321,6 @@
 				E12698CD224F949700ECCEC3 /* UnitViewController.swift */,
 				E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */,
 				E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */,
-				E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -521,7 +518,6 @@
 				CE522F4E224F9A2D000C26BF /* HomeWeatherTempCardCell.swift in Sources */,
 				CE31EB44224E8205005CA188 /* HomeBestCommentCell.swift in Sources */,
 				CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */,
-				E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */,
 				CE522F4C224F91FE000C26BF /* RootViewController.swift in Sources */,
 				74415A032221B8E000AA3D67 /* TodayWeather.swift in Sources */,
 				CE31EB42224E81EB005CA188 /* HomeBestCommentCollectionCell.swift in Sources */,
@@ -701,14 +697,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F54V6AATW5;
+				DEVELOPMENT_TEAM = AL9L4NE9HL;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -720,14 +716,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F54V6AATW5;
+				DEVELOPMENT_TEAM = AL9L4NE9HL;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yapp.RealWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

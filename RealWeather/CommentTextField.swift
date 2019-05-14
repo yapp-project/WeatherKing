@@ -25,9 +25,15 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         self.endEditing(true)
         return true
     }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.rightView?.isHidden = true
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+        if self.text != "" {
+            self.rightView?.isHidden = false
+        }
     }
     
     
@@ -48,6 +54,7 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         self.rightView = button
         self.rightView = registerButton
         self.rightViewMode = .always
+        self.rightView?.isHidden = true
         
         let leftPadding = UIView(frame: CGRect(x: 0, y: 0, width: 18, height: self.frame.height))
         self.translatesAutoresizingMaskIntoConstraints  = false
@@ -57,7 +64,7 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         self.layer.borderColor = UIColor.bgColor.cgColor
         self.layer.cornerRadius = 12
         self.borderStyle = .none
-        
+        self.addTarget(self, action: #selector(changeText(_:)), for: UIControl.Event.editingChanged)
         self.delegate = self
     }
     
@@ -65,6 +72,15 @@ class CommentTextField: UITextField, UITextFieldDelegate {
         commentDelegate?.registerComment()
         self.text = ""
         self.endEditing(true)
+    }
+    
+    @objc func changeText(_ sender: UITextField) {
+        if sender.text != "" {
+            self.rightView?.isHidden = false
+        }
+        else {
+            self.rightView?.isHidden = true
+        }
     }
     
 }
