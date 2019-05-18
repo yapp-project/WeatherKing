@@ -62,19 +62,22 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 60
+        
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .none
+//        formatter.timeStyle = .short
+//        formatter.dateFormat = "a h:mm"
+//        formatter.amSymbol = "오전"
+//        formatter.pmSymbol = "오후"
+//
+//        let date = formatter.string(from: send.date)
+//        morningTimeText = date
+    
         morningDatePicker.datePickerMode = .time
         morningDatePicker.addTarget(self, action: #selector(self.morningPickerChange(_:)), for: .valueChanged)
-        
+    
         nightDatePicker.datePickerMode = .time
         nightDatePicker.addTarget(self, action: #selector(self.nightPickerChange(_:)), for: .valueChanged)
-        
-        toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.ActionBar))
-        
-        toolbar.items = [doneBtn]
-        
     }
     @objc func ActionBar() {
         view.endEditing(true)
@@ -85,6 +88,9 @@ class AlertViewController: UIViewController {
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         formatter.dateFormat = "a h:mm"
+        formatter.amSymbol = "오전"
+        formatter.pmSymbol = "오후"
+        
         let date = formatter.string(from: send.date)
         morningTimeText = date
     }
@@ -94,6 +100,9 @@ class AlertViewController: UIViewController {
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         formatter.dateFormat = "a h:mm"
+        formatter.amSymbol = "오전"
+        formatter.pmSymbol = "오후"
+        
         let date = formatter.string(from: send.date)
         nightTimeText = date
     }
@@ -101,6 +110,7 @@ class AlertViewController: UIViewController {
         guard let time = sender.indexPath() else {
             return
         }
+        
     }
     
     @IBAction func backBtn(_ sender: Any?) {
@@ -135,11 +145,17 @@ extension AlertViewController: UITableViewDataSource {
             } else {
                 switchCell.updateView(title: cellType.title, isOn: true)
             }
-        } else if let buttonCell = cell as? AlertTableViewButtonCell {
+        }
+        else if let buttonCell = cell as? AlertTableViewButtonCell {
             if cellType == .morning {
+                buttonCell.timeChangeHandler = { [weak self] changedDate in
+                    // 변경된 시간 저장
+                }
+                
                 buttonCell.timeField.inputView = morningDatePicker
                 buttonCell.timeField.inputAccessoryView = toolbar
                 buttonCell.updateView(title: cellType.title,time: morningTimeText ?? "")
+
             } else {
                 buttonCell.timeField.inputView = nightDatePicker
                 buttonCell.timeField.inputAccessoryView = toolbar
@@ -148,9 +164,31 @@ extension AlertViewController: UITableViewDataSource {
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+}
+
+extension AlertViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let cellType: AlertSettingCellType = menuDatasource[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath)
+        
+        let buttonCell = cell as? AlertTableViewButtonCell
+        buttonCell?.toggleDatePicker()
+        if cellType == .morning {
+//            buttonCell?.timeField.becomeFirstResponder()
+        }
+        
+//        if cellType == .morning {
+//            buttonCell?.timeField.inputView = morningDatePicker
+//            buttonCell?.timeField.inputAccessoryView = toolbar
+//            buttonCell?.updateView(title: cellType.title,time: morningTimeText ?? "")
+//
+//        } else {
+//            buttonCell?.timeField.inputView = nightDatePicker
+//            buttonCell?.timeField.inputAccessoryView = toolbar
+//            buttonCell?.updateView(title: cellType.title, time: nightTimeText ?? "")
+//        }
+        
     }
 }
 
@@ -171,16 +209,41 @@ class AlertTableViewSwitchCell: UITableViewCell {
 
 class AlertTableViewButtonCell: UITableViewCell {
     @IBOutlet fileprivate weak var alertLabel: UILabel!
-    @IBOutlet weak var timeField: UITextField!
+    @IBOutlet fileprivate weak var timeField: UITextField!
+    private let datePicker: UIDatePicker = UIDatePicker()
+    private let toolBar: UIToolbar = UIToolbar()
+    
+    var timeChangeHandler: ((Date) -> Void)?
+    var toggleHandler: (() -> Void)?
     
     override func saveIndexPath(indexPath: IndexPath) {
         super.saveIndexPath(indexPath: indexPath)
         timeField.saveIndexPath(indexPath: indexPath)
     }
     
+    func prepare() {
+        
+    }
+    
     func updateView(title: String, time: String) {
         self.alertLabel.text = title
         self.timeField.text = time
+    }
+    
+    func toggleDatePicker() {
+        toolBar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(onDoneBtnTapped))
+        toolBar.items = [doneBtn]
+        
+        timeField.inputView = datePicker
+        timeField.inputAccessoryView = toolBar
+        timeField.becomeFirstResponder()
+//        updateView(title: cellType.title,time: morningTimeText ?? "")
+    }
+    
+    @objc private func onDoneBtnTapped() {
+        timeChangeHandler?(datePicker.date)
     }
 }
 

@@ -60,10 +60,8 @@
 		E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CD224F949700ECCEC3 /* UnitViewController.swift */; };
 		E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */; };
 		E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */; };
-		E12698D52250042D00ECCEC3 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D42250042D00ECCEC3 /* StartViewController.swift */; };
-		E12698D72250044A00ECCEC3 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E12698D62250044A00ECCEC3 /* Start.storyboard */; };
-		E12698D92250196A00ECCEC3 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D82250196A00ECCEC3 /* NickNameViewController.swift */; };
 		E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */; };
+		E19AD3AF228D8BB000E53DE6 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AD3AE228D8BB000E53DE6 /* LocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,10 +141,8 @@
 		E12698CD224F949700ECCEC3 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
 		E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlldayAlertViewController.swift; sourceTree = "<group>"; };
-		E12698D42250042D00ECCEC3 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		E12698D62250044A00ECCEC3 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
-		E12698D82250196A00ECCEC3 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNicknameViewController.swift; sourceTree = "<group>"; };
+		E19AD3AE228D8BB000E53DE6 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,7 +199,6 @@
 				CE20388D22216E4500ED9BA7 /* Home */,
 				CED56D06224A90D3008CFD82 /* Drawer */,
 				CE31EB4B224EB015005CA188 /* Extensions */,
-				E12698D32250041500ECCEC3 /* Start */,
 				CE20389022216E9400ED9BA7 /* Storyboard */,
 				CEB189DA222185C700A1BB38 /* Util */,
 				CED56D0F224A9647008CFD82 /* Manager */,
@@ -249,6 +244,7 @@
 				741C8E4F224FA1C0001007AB /* CommentHeaderView.swift */,
 				741C8E51224FA252001007AB /* CommentTextField.swift */,
 				741C8E55224FC828001007AB /* CommentLikeButton.swift */,
+				E19AD3AE228D8BB000E53DE6 /* LocationViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -256,7 +252,6 @@
 		CE20389022216E9400ED9BA7 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				E12698D62250044A00ECCEC3 /* Start.storyboard */,
 				CE20389222216FB300ED9BA7 /* Main.storyboard */,
 				CE20385D222164A200ED9BA7 /* Home.storyboard */,
 				CE31EB30224E4D6F005CA188 /* Settings.storyboard */,
@@ -344,15 +339,6 @@
 				CED56D12224A9671008CFD82 /* UserManager.swift */,
 			);
 			name = Manager;
-			sourceTree = "<group>";
-		};
-		E12698D32250041500ECCEC3 /* Start */ = {
-			isa = PBXGroup;
-			children = (
-				E12698D42250042D00ECCEC3 /* StartViewController.swift */,
-				E12698D82250196A00ECCEC3 /* NickNameViewController.swift */,
-			);
-			path = Start;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,7 +455,6 @@
 				CE522F54224F9AEE000C26BF /* HomeWeatherTempCardCell.xib in Resources */,
 				CE522F5E224FDD11000C26BF /* HomeWeatherTempCardBackCell.xib in Resources */,
 				CE31EB3B224E7B9A005CA188 /* HomeBestCommentCell.xib in Resources */,
-				E12698D72250044A00ECCEC3 /* Start.storyboard in Resources */,
 				CE203861222164A400ED9BA7 /* Assets.xcassets in Resources */,
 				CE31EB31224E4D6F005CA188 /* Settings.storyboard in Resources */,
 				CE522F62224FE76F000C26BF /* HomeWeatherDustCardBackCell.xib in Resources */,
@@ -501,7 +486,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */,
-				E12698D52250042D00ECCEC3 /* StartViewController.swift in Sources */,
 				CED56D13224A9671008CFD82 /* UserManager.swift in Sources */,
 				CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */,
 				CE72AC582274776C00D77543 /* WeatherStatusCard.swift in Sources */,
@@ -516,6 +500,7 @@
 				74415A012221B86A00AA3D67 /* Weather.swift in Sources */,
 				E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */,
 				CE31EB3E224E819B005CA188 /* HomeWeatherCardCollectionCell.swift in Sources */,
+				E19AD3AF228D8BB000E53DE6 /* LocationViewController.swift in Sources */,
 				CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */,
 				CE522F50224F9A52000C26BF /* HomeWeatherStatusCardCell.swift in Sources */,
 				CE31EB46224E92E1005CA188 /* WeatherCard.swift in Sources */,
@@ -525,7 +510,6 @@
 				CE522F52224F9A5E000C26BF /* HomeWeatherDustCardCell.swift in Sources */,
 				CE31EB4A224EAE30005CA188 /* HomeWeatherMenuCell.swift in Sources */,
 				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
-				E12698D92250196A00ECCEC3 /* NickNameViewController.swift in Sources */,
 				741C8E50224FA1C0001007AB /* CommentHeaderView.swift in Sources */,
 				CED56D08224A90EB008CFD82 /* DrawerViewController.swift in Sources */,
 				CE31EB4D224EB042005CA188 /* UIKit+Extensions.swift in Sources */,
@@ -713,7 +697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = T7B37KWUX8;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -732,7 +716,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = T7B37KWUX8;
 				INFOPLIST_FILE = RealWeather/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
