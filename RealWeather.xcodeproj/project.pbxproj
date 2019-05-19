@@ -55,7 +55,7 @@
 		CE72AC6F2274A63800D77543 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE72AC6A2274A26800D77543 /* KakaoOpenSDK.framework */; };
 		CE72AC702274A63800D77543 /* KakaoOpenSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE72AC6A2274A26800D77543 /* KakaoOpenSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CE72AC732274B2AC00D77543 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE72AC722274B2AC00D77543 /* UserDefaultsManager.swift */; };
-		CEA910F322869C460010C45F /* AppKeyt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F222869C460010C45F /* AppKeyt.swift */; };
+		CEA910F322869C460010C45F /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F222869C460010C45F /* AppKey.swift */; };
 		CEA910F522883BC10010C45F /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F422883BC10010C45F /* SplashViewController.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* Comment.swift */; };
@@ -69,7 +69,7 @@
 		E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CD224F949700ECCEC3 /* UnitViewController.swift */; };
 		E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */; };
 		E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */; };
-		E12698D52250042D00ECCEC3 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D42250042D00ECCEC3 /* StartViewController.swift */; };
+		E12698D52250042D00ECCEC3 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D42250042D00ECCEC3 /* NotificationViewController.swift */; };
 		E12698D72250044A00ECCEC3 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E12698D62250044A00ECCEC3 /* Start.storyboard */; };
 		E12698D92250196A00ECCEC3 /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D82250196A00ECCEC3 /* NickNameViewController.swift */; };
 		E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */; };
@@ -166,7 +166,7 @@
 		CE72AC6A2274A26800D77543 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = KakaoOpenSDK.framework; sourceTree = "<group>"; };
 		CE72AC722274B2AC00D77543 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		CE959F92228B365B00F7299D /* RealWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealWeather.entitlements; sourceTree = "<group>"; };
-		CEA910F222869C460010C45F /* AppKeyt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKeyt.swift; sourceTree = "<group>"; };
+		CEA910F222869C460010C45F /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		CEA910F422883BC10010C45F /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
 		CEB189D72221845500A1BB38 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		E12698CD224F949700ECCEC3 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
 		E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlldayAlertViewController.swift; sourceTree = "<group>"; };
-		E12698D42250042D00ECCEC3 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		E12698D42250042D00ECCEC3 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		E12698D62250044A00ECCEC3 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		E12698D82250196A00ECCEC3 /* NickNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NickNameViewController.swift; sourceTree = "<group>"; };
 		E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNicknameViewController.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 			children = (
 				CE959F92228B365B00F7299D /* RealWeather.entitlements */,
 				CE203859222164A200ED9BA7 /* AppDelegate.swift */,
-				CEA910F222869C460010C45F /* AppKeyt.swift */,
+				CEA910F222869C460010C45F /* AppKey.swift */,
 				CE20388B22216DB900ED9BA7 /* RootViewController.swift */,
 				CEB189D62221844500A1BB38 /* Model */,
 				CE20388D22216E4500ED9BA7 /* Home */,
@@ -438,7 +438,7 @@
 		E12698D32250041500ECCEC3 /* Start */ = {
 			isa = PBXGroup;
 			children = (
-				E12698D42250042D00ECCEC3 /* StartViewController.swift */,
+				E12698D42250042D00ECCEC3 /* NotificationViewController.swift */,
 				E12698D82250196A00ECCEC3 /* NickNameViewController.swift */,
 				CE72AC5F22748F3100D77543 /* SignUpViewController.swift */,
 				CEA910F422883BC10010C45F /* SplashViewController.swift */,
@@ -725,7 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */,
-				E12698D52250042D00ECCEC3 /* StartViewController.swift in Sources */,
+				E12698D52250042D00ECCEC3 /* NotificationViewController.swift in Sources */,
 				CED56D13224A9671008CFD82 /* UserManager.swift in Sources */,
 				CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */,
 				CE72AC582274776C00D77543 /* WeatherStatusCard.swift in Sources */,
@@ -735,7 +735,7 @@
 				CE72AC5A227477A700D77543 /* WeatherDustCard.swift in Sources */,
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,
 				741C8E4E224FA155001007AB /* CommentCell.swift in Sources */,
-				CEA910F322869C460010C45F /* AppKeyt.swift in Sources */,
+				CEA910F322869C460010C45F /* AppKey.swift in Sources */,
 				CEB189D82221845500A1BB38 /* Comment.swift in Sources */,
 				741C8E52224FA252001007AB /* CommentTextField.swift in Sources */,
 				CEB189DE2221866C00A1BB38 /* HomeDataController.swift in Sources */,

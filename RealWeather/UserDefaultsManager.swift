@@ -10,6 +10,9 @@ import Foundation
 
 public class UserDefaultsManager {
     public static let LastLoginMethod = AppDefaults<Int>(key: "LastLoginMethod", defaultValue: 4)
+    public static let EverydayNotificationSetting = AppDefaults<Bool>(key: "EverydayNotificationSetting", defaultValue: true)
+    public static let RainNotificationSetting = AppDefaults<Bool>(key: "RainNotificationSetting", defaultValue: true)
+    public static let UltradustNotificationSetting = AppDefaults<Bool>(key: "UltradustNotificationSetting", defaultValue: true)
 }
 
 public class AppDefaults<T>: NSObject {
