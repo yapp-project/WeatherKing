@@ -55,7 +55,6 @@ class CommentCell: UICollectionViewCell {
     }
     
     @IBAction func settingComment(_ sender: Any) {
-        print("bt!!")
         guard let indexPath = self.indexPath else { return }
         delegate?.settingComment(index: indexPath.item)
     }

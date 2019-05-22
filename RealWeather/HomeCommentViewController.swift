@@ -8,28 +8,38 @@
 
 import UIKit
 
+protocol CommentDelegate {
+    func getHeader(header: CommentHeaderView)
+}
+
 class HomeCommentViewController: UIViewController {
     @IBOutlet weak var commentCollectionView: UICollectionView!
     @IBOutlet weak var commentTextFieldBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var commentTextField: CommentTextField!
+    @IBOutlet weak var weatherView: UIView!
+    @IBOutlet weak var weatherViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textFieldView: UIView!
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var emptyCommentImg: UIImageView!
+    @IBOutlet weak var emptyCommentLabel: UILabel!
     
     private var commentList: [Comment] = []
     private var currentRange: Range = .recent
+    var commentDelegate: CommentDelegate?
     
     private let dataController = HomeDataController()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.commentCollectionView.dataSource = self
         self.commentCollectionView.delegate = self
         self.commentTextField.commentDelegate = self
-  
+        self.weatherViewHeightConstraint.constant = 0
 
-        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpGesture(_:)))
-        swipe.direction = .down
-        commentCollectionView.addGestureRecognizer(swipe)
+//        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpGesture(_:)))
+//        swipe.direction = .down
+//        commentCollectionView.addGestureRecognizer(swipe)
         
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
         
@@ -37,14 +47,14 @@ class HomeCommentViewController: UIViewController {
         if let bottomArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
             bottomViewHeightConstraint.constant = bottomArea
         }
-//        commentList.append(Comment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 5, time: 2, likeCount: 24, hateCount: 35))
-//        commentList.append(Comment(name: "구구", comment: "구구", distance: 15, time: 3, likeCount: 53, hateCount: 16))
-//        commentList.append(Comment(name: "꽝꽝쾅쾅", comment: "지구 멸망하겠다.", distance: 1, time: 5, likeCount: 99, hateCount: 100))
-//        commentList.append(Comment(name: "주륵주륵", comment: "밖에 비 온다 주륵주륵", distance: 10, time: 5, likeCount: 341, hateCount: 23))
-//        commentList.append(Comment(name: "치킨", comment: "치킨 먹고 싶다", distance: 15, time: 7, likeCount: 123, hateCount: 5))
-//        commentList.append(Comment(name: "언더아머", comment: "3대 몇 치냐?", distance: 20, time: 8, likeCount: 1132, hateCount: 250))
-//        commentList.append(Comment(name: "피카츄", comment: "피~카츄!", distance: 3, time: 12, likeCount: 121, hateCount: 144))
-//        commentList.append(Comment(name: "날씨왕", comment: "날씨 좋네요.!", distance: 30, time: 25, likeCount: 78, hateCount: 2))
+        commentList.append(Comment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 5, time: 2, likeCount: 24, hateCount: 35))
+        commentList.append(Comment(name: "구구", comment: "구구", distance: 15, time: 3, likeCount: 53, hateCount: 16))
+        commentList.append(Comment(name: "꽝꽝쾅쾅", comment: "지구 멸망하겠다.", distance: 1, time: 5, likeCount: 99, hateCount: 100))
+        commentList.append(Comment(name: "주륵주륵", comment: "밖에 비 온다 주륵주륵", distance: 10, time: 5, likeCount: 341, hateCount: 23))
+        commentList.append(Comment(name: "치킨", comment: "치킨 먹고 싶다", distance: 15, time: 7, likeCount: 123, hateCount: 5))
+        commentList.append(Comment(name: "언더아머", comment: "3대 몇 치냐?", distance: 20, time: 8, likeCount: 1132, hateCount: 250))
+        commentList.append(Comment(name: "피카츄", comment: "피~카츄!", distance: 3, time: 12, likeCount: 121, hateCount: 144))
+        commentList.append(Comment(name: "날씨왕", comment: "날씨 좋네요.!", distance: 30, time: 25, likeCount: 78, hateCount: 2))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,19 +107,12 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "commentHeader", for: indexPath) as? CommentHeaderView else { fatalError() }
         header.roundCorners(corners: [.topLeft, .topRight], radius: 20)
-        
         header.delegate = self
+        header.isUserInteractionEnabled = true
+        commentDelegate?.getHeader(header: header)
         return header
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let scrollOffsetY = scrollView.contentOffset.y
-        
-        if(scrollOffsetY < -140)
-        {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
+
 }
 
 extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDelegate, CommentCellDelegate {
