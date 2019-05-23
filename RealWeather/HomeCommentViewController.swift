@@ -27,7 +27,7 @@ class HomeCommentViewController: UIViewController {
     private var currentRange: Range = .recent
     var commentDelegate: CommentDelegate?
     
-    private let dataController = HomeDataController()
+    private let dataController = HomeCommentDataController()
     
     
     override func viewDidLoad() {
@@ -36,12 +36,31 @@ class HomeCommentViewController: UIViewController {
         self.commentCollectionView.delegate = self
         self.commentTextField.commentDelegate = self
         self.weatherViewHeightConstraint.constant = 0
-
-//        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpGesture(_:)))
-//        swipe.direction = .down
-//        commentCollectionView.addGestureRecognizer(swipe)
+        
+        //        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpGesture(_:)))
+        //        swipe.direction = .down
+        //        commentCollectionView.addGestureRecognizer(swipe)
         
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
+/*
+        let timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { [unowned self] _ in
+            self.dataController.requestComment(completion: { [unowned self] data in
+                guard var data = data else {
+                    self.emptyCommentImg.isHidden = true
+                    self.emptyCommentLabel.isHidden = true
+                    return
+                }
+                self.commentList.removeAll()
+                data.sort(by: { $0.likeCount < $1.likeCount })
+                self.commentList = data
+                self.setRange(.recent)
+            })
+        })
+        timer.invalidate()
+*/
+        commentList.append(Comment(name: "언더아머", comment: "3대 몇 치냐?", distance: 20, time: 8, likeCount: 1132, hateCount: 250))
+        commentList.append(Comment(name: "주륵주륵", comment: "밖에 비 온다 주륵주륵", distance: 10, time: 5, likeCount: 341, hateCount: 23))
+        commentList.append(Comment(name: "치킨", comment: "치킨 먹고 싶다", distance: 15, time: 7, likeCount: 123, hateCount: 5))
         
         commentList.append(Comment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 5, time: 1, likeCount: 121, hateCount: 50))
         if let bottomArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
@@ -50,9 +69,9 @@ class HomeCommentViewController: UIViewController {
         commentList.append(Comment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 5, time: 2, likeCount: 24, hateCount: 35))
         commentList.append(Comment(name: "구구", comment: "구구", distance: 15, time: 3, likeCount: 53, hateCount: 16))
         commentList.append(Comment(name: "꽝꽝쾅쾅", comment: "지구 멸망하겠다.", distance: 1, time: 5, likeCount: 99, hateCount: 100))
-        commentList.append(Comment(name: "주륵주륵", comment: "밖에 비 온다 주륵주륵", distance: 10, time: 5, likeCount: 341, hateCount: 23))
-        commentList.append(Comment(name: "치킨", comment: "치킨 먹고 싶다", distance: 15, time: 7, likeCount: 123, hateCount: 5))
-        commentList.append(Comment(name: "언더아머", comment: "3대 몇 치냐?", distance: 20, time: 8, likeCount: 1132, hateCount: 250))
+        
+        
+        
         commentList.append(Comment(name: "피카츄", comment: "피~카츄!", distance: 3, time: 12, likeCount: 121, hateCount: 144))
         commentList.append(Comment(name: "날씨왕", comment: "날씨 좋네요.!", distance: 30, time: 25, likeCount: 78, hateCount: 2))
     }
@@ -85,6 +104,33 @@ class HomeCommentViewController: UIViewController {
     
     @objc func swipeUpGesture(_ sender: UISwipeGestureRecognizer) {
     }
+    
+    func registerComment() {
+        guard let text = commentTextField.text, text.isEmpty == false else {
+            return
+        }
+        commentList.insert(Comment(name: "이름", comment: text, distance: 1, time: 1, likeCount: 0, hateCount: 0), at: 3)
+        commentCollectionView.reloadData()
+        dataController.setComment(text, completion: { error in
+            if error != nil {
+               // 예외처리
+            }
+        })
+    }
+    
+    func setRange(_ range: Range) {
+        guard commentList.count > 3 else { return }
+        switch range {
+        case .distance:
+            commentList[3..<commentList.count].sort(by: { $0.distance < $1.distance })
+            commentCollectionView.reloadData()
+        case .recent:
+            commentList[3..<commentList.count].sort(by: { $0.time < $1.time })
+            commentCollectionView.reloadData()
+        }
+    }
+
+    
 }
 
 extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -94,7 +140,10 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "commentCell", for: indexPath) as? CommentCell else { fatalError() }
-        cell.fill(commentList[indexPath.item], indexPath: indexPath)
+        let index = indexPath.item
+        if index < 3 { cell.isHiddenCrown = false }
+        cell.fill(commentList[index], indexPath: indexPath)
+        
         cell.delegate = self
         return cell
     }
@@ -112,7 +161,7 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
         commentDelegate?.getHeader(header: header)
         return header
     }
-
+    
 }
 
 extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDelegate, CommentCellDelegate {
@@ -127,6 +176,11 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
             }
             commentList[index].isLike = !commentList[index].isLike
             commentCollectionView.reloadData()
+            dataController.likeComment(commentList[index].id, completion: { error in
+                if error != nil {
+                    // 예외처리
+                }
+            })
         case .hate:
             if commentList[index].isHate {
                 commentList[index].hateCount -= 1
@@ -136,18 +190,15 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
             }
             commentList[index].isHate = !commentList[index].isHate
             commentCollectionView.reloadData()
+            dataController.hateComment(commentList[index].id, completion: { error in
+                if error != nil {
+                    // 예외처리
+                }
+            })
         }
     }
     
-    func registerComment() {
-        guard let text = commentTextField.text, text.isEmpty == false else {
-            return
-        }
-        
-        commentList.insert(Comment(name: "이름", comment: text, distance: 1, time: 1, likeCount: 0, hateCount: 0), at: 0)
-        commentCollectionView.reloadData()
-        self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-    }
+   
     
     func settingComment(index: Int) {
         if commentList[index].name == "이름" {
@@ -183,16 +234,7 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
         
     }
     
-    func setRange(_ range: Range) {
-        switch range {
-        case .distance:
-            commentList.sort(by: { $0.distance < $1.distance })
-            commentCollectionView.reloadData()
-        case .recent:
-            commentList.sort(by: { $0.time < $1.time })
-            commentCollectionView.reloadData()
-        }
-    }
+   
     
     func detectTouch() {
         self.commentTextField.endEditing(true)

@@ -12,12 +12,10 @@ class HomeCommentDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
     func requestComment(completion: @escaping ([Comment]?) -> Void) {
-//        let queryItems: [URLQueryItem] = [URLQueryItem(name: "postId", value: "1")]
         let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: "asdf8sda97f98ads7f98ads7f8sda7f98ad"),
         URLQueryItem(name: "type", value: "1"), URLQueryItem(name: "nickname", value: "신립5년차")]
         
         requestor.cancel()
-//        requestor.baseURLPath = "https://jsonplaceholder.typicode.com/comments"
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/list"
         requestor.fetch(with: queryItems) { [weak self] data, error in
             let completionInMainThread = { (completion: @escaping ([Comment]?) -> Void, result: [Comment]?) in
@@ -40,28 +38,54 @@ class HomeCommentDataController {
         }
     }
     
-    func setComment(_ comment: String, completion: @escaping () -> Void) {
+    func setComment(_ comment: String, completion: @escaping (Error?) -> Void) {
         let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: "asdf8sda97f98ads7f98ads7f8sda7f98ad"),
                                           URLQueryItem(name: "type", value: "1"), URLQueryItem(name: "nickname", value: "신립5년차"), URLQueryItem(name: "content", value: comment)]
         requestor.cancel()
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/write"
         requestor.method = .post
         requestor.fetch(with: queryItems, completion: { data, error in
-            
+            if data == nil, let error = error {
+                completion(error)
+                return
+            }
+            DispatchQueue.main.async {
+                completion(nil)
+            }
         })
-        
-        completion()
     }
     
-    func likeComment(_ comment: Comment, completion: @escaping () -> Void) {
+    func likeComment(_ id: String, completion: @escaping (Error?) -> Void) {
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "id", value: id)]
         requestor.cancel()
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/like"
         requestor.method = .put
-        
-        
-        completion()
+        requestor.fetch(with: queryItems, completion: { data, error in
+            if data == nil, let error = error {
+                completion(error)
+                return
+            }
+            DispatchQueue.main.async {
+                completion(nil)
+            }
+        })
     }
     
+    func hateComment(_ id: String, completion: @escaping (Error?) -> Void) {
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "id", value: id)]
+        requestor.cancel()
+        requestor.baseURLPath = "http://15.164.86.162:3000/api/board/dislike"
+        requestor.method = .put
+        requestor.fetch(with: queryItems, completion: { data, error in
+            if data == nil, let error = error {
+                completion(error)
+                return
+            }
+            DispatchQueue.main.async {
+                completion(nil)
+            }
+        })
+    }
     
     
 }
@@ -72,13 +96,19 @@ extension HomeCommentDataController {
             return nil
         }
         var commentList: [Comment] = []
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         
         for item in jsons {
             for data in item["list"] as? [[String:Any]] ?? [[:]] {
                 let comment = Comment()
                 comment.name = data["nickname"] as? String ?? ""
                 comment.comment = data["content"] as? String ?? ""
-                comment.time = Int(data["timestamp"] as? String ?? "") ?? 0
+                let time = data["timestamp"] as? String ?? ""
+                let date = formatter.date(from: time)
+                let interval = Date().timeIntervalSince(date ?? Date())
+                comment.time = Int(floor(interval / 60))
                 comment.likeCount = data["like"] as? Int ?? 0
                 comment.hateCount = data["dislike"] as? Int ?? 0
                 commentList.append(comment)

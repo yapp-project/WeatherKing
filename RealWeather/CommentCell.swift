@@ -50,6 +50,11 @@ class CommentCell: UICollectionViewCell {
         isHiddenCrown = true
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isHiddenCrown = true
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         delegate?.detectTouch()
     }
