@@ -48,7 +48,6 @@ class LoginManager: NSObject {
     }
     
     private func restoreLastLoginMethod() -> SignUpMethod? {
-        
         let lastLoginMethod: Int = UserDefaultsManager.LastLoginMethod.get()
         return SignUpMethod(rawValue: lastLoginMethod)
     }
@@ -72,6 +71,18 @@ extension LoginManager {
             }
             self?.user = user
             completion(true)
+        }
+    }
+    
+    public func login(user: RWUser, completion: ((Bool) -> Void)? = nil) {
+        requestor.login(user: user) { [weak self] result in
+            if result ?? false {
+                self?.user = user
+                completion?(true)
+            } else {
+                self?.notification.post(name: .UserRegistrationNeeded, object: user)
+                completion?(false)
+            }
         }
     }
 }
@@ -99,21 +110,15 @@ extension LoginManager {
                 guard let uniqueID = userInfo?.id, error == nil else {
                     return
                 }
-                let user: RWUser = RWUser(uniqueID: uniqueID + "3", loginMethod: .kakao)
-                
-                self?.requestor.login(user: user) { [weak self] result in
-                    if result ?? false {
-                        self?.user = user
-                    } else {
-                        self?.notification.post(name: .UserRegistrationNeeded, object: user)
-                    }
-                }
+                let user: RWUser = RWUser(uniqueID: uniqueID, loginMethod: .kakao)
+                self?.login(user: user)
             }
         }
     }
     private func restoreFacebookSession() {
-        if FBSDKAccessToken.currentAccessTokenIsActive() {
-            user = RWUser(uniqueID: "", loginMethod: .facebook)
+        if FBSDKAccessToken.currentAccessTokenIsActive(), let uniqueID = FBSDKAccessToken.current()?.userID {
+            let user = RWUser(uniqueID: uniqueID, loginMethod: .facebook)
+            login(user: user)
         }
     }
     
@@ -190,15 +195,9 @@ extension LoginManager {
                     guard let uniqueID = userInfo?.id, error == nil else {
                         return
                     }
-                    let user: RWUser = RWUser(uniqueID: uniqueID, loginMethod: .kakao)
                     
-                    self?.requestor.login(user: user) { [weak self] result in
-                        if result ?? false {
-                            self?.user = user
-                        } else {
-                            self?.notification.post(name: .UserRegistrationNeeded, object: user)
-                        }
-                    }
+                    let user: RWUser = RWUser(uniqueID: uniqueID, loginMethod: .kakao)
+                    self?.login(user: user)
                 }
             }
         }
@@ -210,8 +209,8 @@ extension LoginManager {
             guard let result = result, error == nil else {
                 return
             }
-            let uniqueID: String = result.token.userID
-            self?.user = RWUser(uniqueID: uniqueID, loginMethod: .facebook)
+            let user = RWUser(uniqueID: result.token.userID, loginMethod: .facebook)
+            self?.login(user: user)
         }
     }
     
@@ -265,7 +264,8 @@ extension LoginManager: GIDSignInDelegate {
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        self.user = RWUser(uniqueID: user.userID, loginMethod: .google)
+        let user = RWUser(uniqueID: user.userID, loginMethod: .google)
+        login(user: user)
     }
 }
 

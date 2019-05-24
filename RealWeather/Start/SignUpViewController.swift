@@ -36,7 +36,9 @@ class SignUpViewController: UIViewController {
 
 extension SignUpViewController {
     @objc private func segueToNextStep(notification: NSNotification) {
-        if let user = notification.object as? RWUser {
+        let isInRegistrationProcess: Bool = navigationController?.viewControllers.count ?? 0 > 1
+        
+        if let user = notification.object as? RWUser, isInRegistrationProcess == false {
             performSegue(withIdentifier: NickNameViewController.segueIdentifier, sender: user)
         }
     }
