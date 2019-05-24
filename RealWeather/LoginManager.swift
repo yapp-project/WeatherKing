@@ -206,10 +206,10 @@ extension LoginManager {
     private func presentFacebookSignUp(on viewController: UIViewController) {
         let loginManager = FBSDKLoginManager()
         loginManager.logIn(withReadPermissions: [], from: viewController) { [weak self] result, error in
-            guard let result = result, error == nil else {
+            guard let token = result?.token, error == nil else {
                 return
             }
-            let user = RWUser(uniqueID: result.token.userID, loginMethod: .facebook)
+            let user = RWUser(uniqueID: token.userID, loginMethod: .facebook)
             self?.login(user: user)
         }
     }
