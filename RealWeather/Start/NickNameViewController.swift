@@ -43,6 +43,8 @@ class NickNameViewController: UIViewController {
         }
     }
     
+    var user: RWUser?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateView()
@@ -80,7 +82,19 @@ extension NickNameViewController {
 
 extension NickNameViewController {
     @IBAction func onConfirmNickNameBtnTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: NotificationViewController.segueIdentifier, sender: nil)
+        guard let user = user, let nickname = nickNameField.text else {
+            return
+        }
+        
+        user.nickname = nickname
+        user.location = LocationManager.shared.currentLocation
+        
+        // TODO: 로딩뷰 표시할 것, userInteraction 정지
+        LoginManager.shared.register(user: user) { [weak self] result in
+            if result {
+                self?.performSegue(withIdentifier: NotificationViewController.segueIdentifier, sender: nil)
+            }
+        }
     }
     
     @IBAction func onNicknameClearBtnTapped(_ sender: UIButton) {

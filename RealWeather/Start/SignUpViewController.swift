@@ -24,31 +24,44 @@ class SignUpViewController: UIViewController {
     }
     
     private func prepareObservers() {
-        notification.addObserver(self, selector: #selector(segueToNextStep), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(dismissOnComplete), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(segueToNextStep(notification:)), name: .UserRegistrationNeeded, object: nil)
     }
     
     deinit {
+        notification.removeObserver(self, name: .UserRegistrationNeeded, object: nil)
         notification.removeObserver(self, name: .LoginSuccess, object: nil)
     }
 }
 
 extension SignUpViewController {
-    @objc private func segueToNextStep() {
-        // TODO: API 요청, 이미 가입된 사용자의 경우 프로세스 종료
-        let isSignedUpUser: Bool = false
-        if isSignedUpUser {
-            (presentingViewController as? RootViewController)?.removeSplashView()
-            dismiss(animated: false, completion: nil)
-        } else {
-            performSegue(withIdentifier: NickNameViewController.segueIdentifier, sender: nil)
+    @objc private func segueToNextStep(notification: NSNotification) {
+        if let user = notification.object as? RWUser {
+            performSegue(withIdentifier: NickNameViewController.segueIdentifier, sender: user)
+        }
+    }
+    
+    @objc private func dismissOnComplete() {
+        let isInRegistrationProcess: Bool = navigationController?.viewControllers.count ?? 0 > 1
+        
+        guard isInRegistrationProcess == false else {
+            return
         }
         
+        (presentingViewController as? RootViewController)?.removeSplashView()
+        dismiss(animated: false, completion: nil)
     }
 }
 
 extension SignUpViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == NickNameViewController.segueIdentifier {
+            if let vc = segue.destination as? NickNameViewController {
+                vc.user = sender as? RWUser
+            }
+        }
     }
 }
 

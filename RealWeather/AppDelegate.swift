@@ -20,7 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance()?.clientID = AppKey.googleClientID
         GIDSignIn.sharedInstance()?.delegate = LoginManager.shared
         FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        AppCommon.isDebugLogEnabled = true
         _ = LoginManager.shared
+        _ = LocationManager.shared
         return true
     }
     
