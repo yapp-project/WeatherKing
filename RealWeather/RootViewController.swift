@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class RootViewController: UIViewController {
+    @IBOutlet fileprivate weak var splashView: UIView!
     @IBOutlet fileprivate weak var drawerViewLeading: NSLayoutConstraint!
     @IBOutlet fileprivate weak var drawerViewWidth: NSLayoutConstraint!
     
@@ -32,7 +33,22 @@ class RootViewController: UIViewController {
             drawerViewController = segue.destination as? DrawerViewController
         } else if segue.identifier == "HomeNavigationBar" {
             homeNavigationBarViewController = segue.destination as? HomeNavigationBarViewController
+        } else if segue.identifier == "Splash" {
+            let splashVC = segue.destination as? SplashViewController
+            
+            splashVC?.loginSegueHandler = { [weak self] in
+                self?.splashView.isHidden = true
+            }
+            splashVC?.completionHandler = { [weak self] in
+                self?.removeSplashView()
+            }
         }
+    }
+}
+
+extension RootViewController {
+    func removeSplashView() {
+        splashView.removeFromSuperview()
     }
 }
 
