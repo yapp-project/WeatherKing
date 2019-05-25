@@ -18,6 +18,6 @@ class RWUser {
         self.uniqueID = uniqueID
         self.loginMethod = loginMethod
         
-        location = LocationManager.shared.currentLocation
+        location = RWLocationManager.shared.currentLocation
     }
 }

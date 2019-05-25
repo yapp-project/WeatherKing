@@ -87,10 +87,10 @@ extension NickNameViewController {
         }
         
         user.nickname = nickname
-        user.location = LocationManager.shared.currentLocation
+        user.location = RWLocationManager.shared.currentLocation
         
         // TODO: 로딩뷰 표시할 것, userInteraction 정지
-        LoginManager.shared.register(user: user) { [weak self] result in
+        RWLoginManager.shared.register(user: user) { [weak self] result in
             if result {
                 self?.performSegue(withIdentifier: NotificationViewController.segueIdentifier, sender: nil)
             }

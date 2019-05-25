@@ -70,7 +70,7 @@ extension SignUpViewController {
 extension SignUpViewController {
     @IBAction func onSignUpBtnTapped(_ sender: UIButton) {
         if let signUpMethod = SignUpMethod(rawValue: sender.tag) {
-            LoginManager.shared.presentSignUp(on: self, method: signUpMethod)
+            RWLoginManager.shared.presentSignUp(on: self, method: signUpMethod)
         }
     }
 }

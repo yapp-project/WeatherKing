@@ -1,5 +1,5 @@
 //
-//  LocationManager.swift
+//  RWLocationManager.swift
 //  RealWeather
 //
 //  Created by SangDon Kim on 27/03/2019.
@@ -19,8 +19,8 @@ extension Notification.Name {
     static let UserLocationDidUpdated = Notification.Name("LocationDidUpdated")
 }
 
-class LocationManager: NSObject {
-    static let shared = LocationManager()
+class RWLocationManager: NSObject {
+    static let shared = RWLocationManager()
     private let notification: NotificationCenter = NotificationCenter.default
     private let coreLocationManager = CLLocationManager()
     
@@ -39,7 +39,7 @@ class LocationManager: NSObject {
     }
 }
 
-extension LocationManager: CLLocationManagerDelegate {
+extension RWLocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse:

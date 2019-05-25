@@ -15,7 +15,7 @@ class SplashViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if LoginManager.shared.isLoggedIn {
+        if RWLoginManager.shared.isLoggedIn {
             completionHandler?()
         } else {
             performSegue(withIdentifier: "Login", sender: nil)

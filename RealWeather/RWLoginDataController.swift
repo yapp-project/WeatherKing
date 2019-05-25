@@ -1,5 +1,5 @@
 //
-//  LoginDataController.swift
+//  RWLoginDataController.swift
 //  RealWeather
 //
 //  Created by USER on 25/05/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LoginDataController {
+class RWLoginDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
     func register(user: RWUser, completion: @escaping (Bool?) -> Void) {
@@ -75,7 +75,7 @@ class LoginDataController {
     }
 }
 
-extension LoginDataController {
+extension RWLoginDataController {
     private func parseLoginResult(_ data: Data) throws -> Bool? {
         guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
             return nil

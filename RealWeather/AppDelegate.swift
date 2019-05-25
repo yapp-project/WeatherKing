@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         KOSession.shared()?.clientSecret = AppKey.kakaoKey
         GIDSignIn.sharedInstance()?.clientID = AppKey.googleClientID
-        GIDSignIn.sharedInstance()?.delegate = LoginManager.shared
-        FBSDKApplicationDelegate.sharedInstance()?.application(application, didFinishLaunchingWithOptions: launchOptions)
+        GIDSignIn.sharedInstance()?.delegate = RWLoginManager.shared
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         AppCommon.isDebugLogEnabled = true
-        _ = LoginManager.shared
-        _ = LocationManager.shared
+        _ = RWLoginManager.shared
+        _ = RWLocationManager.shared
         return true
     }
     
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if KOSession.isKakaoAccountLoginCallback(url) {
             return KOSession.handleOpen(url)
-        } else if FBSDKApplicationDelegate.sharedInstance()?.application(app, open: url, options: options) ?? false {
+        } else if ApplicationDelegate.shared.application(app, open: url, options: options) {
             return true
         } else if GIDSignIn.sharedInstance()?.handle(url, sourceApplication: UIApplication.OpenURLOptionsKey.sourceApplication.rawValue, annotation: options[UIApplication.OpenURLOptionsKey.annotation]) ?? false {
             return true

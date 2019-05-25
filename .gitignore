@@ -473,3 +473,12 @@ Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests-umbrel
 Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.debug.xcconfig
 Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.modulemap
 Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.release.xcconfig
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/Internal/FBSDKMeasurementEventListener.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/Internal/FBSDKMeasurementEventListener.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/FBSDKBasicUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/FBSDKBasicUtility.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/FBSDKCoreKit.modulemap
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKBasicUtility+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKBasicUtility+Internal.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKTypeUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKTypeUtility.m

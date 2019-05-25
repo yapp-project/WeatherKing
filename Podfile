@@ -4,8 +4,8 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'RealWeather' do
-  pod 'FBSDKLoginKit'
-  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit', '5.0.0'
+  pod 'GoogleSignIn', '4.4.0'
 
   target 'RealWeatherTests' do
     inherit! :search_paths

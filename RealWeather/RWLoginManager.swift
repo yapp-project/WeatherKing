@@ -1,5 +1,5 @@
 //
-//  LoginManager.swift
+//  RWLoginManager.swift
 //  RealWeather
 //
 //  Created by SangDon Kim on 27/03/2019.
@@ -17,10 +17,11 @@ extension Notification.Name {
     public static let UserRegistrationNeeded = Notification.Name("UserRegistrationNeeded")
 }
 
-class LoginManager: NSObject {
-    static let shared = LoginManager()
+class RWLoginManager: NSObject {
+    static let shared = RWLoginManager()
     
-    private let requestor: LoginDataController = LoginDataController()
+    private let requestor: RWLoginDataController = RWLoginDataController()
+    private let fbLoginManager: LoginManager = LoginManager()
     private let notification = NotificationCenter.default
     
     public var isLoggedIn: Bool {
@@ -58,11 +59,10 @@ class LoginManager: NSObject {
     
     private func prepareObservers() {
         notification.addObserver(self, selector: #selector(kakaoSessionDidChange(with:)), name: .KOSessionDidChange, object: nil)
-        notification.addObserver(self, selector: #selector(facebookTokenDidChange(with:)), name: .FBSDKAccessTokenDidChange, object: nil)
     }
 }
 
-extension LoginManager {
+extension RWLoginManager {
     public func register(user: RWUser, completion: @escaping (Bool) -> Void) {
         requestor.register(user: user) { [weak self] result in
             guard let result = result, result else {
@@ -88,7 +88,7 @@ extension LoginManager {
 }
 
 // MARK: Login
-extension LoginManager {
+extension RWLoginManager {
     public func restoreLoginStatus() {
         guard let method = restoreLastLoginMethod() else {
             return
@@ -116,7 +116,7 @@ extension LoginManager {
         }
     }
     private func restoreFacebookSession() {
-        if FBSDKAccessToken.currentAccessTokenIsActive(), let uniqueID = FBSDKAccessToken.current()?.userID {
+        if AccessToken.isCurrentAccessTokenActive, let uniqueID = AccessToken.current?.userID {
             let user = RWUser(uniqueID: uniqueID, loginMethod: .facebook)
             login(user: user)
         }
@@ -128,7 +128,7 @@ extension LoginManager {
 }
 
 // MARK: Logout
-extension LoginManager {
+extension RWLoginManager {
     public func logout() {
         guard let method = user?.loginMethod else {
             return
@@ -156,7 +156,7 @@ extension LoginManager {
     }
     
     private func logoutFacebookSession() {
-        FBSDKLoginManager().logOut()
+        fbLoginManager.logOut()
         if user?.loginMethod == SignUpMethod.facebook {
             invalidateUserLogin()
         }
@@ -171,7 +171,7 @@ extension LoginManager {
 }
 
 // MARK: SignUp
-extension LoginManager {
+extension RWLoginManager {
     public func presentSignUp(on presentingVC: UIViewController, method: SignUpMethod) {
         switch method {
         case .kakao:
@@ -204,8 +204,7 @@ extension LoginManager {
     }
     
     private func presentFacebookSignUp(on viewController: UIViewController) {
-        let loginManager = FBSDKLoginManager()
-        loginManager.logIn(withReadPermissions: [], from: viewController) { [weak self] result, error in
+        fbLoginManager.logIn(permissions: [], from: viewController) { [weak self] result, error in
             guard let token = result?.token, error == nil else {
                 return
             }
@@ -223,7 +222,7 @@ extension LoginManager {
 }
 
 // MARK: Unlink - 스펙 아웃, 추후 필요할 경우 구현
-extension LoginManager {
+extension RWLoginManager {
     public func unlinkAccount() {
         guard let method = user?.loginMethod else {
             return
@@ -255,7 +254,7 @@ extension LoginManager {
 }
 
 // MARK: Google Delegate
-extension LoginManager: GIDSignInDelegate {
+extension RWLoginManager: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         guard self.user?.loginMethod == SignUpMethod.facebook else {
             return
@@ -270,16 +269,8 @@ extension LoginManager: GIDSignInDelegate {
 }
 
 // MARK: Kakao Delegate
-extension LoginManager {
+extension RWLoginManager {
     @objc private func kakaoSessionDidChange(with notification: NSNotification) {
         
-    }
-}
-
-// MARK: Facebook Delegate
-extension LoginManager {
-    @objc private func facebookTokenDidChange(with notification: NSNotification) {
-        // TODO: 분기 처리
-        restoreFacebookSession()
     }
 }
