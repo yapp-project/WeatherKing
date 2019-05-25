@@ -62,6 +62,8 @@
 		E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */; };
 		E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */; };
 		E19AD3AF228D8BB000E53DE6 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AD3AE228D8BB000E53DE6 /* LocationViewController.swift */; };
+		E19AD3B12296686300E53DE6 /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19AD3B02296686300E53DE6 /* InformationViewController.swift */; };
+		E1ACF02522968B45008BA8D6 /* RequestURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ACF02422968B45008BA8D6 /* RequestURL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +145,8 @@
 		E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlldayAlertViewController.swift; sourceTree = "<group>"; };
 		E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNicknameViewController.swift; sourceTree = "<group>"; };
 		E19AD3AE228D8BB000E53DE6 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		E19AD3B02296686300E53DE6 /* InformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		E1ACF02422968B45008BA8D6 /* RequestURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestURL.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +332,8 @@
 				E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */,
 				E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */,
 				E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */,
+				E19AD3B02296686300E53DE6 /* InformationViewController.swift */,
+				E1ACF02422968B45008BA8D6 /* RequestURL.swift */,
 			);
 			name = Drawer;
 			sourceTree = "<group>";
@@ -486,6 +492,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */,
+				E19AD3B12296686300E53DE6 /* InformationViewController.swift in Sources */,
+				E1ACF02522968B45008BA8D6 /* RequestURL.swift in Sources */,
 				CED56D13224A9671008CFD82 /* UserManager.swift in Sources */,
 				CED56D11224A9652008CFD82 /* LocationManager.swift in Sources */,
 				CE72AC582274776C00D77543 /* WeatherStatusCard.swift in Sources */,
@@ -627,7 +635,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -682,7 +690,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -736,7 +744,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = T7B37KWUX8;
 				INFOPLIST_FILE = RealWeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -757,7 +765,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = T7B37KWUX8;
 				INFOPLIST_FILE = RealWeatherTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -777,7 +785,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = T7B37KWUX8;
 				INFOPLIST_FILE = RealWeatherUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -797,7 +805,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = T7B37KWUX8;
 				INFOPLIST_FILE = RealWeatherUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

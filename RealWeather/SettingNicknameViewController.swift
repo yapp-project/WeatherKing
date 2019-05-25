@@ -59,7 +59,7 @@ class SettingNicknameViewController: UIViewController {
     }
     
     func checkString(newText:String, isInput: Bool) -> Void {
-        let filter:String = "[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\s]"
+        let filter:String = "[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]"
         let regex = try! NSRegularExpression(pattern: filter, options: [])
         let list = regex.matches(in:newText, options: [], range:NSRange.init(location: 0, length:newText.count))
         if isInput == true {
@@ -69,6 +69,7 @@ class SettingNicknameViewController: UIViewController {
                 okBtn.tintColor = UIColor(red: 173, green: 181, blue: 189, a: 1)
                 return
             }
+            //[이미 사용중인 닉네임입니다.] 추가하기
             
             message.text = "사용할 수 있는 닉네임입니다."
             okBtn.isEnabled = true

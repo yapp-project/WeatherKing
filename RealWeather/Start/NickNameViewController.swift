@@ -18,20 +18,31 @@ class NickNameViewController: UIViewController {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.AcrionBar))
+        let doneBtn = UIBarButtonItem(title: "이 닉네임을 사용할래요", style: .done, target: self, action: #selector(self.AcrionBar))
+        let spaceBtn = UIBarButtonItem(title: " ", style: .done, target: self, action: #selector(self.spaceBar))
+        doneBtn.tintColor = UIColor(red: 182, green: 182, blue: 182)
         
-        toolbar.items = [doneBtn]
+        toolbar.items = [spaceBtn,doneBtn]
         nickField.inputAccessoryView = toolbar
     }
     
     @objc func AcrionBar() {
-        view.endEditing(true)
-    }
-    @IBAction func okBtn(_ sender: Any) {
-        let stroyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextView = stroyboard.instantiateViewController(withIdentifier: "main")
-        
+        let stroyboard:UIStoryboard = self.storyboard!
+        let nextView = stroyboard.instantiateViewController(withIdentifier: "alertSetting")
         self.present(nextView,animated: true,completion: nil)
+//        view.endEditing(true)
+    }
+    
+    @objc func spaceBar() {
+//        let stroyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let nextView = stroyboard.instantiateViewController(withIdentifier: "main")
+//
+//        self.present(nextView,animated: true,completion: nil)
+                view.endEditing(true)
+    }
+    
+    @IBAction func okBtn(_ sender: Any) {
+        
     }
 }
 

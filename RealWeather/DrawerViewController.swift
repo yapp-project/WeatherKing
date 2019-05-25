@@ -65,6 +65,12 @@ class DrawerViewController: UIViewController {
         alert.addAction(updateBtn)
         self.present(alert,animated: true, completion: nil)
     }
+    
+    @IBAction func InformationAction(_ sender: Any) {
+        if let nextView = storyboard?.instantiateViewController(withIdentifier: "webviewNavigation") {
+            present(nextView, animated: true, completion: nil)
+        }
+    }
 }
 
 extension DrawerViewController {
@@ -131,13 +137,13 @@ extension DrawerViewController: UICollectionViewDelegate {
         collectionView.deselectItem(at: indexPath, animated: true)
         
         if cellType == .degree {
-            let stroyboard:UIStoryboard = self.storyboard!
-            let nextView = stroyboard.instantiateViewController(withIdentifier: "unitNavigation")
-            self.present(nextView,animated: true,completion: nil)
+            if let nextView = storyboard?.instantiateViewController(withIdentifier: "unitNavigation") {
+                present(nextView, animated: true, completion: nil)
+            }
         } else if cellType == .notification {
-            let stroyboard:UIStoryboard = self.storyboard!
-            let nextView = stroyboard.instantiateViewController(withIdentifier: "alertNavigation")
-            self.present(nextView,animated: true,completion: nil)
+            if let nextView = storyboard?.instantiateViewController(withIdentifier: "alertNavigation") {
+                present(nextView, animated: true, completion: nil)
+            }
         } else if cellType == .feedback {
             let alert = UIAlertController(title: "더 나은 날씨왕을 위해 아쉬운 점을 알려줄래요?", message: "", preferredStyle: .alert)
             let afterBtn = UIAlertAction(title: "나중에 하기", style: .default, handler: nil)

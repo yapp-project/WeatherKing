@@ -10,4 +10,11 @@ import Foundation
 
 class LocationManager {
     static let shared = LocationManager()
+    
+//    struct locationKeyword: Encodable {
+//     var keywoed: String?
+//    }
+//    
+//    let info = locationKeyword(keywoed: "가락")
+//    
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class LocationViewController: UIViewController {
     
@@ -18,6 +19,9 @@ class LocationViewController: UIViewController {
     var locationfilter = [String]()
     var identifier = "currentCell"
     let toolbar = UIToolbar()
+    var locationManager: CLLocationManager = CLLocationManager()
+    let requesturl = RequestURL()
+    let startURL = "http://15.164.86.162:3000/api/setting/location?"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +31,28 @@ class LocationViewController: UIViewController {
         let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.BarAction))
         toolbar.items = [doneBtn]
         searchbar.inputAccessoryView = toolbar
+        
     }
+    
     @objc func BarAction() {
         view.endEditing(true)
     }
     @IBAction func backAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension LocationViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let coor = manager.location?.coordinate {
+            let latitude = String(coor.latitude)
+            let longitude = String(coor.longitude)
+            print("latitude : \(latitude) longitude : \(longitude)")
+//            let url = "\(startURL)type=1&uid=dlflwjflehfdkeksu&lat=37.646141&lng=126.787860"
+//            requesturl.RequestURL(url: url, type: .put)
+        }
     }
 }
 
@@ -63,8 +83,20 @@ extension LocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if isInput == true {
             print("\(locationfilter[indexPath.row])")
+            //그 지역의 위도, 경도 전송 후 메인으로 이동
+            let defaults = UserDefaults.standard
+            let address = defaults.stringArray(forKey: "address_name")
+            print("address ============== \(address)")
+            let url = "\(startURL)type=&uid=&lat=&lng="
+//            requesturl.RequestURL(url: url, type: .put)
         } else {
             print("\(current[indexPath.row])")
+            locationManager.delegate = self
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            
+            //위도, 경도 전송 후 메인으로 이동
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -72,10 +104,12 @@ extension LocationViewController: UITableViewDelegate {
 
 extension LocationViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+        //키워드로 검색하는 api 연동
         locationfilter = searchText.isEmpty ? location: location.filter({(dataString: String) -> Bool in
             return dataString.range(of: searchText, options: .caseInsensitive) != nil
         })
+        let url = "\(startURL)keyword=\(searchText)"
+        
         
         if searchText == "" {
             isInput = false
@@ -84,6 +118,8 @@ extension LocationViewController: UISearchBarDelegate {
             isInput = true
             tableview.reloadData()
         }
+        requesturl.RequestURL(url: url, type: .get)
+        
     }
 }
 
