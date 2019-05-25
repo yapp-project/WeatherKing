@@ -1,0 +1,45 @@
+PODS:
+  - FBSDKCoreKit (5.0.0):
+    - FBSDKCoreKit/Basics (= 5.0.0)
+    - FBSDKCoreKit/Core (= 5.0.0)
+  - FBSDKCoreKit/Basics (5.0.0)
+  - FBSDKCoreKit/Core (5.0.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (5.0.0):
+    - FBSDKCoreKit (= 5.0.0)
+  - GoogleSignIn (4.4.0):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.2.1):
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+  - GoogleToolboxForMac/Defines (2.2.1)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.2.1)":
+    - GoogleToolboxForMac/DebugUtils (= 2.2.1)
+    - GoogleToolboxForMac/Defines (= 2.2.1)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.1)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.2.1)"
+  - GTMSessionFetcher/Core (1.2.2)
+
+DEPENDENCIES:
+  - FBSDKLoginKit (= 5.0.0)
+  - GoogleSignIn (= 4.4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - GTMSessionFetcher
+
+SPEC CHECKSUMS:
+  FBSDKCoreKit: ba361d4a9d4dc29ff218822b849b22d4f869c7bb
+  FBSDKLoginKit: c6d0dc187bd076e370dffa10f7fc8a3562a6892c
+  GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
+  GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
+  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+
+PODFILE CHECKSUM: b28d6860c952f8e8ba5fb7dfe05b7645f8f16863
+
+COCOAPODS: 1.6.1

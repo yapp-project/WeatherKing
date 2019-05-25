@@ -39,15 +39,25 @@
                                     <segue destination="mVn-Ee-0ye" kind="embed" identifier="Drawer" id="eZm-l0-o7R"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faK-Vt-DQY" userLabel="SplashView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="YFl-v2-SEC" kind="embed" identifier="Splash" id="fgb-Oh-BKw"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="faK-Vt-DQY" secondAttribute="bottom" id="3vl-20-tlS"/>
                             <constraint firstItem="JQe-vo-K86" firstAttribute="width" secondItem="MUS-AO-8nY" secondAttribute="width" constant="0.80000000000000004" id="8cO-J0-vT3"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="leading" secondItem="MUS-AO-8nY" secondAttribute="leading" id="AS9-uh-UiU"/>
                             <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="c4d-2b-VoE" secondAttribute="trailing" id="Aae-9q-u1m"/>
+                            <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="faK-Vt-DQY" secondAttribute="trailing" id="M7g-9T-95D"/>
                             <constraint firstAttribute="bottom" secondItem="JQe-vo-K86" secondAttribute="bottom" id="NRY-r0-dYL"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="trailing" secondItem="MUS-AO-8nY" secondAttribute="trailing" id="Xus-59-ikl"/>
                             <constraint firstItem="JQe-vo-K86" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="Z6j-7Y-QhS"/>
+                            <constraint firstItem="faK-Vt-DQY" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" id="b67-MM-lXG"/>
+                            <constraint firstItem="faK-Vt-DQY" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="h96-qV-k62"/>
                             <constraint firstItem="JQe-vo-K86" firstAttribute="trailing" secondItem="d5J-lt-mFp" secondAttribute="leading" id="hlo-U7-Fcv"/>
                             <constraint firstItem="c4d-2b-VoE" firstAttribute="top" secondItem="d5J-lt-mFp" secondAttribute="top" constant="10" id="iNK-sa-8o7"/>
                             <constraint firstItem="c4d-2b-VoE" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" id="nXT-0S-l0S"/>
@@ -59,6 +69,7 @@
                     <connections>
                         <outlet property="drawerViewLeading" destination="hlo-U7-Fcv" id="evZ-Ai-z9X"/>
                         <outlet property="drawerViewWidth" destination="8cO-J0-vT3" id="tS4-ha-oJ0"/>
+                        <outlet property="splashView" destination="faK-Vt-DQY" id="yRZ-pN-Upt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-19-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -82,6 +93,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xsi-xT-3b5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-91" y="569"/>
+        </scene>
+        <!--Start-->
+        <scene sceneID="14u-YU-097">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Start" id="YFl-v2-SEC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OVU-eQ-Oer" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="470" y="96"/>
         </scene>
         <!--Home Navigation Bar View Controller-->
         <scene sceneID="qYy-Lm-Xnj">

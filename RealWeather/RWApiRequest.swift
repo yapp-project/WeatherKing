@@ -60,7 +60,9 @@ extension RWApiRequest {
             return
         }
         
-        urlComponents.queryItems = queryItems
+        if method == .get {
+            urlComponents.queryItems = queryItems
+        }
         
         guard let url = urlComponents.url else {
             completion(nil, nil)
@@ -76,22 +78,33 @@ extension RWApiRequest {
         if method != .get {
             var queryComponents: URLComponents = URLComponents()
             queryComponents.queryItems = queryItems
-            request.httpBody = queryComponents.url?.path.data(using: String.Encoding.ascii, allowLossyConversion: true)
+            
+            if var httpBody = queryComponents.url?.absoluteString {
+                if httpBody.first == "?" {
+                    httpBody.removeFirst()
+                }
+                request.httpBody = httpBody.data(using: String.Encoding.ascii, allowLossyConversion: true)
+            }
         }
-        
         fetch(with: request, completion: completion)
     }
 }
 
 extension RWApiRequest {
     public func fetch(with request: URLRequest, completion: @escaping RWApiResult) {
-        dataTask = urlSession.dataTask(with: request) { [weak self] data, response, error in
+        dataTask = urlSession.dataTask(with: request) { [weak self] data, serverResponse, error in
+            do {
+                try self?.printServerResponse(data, error: error)
+            } catch {
+                print("wtf")
+            }
+            
             guard error == nil else {
                 completion(nil, error)
                 return
             }
-            
-            let response: RWApiResponse = RWApiResponse(from: response)
+
+            let response: RWApiResponse = RWApiResponse(from: serverResponse)
             switch response {
             case .success:
                 completion(data, nil)
@@ -104,6 +117,19 @@ extension RWApiRequest {
             self?.retryCount = 0
         }
         dataTask?.resume()
+    }
+    
+    private func printServerResponse(_ data: Data?, error: Error?) throws {
+        guard let data = data, let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+            AppCommon.dprint("[Reponse] error: \(error?.localizedDescription ?? "")")
+            return
+        }
+        
+        let status: Int = (json["status"] as? Int) ?? 1300
+        let code: Int = (json["code"] as? Int) ?? 0
+        let message: String = (json["message"] as? String) ?? "no message"
+        let description: String = (json["description"] as? String) ?? "no description"
+        AppCommon.dprint("[Reponse] status: \(status), code: \(code), message: \(message), description: \(description), error: \(error?.localizedDescription ?? "no error")")
     }
   
     private func retry(of request: URLRequest, error: Error?, completion: @escaping RWApiResult) {

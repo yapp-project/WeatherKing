@@ -1,0 +1,484 @@
+RealWeather.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+RealWeather.xcworkspace/xcuserdata/user.xcuserdatad/IDEFindNavigatorScopes.plist
+RealWeather.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate
+RealWeather.xcworkspace/xcuserdata/user.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+Pods/Manifest.lock
+Pods/Bolts/LICENSE
+Pods/Bolts/README.md
+Pods/Bolts/Bolts/Common/BFCancellationToken.h
+Pods/Bolts/Bolts/Common/BFCancellationToken.m
+Pods/Bolts/Bolts/Common/BFCancellationTokenRegistration.h
+Pods/Bolts/Bolts/Common/BFCancellationTokenRegistration.m
+Pods/Bolts/Bolts/Common/BFCancellationTokenSource.h
+Pods/Bolts/Bolts/Common/BFCancellationTokenSource.m
+Pods/Bolts/Bolts/Common/BFExecutor.h
+Pods/Bolts/Bolts/Common/BFExecutor.m
+Pods/Bolts/Bolts/Common/BFGeneric.h
+Pods/Bolts/Bolts/Common/BFTask.h
+Pods/Bolts/Bolts/Common/BFTask.m
+Pods/Bolts/Bolts/Common/BFTaskCompletionSource.h
+Pods/Bolts/Bolts/Common/BFTaskCompletionSource.m
+Pods/Bolts/Bolts/Common/Bolts.h
+Pods/Bolts/Bolts/Common/Bolts.m
+Pods/Bolts/Bolts/iOS/BFAppLink.h
+Pods/Bolts/Bolts/iOS/BFAppLink.m
+Pods/Bolts/Bolts/iOS/BFAppLinkNavigation.h
+Pods/Bolts/Bolts/iOS/BFAppLinkNavigation.m
+Pods/Bolts/Bolts/iOS/BFAppLinkResolving.h
+Pods/Bolts/Bolts/iOS/BFAppLinkReturnToRefererController.h
+Pods/Bolts/Bolts/iOS/BFAppLinkReturnToRefererController.m
+Pods/Bolts/Bolts/iOS/BFAppLinkReturnToRefererView.h
+Pods/Bolts/Bolts/iOS/BFAppLinkReturnToRefererView.m
+Pods/Bolts/Bolts/iOS/BFAppLinkTarget.h
+Pods/Bolts/Bolts/iOS/BFAppLinkTarget.m
+Pods/Bolts/Bolts/iOS/BFMeasurementEvent.h
+Pods/Bolts/Bolts/iOS/BFMeasurementEvent.m
+Pods/Bolts/Bolts/iOS/BFURL.h
+Pods/Bolts/Bolts/iOS/BFURL.m
+Pods/Bolts/Bolts/iOS/BFWebViewAppLinkResolver.h
+Pods/Bolts/Bolts/iOS/BFWebViewAppLinkResolver.m
+Pods/Bolts/Bolts/iOS/Internal/BFAppLink_Internal.h
+Pods/Bolts/Bolts/iOS/Internal/BFAppLinkReturnToRefererView_Internal.h
+Pods/Bolts/Bolts/iOS/Internal/BFMeasurementEvent_Internal.h
+Pods/Bolts/Bolts/iOS/Internal/BFURL_Internal.h
+Pods/FBSDKCoreKit/LICENSE
+Pods/FBSDKCoreKit/README.md
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/af.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/ar.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/bn.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/cs.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/da.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/de.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/el.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/en.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/en_GB.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/es.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/es_ES.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/fi.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/fil.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/fr.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/gu.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/he.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/hi.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/hr.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/hu.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/id.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/it.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/ja.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/kn.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/ko.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/ml.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/mr.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/ms.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/nb.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/nl.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/pa.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/pl.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/pt.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/pt_PT.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/ru.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/sk.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/sv.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/ta.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/te.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/th.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/tr.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/vi.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/zh.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/zh_Hant_HK.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FacebookSDKStrings.bundle/Resources/zh_Hant_TW.lproj/FacebookSDK.strings
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKAccessToken.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKAccessToken.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKApplicationDelegate.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKApplicationDelegate.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKButton.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKButton.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKConstants.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKConstants.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKCopying.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphErrorRecoveryProcessor.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphErrorRecoveryProcessor.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequest.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequest.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestConnection.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestConnection.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestDataAttachment.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKGraphRequestDataAttachment.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKMacros.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKMeasurementEvent.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKMeasurementEvent.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKMutableCopying.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKProfile.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKProfile.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKProfilePictureView.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKProfilePictureView.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKSettings.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKSettings.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKTestUsersManager.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKTestUsersManager.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKURL.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKURL.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/FBSDKUtility.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/FBSDKAppEvents.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEvents+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsDeviceInfo.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsDeviceInfo.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsState.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsState.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsStateManager.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsStateManager.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKAppEventsUtility.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKHybridAppEventsScriptMessageHandler.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKHybridAppEventsScriptMessageHandler.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKPaymentObserver.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKPaymentObserver.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKTimeSpentData.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKTimeSpentData.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKUserDataStore.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/FBSDKUserDataStore.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKCodelessIndexer.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKCodelessIndexer.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKCodelessMacros.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKCodelessParameterComponent.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKCodelessParameterComponent.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKCodelessPathComponent.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKCodelessPathComponent.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKEventBinding.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKEventBinding.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKEventBindingManager.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKEventBindingManager.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKViewHierarchy.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppEvents/Internal/Codeless/FBSDKViewHierarchy.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLink.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLink.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkNavigation.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkNavigation.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkResolver.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkResolver.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkResolving.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkReturnToRefererController.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkReturnToRefererController.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkReturnToRefererView.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkReturnToRefererView.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkTarget.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkTarget.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKAppLinkUtility.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKWebViewAppLinkResolver.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/FBSDKWebViewAppLinkResolver.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/Internal/FBSDKBoltsMeasurementEventListener.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/Internal/FBSDKBoltsMeasurementEventListener.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKApplicationDelegate+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKApplicationObserving.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKAppLink_Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKAppLinkReturnToRefererView_Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKAudioResourceLoader.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKAudioResourceLoader.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKContainerViewController.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKContainerViewController.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKCoreKit+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKDeviceRequestsHelper.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKDeviceRequestsHelper.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKDynamicFrameworkLoader.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKError.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKError.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKImageDownloader.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKImageDownloader.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKInternalUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKInternalUtility.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKLogger.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKLogger.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKMath.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKMath.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKMeasurementEvent_Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKMonotonicTime.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKMonotonicTime.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKProfile+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSettings+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSwizzler.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSwizzler.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSystemAccountStoreAdapter.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKSystemAccountStoreAdapter.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKTriStateBOOL.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKTriStateBOOL.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKTypeUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKTypeUtility.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/FBSDKURL_Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Base64/FBSDKBase64.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Base64/FBSDKBase64.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPI.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPI.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPICrypto.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPICrypto.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIProtocol.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIProtocolType.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIRequest+Private.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIRequest.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIRequest.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIResponse.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKBridgeAPIResponse.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/FBSDKURLOpening.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolNativeV1.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolNativeV1.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV1.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV1.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV2.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/BridgeAPI/ProtocolVersions/FBSDKBridgeAPIProtocolWebV2.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Cryptography/FBSDKCrypto.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Cryptography/FBSDKCrypto.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ErrorRecovery/_FBSDKTemporaryErrorRecoveryAttempter.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ErrorRecovery/_FBSDKTemporaryErrorRecoveryAttempter.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ErrorRecovery/FBSDKErrorRecoveryAttempter.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ErrorRecovery/FBSDKErrorRecoveryAttempter.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequest+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestBody.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestBody.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestConnection+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestMetadata.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestMetadata.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestPiggybackManager.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKGraphRequestPiggybackManager.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKURLSessionTask.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/Network/FBSDKURLSessionTask.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKDialogConfiguration.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKDialogConfiguration.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKErrorConfiguration.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKErrorConfiguration.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKErrorRecoveryConfiguration.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKErrorRecoveryConfiguration.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKGateKeeperManager.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKGateKeeperManager.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfiguration+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfiguration.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfiguration.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/ServerConfiguration/FBSDKServerConfigurationManager.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCache.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCache.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_17.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_17.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_21.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV3_21.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV4.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCacheV4.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenCaching.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenExpirer.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKAccessTokenExpirer.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKKeychainStore.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKKeychainStore.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKKeychainStoreViaBundleID.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/TokenCaching/FBSDKKeychainStoreViaBundleID.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKButton+Subclass.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKCloseIcon.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKCloseIcon.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKColor.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKColor.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKIcon.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKIcon.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKLogo.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKLogo.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKMaleSilhouetteIcon.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKMaleSilhouetteIcon.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKUIUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKViewImpressionTracker.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/UI/FBSDKViewImpressionTracker.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialog.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialog.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialogView.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal/WebDialog/FBSDKWebDialogView.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Internal_NoARC/FBSDKDynamicFrameworkLoader.m
+Pods/FBSDKLoginKit/LICENSE
+Pods/FBSDKLoginKit/README.md
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginCodeInfo.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginCodeInfo.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManager.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManager.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManagerResult.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManagerResult.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginButton.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginButton.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginConstants.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginConstants.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManager.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManager.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManagerLoginResult.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginManagerLoginResult.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginTooltipView.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginTooltipView.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKTooltipView.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKTooltipView.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/_FBSDKLoginRecoveryAttempter.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/_FBSDKLoginRecoveryAttempter.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKDeviceLoginCodeInfo+Internal.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKDeviceLoginManagerResult+Internal.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginCompletion+Internal.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginCompletion.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginCompletion.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginError.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginError.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginKit+Internal.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManager+Internal.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManagerLogger.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManagerLogger.m
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginManagerLoginResult+Internal.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginUtility.h
+Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKLoginUtility.m
+Pods/GoogleSignIn/.cocoapods.yml
+Pods/GoogleSignIn/CHANGELOG.md
+Pods/GoogleSignIn/README.md
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/GoogleSignIn
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GIDAuthentication.h
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GIDGoogleUser.h
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GIDProfileData.h
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GIDSignIn.h
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GIDSignInButton.h
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Headers/GoogleSignIn.h
+Pods/GoogleSignIn/Frameworks/GoogleSignIn.framework/Modules/module.modulemap
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/google.png
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/google@2x.png
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/google@3x.png
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/Info.plist
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/Roboto-Bold.ttf
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/ar.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/ca.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/cs.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/da.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/de.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/el.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/en.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/en_GB.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/es.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/es_MX.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/fi.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/fr.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/fr_CA.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/he.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/hi.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/hr.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/hu.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/id.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/it.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/ja.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/ko.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/ms.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/nb.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/nl.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/pl.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/pt.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/pt_BR.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/pt_PT.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/ro.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/ru.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/sk.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/sv.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/th.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/tr.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/uk.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/vi.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/zh_CN.lproj/GoogleSignIn.strings
+Pods/GoogleSignIn/Resources/GoogleSignIn.bundle/zh_TW.lproj/GoogleSignIn.strings
+Pods/GoogleToolboxForMac/GTMDefines.h
+Pods/GoogleToolboxForMac/LICENSE
+Pods/GoogleToolboxForMac/README.md
+Pods/GoogleToolboxForMac/DebugUtils/GTMDebugSelectorValidation.h
+Pods/GoogleToolboxForMac/DebugUtils/GTMDebugThreadValidation.h
+Pods/GoogleToolboxForMac/DebugUtils/GTMMethodCheck.h
+Pods/GoogleToolboxForMac/Foundation/GTMNSDictionary+URLArguments.h
+Pods/GoogleToolboxForMac/Foundation/GTMNSDictionary+URLArguments.m
+Pods/GoogleToolboxForMac/Foundation/GTMNSString+URLArguments.h
+Pods/GoogleToolboxForMac/Foundation/GTMNSString+URLArguments.m
+Pods/GTMSessionFetcher/LICENSE
+Pods/GTMSessionFetcher/README.md
+Pods/GTMSessionFetcher/Source/GTMSessionFetcher.h
+Pods/GTMSessionFetcher/Source/GTMSessionFetcher.m
+Pods/GTMSessionFetcher/Source/GTMSessionFetcherLogging.h
+Pods/GTMSessionFetcher/Source/GTMSessionFetcherLogging.m
+Pods/GTMSessionFetcher/Source/GTMSessionFetcherService.h
+Pods/GTMSessionFetcher/Source/GTMSessionFetcherService.m
+Pods/GTMSessionFetcher/Source/GTMSessionUploadFetcher.h
+Pods/GTMSessionFetcher/Source/GTMSessionUploadFetcher.m
+Pods/Pods.xcodeproj/project.pbxproj
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/Bolts.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/FBSDKCoreKit.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/FBSDKLoginKit.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/GoogleSignIn.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/GoogleToolboxForMac.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/GTMSessionFetcher.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/Pods-RealWeather.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/Pods-RealWeatherTests.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/Pods-RealWeatherUITests.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/user.xcuserdatad/xcschemes/xcschememanagement.plist
+Pods/Target Support Files/Bolts/Bolts-dummy.m
+Pods/Target Support Files/Bolts/Bolts-Info.plist
+Pods/Target Support Files/Bolts/Bolts-prefix.pch
+Pods/Target Support Files/Bolts/Bolts-umbrella.h
+Pods/Target Support Files/Bolts/Bolts.modulemap
+Pods/Target Support Files/Bolts/Bolts.xcconfig
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit-dummy.m
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit-Info.plist
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit-prefix.pch
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit-umbrella.h
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.modulemap
+Pods/Target Support Files/FBSDKCoreKit/FBSDKCoreKit.xcconfig
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit-dummy.m
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit-Info.plist
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit-prefix.pch
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit-umbrella.h
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.modulemap
+Pods/Target Support Files/FBSDKLoginKit/FBSDKLoginKit.xcconfig
+Pods/Target Support Files/GoogleSignIn/GoogleSignIn.xcconfig
+Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-dummy.m
+Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-Info.plist
+Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch
+Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-umbrella.h
+Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap
+Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.xcconfig
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-dummy.m
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-Info.plist
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-prefix.pch
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher-umbrella.h
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.modulemap
+Pods/Target Support Files/GTMSessionFetcher/GTMSessionFetcher.xcconfig
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather-acknowledgements.markdown
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather-acknowledgements.plist
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather-dummy.m
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather-frameworks.sh
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather-Info.plist
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather-resources.sh
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather-umbrella.h
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather.debug.xcconfig
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather.modulemap
+Pods/Target Support Files/Pods-RealWeather/Pods-RealWeather.release.xcconfig
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests-acknowledgements.markdown
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests-acknowledgements.plist
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests-dummy.m
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests-Info.plist
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests-umbrella.h
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests.debug.xcconfig
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests.modulemap
+Pods/Target Support Files/Pods-RealWeatherTests/Pods-RealWeatherTests.release.xcconfig
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests-acknowledgements.markdown
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests-acknowledgements.plist
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests-dummy.m
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests-Info.plist
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests-umbrella.h
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.debug.xcconfig
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.modulemap
+Pods/Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.release.xcconfig
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/Internal/FBSDKMeasurementEventListener.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/AppLink/Internal/FBSDKMeasurementEventListener.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/FBSDKBasicUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/FBSDKBasicUtility.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/FBSDKCoreKit.modulemap
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKBasicUtility+Internal.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKBasicUtility+Internal.m
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKTypeUtility.h
+Pods/FBSDKCoreKit/FBSDKCoreKit/FBSDKCoreKit/Basics/Internal/FBSDKTypeUtility.m
