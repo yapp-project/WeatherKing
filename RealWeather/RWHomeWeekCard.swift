@@ -1,5 +1,5 @@
 //
-//  WeatherWeekCard.swift
+//  RWHomeWeekCard.swift
 //  RealWeather
 //
 //  Created by SangDon Kim on 27/04/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherWeekCard: WeatherCard {
+class RWHomeWeekCard: RWHomeCard {
     var mainColor: UIColor {
         return type.color
     }

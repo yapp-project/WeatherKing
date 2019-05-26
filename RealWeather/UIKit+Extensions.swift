@@ -162,4 +162,10 @@ extension Int {
     }
 }
 
+extension Double {
+    var tempFormat: String {
+        return "\(self)°"
+    }
+}
+
 

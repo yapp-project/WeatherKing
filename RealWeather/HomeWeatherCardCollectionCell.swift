@@ -32,7 +32,7 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
     
     var bgControlDelegate: HomeBGColorControlDelegate?
     var menuDatasource: [HomeWeatherMenu] = HomeWeatherMenu.allCases
-    var cardDatasource: [HomeWeatherMenu: [WeatherCard]] = [:]
+    var cardDatasource: [HomeWeatherMenu: [RWHomeCard]] = [:]
     var selectedMenu: HomeWeatherMenu = .today {
         didSet {
             menuCollectionView?.reloadData()
@@ -40,7 +40,7 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
         }
     }
     
-    var cards: [WeatherCard] = [] {
+    var cards: [RWHomeCard] = [] {
         didSet {
             pageControl.numberOfPages = cards.count
             pageControl.currentPage = 0
@@ -79,7 +79,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
             }
             return cell
             
-        } else if let tempCard = cards[indexPath.item] as? WeatherTempCard {
+        } else if let tempCard = cards[indexPath.item] as? RWHomeTempCard {
             let cellType: HomeCellType = .weatherTempCard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
             
@@ -88,7 +88,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
             }
             return cell
             
-        } else if let statusCard = cards[indexPath.item] as? WeatherStatusCard {
+        } else if let statusCard = cards[indexPath.item] as? RWHomeStatusCard {
             let cellType: HomeCellType = .weatherStatusCard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
             
@@ -97,7 +97,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
             }
             return cell
             
-        } else if let dustCard = cards[indexPath.item] as? WeatherDustCard {
+        } else if let dustCard = cards[indexPath.item] as? RWHomeDustCard {
             let cellType: HomeCellType = .weatherDustCard
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
             
@@ -161,7 +161,7 @@ extension HomeWeatherCardCollectionCell: UIScrollViewDelegate {
 }
 
 extension HomeWeatherCardCollectionCell {
-    func updateThemeColor(with card: WeatherCard?) {
+    func updateThemeColor(with card: RWHomeCard?) {
         guard let card = card else {
             return
         }

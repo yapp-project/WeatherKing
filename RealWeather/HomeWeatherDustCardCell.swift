@@ -12,21 +12,28 @@ class HomeWeatherDustCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var cardView: UIView!
     @IBOutlet fileprivate weak var titleLabel: UILabel!
     @IBOutlet fileprivate weak var imageView: UIImageView!
-    @IBOutlet fileprivate weak var descriptionLabel: UILabel!
-    @IBOutlet fileprivate weak var estimatedTempLabel: UILabel!
-    @IBOutlet fileprivate weak var minMaxTempLabel: UILabel!
     @IBOutlet fileprivate weak var backView: UIView!
+    @IBOutlet fileprivate weak var fineDustStatusLabel: UILabel!
+    @IBOutlet fileprivate weak var ultraDustStatusLabel: UILabel!
+    @IBOutlet fileprivate weak var fineDustDegreeLabel: UILabel!
+    @IBOutlet fileprivate weak var ultraDustDegreeLabel: UILabel!
     
     var dustDatas: [WeatherDustData] = []
     
-    func updateView(card: WeatherDustCard?) {
+    func updateView(card: RWHomeDustCard?) {
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
         cardView.backgroundColor = card?.type.color
         titleLabel.text = card?.type.title
         imageView.image = card?.type.image
-        descriptionLabel.text = card?.type.dustDescription
-        estimatedTempLabel.text = card?.type.ultraDustDescription
-        minMaxTempLabel.text = ""
+        
+        let fineDustDegree: Int = card?.fineDustDegree ?? 0
+        let ultraDustDegree: Int = card?.ultraDustDegree ?? 0
+        
+        fineDustDegreeLabel.text = "\(fineDustDegree)"
+        ultraDustDegreeLabel.text = "\(ultraDustDegree)"
+        fineDustStatusLabel.text = RWHomeDustType.fineDustDescription(fineDust: fineDustDegree)
+        ultraDustStatusLabel.text = RWHomeDustType.ultraDustDescription(ultraDust: ultraDustDegree)
+        
         backView.isHidden = true
         backView.alpha = 0.0
     }

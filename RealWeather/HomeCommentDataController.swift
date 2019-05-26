@@ -11,13 +11,13 @@ import Foundation
 class HomeCommentDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
-    func requestData(completion: @escaping (Comment?) -> Void) {
+    func requestData(completion: @escaping (RWComment?) -> Void) {
         let queryItems: [URLQueryItem] = [URLQueryItem(name: "postId", value: "1")]
         
         requestor.cancel()
         requestor.baseURLPath = "https://jsonplaceholder.typicode.com/comments"
         requestor.fetch(with: queryItems) { [weak self] data, error in
-            let completionInMainThread = { (completion: @escaping (Comment?) -> Void, result: Comment?) in
+            let completionInMainThread = { (completion: @escaping (RWComment?) -> Void, result: RWComment?) in
                 DispatchQueue.main.async {
                     completion(result)
                 }
@@ -29,7 +29,7 @@ class HomeCommentDataController {
             }
             
             do {
-                let comment: Comment? = try self?.parseComments(with: data)
+                let comment: RWComment? = try self?.parseComments(with: data)
                 completionInMainThread(completion, comment)
             } catch {
                 completionInMainThread(completion, nil)
@@ -37,18 +37,18 @@ class HomeCommentDataController {
         }
     }
     
-    func setComment(_ comment: Comment, completion: @escaping () -> Void) {
+    func setComment(_ comment: RWComment, completion: @escaping () -> Void) {
         completion()
     }
 }
 
 extension HomeCommentDataController {
-    private func parseComments(with data: Data?) throws -> Comment? {
+    private func parseComments(with data: Data?) throws -> RWComment? {
         guard let data = data, let jsons = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
             return nil
         }
         
         print(jsons)
-        return Comment()
+        return RWComment()
     }
 }
