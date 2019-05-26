@@ -154,6 +154,13 @@ extension UIColor {
         return UIColor(red: 73.0 / 255.0, green: 80.0 / 255.0, blue: 87.0 / 255.0, alpha: 1.0)
     }
 
+    class var purpleishBlue: UIColor {
+        return UIColor(red: 78, green: 92, blue: 239)
+    }
+    
+    class var silver: UIColor {
+        return UIColor(red: 222, green: 226, blue: 230)
+    }
 }
 
 extension Int {

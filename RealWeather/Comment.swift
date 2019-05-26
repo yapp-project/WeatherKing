@@ -9,6 +9,7 @@
 import UIKit
 
 class Comment: NSObject {
+    var id: String = ""
     var name: String = ""
     var comment: String = ""
     var distance: Int = 0
