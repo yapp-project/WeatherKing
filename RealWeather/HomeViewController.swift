@@ -131,7 +131,12 @@ extension HomeViewController {
                         self.commentViewController.weatherView.alpha = 0
                         self.bottomView.isHidden = false
                         self.commentViewController.view.backgroundColor = UIColor.white
-                        self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y + 54)
+                        if self.bottomArea != 0 {
+                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y + 64)
+                        }
+                        else {
+                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y)
+                        }
                         }, completion: { [unowned self] _ in
                             self.commentViewController.weatherViewHeightConstraint.constant = 0
                     })

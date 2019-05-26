@@ -80,7 +80,7 @@ class CommentCell: UICollectionViewCell {
         nameLabel.text = comment.name
         commentLabel.text = comment.comment
         distanceLabel.text = String(comment.distance) + "km"
-        timeLabel.text = String(comment.time) + "분"
+        timeLabel.text = String(comment.time) + "분전"
         likeBtn.isChecked = comment.isLike
         hateBtn.isChecked = comment.isHate
         likeBtn.setTitle(String(comment.likeCount), for: .normal)
