@@ -9,15 +9,27 @@
 import Foundation
 
 class RWUser {
-    let uniqueID: String
+    let userID: String
+    var uniqueID: String = ""
     let loginMethod: SignUpMethod
     var nickname: String = ""
     var location: RWLocation = RWLocation()
+    var region: RWRegion = RWRegion()
+    var salt: String = ""
+    var _id: String = ""
+    var __v: Int = 0
     
-    init(uniqueID: String, loginMethod: SignUpMethod) {
-        self.uniqueID = uniqueID
+    init(userID: String, loginMethod: SignUpMethod) {
+        self.userID = userID
         self.loginMethod = loginMethod
         
         location = RWLocationManager.shared.currentLocation
     }
+}
+
+class RWRegion {
+    var cityName: String = ""
+    var sidoName: String = ""
+    var townName: String = ""
+    var pos: String = ""
 }

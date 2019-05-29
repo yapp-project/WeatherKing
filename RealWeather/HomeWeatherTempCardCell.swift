@@ -18,7 +18,7 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var backView: UIView!
     @IBOutlet fileprivate weak var tableView: UITableView!
     
-    var timeTempDatas: [WeatherTempTimeData] = []
+    var timeTempDatas: [RWHomeTempTimeData] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,50 +26,19 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         tableView.register(nib, forCellReuseIdentifier: "HomeWeatherTempCardBackCell")
     }
     
-    func updateView(card: WeatherTempCard?) {
+    func updateView(card: RWHomeTempCard?) {
         backView.isHidden = true
         backView.alpha = 0.0
         
-        // MARK: 더미 데이터 삽입
-        let dummyData1 = WeatherTempTimeData()
-        dummyData1.timeTitle = "지금"
-        dummyData1.weatherImage = UIImage(named: "icCloudCopy7")
-        dummyData1.temperature = 10
-        
-        let dummyData2 = WeatherTempTimeData()
-        dummyData2.timeTitle = "늦은밤"
-        dummyData2.weatherImage = UIImage(named: "icCloudRain")
-        dummyData2.temperature = 12
-        
-        let dummyData3 = WeatherTempTimeData()
-        dummyData3.timeTitle = "한밤"
-        dummyData3.weatherImage = UIImage(named: "icCloudRain")
-        dummyData3.temperature = 12
-        
-        let dummyData4 = WeatherTempTimeData()
-        dummyData4.timeTitle = "새벽"
-        dummyData4.weatherImage = UIImage(named: "icCloudRain")
-        dummyData4.temperature = 10
-        
-        let dummyData5 = WeatherTempTimeData()
-        dummyData5.timeTitle = "아침"
-        dummyData5.weatherImage = UIImage(named: "icCloudRain")
-        dummyData5.temperature = 10
-        
-        let dummyData6 = WeatherTempTimeData()
-        dummyData6.timeTitle = "늦은 오전"
-        dummyData6.weatherImage = UIImage(named: "icCloudCopy7")
-        dummyData6.temperature = 10
-        
-        timeTempDatas = [dummyData1, dummyData2, dummyData3, dummyData4, dummyData5, dummyData6]
+        timeTempDatas = card?.timeTempDatas ?? []
         tableView.reloadData()
         
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
         cardView.backgroundColor = card?.mainColor
         titleLabel.text = "지금은 " + (card?.currentTemp.tempFormat ?? "")
         imageView.image = card?.type.image
-        descriptionLabel.text = card?.description
-        estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
+        descriptionLabel.text = card?.type.title
+//        estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
         minMaxTempLabel.text = (card?.minTemp.tempFormat ?? "") + " / " + (card?.maxTemp.tempFormat ?? "")
     }
 }
@@ -115,8 +84,8 @@ class HomeWeatherTempCardBackCell: UITableViewCell {
     @IBOutlet fileprivate weak var weatherImageView: UIImageView!
     @IBOutlet fileprivate weak var tempLabel: UILabel!
     
-    func updateView(data: WeatherTempTimeData) {
-        timeLabel.text = data.timeTitle
+    func updateView(data: RWHomeTempTimeData) {
+        timeLabel.text = data.time.title
         weatherImageView.image = data.weatherImage
         tempLabel.text = data.temperature.tempFormat
     }

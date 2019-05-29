@@ -11,7 +11,7 @@ import UIKit
 class HomeBestCommentCollectionCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     
-    var comments: [Comment] = [] {
+    var comments: [RWComment] = [] {
         didSet {
             collectionView?.register(cellTypes: [.bestComment])
             collectionView?.reloadData()

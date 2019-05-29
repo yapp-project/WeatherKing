@@ -14,7 +14,7 @@ class HomeCommentViewController: UIViewController {
     @IBOutlet weak var commentTextField: CommentTextField!
     @IBOutlet weak var textFieldView: UIView!
     
-    private var commentList: [Comment] = []
+    private var commentList: [RWComment] = []
     private var currentRange: Range = .recent
     
     private let dataController = HomeDataController()
@@ -32,14 +32,14 @@ class HomeCommentViewController: UIViewController {
         
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
         
-        commentList.append(Comment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 5, time: 1, likeCount: 121, hateCount: 50))
-        commentList.append(Comment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 5, time: 2, likeCount: 24, hateCount: 35))
-        commentList.append(Comment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 15, time: 3, likeCount: 53, hateCount: 16))
-        commentList.append(Comment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 1, time: 5, likeCount: 99, hateCount: 100))
-        commentList.append(Comment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 10, time: 5, likeCount: 341, hateCount: 23))
-        commentList.append(Comment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 15, time: 7, likeCount: 123, hateCount: 5))
-        commentList.append(Comment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 20, time: 8, likeCount: 1132, hateCount: 250))
-        commentList.append(Comment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 1, time: 12, likeCount: 121, hateCount: 144))
+//        commentList.append(RWComment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 5, time: 1, likeCount: 121, hateCount: 50))
+//        commentList.append(RWComment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 5, time: 2, likeCount: 24, hateCount: 35))
+//        commentList.append(RWComment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 15, time: 3, likeCount: 53, hateCount: 16))
+//        commentList.append(RWComment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 1, time: 5, likeCount: 99, hateCount: 100))
+//        commentList.append(RWComment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 10, time: 5, likeCount: 341, hateCount: 23))
+//        commentList.append(RWComment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 15, time: 7, likeCount: 123, hateCount: 5))
+//        commentList.append(RWComment(name: "코트요정", comment: "바람도 안불고 코트입기 딱이네요 ㅎㅎㅎ", distance: 20, time: 8, likeCount: 1132, hateCount: 250))
+//        commentList.append(RWComment(name: "지구멸망한다", comment: "갑자기 눈 우박 내리고 오늘 지구 최후의 날인것 같습니다", distance: 1, time: 12, likeCount: 121, hateCount: 144))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -138,28 +138,28 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
             return
         }
         
-        commentList.insert(Comment(name: "이름", comment: text, distance: 1, time: 1, likeCount: 0, hateCount: 0), at: 0)
+//        commentList.insert(RWComment(name: "이름", comment: text, distance: 1, time: 1, likeCount: 0, hateCount: 0), at: 0)
         commentCollectionView.reloadData()
         self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     func settingComment(index: Int) {
-        if commentList[index].name == "이름" {
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "댓글 삭제하기", style: .default, handler: { [unowned self]_ in
-                self.commentList.remove(at: index)
-                self.commentCollectionView.reloadData()
-                self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            }))
-            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
-        else {
-            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "댓글 신고하기", style: .default, handler: nil))
-            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }
+//        if commentList[index].name == "이름" {
+//            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//            alert.addAction(UIAlertAction(title: "댓글 삭제하기", style: .default, handler: { [unowned self]_ in
+//                self.commentList.remove(at: index)
+//                self.commentCollectionView.reloadData()
+//                self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+//            }))
+//            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
+//        else {
+//            let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//            alert.addAction(UIAlertAction(title: "댓글 신고하기", style: .default, handler: nil))
+//            alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+//            self.present(alert, animated: true, completion: nil)
+//        }
         
     }
     

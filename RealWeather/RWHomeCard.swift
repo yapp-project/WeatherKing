@@ -1,5 +1,5 @@
 //
-//  WeatherCard.swift
+//  RWHomeCard.swift
 //  RealWeather
 //
 //  Created by SangDon Kim on 30/03/2019.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol WeatherCard {
+protocol RWHomeCard {
     var mainColor: UIColor { get }
 }

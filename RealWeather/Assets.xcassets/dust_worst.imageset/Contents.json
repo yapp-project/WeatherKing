@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "scale" : "1x",
       "filename" : "dust_worst.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     },
     {
+      "scale" : "2x",
       "filename" : "dust_worst@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
+      "idiom" : "universal"
     },
     {
+      "scale" : "3x",
       "filename" : "dust_worst@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

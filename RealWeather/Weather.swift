@@ -14,3 +14,4 @@ class Weather {
   var comment: String = ""
   var todayWeather: [TodayWeather] = []
 }
+

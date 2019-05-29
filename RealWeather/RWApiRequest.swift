@@ -96,7 +96,7 @@ extension RWApiRequest {
             do {
                 try self?.printServerResponse(data, error: error)
             } catch {
-                print("wtf")
+                AppCommon.eprint("Failed to print server response due to \(error.localizedDescription)")
             }
             
             guard error == nil else {
