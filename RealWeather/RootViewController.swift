@@ -18,6 +18,8 @@ class RootViewController: UIViewController {
     fileprivate var homeNavigationController: UINavigationController!
     fileprivate var homeNavigationBarViewController: HomeNavigationBarViewController!
     
+    fileprivate let notification: NotificationCenter = NotificationCenter.default
+    
     var drawerWidth: CGFloat {
         let drawerRatio: CGFloat = drawerViewWidth.constant
         let screenWidth: CGFloat = UIScreen.main.bounds.width
@@ -25,6 +27,15 @@ class RootViewController: UIViewController {
     }
     
     var isDrawerOpen: Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        prepareObservers()
+    }
+    
+    private func prepareObservers() {
+        notification.addObserver(self, selector: #selector(updateView), name: .LoginSuccess, object: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Home" {
@@ -47,13 +58,16 @@ class RootViewController: UIViewController {
 }
 
 extension RootViewController {
+    @objc func updateView() {
+        homeNavigationBarViewController.updateView()
+    }
+    
     func removeSplashView() {
         splashView.removeFromSuperview()
     }
 }
 
 extension RootViewController {
-    
     func finishDraggingDrawer() {
         if isDrawerOpen {
             closeDrawer()

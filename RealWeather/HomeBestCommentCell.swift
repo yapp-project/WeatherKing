@@ -15,7 +15,9 @@ class HomeBestCommentCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var commentLabel: UILabel!
     
     func updateView(comment: RWComment?) {
-        
+        nameLabel?.text = comment?.nickname
+        descriptionLabel.text = comment?.subDescription
+        commentLabel.text = comment?.content
     }
 }
 

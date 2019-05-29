@@ -16,14 +16,14 @@ class RWHomeTempCard: RWHomeCard {
     let mainColor: UIColor = .lightishBlue
     var type: RWHomeTempDegree = .upTo5c
     var timeTempDatas: [RWHomeTempTimeData] = []
-    
+    var humidity: Int = 0
     var currentTemp: Double = 0.0
     var relativeTemp: Int = 0 // TODO: 2차 진행
     var minTemp: Int {
         return timeTempDatas.sorted { $0.minTemp > $1.minTemp }.first?.minTemp ?? 0
     }
     var maxTemp: Int {
-        return timeTempDatas.sorted { $0.temperature > $1.temperature }.first?.minTemp ?? 0
+        return timeTempDatas.sorted { $0.temperature > $1.temperature }.first?.temperature ?? 0
     }
 }
 
@@ -45,9 +45,9 @@ public enum RWHomeTempDegree {
             self = .upTo9c
         case 10...11:
             self = .upTo11c
-        case 12...16:
+        case 12..<16:
             self = .upTo16c
-        case 17..<19:
+        case 16..<19:
             self = .upTo19c
         case 19..<23:
             self = .upTo23c
@@ -312,6 +312,10 @@ public class RWHomeTempTimeData {
     var skyDegree: RWHomeSkyDegree = .sunny
     var rainDegree: RWHomeRainDegree?
     var snowDegree: RWHomeSnowDegree?
+    var tempMessages: [String] = []
+    var skyMessage: String = ""
+    var humidity: Int = 0
+    var windVelocity: Int = 0
     var rainPop: Int = 0
     var minTemp: Int = 0
 }
@@ -332,13 +336,14 @@ public extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
         if let skyIndex = (self["sky"] as? Int), let skyDegree = RWHomeSkyDegree(rawValue: skyIndex) {
             tempTimeData.skyDegree = skyDegree
         }
-        if let rainMillimeter = (self["rain"] as? Double), let rainDegree = RWHomeRainDegree(millimeter: rainMillimeter) {
+        if let rainMillimeter = (self["rainfallValue"] as? Double), let rainDegree = RWHomeRainDegree(millimeter: rainMillimeter) {
             tempTimeData.rainDegree = rainDegree
         }
-        if let snowCentimeter = (self["snow"] as? Double), let snowDegree = RWHomeSnowDegree(centimeter: snowCentimeter) {
+        if let snowCentimeter = (self["snowfallValue"] as? Double), let snowDegree = RWHomeSnowDegree(centimeter: snowCentimeter) {
             tempTimeData.snowDegree = snowDegree
         }
-        
+        tempTimeData.tempMessages = self["temp_message"] as? [String] ?? []
+        tempTimeData.skyMessage = (self["sky_message"] as? String) ?? ""
         tempTimeData.rainPop = (self["rainPop"] as? Int) ?? 0
         tempTimeData.temperature = (self["temp"] as? Int) ?? 0
         tempTimeData.minTemp = (self["lowestTemp"] as? Int) ?? 0

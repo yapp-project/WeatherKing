@@ -61,6 +61,8 @@
 		CE8B43CA2299AFA300EF8E0F /* RWHomeTempCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43C92299AFA300EF8E0F /* RWHomeTempCard.swift */; };
 		CE8B43CB2299B8A500EF8E0F /* NickNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8352DD229921B800F11842 /* NickNameViewController.swift */; };
 		CE8B43CC2299B8B900EF8E0F /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8352DB229921B800F11842 /* NotificationViewController.swift */; };
+		CE8B43D0229EEF1E00EF8E0F /* HomeWeatherLifeCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8B43CF229EEF1E00EF8E0F /* HomeWeatherLifeCardCell.xib */; };
+		CE8B43D2229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43D1229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift */; };
 		CEA910F322869C460010C45F /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F222869C460010C45F /* AppKey.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* RWComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* RWComment.swift */; };
@@ -174,6 +176,8 @@
 		CE8B43BE229857D700EF8E0F /* RWLoginDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWLoginDataController.swift; sourceTree = "<group>"; };
 		CE8B43C0229857FB00EF8E0F /* RWUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWUser.swift; sourceTree = "<group>"; };
 		CE8B43C92299AFA300EF8E0F /* RWHomeTempCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWHomeTempCard.swift; sourceTree = "<group>"; };
+		CE8B43CF229EEF1E00EF8E0F /* HomeWeatherLifeCardCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeWeatherLifeCardCell.xib; sourceTree = "<group>"; };
+		CE8B43D1229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWeatherLifeCardCell.swift; sourceTree = "<group>"; };
 		CE959F92228B365B00F7299D /* RealWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealWeather.entitlements; sourceTree = "<group>"; };
 		CEA910F222869C460010C45F /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 				CE522F4D224F9A2D000C26BF /* HomeWeatherTempCardCell.swift */,
 				CE522F4F224F9A52000C26BF /* HomeWeatherStatusCardCell.swift */,
 				CE522F51224F9A5E000C26BF /* HomeWeatherDustCardCell.swift */,
+				CE8B43D1229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift */,
 				CE31EB49224EAE30005CA188 /* HomeWeatherMenuCell.swift */,
 				CE31EB41224E81EB005CA188 /* HomeBestCommentCollectionCell.swift */,
 				CE31EB43224E8205005CA188 /* HomeBestCommentCell.swift */,
@@ -365,6 +370,7 @@
 				CE522F5F224FE69D000C26BF /* HomeWeatherStatusCardBackCell.xib */,
 				CE522F57224F9B0F000C26BF /* HomeWeatherDustCardCell.xib */,
 				CE522F61224FE76F000C26BF /* HomeWeatherDustCardBackCell.xib */,
+				CE8B43CF229EEF1E00EF8E0F /* HomeWeatherLifeCardCell.xib */,
 				CE31EB47224EAA5A005CA188 /* HomeWeatherMenuCell.xib */,
 				CE31EB38224E7B8B005CA188 /* HomeBestCommentCollectionCell.xib */,
 				CE31EB3A224E7B9A005CA188 /* HomeBestCommentCell.xib */,
@@ -584,6 +590,7 @@
 				E12698D72250044A00ECCEC3 /* Start.storyboard in Resources */,
 				CE203861222164A400ED9BA7 /* Assets.xcassets in Resources */,
 				CE31EB31224E4D6F005CA188 /* Settings.storyboard in Resources */,
+				CE8B43D0229EEF1E00EF8E0F /* HomeWeatherLifeCardCell.xib in Resources */,
 				CE522F62224FE76F000C26BF /* HomeWeatherDustCardBackCell.xib in Resources */,
 				CE31EB39224E7B8B005CA188 /* HomeBestCommentCollectionCell.xib in Resources */,
 				CE522F60224FE69D000C26BF /* HomeWeatherStatusCardBackCell.xib in Resources */,
@@ -724,6 +731,7 @@
 				CE72AC582274776C00D77543 /* RWHomeStatusCard.swift in Sources */,
 				741C8E56224FC828001007AB /* CommentLikeButton.swift in Sources */,
 				CE72AC732274B2AC00D77543 /* UserDefaultsManager.swift in Sources */,
+				CE8B43D2229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift in Sources */,
 				CE72AC5E2274801200D77543 /* RWHomeLifeCard.swift in Sources */,
 				CE72AC5A227477A700D77543 /* RWHomeDustCard.swift in Sources */,
 				CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */,

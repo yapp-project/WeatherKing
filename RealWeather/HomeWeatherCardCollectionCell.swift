@@ -53,7 +53,7 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         menuCollectionView?.register(cellTypes: [.weatherMenu])
-        cardCollectionView?.register(cellTypes: [.weatherTempCard, .weatherDustCard, .weatherStatusCard])
+        cardCollectionView?.register(cellTypes: [.weatherTempCard, .weatherDustCard, .weatherStatusCard, .weatherLifeCard])
     }
 }
 
@@ -68,6 +68,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        // TODO: 한 타입으로 묶어서 정리 필요
         if collectionView == menuCollectionView {
             let cellType: HomeCellType = .weatherMenu
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
@@ -103,6 +104,14 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
             
             if let cardCell = cell as? HomeWeatherDustCardCell {
                 cardCell.updateView(card: dustCard)
+            }
+            return cell
+        } else if let lifeCard = cards[indexPath.item] as? RWHomeLifeCard {
+            let cellType: HomeCellType = .weatherLifeCard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            
+            if let cardCell = cell as? HomeWeatherLifeCardCell {
+                cardCell.updateView(card: lifeCard)
             }
             return cell
         } else {

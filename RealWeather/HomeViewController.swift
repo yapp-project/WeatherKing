@@ -13,6 +13,7 @@ public enum HomeCellType {
     case weatherTempCard
     case weatherStatusCard
     case weatherDustCard
+    case weatherLifeCard
     case weatherMenu
     case bestCommentCollection
     case bestComment
@@ -27,6 +28,8 @@ public enum HomeCellType {
             return "HomeWeatherStatusCardCell"
         case .weatherDustCard:
             return "HomeWeatherDustCardCell"
+        case .weatherLifeCard:
+            return "HomeWeatherLifeCardCell"
         case .weatherMenu:
             return "HomeWeatherMenuCell"
         case .bestCommentCollection:
@@ -40,7 +43,7 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return CGSize(width: UIScreen.main.bounds.width, height: 420)
-        case .weatherTempCard, .weatherStatusCard, .weatherDustCard:
+        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherLifeCard:
             return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
             return CGSize(width: 24, height: 17)
@@ -143,7 +146,11 @@ extension HomeViewController: UICollectionViewDataSource {
             weatherCollectionCell.selectedMenu = .today
             weatherCollectionCell.bgControlDelegate = self
         } else if let bestCommentCollectionCell = cell as? HomeBestCommentCollectionCell {
-            bestCommentCollectionCell.comments = homeData?.bestComments ?? []
+            if homeData?.bestComments.isEmpty ?? true {
+                bestCommentCollectionCell.comments = [HomeData.defaultComment]
+            } else {
+                bestCommentCollectionCell.comments = homeData?.bestComments ?? []
+            }
         }
 
         return cell

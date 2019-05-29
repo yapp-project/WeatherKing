@@ -75,14 +75,15 @@ extension RWLoginManager {
     }
     
     public func login(user: RWUser, completion: ((Bool) -> Void)? = nil) {
-        requestor.login(user: user) { [weak self] result in
-            if result ?? false {
-                self?.user = user
-                completion?(true)
-            } else {
+        requestor.login(user: user) { [weak self] resultUserInfo in
+            guard let resultUserInfo = resultUserInfo else {
                 self?.notification.post(name: .UserRegistrationNeeded, object: user)
                 completion?(false)
+                return
             }
+            
+            self?.user = resultUserInfo
+            completion?(true)
         }
     }
 }
@@ -107,17 +108,17 @@ extension RWLoginManager {
     private func restoreKakaoSession() {
         if KOSession.shared()?.isOpen() ?? false {
             KOSessionTask.userMeTask { [weak self] error, userInfo in
-                guard let uniqueID = userInfo?.id, error == nil else {
+                guard let userID = userInfo?.id, error == nil else {
                     return
                 }
-                let user: RWUser = RWUser(uniqueID: uniqueID, loginMethod: .kakao)
+                let user: RWUser = RWUser(userID: userID, loginMethod: .kakao)
                 self?.login(user: user)
             }
         }
     }
     private func restoreFacebookSession() {
-        if AccessToken.isCurrentAccessTokenActive, let uniqueID = AccessToken.current?.userID {
-            let user = RWUser(uniqueID: uniqueID, loginMethod: .facebook)
+        if AccessToken.isCurrentAccessTokenActive, let userID = AccessToken.current?.userID {
+            let user = RWUser(userID: userID, loginMethod: .facebook)
             login(user: user)
         }
     }
@@ -192,11 +193,11 @@ extension RWLoginManager {
         session.open { [weak self] error in
             if session.isOpen() {
                 KOSessionTask.userMeTask { [weak self] error, userInfo in
-                    guard let uniqueID = userInfo?.id, error == nil else {
+                    guard let userID = userInfo?.id, error == nil else {
                         return
                     }
                     
-                    let user: RWUser = RWUser(uniqueID: uniqueID, loginMethod: .kakao)
+                    let user: RWUser = RWUser(userID: userID, loginMethod: .kakao)
                     self?.login(user: user)
                 }
             }
@@ -208,7 +209,7 @@ extension RWLoginManager {
             guard let token = result?.token, error == nil else {
                 return
             }
-            let user = RWUser(uniqueID: token.userID, loginMethod: .facebook)
+            let user = RWUser(userID: token.userID, loginMethod: .facebook)
             self?.login(user: user)
         }
     }
@@ -263,7 +264,7 @@ extension RWLoginManager: GIDSignInDelegate {
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        let user = RWUser(uniqueID: user.userID, loginMethod: .google)
+        let user = RWUser(userID: user.userID, loginMethod: .google)
         login(user: user)
     }
 }

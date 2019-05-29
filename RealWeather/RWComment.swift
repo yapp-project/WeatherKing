@@ -12,6 +12,7 @@ public class RWComment: NSObject {
     var userID: String = ""
     var nickname: String = ""
     var content: String = ""
+    var subDescription: String = ""
     var timestamp: String = ""
     var expireAt: String = ""
     var distance: Int = 0

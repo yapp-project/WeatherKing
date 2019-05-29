@@ -91,13 +91,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="29° / 33°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBX-ga-3JE">
-                                <rect key="frame" x="114.5" y="101.5" width="48" height="16"/>
+                                <rect key="frame" x="24" y="101.5" width="48" height="16"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어제보다 2° 높음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kE6-sS-KeU">
-                                <rect key="frame" x="24" y="101.5" width="85.5" height="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kE6-sS-KeU">
+                                <rect key="frame" x="24" y="101.5" width="0.0" height="16"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -106,6 +106,7 @@
                         <color key="backgroundColor" red="0.31759470699999998" green="0.35950374600000001" blue="0.90201312300000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="48L-Dk-yMk" secondAttribute="bottom" constant="20" symbolic="YES" id="0Wb-vF-AVX"/>
+                            <constraint firstItem="MBX-ga-3JE" firstAttribute="top" secondItem="83t-dK-nQ9" secondAttribute="bottom" constant="4" id="365-Nv-bmW"/>
                             <constraint firstItem="GhP-TX-t8V" firstAttribute="leading" secondItem="fXl-HY-EXA" secondAttribute="leading" constant="24" id="6yX-W2-gG9"/>
                             <constraint firstItem="83t-dK-nQ9" firstAttribute="leading" secondItem="GhP-TX-t8V" secondAttribute="leading" id="QwU-Rg-Pvx"/>
                             <constraint firstAttribute="height" constant="360" id="bQq-Gq-l3z"/>
@@ -114,10 +115,10 @@
                             <constraint firstItem="GhP-TX-t8V" firstAttribute="top" secondItem="fXl-HY-EXA" secondAttribute="top" constant="36" id="hbU-x0-BdZ"/>
                             <constraint firstItem="kE6-sS-KeU" firstAttribute="leading" secondItem="83t-dK-nQ9" secondAttribute="leading" id="iO1-fL-fPQ"/>
                             <constraint firstItem="kE6-sS-KeU" firstAttribute="top" secondItem="83t-dK-nQ9" secondAttribute="bottom" constant="4" id="kQ7-Pb-AoR"/>
-                            <constraint firstItem="MBX-ga-3JE" firstAttribute="leading" secondItem="kE6-sS-KeU" secondAttribute="trailing" constant="5" id="rpo-2t-pQ2"/>
                             <constraint firstItem="83t-dK-nQ9" firstAttribute="top" secondItem="GhP-TX-t8V" secondAttribute="bottom" constant="8" id="v7T-oN-TxN"/>
                             <constraint firstAttribute="width" constant="295" id="xsT-zY-DIv"/>
                             <constraint firstAttribute="trailing" secondItem="48L-Dk-yMk" secondAttribute="trailing" id="yea-WV-u3L"/>
+                            <constraint firstItem="MBX-ga-3JE" firstAttribute="leading" secondItem="83t-dK-nQ9" secondAttribute="leading" id="zpL-s4-e2v"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>

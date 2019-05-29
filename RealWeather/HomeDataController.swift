@@ -9,6 +9,14 @@
 import Foundation
 
 struct HomeData {
+    static var defaultComment: RWComment = {
+        let comment = RWComment()
+        comment.nickname = "날씨왕"
+        comment.subDescription = "이 없다구? 지금 당장 날씨 톡톡 터치!"
+        comment.content = "오늘 날씨 어때요?\n날씨 톡톡에 날씨톡을 남겨주세요!"
+        return comment
+    }()
+    
     var bestComments: [RWComment]
     var homeCards: [HomeWeatherMenu: [RWHomeCard]]
 }
@@ -69,14 +77,14 @@ extension HomeDataController {
         let tomorrowStatusCard: RWHomeStatusCard = RWHomeStatusCard()
         
         // 온도 카드 생성, 생활 카드에도 이용
-        var tempDegree: RWHomeTempDegree?
+        var todayTempDegree: RWHomeTempDegree?
         if let current = jsons["current"] as? [String: Any] {
             // 기상 카드에도 이용
             let celsius: Double = (current["temp"] as? Double) ?? 0.0
-            //            let humidity: Int = (current["humidity"] as? Int) ?? 0
-            tempDegree = RWHomeTempDegree(celsius: celsius)
-            todayTempCard.type = tempDegree ?? .upTo5c
+            todayTempDegree = RWHomeTempDegree(celsius: celsius)
+            todayTempCard.type = todayTempDegree ?? .upTo5c
             todayTempCard.currentTemp = celsius
+            todayTempCard.humidity = (current["humid"] as? Int) ?? 0
         }
         
         // 온도, 기상 카드 생성 (오늘, 내일)
@@ -90,6 +98,7 @@ extension HomeDataController {
             todayTempCard.timeTempDatas = todayTempTimeDatas
         }
         
+        var tomorrowTempDegree: RWHomeTempDegree?
         var tomorrowTempTimeDatas: [RWHomeTempTimeData] = []
         if let tomorrow = jsons["tomorrow"] as? [String: Any] {
             RWHomeTempTime.allCases.forEach { time in
@@ -97,7 +106,14 @@ extension HomeDataController {
                     tomorrowTempTimeDatas.append(timeData)
                 }
             }
-            tomorrowTempCard.timeTempDatas = tomorrowTempTimeDatas
+            
+            // 내일 날씨는 정오를 기준으로 처리
+            let tomorrowAm12TimeData = tomorrowTempTimeDatas.filter { $0.time == .am12 }.first
+            let celsius: Double = Double(tomorrowAm12TimeData?.temperature ?? 0)
+            tomorrowTempDegree = RWHomeTempDegree(celsius: celsius)
+            tomorrowTempCard.type = tomorrowTempDegree ?? .upTo5c
+            tomorrowTempCard.currentTemp = celsius
+            tomorrowTempCard.humidity = tomorrowAm12TimeData?.humidity ?? 0
         }
         todayCards.append(todayTempCard)
         todayCards.append(todayStatusCard)
@@ -107,8 +123,8 @@ extension HomeDataController {
         // 미세 먼지 카드 생성 (오늘)
         if let fineDustData = jsons["fineDust"] as? [String: Any] {
             let dustCard = RWHomeDustCard()
-            dustCard.fineDustDegree = (fineDustData["pm10Value"] as? Int) ?? 0
-            dustCard.ultraDustDegree = (fineDustData["pm25Value"] as? Int) ?? 0
+            dustCard.fineDustDegree = Int(fineDustData["pm10Value"] as? String ?? "") ?? 0
+            dustCard.ultraDustDegree = Int(fineDustData["pm25Value"] as? String ?? "") ?? 0
             
             if let dustType = RWHomeDustType(fineDust: dustCard.fineDustDegree,
                                              ultraDust: dustCard.ultraDustDegree) {
@@ -119,6 +135,9 @@ extension HomeDataController {
         
         let todayLifeCard: RWHomeLifeCard = RWHomeLifeCard()
         let tomorrowLifeCard: RWHomeLifeCard = RWHomeLifeCard()
+        
+        todayLifeCard.tempDegree = todayTempDegree
+        tomorrowLifeCard.tempDegree = tomorrowTempDegree
         
         // 생활 카드 생성 (오늘, 내일)
         var todayHeatDegree: RWHomeHeatDegree?
