@@ -76,9 +76,9 @@ class CommentCell: UICollectionViewCell {
         delegate?.setCommentEmotion(.hate, index: indexPath.item)
     }
     
-    func fill(_ comment: RWComment, indexPath: IndexPath) {
-        nameLabel.text = comment.nickname
-        commentLabel.text = comment.content
+    func fill(_ comment: Comment, indexPath: IndexPath) {
+        nameLabel.text = comment.name
+        commentLabel.text = comment.comment
         distanceLabel.text = String(comment.distance) + "km"
         timeLabel.text = String(comment.time) + "분전"
         likeBtn.isChecked = comment.isLike

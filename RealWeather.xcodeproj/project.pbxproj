@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D4B42B4709040B185B8F2DB /* Pods_RealWeather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BC8BD9A6A7A53D5E56FF1F /* Pods_RealWeather.framework */; };
 		5FE0272AFB04BB2D2ED51711 /* Pods_RealWeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ED5FF12568596E92A7A3896 /* Pods_RealWeatherTests.framework */; };
+		741A6012229F7861006CA2A6 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741A6011229F7861006CA2A6 /* Comment.swift */; };
 		741C8E4E224FA155001007AB /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E4D224FA155001007AB /* CommentCell.swift */; };
 		741C8E50224FA1C0001007AB /* CommentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E4F224FA1C0001007AB /* CommentHeaderView.swift */; };
 		741C8E52224FA252001007AB /* CommentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E51224FA252001007AB /* CommentTextField.swift */; };
@@ -115,6 +116,7 @@
 		3ED5FF12568596E92A7A3896 /* Pods_RealWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		544F90312A3663011D4E4C46 /* Pods-RealWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealWeather.debug.xcconfig"; path = "Target Support Files/Pods-RealWeather/Pods-RealWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		686FF7FFDE183A24533A5ACF /* Pods-RealWeatherUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealWeatherUITests.release.xcconfig"; path = "Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.release.xcconfig"; sourceTree = "<group>"; };
+		741A6011229F7861006CA2A6 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		741C8E4D224FA155001007AB /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		741C8E4F224FA1C0001007AB /* CommentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentHeaderView.swift; sourceTree = "<group>"; };
 		741C8E51224FA252001007AB /* CommentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextField.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				CE72AC59227477A700D77543 /* RWHomeDustCard.swift */,
 				CE72AC5B2274798F00D77543 /* RWHomeWeekCard.swift */,
 				CE8B43C0229857FB00EF8E0F /* RWUser.swift */,
+				741A6011229F7861006CA2A6 /* Comment.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8B43CB2299B8A500EF8E0F /* NickNameViewController.swift in Sources */,
+				741A6012229F7861006CA2A6 /* Comment.swift in Sources */,
 				E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */,
 				CED56D13224A9671008CFD82 /* RWLoginManager.swift in Sources */,
 				CE8B43C1229857FB00EF8E0F /* RWUser.swift in Sources */,
@@ -954,7 +958,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RealWeather/RealWeather.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = AL9L4NE9HL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/External/Kakao",
@@ -982,7 +986,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = RealWeather/RealWeather.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9RVFJQPN7Q;
+				DEVELOPMENT_TEAM = AL9L4NE9HL;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/External/Kakao",

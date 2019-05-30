@@ -61,16 +61,30 @@ protocol HomeBGColorControlDelegate {
     func updateThemeColor(_ color: UIColor)
 }
 
+protocol HomeNavigationDelegate {
+    func hideNavigationBar()
+}
+
 class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     @IBOutlet fileprivate weak var backgroundColorView: UIView!
-    @IBOutlet fileprivate weak var commentContainer: UIView!
-    @IBOutlet fileprivate weak var commentBtn: UIButton!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomView: UIView!
     
+    fileprivate var panGesture = UIPanGestureRecognizer()
     fileprivate let homeDataController: HomeDataController = HomeDataController()
     fileprivate let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
     fileprivate var commentViewController: HomeCommentViewController!
+    fileprivate var commentHeaderView: CommentHeaderView!
     fileprivate var notification: NotificationCenter = NotificationCenter.default
+    fileprivate var screenHeight: CGFloat = 0
+    fileprivate var containerPoint: CGPoint = CGPoint.zero
+    fileprivate var bottomArea:CGFloat = 0
+    
+    var navigationDelegate: HomeNavigationDelegate?
     
     private var homeData: HomeData? {
         didSet {
@@ -113,8 +127,54 @@ extension HomeViewController {
 
 extension HomeViewController {
     func updateView() {
-        commentContainer.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 1, x: 0, y: -2, blur: 9, spread: 0)
         collectionView.reloadData()
+        screenHeight = UIScreen.main.bounds.height
+        if let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+            self.bottomArea = bottom
+        }
+        containerViewTopConstraint.constant = screenHeight - 54 - bottomArea
+        bottomHeightConstraint.constant = bottomArea
+        containerViewHeightConstraint.constant = screenHeight
+        containerPoint = self.containerView.frame.origin
+    }
+    
+    @objc func swipeContainer(_ sender: UIPanGestureRecognizer) {
+        let velocity = sender.velocity(in: self.commentHeaderView)
+        let translationY = sender.translation(in: containerView).y  // 팬제스쳐의 좌표
+        if abs(velocity.y) > abs(velocity.x) {
+            if sender.state == .ended {
+                if translationY <= 0 {  // up
+                    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
+                        self.navigationDelegate?.hideNavigationBar()
+                        self.commentHeaderView.isHiddenSubViews = false
+                        self.commentViewController.weatherViewHeightConstraint.constant = 64
+                        self.commentViewController.weatherView.alpha = 1
+                        self.commentViewController.view.backgroundColor = UIColor.purpleishBlue
+                        self.containerView.frame.origin = CGPoint(x: self.containerView.frame.origin.x, y: self.view.frame.origin.y)
+                    })
+                    
+                }
+                else {  // down
+                    
+                    UIView.animate(withDuration: 0.5, delay: 0, options: .allowUserInteraction, animations: { [unowned self] in
+                        self.navigationDelegate?.hideNavigationBar()
+                        self.commentHeaderView.isHiddenSubViews = true
+                        self.commentViewController.weatherView.alpha = 0
+                        self.commentViewController.view.backgroundColor = UIColor.white
+                        if self.bottomArea != 0 {
+                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y + 64)
+                        }
+                        else {
+                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y)
+                        }
+                        }, completion: { [unowned self] _ in
+                            self.commentViewController.weatherViewHeightConstraint.constant = 0
+                    })
+                    
+                }
+            }
+        }
+        
     }
 }
 
@@ -130,6 +190,7 @@ extension HomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HomeComment" {
             commentViewController = segue.destination as? HomeCommentViewController
+            commentViewController.commentDelegate = self
         }
     }
 }
@@ -174,6 +235,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
+    }
+}
+
+extension HomeViewController: CommentDelegate {
+    func getHeader(header: CommentHeaderView) {
+        commentHeaderView = header
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(swipeContainer(_:)))
+        commentHeaderView.addGestureRecognizer(panGesture)
     }
 }
 

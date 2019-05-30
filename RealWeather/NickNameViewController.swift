@@ -95,6 +95,7 @@ extension NickNameViewController {
                 self?.performSegue(withIdentifier: NotificationViewController.segueIdentifier, sender: nil)
             }
         }
+        self.performSegue(withIdentifier: NotificationViewController.segueIdentifier, sender: nil)
     }
     
     @IBAction func onNicknameClearBtnTapped(_ sender: UIButton) {
