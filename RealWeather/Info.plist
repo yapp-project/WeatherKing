@@ -69,7 +69,7 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>위치기반 GPS 실행</string>
+	<string>사용자 위치의 날씨 확인을 위해 위치 정보를 사용합니다.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -93,8 +93,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>NSLocationUsageDescription</key>
-	<string>사용자 위치의 날씨 확인을 위해 위치 정보를 사용합니다.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>사용자 위치의 날씨 확인을 위해 위치 정보를 사용합니다.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

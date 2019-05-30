@@ -84,17 +84,104 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFv-tl-nG4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1GB-fe-1C5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">개인정보처리방침
+
+
+1. 개인정보의 처리 목적 (‘http://weatherking.creatorlink.net/’이하 ‘날씨왕’) 은(는) 다음의 목적을 위하여 개인정보를 처리하고 있으며, 다음의 목적 이외의 용도로는 이용하지 않습니다.
+고객 가입의사 확인, 고객에 대한 서비스 제공에 따른 본인 식별.인증, 회원자격 유지 관리
+
+
+2. 개인정보의 처리 및 보유 기간
+
+① '날씨왕’ 은(는) 정보주체로부터 개인정보를 수집할 때 동의 받은 개인정보 보유․이용기간 또는 법령에 따른 개인정보 보유․이용기간 내에서 개인정보를 처리․보유합니다.
+
+② 구체적인 개인정보 처리 및 보유 기간은 다음과 같습니다.
+  -고객 가입 및 관리 : 서비스 이용계약 또는 회원가입 해지시까지
+
+
+
+3. 정보주체와 법정대리인의 권리·의무 및 그 행사방법 이용자는 개인정보주체로써 다음과 같은 권리를 행사할 수 있습니다.
+
+① 정보주체는 '날씨왕'에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.
+1. 개인정보 열람요구
+2. 오류 등이 있을 경우 정정 요구
+3. 삭제요구
+4. 처리정지 요구
+
+
+
+4. 처리하는 개인정보의 항목 작성 
+
+①'날씨왕'은(는) 다음의 개인정보 항목을 처리하고 있습니다.
+
+- 필수항목 : 로그인ID, 서비스 이용 기록, 접속 로그
+- 선택항목 :
+
+
+
+
+
+5. 개인정보의 파기('http://weatherking.creatorlink.net/' 이하 '날씨왕')은(는) 원칙적으로 개인정보 처리목적이 달성된 경우에는 지체없이 해당 개인정보를 파기합니다. 파기의 절차, 기한 및 방법은 다음과 같습니다.
+
+-파기절차
+이용자가 입력한 정보는 목적 달성 후 별도의 DB에 옮겨져(종이의 경우 별도의 서류) 내부 방침 및 기타 관련 법령에 따라 일정기간 저장된 후 혹은 즉시 파기됩니다. 이 때, DB로 옮겨진 개인정보는 법률에 의한 경우가 아니고서는 다른 목적으로 이용되지 않습니다.
+
+-파기기한
+이용자의 개인정보는 개인정보의 보유기간이 경과된 경우에는 보유기간의 종료일로부터 5일 이내에, 개인정보의 처리 목적 달성, 해당 서비스의 폐지, 사업의 종료 등 그 개인정보가 불필요하게 되었을 때에는 개인정보의 처리가 불필요한 것으로 인정되는 날로부터 5일 이내에 그 개인정보를 파기합니다.
+
+
+
+6. 개인정보 자동 수집 장치의 설치•운영 및 거부에 관한 사항
+
+① 날씨왕 은 개별적인 맞춤서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 ‘쿠기(cookie)’를 사용합니다. ② 쿠키는 웹사이트를 운영하는데 이용되는 서버(http)가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터내의 하드디스크에 저장되기도 합니다. 가. 쿠키의 사용 목적 : 이용자가 방문한 각 서비스와 웹 사이트들에 대한 방문 및 이용형태, 인기 검색어, 보안접속 여부, 등을 파악하여 이용자에게 최적화된 정보 제공을 위해 사용됩니다. 나. 쿠키의 설치•운영 및 거부 : 웹브라우저 상단의 도구&gt;인터넷 옵션&gt;개인정보 메뉴의 옵션 설정을 통해 쿠키 저장을 거부 할 수 있습니다. 다. 쿠키 저장을 거부할 경우 맞춤형 서비스 이용에 어려움이 발생할 수 있습니다.
+
+7. 개인정보 보호책임자 작성 
+
+① 날씨왕(‘http://weatherking.creatorlink.net/’이하 ‘날씨왕') 은(는) 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.
+
+
+▶ 개인정보 보호책임자
+성명 :날씨왕
+직책 :개발자
+직급 :개발자
+연락처 :weatherking4U@gmail.com
+※ 개인정보 보호 담당부서로 연결됩니다.
+
+▶ 개인정보 보호 담당부서
+부서명 : 날씨왕 기획부
+② 정보주체께서는 '날씨왕'의 서비스(또는 사업)을 이용하시면서 발생한 모든 개인정보 보호 관련 문의, 불만처리, 피해구제 등에 관한 사항을 개인정보 보호책임자 및 담당부서로 문의하실 수 있습니다. '날씨왕'은(는) 정보주체의 문의에 대해 지체 없이 답변 및 처리해드릴 것입니다.
+
+
+
+8. 개인정보 처리방침 변경 
+
+①이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행 7일 전부터 공지사항을 통하여 고지할 것입니다.
+
+
+
+9. 개인정보의 안전성 확보 조치 ('http://weatherking.creatorlink.net/'이하 '날씨왕')은(는) 개인정보보호법 제29조에 따라 다음과 같이 안전성 확보에 필요한 기술적/관리적 및 물리적 조치를 하고 있습니다.
+
+1. 개인정보 취급 직원의 최소화 및 교육
+개인정보를 취급하는 직원을 지정하고 담당자에 한정시켜 최소화 하여 개인정보를 관리하는 대책을 시행하고 있습니다.
+
+2. 문서보안을 위한 잠금장치 사용
+개인정보가 포함된 서류, 보조저장매체 등을 잠금장치가 있는 안전한 장소에 보관하고 있습니다.
+
+3. 비인가자에 대한 출입 통제
+개인정보를 보관하고 있는 물리적 보관 장소를 별도로 두고 이에 대해 출입통제 절차를 수립, 운영하고 있습니다.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="VFv-tl-nG4" firstAttribute="top" secondItem="XAX-oD-Wrt" secondAttribute="top" id="LUI-QZ-xWE"/>
-                            <constraint firstItem="VFv-tl-nG4" firstAttribute="leading" secondItem="XAX-oD-Wrt" secondAttribute="leading" id="deI-zx-Ujr"/>
-                            <constraint firstItem="XAX-oD-Wrt" firstAttribute="bottom" secondItem="VFv-tl-nG4" secondAttribute="bottom" id="eoX-Nx-ALt"/>
-                            <constraint firstItem="XAX-oD-Wrt" firstAttribute="trailing" secondItem="VFv-tl-nG4" secondAttribute="trailing" id="ren-hU-YVh"/>
+                            <constraint firstItem="1GB-fe-1C5" firstAttribute="leading" secondItem="XAX-oD-Wrt" secondAttribute="leading" id="Dmn-Hb-T1Y"/>
+                            <constraint firstItem="1GB-fe-1C5" firstAttribute="top" secondItem="XAX-oD-Wrt" secondAttribute="top" id="kza-ka-lOh"/>
+                            <constraint firstItem="XAX-oD-Wrt" firstAttribute="bottom" secondItem="1GB-fe-1C5" secondAttribute="bottom" id="oGm-h2-6Lg"/>
+                            <constraint firstItem="XAX-oD-Wrt" firstAttribute="trailing" secondItem="1GB-fe-1C5" secondAttribute="trailing" id="yPE-aN-RCa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XAX-oD-Wrt"/>
                     </view>
@@ -107,7 +194,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="webview" destination="VFv-tl-nG4" id="WhZ-zZ-XTd"/>
+                        <outlet property="textview" destination="1GB-fe-1C5" id="7Yl-H6-koM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dwt-UO-19b" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,7 +223,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Y4S-gK-31p">
-                                <rect key="frame" x="90" y="167" width="285" height="444.5"/>
+                                <rect key="frame" x="90" y="167" width="285" height="500.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="XDz-IE-I9v">
                                     <size key="itemSize" width="337" height="63"/>
@@ -189,9 +276,6 @@
                                 <state key="normal" title="로그아웃">
                                     <color key="titleColor" red="0.52549019610000003" green="0.5568627451" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="LogoutAction:" destination="ea4-J6-UZB" eventType="touchUpInside" id="tYh-bg-D4F"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iJm-RW-c7v">
                                 <rect key="frame" x="208" y="620.5" width="77" height="26"/>
@@ -231,9 +315,6 @@
                                 <state key="normal" title="v1.0.0">
                                     <color key="titleColor" red="0.52549019610000003" green="0.5568627451" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="VersionAction:" destination="ea4-J6-UZB" eventType="touchUpInside" id="qfZ-UL-n6s"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -257,7 +338,7 @@
                             <constraint firstItem="LX4-eg-OEo" firstAttribute="leading" secondItem="0gN-es-YPU" secondAttribute="trailing" constant="10" id="p9W-yw-TcB"/>
                             <constraint firstItem="3jc-Tw-PI3" firstAttribute="centerY" secondItem="O2N-Ej-yef" secondAttribute="centerY" multiplier="19/10" id="tH5-Pj-vjm"/>
                             <constraint firstItem="DFW-0f-o7M" firstAttribute="top" secondItem="SpN-FA-rXf" secondAttribute="top" constant="70" id="xKe-fU-yB4"/>
-                            <constraint firstItem="Y4S-gK-31p" firstAttribute="height" secondItem="O2N-Ej-yef" secondAttribute="height" multiplier="2/3" id="xhd-ek-5Xt"/>
+                            <constraint firstItem="Y4S-gK-31p" firstAttribute="height" secondItem="O2N-Ej-yef" secondAttribute="height" multiplier="3/4" id="xhd-ek-5Xt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SpN-FA-rXf"/>
                     </view>
@@ -334,7 +415,7 @@
                                                     </constraints>
                                                     <color key="textColor" red="0.30588235289999999" green="0.36078431370000003" blue="0.93725490199999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" spellCheckingType="no"/>
                                                     <connections>
                                                         <action selector="setTime:" destination="r0e-FT-P3c" eventType="editingDidEnd" id="fgG-gU-ohb"/>
                                                     </connections>

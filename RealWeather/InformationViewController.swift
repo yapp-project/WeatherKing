@@ -9,15 +9,13 @@
 import UIKit
 
 class InformationViewController: UIViewController {
-
-    @IBOutlet weak var webview: UIWebView!
+    
+    @IBOutlet weak var textview: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let url = URL(string: "https://docs.google.com/spreadsheets/d/1h-uogVD5AXyOrTxkjmllUoa_HBIVWvZM/edit#gid=1851164093")
-        let requestObj = URLRequest(url: url!)
-        webview.loadRequest(requestObj)
+        
+        textview.isEditable = false
     }
     @IBAction func backAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)

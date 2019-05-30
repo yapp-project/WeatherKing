@@ -45,26 +45,6 @@ class DrawerViewController: UIViewController {
             present(nextView,animated: true,completion: nil)
         }
     }
-    @IBAction func LogoutAction(_ sender: Any) {
-        let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: "", preferredStyle: .alert)
-        let cancelBtn = UIAlertAction(title: "취소", style: .default, handler: nil)
-        let logoutBtn = UIAlertAction(title: "로그아웃", style: .default, handler: { Action in
-            
-            })
-        alert.addAction(cancelBtn)
-        alert.addAction(logoutBtn)
-        self.present(alert,animated: true, completion: nil)
-    }
-    @IBAction func VersionAction(_ sender: Any) {
-        let alert = UIAlertController(title: "최신버전이 출시되었습니다.업데이트 후 이용해주세요.", message: "", preferredStyle: .alert)
-        let cancelBtn = UIAlertAction(title: "취소", style: .default, handler: nil)
-        let updateBtn = UIAlertAction(title: "업데이트하기", style: .default, handler: { Action in
-            
-            })
-        alert.addAction(cancelBtn)
-        alert.addAction(updateBtn)
-        self.present(alert,animated: true, completion: nil)
-    }
     
     @IBAction func InformationAction(_ sender: Any) {
         if let nextView = storyboard?.instantiateViewController(withIdentifier: "webviewNavigation") {
@@ -163,7 +143,7 @@ extension DrawerViewController: UICollectionViewDelegate {
             let alert = UIAlertController(title: "날씨왕이 도움 되고 있다면 앱스토어에 리뷰를 남겨주세요! 날씨왕 팀에게 큰 힘이 될거에요.", message: "", preferredStyle: .alert)
             let afterBtn = UIAlertAction(title: "나중에 하기", style: .default, handler: nil)
             let reviewBtn = UIAlertAction(title: "리뷰 쓰러 가기", style: .default, handler: { Action in
-                let appID = "109099ab6216b849f8ac4ee65bf3510761637288"
+                let appID = "109099ab6216b849f8ac4ee65bf3510761637288"  //  수정
                 
                 if let reviewURL = URL(string: "itms-apps://itunes.apple.com/app/itunes-u/id\(appID)?ls=1&mt=8&action=write-review"), UIApplication.shared.canOpenURL(reviewURL) {
                     if #available(iOS 10.0, *) {
@@ -190,7 +170,7 @@ extension DrawerViewController: MFMailComposeViewControllerDelegate {
     func configuredMailComposeViewController() -> MFMailComposeViewController {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients(["uhh09@naver.com"])
+        mailComposerVC.setToRecipients(["weatherking4u@gmail.com"])
         mailComposerVC.setSubject("피드백 보내기")
         mailComposerVC.setMessageBody("", isHTML: false)
         

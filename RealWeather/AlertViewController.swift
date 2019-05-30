@@ -43,6 +43,7 @@ enum AlertSettingCellType: CaseIterable {
 class AlertViewController: UIViewController {
     
     @IBOutlet fileprivate weak var tableView: UITableView!
+    
     let morningDatePicker = UIDatePicker()
     let nightDatePicker = UIDatePicker()
     let toolbar = UIToolbar()
@@ -113,9 +114,6 @@ class AlertViewController: UIViewController {
         if let formatter = date {
             morningDatePicker.date = formatter
         }
-//        guard let time = sender.indexPath() else {
-//            return
-//        }
         
     }
     
@@ -164,12 +162,22 @@ extension AlertViewController: UITableViewDataSource {
                 formatter.dateFormat = "a h:mm"
                 formatter.amSymbol = "오전"
                 formatter.pmSymbol = "오후"
+                
                 let date = formatter.date(from: "오전 7:00")
                 morningDatePicker.date = date!
             } else {
                 buttonCell.timeField.inputView = nightDatePicker
                 buttonCell.timeField.inputAccessoryView = toolbar
                 buttonCell.updateView(title: cellType.title, time: nightTimeText ?? "")
+                let formatter = DateFormatter()
+                formatter.dateStyle = .none
+                formatter.timeStyle = .short
+                formatter.dateFormat = "a h:mm"
+                formatter.amSymbol = "오전"
+                formatter.pmSymbol = "오후"
+                
+                let date = formatter.date(from: "오후 10:00")
+                nightDatePicker.date = date!
             }
         }
         return cell
