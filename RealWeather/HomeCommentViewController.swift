@@ -47,10 +47,14 @@ class HomeCommentViewController: UIViewController {
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
         self.dataController.requestComment(completion: { [unowned self] data in
             guard var data = data else {
-                self.emptyCommentImg.isHidden = true
-                self.emptyCommentLabel.isHidden = true
+                self.commentList.removeAll()
+                self.commentCollectionView.reloadData()
+                self.emptyCommentImg.isHidden = false
+                self.emptyCommentLabel.isHidden = false
                 return
             }
+            self.emptyCommentImg.isHidden = true
+            self.emptyCommentLabel.isHidden = true
             self.commentList.removeAll()
             data.sort(by: { $0.likeCount > $1.likeCount })
             self.commentList = data
@@ -58,28 +62,28 @@ class HomeCommentViewController: UIViewController {
         })
         
         self.commentCollectionView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.5, x: 0, y: -2, blur: 9, spread: 0)
-//        self.commentCollectionView.layer.masksToBounds = false
-//        self.commentCollectionView.layer.shadowColor = UIColor.shadowColor30.cgColor
-//        self.commentCollectionView.layer.shadowOpacity = 0.5
-//        self.commentCollectionView.layer.shadowOffset = CGSize(width: 0, height: -2)
-//        self.commentCollectionView.layer.shadowRadius = 9 / 2.0
-//        self.commentCollectionView.layer.shadowPath = nil
-//
-//        let timer = Timer.scheduledTimer(withTimeInterval: 100.0, repeats: true, block: { [unowned self] _ in
-//            self.dataController.requestComment(completion: { [unowned self] data in
-//                guard var data = data else {
-//                    self.commentList.removeAll()
-//                    self.commentCollectionView.reloadData()
-//                    self.emptyCommentImg.isHidden = false
-//                    self.emptyCommentLabel.isHidden = false
-//                    return
-//                }
-//                self.commentList.removeAll()
-//                data.sort(by: { $0.likeCount < $1.likeCount })
-//                self.commentList = data
-//                self.setRange(.recent)
-//            })
-//        })
+        //        self.commentCollectionView.layer.masksToBounds = false
+        //        self.commentCollectionView.layer.shadowColor = UIColor.shadowColor30.cgColor
+        //        self.commentCollectionView.layer.shadowOpacity = 0.5
+        //        self.commentCollectionView.layer.shadowOffset = CGSize(width: 0, height: -2)
+        //        self.commentCollectionView.layer.shadowRadius = 9 / 2.0
+        //        self.commentCollectionView.layer.shadowPath = nil
+        //
+        //        let timer = Timer.scheduledTimer(withTimeInterval: 100.0, repeats: true, block: { [unowned self] _ in
+        //            self.dataController.requestComment(completion: { [unowned self] data in
+        //                guard var data = data else {
+        //                    self.commentList.removeAll()
+        //                    self.commentCollectionView.reloadData()
+        //                    self.emptyCommentImg.isHidden = false
+        //                    self.emptyCommentLabel.isHidden = false
+        //                    return
+        //                }
+        //                self.commentList.removeAll()
+        //                data.sort(by: { $0.likeCount < $1.likeCount })
+        //                self.commentList = data
+        //                self.setRange(.recent)
+        //            })
+        //        })
         
         
         

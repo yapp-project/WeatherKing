@@ -115,7 +115,6 @@ extension HomeViewController {
         if abs(velocity.y) > abs(velocity.x) {
             if sender.state == .ended {
                 if translationY <= 0 {  // up
-//                    bottomView.isHidden = true
                     UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
                         self.commentHeaderView.isHiddenSubViews = false
                         self.commentViewController.weatherViewHeightConstraint.constant = 64
@@ -130,7 +129,6 @@ extension HomeViewController {
                     UIView.animate(withDuration: 0.5, delay: 0, options: .allowUserInteraction, animations: { [unowned self] in
                         self.commentHeaderView.isHiddenSubViews = true
                         self.commentViewController.weatherView.alpha = 0
-//                        self.bottomView.isHidden = false
                         self.commentViewController.view.backgroundColor = UIColor.white
                         if self.bottomArea != 0 {
                             self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y + 64)
