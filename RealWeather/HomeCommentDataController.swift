@@ -13,18 +13,25 @@ enum CommentState: String {
     case dislike
     case cancelLike = "like/cancel"
     case cancelDisLike = "dislike/cancel"
-    case report = "accusation"
+}
+
+enum Accuse: String {
+    case abuse = "0"
+    case advertise = "1"
+    case unrelate = "2"
 }
 
 class HomeCommentDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
     func requestComment(completion: @escaping ([Comment]?) -> Void) {
-        let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: "dlflwjflehfdkeksu"),
-                                          URLQueryItem(name: "type", value: "1")]
+        guard let user = RWLoginManager.shared.user else { completion(nil); return }
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: user.uniqueID),
+                                          URLQueryItem(name: "type", value: String(user.loginMethod.rawValue))]
         
         requestor.cancel()
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/list"
+        requestor.method = .get
         requestor.fetch(with: queryItems) { [weak self] data, error in
             let completionInMainThread = { (completion: @escaping ([Comment]?) -> Void, result: [Comment]?) in
                 DispatchQueue.main.async {
@@ -46,21 +53,20 @@ class HomeCommentDataController {
         }
     }
     
-    func setComment(_ comment: String, completion: @escaping (Error?) -> Void) {
-        let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: "dlflwjflehfdkeksu"),
-                                          URLQueryItem(name: "type", value: "1"), URLQueryItem(name: "nickname", value: "날씨왕"), URLQueryItem(name: "content", value: comment)]
+    func writeComment(_ comment: String, completion: @escaping (Error?) -> Void) {
+        guard let user = RWLoginManager.shared.user else { completion(nil); return }
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: user.uniqueID),
+                                          URLQueryItem(name: "type", value: String(user.loginMethod.rawValue)), URLQueryItem(name: "nickname", value: user.nickname), URLQueryItem(name: "content", value: comment)]
         requestor.cancel()
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/write"
         requestor.method = .post
         requestor.fetch(with: queryItems, completion: { data, error in
             if data == nil, let error = error {
-                completion(error)
+                DispatchQueue.main.async {
+                    completion(error)
+                }
                 return
             }
-            if data == nil {
-                print("data는 nil")
-            }
-            
             DispatchQueue.main.async {
                 completion(nil)
             }
@@ -68,33 +74,38 @@ class HomeCommentDataController {
     }
     
     
-    func reactComment(_ id: String, state: CommentState, completion: @escaping (Error?) -> Void) {
+    func reactComment(_ id: String, state: CommentState, completion: @escaping (Data?) -> Void) {
         requestor.cancel()
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/" + state.rawValue + "/" + id
         requestor.method = .put
         requestor.fetch(with: [], completion: { data, error in
-            if data == nil, let error = error {
-                completion(error)
-                return
-            }
             DispatchQueue.main.async {
-                completion(nil)
+                completion(data)
             }
         })
     }
     
-    func removeComment(_ id: String, completion: @escaping (Error?) -> Void) {
-        let queryItems: [URLQueryItem] = [URLQueryItem(name: "id", value: id), URLQueryItem(name: "uid", value: "ee"), URLQueryItem(name: "type", value: "1")]
+    func accuseComment(_ id: String, state: Accuse, completion: @escaping (Data?) -> Void) {
+        requestor.cancel()
+        requestor.baseURLPath = "http://15.164.86.162:3000/api/board/accusation/" + id + "/" + state.rawValue
+        requestor.method = .put
+        requestor.fetch(with: [], completion: { data, error in
+            DispatchQueue.main.async {
+                completion(data)
+            }
+        })
+    }
+    
+    
+    func removeComment(_ id: String, completion: @escaping (Data?) -> Void) {
+        guard let user = RWLoginManager.shared.user else { completion(nil); return }
+        let queryItems: [URLQueryItem] = [URLQueryItem(name: "id", value: id), URLQueryItem(name: "uid", value: user.uniqueID), URLQueryItem(name: "type", value: String(user.loginMethod.rawValue))]
         requestor.cancel()
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/removal"
         requestor.method = .delete
         requestor.fetch(with: queryItems, completion: { data, error in
-            if data == nil, let error = error {
-                completion(error)
-                return
-            }
             DispatchQueue.main.async {
-                completion(nil)
+                completion(data)
             }
         })
     }
@@ -121,10 +132,12 @@ extension HomeCommentDataController {
             let time = item["timestamp"] as? String ?? ""
             let date = formatter.date(from: time)
             let interval = Date().timeIntervalSince(date ?? Date())
-            comment.time = Int(floor(interval / 60))
+            
+            comment.time = Int(interval >= 0 ? floor(interval / 60) : 0)
             comment.likeCount = item["like"] as? Int ?? 0
             comment.hateCount = item["dislike"] as? Int ?? 0
             comment.id = item["_id"] as? String ?? ""
+            comment.uniqueId = item["uid"] as? String ?? ""
             commentList.append(comment)
             //            }
         }

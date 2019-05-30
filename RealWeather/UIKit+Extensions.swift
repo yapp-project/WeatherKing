@@ -156,7 +156,7 @@ extension UIColor {
     }
     
     class var purpleishBlue: UIColor {
-        return UIColor(red: 78, green: 92, blue: 239)
+        return UIColor(red: 81, green: 92, blue: 230)
     }
     
     class var silver: UIColor {

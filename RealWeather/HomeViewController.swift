@@ -61,10 +61,6 @@ protocol HomeBGColorControlDelegate {
     func updateThemeColor(_ color: UIColor)
 }
 
-protocol HomeNavigationDelegate {
-    func hideNavigationBar()
-}
-
 class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     @IBOutlet fileprivate weak var backgroundColorView: UIView!
@@ -83,8 +79,7 @@ class HomeViewController: UIViewController {
     fileprivate var screenHeight: CGFloat = 0
     fileprivate var containerPoint: CGPoint = CGPoint.zero
     fileprivate var bottomArea:CGFloat = 0
-    
-    var navigationDelegate: HomeNavigationDelegate?
+    fileprivate var rootViewController: RootViewController?
     
     private var homeData: HomeData? {
         didSet {
@@ -97,6 +92,16 @@ class HomeViewController: UIViewController {
         prepareObservers()
         prepareCells()
         reloadData()
+        rootViewController = self.parent?.parent as? RootViewController
+        screenHeight = UIScreen.main.bounds.height
+        if let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+            self.bottomArea = bottom
+        }
+        containerViewTopConstraint.constant = screenHeight - 54 - bottomArea
+        bottomHeightConstraint.constant = bottomArea
+        containerViewHeightConstraint.constant = screenHeight
+        containerPoint = self.containerView.frame.origin
+        
     }
     
     fileprivate func prepareCells() {
@@ -128,14 +133,6 @@ extension HomeViewController {
 extension HomeViewController {
     func updateView() {
         collectionView.reloadData()
-        screenHeight = UIScreen.main.bounds.height
-        if let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
-            self.bottomArea = bottom
-        }
-        containerViewTopConstraint.constant = screenHeight - 54 - bottomArea
-        bottomHeightConstraint.constant = bottomArea
-        containerViewHeightConstraint.constant = screenHeight
-        containerPoint = self.containerView.frame.origin
     }
     
     @objc func swipeContainer(_ sender: UIPanGestureRecognizer) {
@@ -144,20 +141,27 @@ extension HomeViewController {
         if abs(velocity.y) > abs(velocity.x) {
             if sender.state == .ended {
                 if translationY <= 0 {  // up
+                    rootViewController?.homeNavigationBarViewController.view.isHidden = true
+                    self.commentViewController.weatherViewHeightConstraint.constant = 64
+                    self.commentViewController.setComment()
+//                    self.commentViewController.turnTimer(true)
                     UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
-                        self.navigationDelegate?.hideNavigationBar()
                         self.commentHeaderView.isHiddenSubViews = false
-                        self.commentViewController.weatherViewHeightConstraint.constant = 64
-                        self.commentViewController.weatherView.alpha = 1
                         self.commentViewController.view.backgroundColor = UIColor.purpleishBlue
                         self.containerView.frame.origin = CGPoint(x: self.containerView.frame.origin.x, y: self.view.frame.origin.y)
+                        }, completion: { [unowned self] _ in
+                            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
+                                self.commentViewController.weatherView.alpha = 1
+                            })
+                            self.commentViewController.commentCollectionView.layer.masksToBounds = true
+                            
                     })
-                    
                 }
                 else {  // down
-                    
+                    rootViewController?.homeNavigationBarViewController.view.isHidden = false
+                    self.commentViewController.commentCollectionView.layer.masksToBounds = false
+//                    self.commentViewController.turnTimer(false)
                     UIView.animate(withDuration: 0.5, delay: 0, options: .allowUserInteraction, animations: { [unowned self] in
-                        self.navigationDelegate?.hideNavigationBar()
                         self.commentHeaderView.isHiddenSubViews = true
                         self.commentViewController.weatherView.alpha = 0
                         self.commentViewController.view.backgroundColor = UIColor.white
@@ -169,6 +173,7 @@ extension HomeViewController {
                         }
                         }, completion: { [unowned self] _ in
                             self.commentViewController.weatherViewHeightConstraint.constant = 0
+                            
                     })
                     
                 }

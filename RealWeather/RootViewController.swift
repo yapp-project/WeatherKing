@@ -16,7 +16,7 @@ class RootViewController: UIViewController {
     
     fileprivate var drawerViewController: DrawerViewController!
     fileprivate var homeNavigationController: UINavigationController!
-    fileprivate var homeNavigationBarViewController: HomeNavigationBarViewController!
+    var homeNavigationBarViewController: HomeNavigationBarViewController!
     
     fileprivate let notification: NotificationCenter = NotificationCenter.default
     
@@ -40,7 +40,6 @@ class RootViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Home" {
             homeNavigationController = segue.destination as? UINavigationController
-            (segue.destination as? HomeViewController)?.navigationDelegate = self
         } else if segue.identifier == "Drawer" {
             drawerViewController = segue.destination as? DrawerViewController
         } else if segue.identifier == "HomeNavigationBar" {
@@ -99,12 +98,6 @@ extension RootViewController {
         }) { [weak self] _ in
             self?.isDrawerOpen = false
         }
-    }
-}
-
-extension RootViewController: HomeNavigationDelegate {
-    func hideNavigationBar() {
-        homeNavigationBarViewController.view.isHidden = !homeNavigationBarViewController.view.isHidden
     }
 }
 

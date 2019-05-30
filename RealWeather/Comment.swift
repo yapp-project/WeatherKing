@@ -18,6 +18,7 @@ class Comment: NSObject {
     var hateCount: Int = 0
     var isLike: Bool = false
     var isHate: Bool = false
+    var uniqueId: String = ""
     
     init(name: String, comment: String, distance: Int, time: Int, likeCount: Int, hateCount: Int) {
         self.name = name

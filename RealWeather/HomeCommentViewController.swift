@@ -22,9 +22,11 @@ class HomeCommentViewController: UIViewController {
     @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var emptyCommentImg: UIImageView!
     @IBOutlet weak var emptyCommentLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     private var commentList: [Comment] = []
     private var currentRange: Range = .recent
+    private var timer: Timer?
     var commentDelegate: CommentDelegate?
     
     private let dataController = HomeCommentDataController()
@@ -35,55 +37,19 @@ class HomeCommentViewController: UIViewController {
         self.commentCollectionView.dataSource = self
         self.commentCollectionView.delegate = self
         self.commentTextField.commentDelegate = self
+        self.indicator.hidesWhenStopped = true
         self.weatherViewHeightConstraint.constant = 0
         if let bottomArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
             bottomViewHeightConstraint.constant = bottomArea
         }
         
-        //        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpGesture(_:)))
-        //        swipe.direction = .down
-        //        commentCollectionView.addGestureRecognizer(swipe)
-        
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
-        self.dataController.requestComment(completion: { [unowned self] data in
-            guard var data = data else {
-                self.commentList.removeAll()
-                self.commentCollectionView.reloadData()
-                self.emptyCommentImg.isHidden = false
-                self.emptyCommentLabel.isHidden = false
-                return
-            }
-            self.emptyCommentImg.isHidden = true
-            self.emptyCommentLabel.isHidden = true
-            self.commentList.removeAll()
-            data.sort(by: { $0.likeCount > $1.likeCount })
-            self.commentList = data
-            self.setRange(.recent)
-        })
+        
         
         self.commentCollectionView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.5, x: 0, y: -2, blur: 9, spread: 0)
-        //        self.commentCollectionView.layer.masksToBounds = false
-        //        self.commentCollectionView.layer.shadowColor = UIColor.shadowColor30.cgColor
-        //        self.commentCollectionView.layer.shadowOpacity = 0.5
-        //        self.commentCollectionView.layer.shadowOffset = CGSize(width: 0, height: -2)
-        //        self.commentCollectionView.layer.shadowRadius = 9 / 2.0
-        //        self.commentCollectionView.layer.shadowPath = nil
+        
         //
-        //        let timer = Timer.scheduledTimer(withTimeInterval: 100.0, repeats: true, block: { [unowned self] _ in
-        //            self.dataController.requestComment(completion: { [unowned self] data in
-        //                guard var data = data else {
-        //                    self.commentList.removeAll()
-        //                    self.commentCollectionView.reloadData()
-        //                    self.emptyCommentImg.isHidden = false
-        //                    self.emptyCommentLabel.isHidden = false
-        //                    return
-        //                }
-        //                self.commentList.removeAll()
-        //                data.sort(by: { $0.likeCount < $1.likeCount })
-        //                self.commentList = data
-        //                self.setRange(.recent)
-        //            })
-        //        })
+       
         
         
         
@@ -129,25 +95,20 @@ class HomeCommentViewController: UIViewController {
         self.commentTextFieldBottomConstraint.constant = 0
     }
     
-    @objc func swipeUpGesture(_ sender: UISwipeGestureRecognizer) {
-    }
-    
     func registerComment() {
         guard let text = commentTextField.text, text.isEmpty == false else {
             return
         }
-        if commentList.count <= 3 {
-            commentList.append(Comment(name: "날씨왕", comment: text, distance: 1, time: 0, likeCount: 0, hateCount: 0))
-        }
-        else {
-            commentList.insert(Comment(name: "날씨왕", comment: text, distance: 1, time: 0, likeCount: 0, hateCount: 0), at: 3)
-        }
+        
         commentCollectionView.reloadData()
-        dataController.setComment(text, completion: { error in
-            
-            if error != nil {
-                // 예외처리
+        dataController.writeComment(text, completion: { [unowned self] error in
+            guard error == nil else {
+                let alert = UIAlertController(title: "오류", message: "네트워크 문제입니다. 다시 작성해주세요.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
             }
+            self.setComment()
         })
     }
     
@@ -166,6 +127,38 @@ class HomeCommentViewController: UIViewController {
             commentCollectionView.reloadData()
         }
     }
+    
+    func setComment() {
+        self.indicator.isHidden = false
+        self.indicator.startAnimating()
+        self.dataController.requestComment(completion: { [unowned self] data in
+            self.indicator.isHidden = true
+            guard var data = data else {
+                self.commentList.removeAll()
+                self.commentCollectionView.reloadData()
+                self.emptyCommentImg.isHidden = false
+                self.emptyCommentLabel.isHidden = false
+                return
+            }
+            self.emptyCommentImg.isHidden = true
+            self.emptyCommentLabel.isHidden = true
+            self.commentList.removeAll()
+            data.sort(by: { $0.likeCount > $1.likeCount })
+            self.commentList = data
+            self.setRange(.recent)
+        })
+    }
+    
+    func turnTimer(_ isOn: Bool) {
+        if isOn {
+            timer = Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true, block: { [unowned self] _ in
+                self.setComment()
+            })
+        }
+        else {
+            timer?.invalidate()
+        }
+    }
 }
 
 extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -176,7 +169,8 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "commentCell", for: indexPath) as? CommentCell else { fatalError() }
         let index = indexPath.item
-        if index < 3 { cell.isHiddenCrown = false }
+        
+        if commentList.count > 3 && index < 3 && commentList[index].likeCount > 0 { cell.isHiddenCrown = false }
         cell.fill(commentList[index], indexPath: indexPath)
         cell.delegate = self
         return cell
@@ -225,9 +219,11 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
             commentList[index].isHate = !commentList[index].isHate
             commentCollectionView.reloadData()
         }
-        dataController.reactComment(commentList[index].id, state: state, completion: { error in
-            if error != nil {
-                // 예외처리
+        dataController.reactComment(commentList[index].id, state: state, completion: { data in
+            if data == nil {
+                let alert = UIAlertController(title: "오류", message: "네트워크 문제입니다. 다시 시도해주세요.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
             }
         })
     }
@@ -235,20 +231,24 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
     
     
     func settingComment(index: Int) {
-        if commentList[index].name == "이름" {
+        guard let userId = RWLoginManager.shared.user?.uniqueID else { return }
+        if commentList[index].uniqueId == userId   {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "댓글 삭제하기", style: .destructive, handler: { [unowned self] _ in
                 let removeAlert = UIAlertController(title: nil, message: "댓글을 삭제하시겠어요?", preferredStyle: .alert)
                 removeAlert.addAction(UIAlertAction(title: "취소", style: .default, handler: nil))
                 removeAlert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [unowned self] _ in
-                    self.commentList.remove(at: index)
-                    self.commentCollectionView.reloadData()
-                    self.commentCollectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-                    self.dataController.removeComment(self.commentList[index].id, completion: { error in
-                        if error != nil {
-                            // 예외처리
+                    self.dataController.removeComment(self.commentList[index].id, completion: { [unowned self] data in
+                        guard data != nil else {
+                            let alert = UIAlertController(title: "오류", message: "네트워크 문제입니다. 다시 시도해주세요.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                            return
                         }
+                        self.setComment()
                     })
+                    
+                    
                 }))
                 alert.dismiss(animated: true, completion: nil)
                 self.present(removeAlert, animated: true, completion: nil)
@@ -259,10 +259,27 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
         else {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "댓글 신고하기", style: .destructive, handler: { [unowned self] _ in
+                var accuseState: Accuse = .abuse
+                let completion: (Accuse) -> () = { [unowned self] state in
+                    self.dataController.accuseComment(self.commentList[index].id, state: state, completion: { [unowned self] data in
+                        if data == nil {
+                            let alert = UIAlertController(title: "오류", message: "네트워크 문제입니다. 다시 시도해주세요.", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                        
+                    })
+                }
                 let reportAlert = UIAlertController(title: nil, message: "신고하는 이유가 무엇인가요?", preferredStyle: .actionSheet)
-                reportAlert.addAction(UIAlertAction(title: "욕설 또는 음란성", style: .destructive, handler: nil))
-                reportAlert.addAction(UIAlertAction(title: "홍보 또는 개인정보 노출", style: .destructive, handler: nil))
-                reportAlert.addAction(UIAlertAction(title: "날씨와 무관한 내용", style: .destructive, handler: nil))
+                reportAlert.addAction(UIAlertAction(title: "욕설 또는 음란성", style: .destructive, handler: { _ in
+                    completion(.abuse)
+                }))
+                reportAlert.addAction(UIAlertAction(title: "홍보 또는 개인정보 노출", style: .destructive, handler: { _ in
+                    completion(.advertise)
+                }))
+                reportAlert.addAction(UIAlertAction(title: "날씨와 무관한 내용", style: .destructive, handler: { _ in
+                    completion(.unrelate)
+                }))
                 reportAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
                 alert.dismiss(animated: true, completion: nil)
                 self.present(reportAlert, animated: true, completion: nil)

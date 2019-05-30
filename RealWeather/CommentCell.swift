@@ -37,8 +37,8 @@ class CommentCell: UICollectionViewCell {
                 nameLabelLeadingConstraint.constant = 0
             }
             else {
-                crownImgWidthConstraint.constant = 12
                 nameLabelLeadingConstraint.constant = 4
+                crownImgWidthConstraint.constant = 12
             }
         }
     }
