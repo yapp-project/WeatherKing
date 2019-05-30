@@ -40,11 +40,24 @@ class CommentHeaderView: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.roundCorners(corners: [.topLeft, .topRight], radius: 20)
-        self.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.3, x: 0, y: -2, blur: 9, spread: 0)
-        
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+//        initView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+//        initView()
+    }
+    
+    func initView() {
+//        self.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.3, x: 0, y: -2, blur: 9, spread: 0)
+        self.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+//        self.layer.shadowPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 20, height: 20)).cgPath
+        
+    }
     
     @IBAction func rangeDistance(_ sender: Any) {
         self.distanceBtn.setTitleColor(UIColor.charcoalGrey, for: .normal)

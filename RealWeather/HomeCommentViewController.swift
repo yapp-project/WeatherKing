@@ -56,6 +56,14 @@ class HomeCommentViewController: UIViewController {
             self.commentList = data
             self.setRange(.recent)
         })
+        
+        self.commentCollectionView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.5, x: 0, y: -2, blur: 9, spread: 0)
+//        self.commentCollectionView.layer.masksToBounds = false
+//        self.commentCollectionView.layer.shadowColor = UIColor.shadowColor30.cgColor
+//        self.commentCollectionView.layer.shadowOpacity = 0.5
+//        self.commentCollectionView.layer.shadowOffset = CGSize(width: 0, height: -2)
+//        self.commentCollectionView.layer.shadowRadius = 9 / 2.0
+//        self.commentCollectionView.layer.shadowPath = nil
 //
 //        let timer = Timer.scheduledTimer(withTimeInterval: 100.0, repeats: true, block: { [unowned self] _ in
 //            self.dataController.requestComment(completion: { [unowned self] data in
@@ -154,8 +162,6 @@ class HomeCommentViewController: UIViewController {
             commentCollectionView.reloadData()
         }
     }
-    
-    
 }
 
 extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -168,7 +174,6 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
         let index = indexPath.item
         if index < 3 { cell.isHiddenCrown = false }
         cell.fill(commentList[index], indexPath: indexPath)
-        
         cell.delegate = self
         return cell
     }
@@ -180,7 +185,7 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "commentHeader", for: indexPath) as? CommentHeaderView else { fatalError() }
-        header.roundCorners(corners: [.topLeft, .topRight], radius: 20)
+        header.initView()
         header.delegate = self
         header.isUserInteractionEnabled = true
         commentDelegate?.getHeader(header: header)

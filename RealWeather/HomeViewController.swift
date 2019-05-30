@@ -96,8 +96,9 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController {
     func updateView() {
-        //        containerView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 1, x: 0, y: -2, blur: 9, spread: 0)
+//        containerView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 1, x: 0, y: -2, blur: 9, spread: 0)
         
+        containerView.layer.cornerRadius = 10
         screenHeight = UIScreen.main.bounds.height
         if let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
             self.bottomArea = bottom
@@ -114,7 +115,7 @@ extension HomeViewController {
         if abs(velocity.y) > abs(velocity.x) {
             if sender.state == .ended {
                 if translationY <= 0 {  // up
-                    bottomView.isHidden = true
+//                    bottomView.isHidden = true
                     UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
                         self.commentHeaderView.isHiddenSubViews = false
                         self.commentViewController.weatherViewHeightConstraint.constant = 64
@@ -129,7 +130,7 @@ extension HomeViewController {
                     UIView.animate(withDuration: 0.5, delay: 0, options: .allowUserInteraction, animations: { [unowned self] in
                         self.commentHeaderView.isHiddenSubViews = true
                         self.commentViewController.weatherView.alpha = 0
-                        self.bottomView.isHidden = false
+//                        self.bottomView.isHidden = false
                         self.commentViewController.view.backgroundColor = UIColor.white
                         if self.bottomArea != 0 {
                             self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y + 64)
