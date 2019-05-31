@@ -37,6 +37,25 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                 <color key="backgroundColor" red="0.31759470701217651" green="0.35950374603271484" blue="0.90201312303543091" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vif-eN-nPf" customClass="HomeRefreshControl" customModule="RealWeather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="90" width="375" height="50"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="UqS-tg-F0d">
+                                        <rect key="frame" x="177.5" y="5" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="UqS-tg-F0d" firstAttribute="centerX" secondItem="vif-eN-nPf" secondAttribute="centerX" id="gKI-b2-TMR"/>
+                                    <constraint firstAttribute="height" constant="50" id="iSm-jn-clE"/>
+                                    <constraint firstItem="UqS-tg-F0d" firstAttribute="top" secondItem="vif-eN-nPf" secondAttribute="top" constant="5" id="oUy-O6-Jq0"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="onRefreshToggled:" destination="BYZ-38-t0r" eventType="valueChanged" id="Y3k-Da-or6"/>
+                                    <outlet property="loadingIndicator" destination="UqS-tg-F0d" id="Mi8-Kb-JsW"/>
+                                    <outlet property="scrollView" destination="sha-SK-tFY" id="jPe-4n-MTk"/>
+                                </connections>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sha-SK-tFY">
                                 <rect key="frame" x="0.0" y="90" width="375" height="577"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,12 +96,15 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZL8-Bx-3eA" secondAttribute="trailing" id="Oeu-Fl-HGv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sha-SK-tFY" secondAttribute="trailing" id="QIB-Oc-G6F"/>
                             <constraint firstItem="ZL8-Bx-3eA" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="QTb-JD-BbD"/>
+                            <constraint firstItem="vif-eN-nPf" firstAttribute="top" secondItem="sha-SK-tFY" secondAttribute="top" id="Sfx-qR-UAp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vif-eN-nPf" secondAttribute="trailing" id="TO3-Dq-EeT"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UsW-hT-tM5"/>
                             <constraint firstAttribute="bottom" secondItem="ybR-EE-WJB" secondAttribute="bottom" id="VEx-TR-QwH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ybR-EE-WJB" secondAttribute="trailing" id="XIF-ZA-Bxe"/>
                             <constraint firstAttribute="top" secondItem="ZL8-Bx-3eA" secondAttribute="top" id="Zy8-Db-7E6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="ZL8-Bx-3eA" secondAttribute="leading" id="a53-4D-tkj"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="70" id="c2K-vh-IWg"/>
+                            <constraint firstItem="vif-eN-nPf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cDc-7o-d6m"/>
                             <constraint firstAttribute="bottom" secondItem="sha-SK-tFY" secondAttribute="bottom" id="iRg-9X-XqB"/>
                             <constraint firstItem="3q9-OG-Ugi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u7H-qu-iks"/>
                         </constraints>
@@ -98,6 +120,7 @@
                         <outlet property="containerView" destination="3q9-OG-Ugi" id="AmF-CB-cgc"/>
                         <outlet property="containerViewHeightConstraint" destination="OFn-T7-ctG" id="Wvi-9e-wGB"/>
                         <outlet property="containerViewTopConstraint" destination="8bT-qd-ESO" id="thx-aw-IRQ"/>
+                        <outlet property="refreshControl" destination="vif-eN-nPf" id="tP8-Cl-p9A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

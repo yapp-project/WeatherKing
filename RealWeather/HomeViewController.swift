@@ -64,6 +64,7 @@ protocol HomeBGColorControlDelegate {
 class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     @IBOutlet fileprivate weak var backgroundColorView: UIView!
+    @IBOutlet fileprivate weak var refreshControl: HomeRefreshControl!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
@@ -102,7 +103,6 @@ class HomeViewController: UIViewController {
         containerViewHeightConstraint.constant = screenHeight
         self.view.layoutIfNeeded()
         containerPoint = self.containerView.frame.origin
-        
     }
     
     fileprivate func prepareCells() {
@@ -137,6 +137,7 @@ extension HomeViewController {
         homeDataController.requestData(for: location) { [weak self] homeData in
             RootViewController.shared().stopLoading()
             self?.homeData = homeData
+            completion?()
         }
     }
 }
@@ -209,6 +210,21 @@ extension HomeViewController {
             commentViewController = segue.destination as? HomeCommentViewController
             commentViewController.commentDelegate = self
         }
+    }
+}
+
+// MARK: IBActions
+extension HomeViewController {
+    @IBAction func onRefreshToggled(_ sender: HomeRefreshControl) {
+        reloadData {
+            sender.stopRefreshing()
+        }
+    }
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        refreshControl?.scrollRefeshControl(scrollView)
     }
 }
 

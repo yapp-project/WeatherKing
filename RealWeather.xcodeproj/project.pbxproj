@@ -65,6 +65,7 @@
 		CE8B43D2229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43D1229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift */; };
 		CE8B43DD22A17D0600EF8E0F /* RWLoadingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43DC22A17D0500EF8E0F /* RWLoadingController.swift */; };
 		CE8B43E122A18E2C00EF8E0F /* RWNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43E022A18E2C00EF8E0F /* RWNetworkManager.swift */; };
+		CE8B43E722A1972100EF8E0F /* HomeRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43E622A1972100EF8E0F /* HomeRefreshControl.swift */; };
 		CEA910F322869C460010C45F /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F222869C460010C45F /* AppKey.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* RWComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* RWComment.swift */; };
@@ -181,6 +182,7 @@
 		CE8B43D1229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeWeatherLifeCardCell.swift; sourceTree = "<group>"; };
 		CE8B43DC22A17D0500EF8E0F /* RWLoadingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWLoadingController.swift; sourceTree = "<group>"; };
 		CE8B43E022A18E2C00EF8E0F /* RWNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RWNetworkManager.swift; sourceTree = "<group>"; };
+		CE8B43E622A1972100EF8E0F /* HomeRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRefreshControl.swift; sourceTree = "<group>"; };
 		CE959F92228B365B00F7299D /* RealWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealWeather.entitlements; sourceTree = "<group>"; };
 		CEA910F222869C460010C45F /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
@@ -319,6 +321,7 @@
 		CE20388D22216E4500ED9BA7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CE8B43E622A1972100EF8E0F /* HomeRefreshControl.swift */,
 				CEB189DD2221866C00A1BB38 /* HomeDataController.swift */,
 				CE20388922216D9A00ED9BA7 /* HomeViewController.swift */,
 				CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */,
@@ -746,6 +749,7 @@
 				CE8B43E122A18E2C00EF8E0F /* RWNetworkManager.swift in Sources */,
 				CE8B43DD22A17D0600EF8E0F /* RWLoadingController.swift in Sources */,
 				CEB189D82221845500A1BB38 /* RWComment.swift in Sources */,
+				CE8B43E722A1972100EF8E0F /* HomeRefreshControl.swift in Sources */,
 				741C8E52224FA252001007AB /* CommentTextField.swift in Sources */,
 				CEB189DE2221866C00A1BB38 /* HomeDataController.swift in Sources */,
 				74415A012221B86A00AA3D67 /* Weather.swift in Sources */,
