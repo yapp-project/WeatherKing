@@ -53,7 +53,7 @@ class HomeWeatherCardCollectionCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         menuCollectionView?.register(cellTypes: [.weatherMenu])
-        cardCollectionView?.register(cellTypes: [.weatherTempCard, .weatherDustCard, .weatherStatusCard, .weatherLifeCard])
+        cardCollectionView?.register(cellTypes: [.weatherTempCard, .weatherDustCard, .weatherStatusCard, .weatherLifeCard, .weatherWeekCard])
     }
 }
 
@@ -112,6 +112,14 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
             
             if let cardCell = cell as? HomeWeatherLifeCardCell {
                 cardCell.updateView(card: lifeCard)
+            }
+            return cell
+        } else if let weekCard = cards[indexPath.item] as? RWHomeWeekCard {
+            let cellType: HomeCellType = .weatherWeekCard
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            
+            if let cardCell = cell as? HomeWeatherWeekCardCell {
+                cardCell.updateView(card: weekCard)
             }
             return cell
         } else {

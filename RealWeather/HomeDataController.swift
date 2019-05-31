@@ -172,37 +172,22 @@ extension HomeDataController {
         todayCards.append(todayLifeCard)
         tomorrowCards.append(tomorrowLifeCard)
         
-        if let weekSky = jsons["weekSky"] as? [String: Any] {
-//            let todayUltrav: Int = (ultrav["today_ultrav"] as? Int) ?? 0
-//            let tomorrowUltrav: Int = (ultrav["tomorrow_ultrav"] as? Int) ?? 0
-            let sky3AM = (weekSky["wf3Am"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky3PM = (weekSky["wf3Pm"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky4AM = (weekSky["wf4Am"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky4PM = (weekSky["wf4Pm"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky5AM = (weekSky["wf5Am"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky5PM = (weekSky["wf5Pm"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky6AM = (weekSky["wf6Am"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky6PM = (weekSky["wf6Pm"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky7AM = (weekSky["wf7Am"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky7PM = (weekSky["wf7Pm"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky8PM = (weekSky["wf8"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky9PM = (weekSky["wf9"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let sky10PM = (weekSky["wf10"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        // 주간 카드
+        let weekCard: RWHomeWeekCard = RWHomeWeekCard()
+        for daysAfter in 3...7 {
+            let weekInfo: RWHomeWeekInfo = RWHomeWeekInfo(daysAfter: daysAfter)
+            
+            if let weekSky = jsons["weekSky"] as? [String: Any] {
+                weekInfo.amStatus = (weekSky["wf\(daysAfter)Am"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+                weekInfo.pmStatus = (weekSky["wf\(daysAfter)Am"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            }
+            if let weekTemp = jsons["weekTemp"] as? [String: Any] {
+                weekInfo.minTemp = (weekTemp["taMin\(daysAfter)"] as? Int) ?? 0
+                weekInfo.maxTemp = (weekTemp["taMax\(daysAfter)"] as? Int) ?? 0
+            }
+            weekCard.weekInfos.append(weekInfo)
         }
-        
-        // enum으로 바꿔서 가져오자.
-        if let weekTemp = jsons["weekTemp"] as? [String: Any] {
-            let weekTempMin3 = (weekTemp["taMin3"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMax3 = (weekTemp["taMax3"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMin4 = (weekTemp["taMin4"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMax4 = (weekTemp["taMax4"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMin5 = (weekTemp["taMin5"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMax5 = (weekTemp["taMax5"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMin6 = (weekTemp["taMin6"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMax6 = (weekTemp["taMax6"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMin7 = (weekTemp["taMin7"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-            let weekTempMax7 = (weekTemp["taMax7"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        }
+        weekCards.append(weekCard)
         
         var homeCards: [HomeWeatherMenu: [RWHomeCard]] = [:]
         homeCards.updateValue(todayCards, forKey: .today)

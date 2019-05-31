@@ -14,6 +14,7 @@ public enum HomeCellType {
     case weatherStatusCard
     case weatherDustCard
     case weatherLifeCard
+    case weatherWeekCard
     case weatherMenu
     case bestCommentCollection
     case bestComment
@@ -30,6 +31,8 @@ public enum HomeCellType {
             return "HomeWeatherDustCardCell"
         case .weatherLifeCard:
             return "HomeWeatherLifeCardCell"
+        case .weatherWeekCard:
+            return "HomeWeatherWeekCardCell"
         case .weatherMenu:
             return "HomeWeatherMenuCell"
         case .bestCommentCollection:
@@ -43,7 +46,7 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return CGSize(width: UIScreen.main.bounds.width, height: 420)
-        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherLifeCard:
+        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherLifeCard, .weatherWeekCard:
             return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
             return CGSize(width: 24, height: 17)
@@ -134,6 +137,7 @@ extension HomeViewController {
     private func reloadData(completion: (() -> Void)? = nil) {
         let location: RWLocation = RWLocationManager.shared.currentLocation
         RootViewController.shared().startLoading()
+        RWLocationManager.shared.updateLocation()
         homeDataController.requestData(for: location) { [weak self] homeData in
             RootViewController.shared().stopLoading()
             self?.homeData = homeData
