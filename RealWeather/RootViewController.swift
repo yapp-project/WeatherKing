@@ -86,6 +86,27 @@ extension RootViewController {
     }
 }
 
+// MARK: Alert
+extension RootViewController {
+    func presentNetworkErrorAlert() {
+        let alert = UIAlertController(title: "네트워크 오류", message: "네트워크 연결 상태를 확인해주세요", preferredStyle: .alert)
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = UIViewController()
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) -> Void in
+            alert.dismiss(animated: true, completion: nil)
+            window.resignKey()
+            window.isHidden = true
+            window.removeFromSuperview()
+            window.windowLevel = .alert - 1
+            window.setNeedsLayout()
+        }
+        alert.addAction(okAction)
+        window.windowLevel = .alert + 1
+        window.makeKeyAndVisible()
+        window.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+}
+
 extension RootViewController {
     func finishDraggingDrawer() {
         if isDrawerOpen {

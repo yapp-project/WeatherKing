@@ -110,7 +110,8 @@ class HomeViewController: UIViewController {
     }
     
     fileprivate func prepareObservers() {
-        notification.addObserver(self, selector: #selector(reloadOnLogin), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(reloadOnEvent), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(handleReachabilityChange), name: .reachabilityChanged, object: nil)
     }
     
     deinit {
@@ -119,7 +120,14 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController {
-    @objc private func reloadOnLogin() {
+    @objc private func handleReachabilityChange() {
+        guard RWNetworkManager.shared.isConnected, homeData == nil else {
+            return
+        }
+        reloadData()
+    }
+    
+    @objc private func reloadOnEvent() {
         reloadData()
     }
     

@@ -20,10 +20,12 @@ PODS:
     - "GoogleToolboxForMac/NSString+URLArguments (= 2.2.1)"
   - "GoogleToolboxForMac/NSString+URLArguments (2.2.1)"
   - GTMSessionFetcher/Core (1.2.2)
+  - ReachabilitySwift (4.3.1)
 
 DEPENDENCIES:
   - FBSDKLoginKit (= 5.0.0)
   - GoogleSignIn (= 4.4.0)
+  - ReachabilitySwift (= 4.3.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -32,6 +34,7 @@ SPEC REPOS:
     - GoogleSignIn
     - GoogleToolboxForMac
     - GTMSessionFetcher
+    - ReachabilitySwift
 
 SPEC CHECKSUMS:
   FBSDKCoreKit: ba361d4a9d4dc29ff218822b849b22d4f869c7bb
@@ -39,7 +42,8 @@ SPEC CHECKSUMS:
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
+  ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
 
-PODFILE CHECKSUM: b28d6860c952f8e8ba5fb7dfe05b7645f8f16863
+PODFILE CHECKSUM: 588b1512aa0fece2fc773a922b3a57654a9e7992
 
 COCOAPODS: 1.7.0
