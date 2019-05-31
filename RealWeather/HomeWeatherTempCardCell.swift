@@ -35,7 +35,7 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
         cardView.backgroundColor = card?.mainColor
-        titleLabel.text = "지금은 " + (card?.currentTemp.tempFormat ?? "")
+        titleLabel.text = "\(card?.dateType.description ?? "") \(card?.currentTemp.tempFormat ?? "")"
         imageView.image = card?.type.image
         descriptionLabel.text = card?.type.title
 //        estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")

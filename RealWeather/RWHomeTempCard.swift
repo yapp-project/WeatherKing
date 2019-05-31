@@ -12,8 +12,24 @@
 import Foundation
 import UIKit
 
+enum RWHomeDateType {
+    case today
+    case tomorrow
+    
+    var description: String {
+        switch self {
+        case .today:
+            return "오늘은"
+        case .tomorrow:
+            return "내일은"
+        }
+    
+    }
+}
+
 class RWHomeTempCard: RWHomeCard {
     let mainColor: UIColor = .lightishBlue
+    var dateType: RWHomeDateType = .today
     var type: RWHomeTempDegree = .upTo5c
     var timeTempDatas: [RWHomeTempTimeData] = []
     var humidity: Int = 0
@@ -312,10 +328,12 @@ public class RWHomeTempTimeData {
     var skyDegree: RWHomeSkyDegree = .sunny
     var rainDegree: RWHomeRainDegree?
     var snowDegree: RWHomeSnowDegree?
+    var rainfall: Int = 0
+    var snowfall: Int = 0
     var tempMessages: [String] = []
     var skyMessage: String = ""
     var humidity: Int = 0
-    var windVelocity: Int = 0
+    var windVelocity: Double = 0
     var rainPop: Int = 0
     var minTemp: Int = 0
 }
@@ -338,12 +356,16 @@ public extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
         }
         if let rainMillimeter = (self["rainfallValue"] as? Double), let rainDegree = RWHomeRainDegree(millimeter: rainMillimeter) {
             tempTimeData.rainDegree = rainDegree
+            tempTimeData.rainfall = Int(rainMillimeter)
         }
         if let snowCentimeter = (self["snowfallValue"] as? Double), let snowDegree = RWHomeSnowDegree(centimeter: snowCentimeter) {
             tempTimeData.snowDegree = snowDegree
+            tempTimeData.snowfall = Int(snowCentimeter)
         }
         tempTimeData.tempMessages = self["temp_message"] as? [String] ?? []
         tempTimeData.skyMessage = (self["sky_message"] as? String) ?? ""
+        tempTimeData.humidity = (self["humid"] as? Int) ?? 0
+        tempTimeData.windVelocity = (self["wind"] as? Double) ?? 0.0
         tempTimeData.rainPop = (self["rainPop"] as? Int) ?? 0
         tempTimeData.temperature = (self["temp"] as? Int) ?? 0
         tempTimeData.minTemp = (self["lowestTemp"] as? Int) ?? 0

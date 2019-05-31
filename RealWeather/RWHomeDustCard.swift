@@ -14,8 +14,13 @@ class RWHomeDustCard: RWHomeCard {
     }
     
     var type: RWHomeDustType = .good
+    var providedTime: String = ""
     var fineDustDegree: Int = 0
     var ultraDustDegree: Int = 0
+    var o3Degree: Double = 0.0
+    var no2Degree: Double = 0.0
+    var coDegree: Double = 0.0
+    var so2Degree: Double = 0.0
 }
 
 public enum RWHomeDustType {

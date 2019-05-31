@@ -71,7 +71,9 @@ extension HomeDataController {
         var weekCards: [RWHomeCard] = []
         
         let todayTempCard: RWHomeTempCard = RWHomeTempCard()
+        todayTempCard.dateType = .today
         let tomorrowTempCard: RWHomeTempCard = RWHomeTempCard()
+        tomorrowTempCard.dateType = .tomorrow
         
         let todayStatusCard: RWHomeStatusCard = RWHomeStatusCard()
         let tomorrowStatusCard: RWHomeStatusCard = RWHomeStatusCard()
@@ -96,6 +98,7 @@ extension HomeDataController {
                 }
             }
             todayTempCard.timeTempDatas = todayTempTimeDatas
+            todayStatusCard.timeTempDatas = todayTempTimeDatas
         }
         
         var tomorrowTempDegree: RWHomeTempDegree?
@@ -114,6 +117,8 @@ extension HomeDataController {
             tomorrowTempCard.type = tomorrowTempDegree ?? .upTo5c
             tomorrowTempCard.currentTemp = celsius
             tomorrowTempCard.humidity = tomorrowAm12TimeData?.humidity ?? 0
+            tomorrowTempCard.timeTempDatas = tomorrowTempTimeDatas
+            tomorrowStatusCard.timeTempDatas = tomorrowTempTimeDatas
         }
         todayCards.append(todayTempCard)
         todayCards.append(todayStatusCard)
@@ -125,6 +130,12 @@ extension HomeDataController {
             let dustCard = RWHomeDustCard()
             dustCard.fineDustDegree = Int(fineDustData["pm10Value"] as? String ?? "") ?? 0
             dustCard.ultraDustDegree = Int(fineDustData["pm25Value"] as? String ?? "") ?? 0
+            dustCard.providedTime = fineDustData["dataTime"] as? String ?? ""
+            
+            dustCard.o3Degree = Double((fineDustData["o3Value"] as? String) ?? "") ?? 0.0
+            dustCard.no2Degree = Double((fineDustData["no2Value"] as? String) ?? "") ?? 0.0
+            dustCard.coDegree = Double((fineDustData["coValue"] as? String) ?? "") ?? 0.0
+            dustCard.so2Degree = Double((fineDustData["so2Value"] as? String) ?? "") ?? 0.0
             
             if let dustType = RWHomeDustType(fineDust: dustCard.fineDustDegree,
                                              ultraDust: dustCard.ultraDustDegree) {
