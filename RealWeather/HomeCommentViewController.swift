@@ -49,7 +49,7 @@ class HomeCommentViewController: UIViewController {
         self.commentCollectionView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.5, x: 0, y: -2, blur: 9, spread: 0)
         
         //
-       
+        
         
         
         
@@ -108,7 +108,7 @@ class HomeCommentViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            self.setComment()
+            self.setComment(true)
         })
     }
     
@@ -128,11 +128,16 @@ class HomeCommentViewController: UIViewController {
         }
     }
     
-    func setComment() {
-        self.indicator.isHidden = false
-        self.indicator.startAnimating()
+    func setComment(_ isLoading: Bool) {
+        if isLoading {
+            self.indicator.isHidden = false
+            self.indicator.startAnimating()
+        }
         self.dataController.requestComment(completion: { [unowned self] data in
-            self.indicator.isHidden = true
+            if isLoading {
+                self.indicator.isHidden = true
+            }
+            
             guard var data = data else {
                 self.commentList.removeAll()
                 self.commentCollectionView.reloadData()
@@ -152,7 +157,7 @@ class HomeCommentViewController: UIViewController {
     func turnTimer(_ isOn: Bool) {
         if isOn {
             timer = Timer.scheduledTimer(withTimeInterval: 15.0, repeats: true, block: { [unowned self] _ in
-                self.setComment()
+                self.setComment(false)
             })
         }
         else {
@@ -245,7 +250,7 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
                             self.present(alert, animated: true, completion: nil)
                             return
                         }
-                        self.setComment()
+                        self.setComment(true)
                     })
                     
                     

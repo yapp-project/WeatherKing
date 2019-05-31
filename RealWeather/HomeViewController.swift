@@ -100,6 +100,7 @@ class HomeViewController: UIViewController {
         containerViewTopConstraint.constant = screenHeight - 54 - bottomArea
         bottomHeightConstraint.constant = bottomArea
         containerViewHeightConstraint.constant = screenHeight
+        self.view.layoutIfNeeded()
         containerPoint = self.containerView.frame.origin
         
     }
@@ -141,16 +142,17 @@ extension HomeViewController {
         if abs(velocity.y) > abs(velocity.x) {
             if sender.state == .ended {
                 if translationY <= 0 {  // up
-                    rootViewController?.homeNavigationBarViewController.view.isHidden = true
                     self.commentViewController.weatherViewHeightConstraint.constant = 64
-                    self.commentViewController.setComment()
-//                    self.commentViewController.turnTimer(true)
+                    self.commentViewController.setComment(false)
+                    self.commentViewController.turnTimer(true)
                     UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
+                        
                         self.commentHeaderView.isHiddenSubViews = false
                         self.commentViewController.view.backgroundColor = UIColor.purpleishBlue
                         self.containerView.frame.origin = CGPoint(x: self.containerView.frame.origin.x, y: self.view.frame.origin.y)
                         }, completion: { [unowned self] _ in
                             UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
+                                self.rootViewController?.homeNavigationBarViewController.view.isHidden = true
                                 self.commentViewController.weatherView.alpha = 1
                             })
                             self.commentViewController.commentCollectionView.layer.masksToBounds = true
@@ -158,15 +160,15 @@ extension HomeViewController {
                     })
                 }
                 else {  // down
-                    rootViewController?.homeNavigationBarViewController.view.isHidden = false
                     self.commentViewController.commentCollectionView.layer.masksToBounds = false
-//                    self.commentViewController.turnTimer(false)
+                    self.commentViewController.turnTimer(false)
                     UIView.animate(withDuration: 0.5, delay: 0, options: .allowUserInteraction, animations: { [unowned self] in
+                        self.rootViewController?.homeNavigationBarViewController.view.isHidden = false
                         self.commentHeaderView.isHiddenSubViews = true
                         self.commentViewController.weatherView.alpha = 0
                         self.commentViewController.view.backgroundColor = UIColor.white
                         if self.bottomArea != 0 {
-                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y + 64)
+                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y - self.bottomArea - 10)
                         }
                         else {
                             self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y)
