@@ -159,6 +159,21 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeWeatherCardCollectionCell: UIScrollViewDelegate {
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        let translation = scrollView.panGestureRecognizer.translation(in: scrollView.superview)
+        
+        let targetPage: Int
+        if translation.x > 0 {
+            targetPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        } else {
+            targetPage = Int(scrollView.contentOffset.x / scrollView.bounds.width) + 1
+        }
+        
+        if cards.indices.contains(targetPage) {
+            updateThemeColor(with: cards[targetPage])
+        }
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let page: Int = Int(scrollView.contentOffset.x / scrollView.bounds.width)
         pageControl.currentPage = page
