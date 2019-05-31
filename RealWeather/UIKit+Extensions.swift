@@ -76,7 +76,6 @@ extension UIView {
 extension UIColor {
     static let bgColor = UIColor(red: 170, green: 177, blue: 185)
     static let CellBgColor = UIColor(red: 226, green: 226, blue: 230)
-    static let mainColor = UIColor(red: 80, green: 97, blue: 236)
     
     convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
         self.init(
@@ -161,6 +160,14 @@ extension UIColor {
     
     class var silver: UIColor {
         return UIColor(red: 222, green: 226, blue: 230)
+    }
+    
+    class var mainColor: UIColor {
+        return UIColor(red: 78, green: 92, blue: 239)
+    }
+    
+    class var commentColor: UIColor {
+        return UIColor(hex: 0xf7fbff)
     }
 
 }

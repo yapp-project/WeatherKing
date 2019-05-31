@@ -113,17 +113,17 @@ class HomeCommentViewController: UIViewController {
     }
     
     func setRange(_ range: Range) {
+        self.currentRange = range
         guard commentList.count > 3 else {
             commentCollectionView.reloadData()
             return
-            
         }
         switch range {
         case .distance:
             commentList[3..<commentList.count].sort(by: { $0.distance < $1.distance })
             commentCollectionView.reloadData()
         case .recent:
-            commentList[3..<commentList.count].sort(by: { $0.time < $1.time })
+            commentList[3..<commentList.count].sort(by: { $0.interval < $1.interval })
             commentCollectionView.reloadData()
         }
     }
@@ -150,7 +150,7 @@ class HomeCommentViewController: UIViewController {
             self.commentList.removeAll()
             data.sort(by: { $0.likeCount > $1.likeCount })
             self.commentList = data
-            self.setRange(.recent)
+            self.setRange(self.currentRange)
         })
     }
     
@@ -264,7 +264,6 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
         else {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "댓글 신고하기", style: .destructive, handler: { [unowned self] _ in
-                var accuseState: Accuse = .abuse
                 let completion: (Accuse) -> () = { [unowned self] state in
                     self.dataController.accuseComment(self.commentList[index].id, state: state, completion: { [unowned self] data in
                         if data == nil {

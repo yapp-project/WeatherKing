@@ -125,21 +125,24 @@ extension HomeCommentDataController {
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         for item in jsons {
-            //            for data in item as? [[String:Any]] ?? [[:]] {
             let comment = Comment()
             comment.name = item["nickname"] as? String ?? ""
             comment.comment = item["content"] as? String ?? ""
             let time = item["timestamp"] as? String ?? ""
             let date = formatter.date(from: time)
             let interval = Date().timeIntervalSince(date ?? Date())
-            
-            comment.time = Int(interval >= 0 ? floor(interval / 60) : 0)
+            if interval >= 3600 {
+                comment.time = String(Int(floor(interval / 3600))) + "시간 전"
+            }
+            else {
+                comment.time = String(Int(interval >= 0 ? floor(interval / 60) : 0)) + "분 전"
+            }
+            comment.interval = interval >= 0 ? interval : 0
             comment.likeCount = item["like"] as? Int ?? 0
             comment.hateCount = item["dislike"] as? Int ?? 0
             comment.id = item["_id"] as? String ?? ""
             comment.uniqueId = item["uid"] as? String ?? ""
             commentList.append(comment)
-            //            }
         }
         
         print(jsons)

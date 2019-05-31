@@ -13,21 +13,22 @@ class Comment: NSObject {
     var name: String = ""
     var comment: String = ""
     var distance: Int = 0
-    var time: Int = 0
+    var time: String = ""
+    var interval: Double = 0
     var likeCount: Int = 0
     var hateCount: Int = 0
     var isLike: Bool = false
     var isHate: Bool = false
     var uniqueId: String = ""
     
-    init(name: String, comment: String, distance: Int, time: Int, likeCount: Int, hateCount: Int) {
-        self.name = name
-        self.comment = comment
-        self.distance = distance
-        self.time = time
-        self.likeCount = likeCount
-        self.hateCount = hateCount
-    }
+//    init(name: String, comment: String, distance: Int, time: Int, likeCount: Int, hateCount: Int) {
+//        self.name = name
+//        self.comment = comment
+//        self.distance = distance
+//        self.time = time
+//        self.likeCount = likeCount
+//        self.hateCount = hateCount
+//    }
     
     override init() {}
 }

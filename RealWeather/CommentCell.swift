@@ -53,6 +53,7 @@ class CommentCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         isHiddenCrown = true
+        self.backgroundColor = .white
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,10 +78,14 @@ class CommentCell: UICollectionViewCell {
     }
     
     func fill(_ comment: Comment, indexPath: IndexPath) {
+        guard let id = RWLoginManager.shared.user?.uniqueID else { return }
+        if comment.uniqueId == id {
+            self.backgroundColor = .commentColor
+        }
         nameLabel.text = comment.name
         commentLabel.text = comment.comment
         distanceLabel.text = String(comment.distance) + "km"
-        timeLabel.text = String(comment.time) + "분전"
+        timeLabel.text = comment.time
         likeBtn.isChecked = comment.isLike
         hateBtn.isChecked = comment.isHate
         likeBtn.setTitle(String(comment.likeCount), for: .normal)
