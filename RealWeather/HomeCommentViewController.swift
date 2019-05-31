@@ -175,7 +175,7 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "commentCell", for: indexPath) as? CommentCell else { fatalError() }
         let index = indexPath.item
         
-        if commentList.count > 3 && index < 3 && commentList[index].likeCount >= 5 { cell.isHiddenCrown = false }
+        if index < 3 && commentList[index].likeCount >= 5 { cell.isHiddenCrown = false }
         cell.fill(commentList[index], indexPath: indexPath)
         cell.delegate = self
         return cell
