@@ -12,16 +12,24 @@ class HomeNavigationBarViewController: UIViewController {
     
     @IBOutlet fileprivate weak var locationLabel: UILabel!
     @IBOutlet fileprivate weak var timeLabel: UILabel!
+    
+    private let notification = NotificationCenter.default
     private var timer: Timer?
     
     var isCountingTime: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareObservers()
         startTimerOnStart()
     }
     
-    func updateView() {
+    func prepareObservers() {
+        notification.addObserver(self, selector: #selector(updateView), name: .UserLocationDidUpdated, object: nil)
+    }
+    
+    // MARK: 현재 위치를 이용할지, 유저 위치를 이용할지 스펙 확인 필요. (현재 위치 이용시 데이터 갱신)
+    @objc func updateView() {
         let cityName: String = RWLoginManager.shared.user?.region.cityName ?? ""
         let townName: String = RWLoginManager.shared.user?.region.townName ?? ""
         locationLabel.text = "\(cityName) \(townName)"
