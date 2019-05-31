@@ -1,19 +1,19 @@
 {
   "images" : [
     {
+      "scale" : "1x",
       "filename" : "status_snow.png",
-      "idiom" : "universal",
-      "scale" : "1x"
+      "idiom" : "universal"
     },
     {
+      "scale" : "2x",
       "filename" : "status_snow@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
+      "idiom" : "universal"
     },
     {
+      "scale" : "3x",
       "filename" : "status_snow@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {

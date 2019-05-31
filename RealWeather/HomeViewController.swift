@@ -13,6 +13,7 @@ public enum HomeCellType {
     case weatherTempCard
     case weatherStatusCard
     case weatherDustCard
+    case weatherLifeCard
     case weatherMenu
     case bestCommentCollection
     case bestComment
@@ -27,6 +28,8 @@ public enum HomeCellType {
             return "HomeWeatherStatusCardCell"
         case .weatherDustCard:
             return "HomeWeatherDustCardCell"
+        case .weatherLifeCard:
+            return "HomeWeatherLifeCardCell"
         case .weatherMenu:
             return "HomeWeatherMenuCell"
         case .bestCommentCollection:
@@ -40,7 +43,7 @@ public enum HomeCellType {
         switch self {
         case .weatherCardCollection:
             return CGSize(width: UIScreen.main.bounds.width, height: 420)
-        case .weatherTempCard, .weatherStatusCard, .weatherDustCard:
+        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherLifeCard:
             return CGSize(width: UIScreen.main.bounds.width, height: 390)
         case .weatherMenu:
             return CGSize(width: 24, height: 17)
@@ -61,19 +64,45 @@ protocol HomeBGColorControlDelegate {
 class HomeViewController: UIViewController {
     @IBOutlet fileprivate weak var collectionView: UICollectionView!
     @IBOutlet fileprivate weak var backgroundColorView: UIView!
-    @IBOutlet fileprivate weak var commentContainer: UIView!
-    @IBOutlet fileprivate weak var commentBtn: UIButton!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomView: UIView!
     
+    fileprivate var panGesture = UIPanGestureRecognizer()
     fileprivate let homeDataController: HomeDataController = HomeDataController()
     fileprivate let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
     fileprivate var commentViewController: HomeCommentViewController!
+    fileprivate var commentHeaderView: CommentHeaderView!
     fileprivate var notification: NotificationCenter = NotificationCenter.default
+    fileprivate var screenHeight: CGFloat = 0
+    fileprivate var containerPoint: CGPoint = CGPoint.zero
+    fileprivate var bottomArea:CGFloat = 0
+    fileprivate var rootViewController: RootViewController?
+    
+    private var homeData: HomeData? {
+        didSet {
+            updateView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareObservers()
         prepareCells()
-        updateView()
+        reloadData()
+        rootViewController = self.parent?.parent as? RootViewController
+        screenHeight = UIScreen.main.bounds.height
+        if let bottom = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
+            self.bottomArea = bottom
+        }
+        containerViewTopConstraint.constant = screenHeight - 54 - bottomArea
+        bottomHeightConstraint.constant = bottomArea
+        containerViewHeightConstraint.constant = screenHeight
+        self.view.layoutIfNeeded()
+        containerPoint = self.containerView.frame.origin
+        
     }
     
     fileprivate func prepareCells() {
@@ -81,15 +110,80 @@ class HomeViewController: UIViewController {
     }
     
     fileprivate func prepareObservers() {
-        
+        notification.addObserver(self, selector: #selector(reloadOnLogin), name: .LoginSuccess, object: nil)
     }
+    
+    deinit {
+        notification.removeObserver(self, name: .LoginSuccess, object: nil)
+    }
+}
 
+extension HomeViewController {
+    @objc private func reloadOnLogin() {
+        reloadData()
+    }
+    
+    private func reloadData(completion: (() -> Void)? = nil) {
+        let location: RWLocation = RWLocationManager.shared.currentLocation
+        RootViewController.shared().startLoading()
+        homeDataController.requestData(for: location) { [weak self] homeData in
+            RootViewController.shared().stopLoading()
+            self?.homeData = homeData
+        }
+    }
 }
 
 extension HomeViewController {
     func updateView() {
-        commentContainer.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 1, x: 0, y: -2, blur: 9, spread: 0)
-
+        collectionView.reloadData()
+    }
+    
+    @objc func swipeContainer(_ sender: UIPanGestureRecognizer) {
+        let velocity = sender.velocity(in: self.commentHeaderView)
+        let translationY = sender.translation(in: containerView).y  // 팬제스쳐의 좌표
+        if abs(velocity.y) > abs(velocity.x) {
+            if sender.state == .ended {
+                if translationY <= 0 {  // up
+                    self.commentViewController.weatherViewHeightConstraint.constant = 64
+                    self.commentViewController.setComment(false)
+                    self.commentViewController.turnTimer(true)
+                    UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
+                        
+                        self.commentHeaderView.isHiddenSubViews = false
+                        self.commentViewController.view.backgroundColor = UIColor.purpleishBlue
+                        self.containerView.frame.origin = CGPoint(x: self.containerView.frame.origin.x, y: self.view.frame.origin.y)
+                        }, completion: { [unowned self] _ in
+                            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
+                                self.rootViewController?.homeNavigationBarViewController.view.isHidden = true
+                                self.commentViewController.weatherView.alpha = 1
+                            })
+                            self.commentViewController.commentCollectionView.layer.masksToBounds = true
+                            
+                    })
+                }
+                else {  // down
+                    self.commentViewController.commentCollectionView.layer.masksToBounds = false
+                    self.commentViewController.turnTimer(false)
+                    UIView.animate(withDuration: 0.5, delay: 0, options: .allowUserInteraction, animations: { [unowned self] in
+                        self.rootViewController?.homeNavigationBarViewController.view.isHidden = false
+                        self.commentHeaderView.isHiddenSubViews = true
+                        self.commentViewController.weatherView.alpha = 0
+                        self.commentViewController.view.backgroundColor = UIColor.white
+                        if self.bottomArea != 0 {
+                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y - self.bottomArea - 10)
+                        }
+                        else {
+                            self.containerView.frame.origin = CGPoint(x: self.containerPoint.x, y: self.containerPoint.y)
+                        }
+                        }, completion: { [unowned self] _ in
+                            self.commentViewController.weatherViewHeightConstraint.constant = 0
+                            
+                    })
+                    
+                }
+            }
+        }
+        
     }
 }
 
@@ -105,6 +199,7 @@ extension HomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "HomeComment" {
             commentViewController = segue.destination as? HomeCommentViewController
+            commentViewController.commentDelegate = self
         }
     }
 }
@@ -115,88 +210,17 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
         
         if let weatherCollectionCell = cell as? HomeWeatherCardCollectionCell {
-            let dummyCard: WeatherTempCard = WeatherTempCard()
-            dummyCard.currentTemp = 5
-            dummyCard.description = "어제보다 추워요"
-            dummyCard.estimatedTemp = 4
-            dummyCard.minTemp = 3
-            dummyCard.maxTemp = 10
-            
-            let dummyCard2: WeatherStatusCard = WeatherStatusCard()
-            dummyCard2.title = "가랑가랑 가랑비"
-            dummyCard2.description = "딱 적당히 내리고 있어요"
-            dummyCard2.estimatedDegree = "강수량 10mm"
-            dummyCard2.type = .rain
-            
-            let dummyCard3: WeatherDustCard = WeatherDustCard()
-            dummyCard3.type = .good
-            
-            let dummyCard4: WeatherTempCard = WeatherTempCard()
-            dummyCard4.currentTemp = 8
-            dummyCard4.description = "내일은 포근해요"
-            dummyCard4.estimatedTemp = 10
-            dummyCard4.minTemp = 3
-            dummyCard4.maxTemp = 10
-            
-            let dummyCard5: WeatherStatusCard = WeatherStatusCard()
-            dummyCard5.title = "정말 맑은 날씨"
-            dummyCard5.description = "아주 화창해요"
-            dummyCard5.type = .sunny
-            
-            let dummyCard6: WeatherDustCard = WeatherDustCard()
-            dummyCard6.type = .notBad
-            
-            let dummyCardMon: WeatherStatusCard = WeatherStatusCard()
-            dummyCardMon.title = "월요일은 구름 많음"
-            dummyCardMon.description = "흐린 날씨에요"
-            dummyCardMon.type = .cloudy
-            
-            let dummyCardTue: WeatherStatusCard = WeatherStatusCard()
-            dummyCardTue.title = "화요일은 흐림"
-            dummyCardTue.description = "우산 꼭 챙기세요"
-            dummyCardTue.estimatedDegree = "강수량 10mm"
-            dummyCardTue.type = .rain
-            
-            let dummyCardWed: WeatherStatusCard = WeatherStatusCard()
-            dummyCardWed.title = "수요일은 대설"
-            dummyCardWed.description = "소복소복 눈이와요"
-            dummyCardWed.estimatedDegree = "적설량 220mm"
-            dummyCardWed.type = .snow
-
-            let dummyCardThu: WeatherStatusCard = WeatherStatusCard()
-            dummyCardThu.title = "목요일은 천둥번개"
-            dummyCardThu.description = "외출을 삼가세요"
-            dummyCardThu.estimatedDegree = "강수량 300mm"
-            dummyCardThu.type = .thunder
-            
-            let dummyCardFri: WeatherStatusCard = WeatherStatusCard()
-            dummyCardFri.title = "금요일은 안개"
-            dummyCardFri.description = "아침 운전에 조심하세요"
-            dummyCardFri.estimatedDegree = ""
-            dummyCardFri.type = .foggy
-
-            let dummyCardSat: WeatherStatusCard = WeatherStatusCard()
-            dummyCardSat.title = "토요일은 맑음"
-            dummyCardSat.description = "피크닉가기 좋은 날씨에요"
-            dummyCardSat.estimatedDegree = ""
-            dummyCardSat.type = .sunny
-
-            let dummyCardSun: WeatherStatusCard = WeatherStatusCard()
-            dummyCardSun.title = "일요일은 약간 흐림"
-            dummyCardSun.description = "야외활동에 무리없어요"
-            dummyCardSun.estimatedDegree = ""
-            dummyCardSun.type = .bitCloudy
-            
-            weatherCollectionCell.cardDatasource.updateValue([dummyCard, dummyCard2, dummyCard3], forKey: .today)
-            weatherCollectionCell.cardDatasource.updateValue([dummyCard4, dummyCard5, dummyCard6], forKey: .tomorrow)
-            weatherCollectionCell.cardDatasource.updateValue([dummyCardMon, dummyCardTue, dummyCardWed, dummyCardThu, dummyCardFri, dummyCardSat, dummyCardSun], forKey: .week)
+            if let cardDatasource = homeData?.homeCards {
+                weatherCollectionCell.cardDatasource = cardDatasource
+            }
             weatherCollectionCell.selectedMenu = .today
             weatherCollectionCell.bgControlDelegate = self
         } else if let bestCommentCollectionCell = cell as? HomeBestCommentCollectionCell {
-            var dummyComment1: Comment = Comment()
-            
-            bestCommentCollectionCell.comments = [dummyComment1, dummyComment1]
-//            bestCommentCollectionCell.comments = comments
+            if homeData?.bestComments.isEmpty ?? true {
+                bestCommentCollectionCell.comments = [HomeData.defaultComment]
+            } else {
+                bestCommentCollectionCell.comments = homeData?.bestComments ?? []
+            }
         }
 
         return cell
@@ -220,6 +244,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
+    }
+}
+
+extension HomeViewController: CommentDelegate {
+    func getHeader(header: CommentHeaderView) {
+        commentHeaderView = header
+        panGesture = UIPanGestureRecognizer(target: self, action: #selector(swipeContainer(_:)))
+        commentHeaderView.addGestureRecognizer(panGesture)
     }
 }
 

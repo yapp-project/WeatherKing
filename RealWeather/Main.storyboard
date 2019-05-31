@@ -18,6 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYf-tE-nAP" userLabel="Loading View">
+                                <rect key="frame" x="147.5" y="303.5" width="80" height="80"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ruY-6o-9qB">
+                                        <rect key="frame" x="30" y="30" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ruY-6o-9qB" firstAttribute="centerY" secondItem="dYf-tE-nAP" secondAttribute="centerY" id="4D9-lY-4iG"/>
+                                    <constraint firstItem="ruY-6o-9qB" firstAttribute="centerX" secondItem="dYf-tE-nAP" secondAttribute="centerX" id="8Kr-3r-dbc"/>
+                                    <constraint firstAttribute="width" constant="80" id="jtg-yc-Vfg"/>
+                                    <constraint firstAttribute="height" constant="80" id="nn9-EH-18Z"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iQP-P0-PwP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <connections>
@@ -52,6 +73,7 @@
                             <constraint firstItem="JQe-vo-K86" firstAttribute="width" secondItem="MUS-AO-8nY" secondAttribute="width" constant="0.80000000000000004" id="8cO-J0-vT3"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="leading" secondItem="MUS-AO-8nY" secondAttribute="leading" id="AS9-uh-UiU"/>
                             <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="c4d-2b-VoE" secondAttribute="trailing" id="Aae-9q-u1m"/>
+                            <constraint firstItem="dYf-tE-nAP" firstAttribute="centerY" secondItem="d5J-lt-mFp" secondAttribute="centerY" id="BPe-nv-FRX"/>
                             <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="faK-Vt-DQY" secondAttribute="trailing" id="M7g-9T-95D"/>
                             <constraint firstAttribute="bottom" secondItem="JQe-vo-K86" secondAttribute="bottom" id="NRY-r0-dYL"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="trailing" secondItem="MUS-AO-8nY" secondAttribute="trailing" id="Xus-59-ikl"/>
@@ -60,6 +82,7 @@
                             <constraint firstItem="faK-Vt-DQY" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="h96-qV-k62"/>
                             <constraint firstItem="JQe-vo-K86" firstAttribute="trailing" secondItem="d5J-lt-mFp" secondAttribute="leading" id="hlo-U7-Fcv"/>
                             <constraint firstItem="c4d-2b-VoE" firstAttribute="top" secondItem="d5J-lt-mFp" secondAttribute="top" constant="10" id="iNK-sa-8o7"/>
+                            <constraint firstItem="dYf-tE-nAP" firstAttribute="centerX" secondItem="d5J-lt-mFp" secondAttribute="centerX" id="m3s-kU-V3i"/>
                             <constraint firstItem="c4d-2b-VoE" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" id="nXT-0S-l0S"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="qhH-zW-B6m"/>
                             <constraint firstAttribute="bottom" secondItem="iQP-P0-PwP" secondAttribute="bottom" id="x3y-iA-hb1"/>
@@ -69,10 +92,18 @@
                     <connections>
                         <outlet property="drawerViewLeading" destination="hlo-U7-Fcv" id="evZ-Ai-z9X"/>
                         <outlet property="drawerViewWidth" destination="8cO-J0-vT3" id="tS4-ha-oJ0"/>
+                        <outlet property="loadingController" destination="N3T-Om-cYb" id="y2b-iS-GvN"/>
                         <outlet property="splashView" destination="faK-Vt-DQY" id="yRZ-pN-Upt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-19-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="N3T-Om-cYb" customClass="RWLoadingController" customModule="RealWeather" customModuleProvider="target">
+                    <connections>
+                        <outlet property="activityIndicator" destination="ruY-6o-9qB" id="uH6-P5-Myd"/>
+                        <outlet property="loadingView" destination="dYf-tE-nAP" id="WfC-KJ-X5O"/>
+                        <outlet property="parentView" destination="MUS-AO-8nY" id="gt3-M8-MEa"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="-90" y="121"/>
         </scene>

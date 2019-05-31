@@ -13,10 +13,20 @@ class RootViewController: UIViewController {
     @IBOutlet fileprivate weak var splashView: UIView!
     @IBOutlet fileprivate weak var drawerViewLeading: NSLayoutConstraint!
     @IBOutlet fileprivate weak var drawerViewWidth: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var loadingController: RWLoadingController!
+    
+    class func shared() -> RootViewController {
+        guard let RootVC = UIApplication.shared.delegate?.window??.rootViewController as? RootViewController else {
+            return RootViewController()
+        }
+        return RootVC
+    }
     
     fileprivate var drawerViewController: DrawerViewController!
     fileprivate var homeNavigationController: UINavigationController!
-    fileprivate var homeNavigationBarViewController: HomeNavigationBarViewController!
+    var homeNavigationBarViewController: HomeNavigationBarViewController!
+    
+    fileprivate let notification: NotificationCenter = NotificationCenter.default
     
     var drawerWidth: CGFloat {
         let drawerRatio: CGFloat = drawerViewWidth.constant
@@ -25,6 +35,15 @@ class RootViewController: UIViewController {
     }
     
     var isDrawerOpen: Bool = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        prepareObservers()
+    }
+    
+    private func prepareObservers() {
+        notification.addObserver(self, selector: #selector(updateView), name: .LoginSuccess, object: nil)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Home" {
@@ -47,13 +66,27 @@ class RootViewController: UIViewController {
 }
 
 extension RootViewController {
+    @objc func updateView() {
+        homeNavigationBarViewController.updateView()
+    }
+    
     func removeSplashView() {
         splashView.removeFromSuperview()
     }
 }
 
+// MARK: Loading Controller
 extension RootViewController {
+    func startLoading() {
+        loadingController?.startLoading()
+    }
     
+    func stopLoading() {
+        loadingController?.stopLoading()
+    }
+}
+
+extension RootViewController {
     func finishDraggingDrawer() {
         if isDrawerOpen {
             closeDrawer()

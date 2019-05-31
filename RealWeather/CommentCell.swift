@@ -24,14 +24,36 @@ class CommentCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var hateBtn: CommentLikeButton!
     @IBOutlet weak var likeBtn: CommentLikeButton!
+    @IBOutlet weak var crownImg: UIImageView!
+    @IBOutlet weak var crownImgWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nameLabelLeadingConstraint: NSLayoutConstraint!
     
     var delegate: CommentCellDelegate?
     var indexPath: IndexPath?
+    var isHiddenCrown: Bool = true {
+        didSet {
+            if isHiddenCrown {
+                crownImgWidthConstraint.constant = 0
+                nameLabelLeadingConstraint.constant = 0
+            }
+            else {
+                nameLabelLeadingConstraint.constant = 4
+                crownImgWidthConstraint.constant = 12
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         likeBtn.isLike = true
         hateBtn.isLike = false
+        isHiddenCrown = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isHiddenCrown = true
+        self.backgroundColor = .white
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -39,7 +61,6 @@ class CommentCell: UICollectionViewCell {
     }
     
     @IBAction func settingComment(_ sender: Any) {
-        print("bt!!")
         guard let indexPath = self.indexPath else { return }
         delegate?.settingComment(index: indexPath.item)
     }
@@ -56,11 +77,15 @@ class CommentCell: UICollectionViewCell {
         delegate?.setCommentEmotion(.hate, index: indexPath.item)
     }
     
-    func fill(_ comment: Comment, indexPath: IndexPath) {
-        nameLabel.text = comment.name
-        commentLabel.text = comment.comment
+    func fill(_ comment: RWComment, indexPath: IndexPath) {
+        guard let id = RWLoginManager.shared.user?.uniqueID else { return }
+        if comment.uniqueID == id {
+            self.backgroundColor = .commentColor
+        }
+        nameLabel.text = comment.nickname
+        commentLabel.text = comment.content
         distanceLabel.text = String(comment.distance) + "km"
-        timeLabel.text = String(comment.time) + "분"
+        timeLabel.text = comment.time
         likeBtn.isChecked = comment.isLike
         hateBtn.isChecked = comment.isHate
         likeBtn.setTitle(String(comment.likeCount), for: .normal)

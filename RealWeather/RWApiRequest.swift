@@ -60,7 +60,7 @@ extension RWApiRequest {
             return
         }
         
-        if method == .get {
+        if method == .get || method == .delete {
             urlComponents.queryItems = queryItems
         }
         
@@ -75,7 +75,7 @@ extension RWApiRequest {
         // TODO: 리얼 API 연결 시 제거
         request.cachePolicy = .reloadIgnoringCacheData
         
-        if method != .get {
+        if method != .get && method != .delete {
             var queryComponents: URLComponents = URLComponents()
             queryComponents.queryItems = queryItems
             
@@ -96,7 +96,7 @@ extension RWApiRequest {
             do {
                 try self?.printServerResponse(data, error: error)
             } catch {
-                print("wtf")
+                AppCommon.eprint("Failed to print server response due to \(error.localizedDescription)")
             }
             
             guard error == nil else {

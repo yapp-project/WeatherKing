@@ -89,12 +89,14 @@ extension NickNameViewController {
         user.nickname = nickname
         user.location = RWLocationManager.shared.currentLocation
         
-        // TODO: 로딩뷰 표시할 것, userInteraction 정지
+        RootViewController.shared().startLoading()
         RWLoginManager.shared.register(user: user) { [weak self] result in
             if result {
                 self?.performSegue(withIdentifier: NotificationViewController.segueIdentifier, sender: nil)
             }
+            RootViewController.shared().stopLoading()
         }
+        self.performSegue(withIdentifier: NotificationViewController.segueIdentifier, sender: nil)
     }
     
     @IBAction func onNicknameClearBtnTapped(_ sender: UIButton) {
