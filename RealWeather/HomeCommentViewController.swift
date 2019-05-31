@@ -24,7 +24,7 @@ class HomeCommentViewController: UIViewController {
     @IBOutlet weak var emptyCommentLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
-    private var commentList: [Comment] = []
+    private var commentList: [RWComment] = []
     private var currentRange: Range = .recent
     private var timer: Timer?
     var commentDelegate: CommentDelegate?
@@ -224,7 +224,7 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
             commentList[index].isHate = !commentList[index].isHate
             commentCollectionView.reloadData()
         }
-        dataController.reactComment(commentList[index].id, state: state, completion: { data in
+        dataController.reactComment(commentList[index].userID, state: state, completion: { data in
             if data == nil {
                 let alert = UIAlertController(title: "오류", message: "네트워크 문제입니다. 다시 시도해주세요.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
@@ -237,13 +237,13 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
     
     func settingComment(index: Int) {
         guard let userId = RWLoginManager.shared.user?.uniqueID else { return }
-        if commentList[index].uniqueId == userId   {
+        if commentList[index].uniqueID == userId   {
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "댓글 삭제하기", style: .destructive, handler: { [unowned self] _ in
                 let removeAlert = UIAlertController(title: nil, message: "댓글을 삭제하시겠어요?", preferredStyle: .alert)
                 removeAlert.addAction(UIAlertAction(title: "취소", style: .default, handler: nil))
                 removeAlert.addAction(UIAlertAction(title: "삭제", style: .destructive, handler: { [unowned self] _ in
-                    self.dataController.removeComment(self.commentList[index].id, completion: { [unowned self] data in
+                    self.dataController.removeComment(self.commentList[index].userID, completion: { [unowned self] data in
                         guard data != nil else {
                             let alert = UIAlertController(title: "오류", message: "네트워크 문제입니다. 다시 시도해주세요.", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
@@ -265,7 +265,7 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "댓글 신고하기", style: .destructive, handler: { [unowned self] _ in
                 let completion: (Accuse) -> () = { [unowned self] state in
-                    self.dataController.accuseComment(self.commentList[index].id, state: state, completion: { [unowned self] data in
+                    self.dataController.accuseComment(self.commentList[index].userID, state: state, completion: { [unowned self] data in
                         if data == nil {
                             let alert = UIAlertController(title: "오류", message: "네트워크 문제입니다. 다시 시도해주세요.", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))

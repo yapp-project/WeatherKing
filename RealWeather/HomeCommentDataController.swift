@@ -24,7 +24,7 @@ enum Accuse: String {
 class HomeCommentDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
-    func requestComment(completion: @escaping ([Comment]?) -> Void) {
+    func requestComment(completion: @escaping ([RWComment]?) -> Void) {
         guard let user = RWLoginManager.shared.user else { completion(nil); return }
         let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: user.uniqueID),
                                           URLQueryItem(name: "type", value: String(user.loginMethod.rawValue))]
@@ -33,7 +33,7 @@ class HomeCommentDataController {
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/list"
         requestor.method = .get
         requestor.fetch(with: queryItems) { [weak self] data, error in
-            let completionInMainThread = { (completion: @escaping ([Comment]?) -> Void, result: [Comment]?) in
+            let completionInMainThread = { (completion: @escaping ([RWComment]?) -> Void, result: [RWComment]?) in
                 DispatchQueue.main.async {
                     completion(result)
                 }
@@ -45,7 +45,7 @@ class HomeCommentDataController {
             }
             
             do {
-                let list: [Comment]? = try self?.parseComments(with: data)
+                let list: [RWComment]? = try self?.parseComments(with: data)
                 completionInMainThread(completion, list)
             } catch {
                 completionInMainThread(completion, nil)
@@ -115,19 +115,19 @@ class HomeCommentDataController {
 }
 
 extension HomeCommentDataController {
-    private func parseComments(with data: Data?) throws -> [Comment]? {
+    private func parseComments(with data: Data?) throws -> [RWComment]? {
         guard let data = data, let jsons = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
             return nil
         }
-        var commentList: [Comment] = []
+        var commentList: [RWComment] = []
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
         formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         
         for item in jsons {
-            let comment = Comment()
-            comment.name = item["nickname"] as? String ?? ""
-            comment.comment = item["content"] as? String ?? ""
+            let comment = RWComment()
+            comment.nickname = item["nickname"] as? String ?? ""
+            comment.content = item["content"] as? String ?? ""
             let time = item["timestamp"] as? String ?? ""
             let date = formatter.date(from: time)
             let interval = Date().timeIntervalSince(date ?? Date())
@@ -140,8 +140,8 @@ extension HomeCommentDataController {
             comment.interval = interval >= 0 ? interval : 0
             comment.likeCount = item["like"] as? Int ?? 0
             comment.hateCount = item["dislike"] as? Int ?? 0
-            comment.id = item["_id"] as? String ?? ""
-            comment.uniqueId = item["uid"] as? String ?? ""
+            comment.userID = item["_id"] as? String ?? ""
+            comment.uniqueID = item["uid"] as? String ?? ""
             commentList.append(comment)
         }
         

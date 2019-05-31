@@ -77,13 +77,13 @@ class CommentCell: UICollectionViewCell {
         delegate?.setCommentEmotion(.hate, index: indexPath.item)
     }
     
-    func fill(_ comment: Comment, indexPath: IndexPath) {
+    func fill(_ comment: RWComment, indexPath: IndexPath) {
         guard let id = RWLoginManager.shared.user?.uniqueID else { return }
-        if comment.uniqueId == id {
+        if comment.uniqueID == id {
             self.backgroundColor = .commentColor
         }
-        nameLabel.text = comment.name
-        commentLabel.text = comment.comment
+        nameLabel.text = comment.nickname
+        commentLabel.text = comment.content
         distanceLabel.text = String(comment.distance) + "km"
         timeLabel.text = comment.time
         likeBtn.isChecked = comment.isLike

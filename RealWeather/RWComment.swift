@@ -16,13 +16,15 @@ public class RWComment: NSObject {
     var timestamp: String = ""
     var expireAt: String = ""
     var distance: Int = 0
-    var time: Int = 0
+    var time: String = ""
+    var interval: Double = 0
     var likeCount: Int = 0
     var hateCount: Int = 0
     var isLike: Bool = false
     var isHate: Bool = false
+    var uniqueID: String = ""
     
-    init(nickname: String, content: String, distance: Int, time: Int, likeCount: Int, hateCount: Int) {
+    init(nickname: String, content: String, distance: Int, time: String, likeCount: Int, hateCount: Int) {
         self.nickname = nickname
         self.content = content
         self.distance = distance
