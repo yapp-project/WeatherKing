@@ -13,6 +13,14 @@ class RootViewController: UIViewController {
     @IBOutlet fileprivate weak var splashView: UIView!
     @IBOutlet fileprivate weak var drawerViewLeading: NSLayoutConstraint!
     @IBOutlet fileprivate weak var drawerViewWidth: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var loadingController: RWLoadingController!
+    
+    class func shared() -> RootViewController {
+        guard let RootVC = UIApplication.shared.delegate?.window??.rootViewController as? RootViewController else {
+            return RootViewController()
+        }
+        return RootVC
+    }
     
     fileprivate var drawerViewController: DrawerViewController!
     fileprivate var homeNavigationController: UINavigationController!
@@ -64,6 +72,17 @@ extension RootViewController {
     
     func removeSplashView() {
         splashView.removeFromSuperview()
+    }
+}
+
+// MARK: Loading Controller
+extension RootViewController {
+    func startLoading() {
+        loadingController?.startLoading()
+    }
+    
+    func stopLoading() {
+        loadingController?.stopLoading()
     }
 }
 
