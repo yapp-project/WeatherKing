@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeBestCommentCell" id="8AP-0e-gWd" customClass="HomeBestCommentCell" customModule="RealWeather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="376" height="101"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="376" height="101"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U62-f9-uK0">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="101"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="프로출근러" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-4w-Bld">
+                                <rect key="frame" x="20" y="2" width="61" height="17"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성복동 김한슬 바보똥개~~" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2o2-fD-OY3">
+                                <rect key="frame" x="89" y="3.5" width="126" height="14.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ta9-ly-DkT">
+                                <rect key="frame" x="20" y="28" width="298.5" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="4vU-3c-4NF"/>
+                                </constraints>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">바람도 안불고 코트입기 딱이네요~
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="22" name="AppleSDGothicNeo-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="어제보다 따뜻해요 어제보다">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="22" name="AppleSDGothicNeo-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="4" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2o2-fD-OY3" firstAttribute="centerY" secondItem="5qU-4w-Bld" secondAttribute="centerY" id="1iF-Rv-9MY"/>
+                            <constraint firstItem="Ta9-ly-DkT" firstAttribute="leading" secondItem="5qU-4w-Bld" secondAttribute="leading" id="DZN-fZ-Xp5"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ta9-ly-DkT" secondAttribute="trailing" constant="5" id="GKW-Zk-0mh"/>
+                            <constraint firstItem="5qU-4w-Bld" firstAttribute="top" secondItem="U62-f9-uK0" secondAttribute="top" constant="2" id="SPi-ge-i0J"/>
+                            <constraint firstItem="Ta9-ly-DkT" firstAttribute="top" secondItem="5qU-4w-Bld" secondAttribute="bottom" constant="9" id="b6Y-mc-Sq9"/>
+                            <constraint firstItem="2o2-fD-OY3" firstAttribute="leading" secondItem="5qU-4w-Bld" secondAttribute="trailing" constant="8" id="tEH-S2-7VZ"/>
+                            <constraint firstItem="5qU-4w-Bld" firstAttribute="leading" secondItem="U62-f9-uK0" secondAttribute="leading" constant="20" id="vgy-wX-b3d"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="U62-f9-uK0" firstAttribute="leading" secondItem="8AP-0e-gWd" secondAttribute="leading" id="6ZS-XS-WG6"/>
+                <constraint firstItem="U62-f9-uK0" firstAttribute="top" secondItem="8AP-0e-gWd" secondAttribute="top" id="7U5-a2-ikI"/>
+                <constraint firstAttribute="bottom" secondItem="U62-f9-uK0" secondAttribute="bottom" id="Ore-Ke-MEv"/>
+                <constraint firstAttribute="trailing" secondItem="U62-f9-uK0" secondAttribute="trailing" id="zgS-XN-sLK"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="3ya-Xw-QFd"/>
+            <size key="customSize" width="254" height="101"/>
+            <connections>
+                <outlet property="commentLabel" destination="Ta9-ly-DkT" id="Rtf-ha-ZK4"/>
+                <outlet property="descriptionLabel" destination="2o2-fD-OY3" id="M22-SM-HaE"/>
+                <outlet property="nameLabel" destination="5qU-4w-Bld" id="bHp-Ej-7wV"/>
+            </connections>
+            <point key="canvasLocation" x="292.75362318840581" y="-114.17410714285714"/>
+        </collectionViewCell>
+    </objects>
+</document>

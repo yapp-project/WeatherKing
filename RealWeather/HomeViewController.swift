@@ -8,137 +8,324 @@
 
 import UIKit
 
+public enum HomeCellType {
+    case weatherCardCollection
+    case weatherTempCard
+    case weatherStatusCard
+    case weatherDustCard
+    case weatherLifeCard
+    case weatherWeekCard
+    case weatherMenu
+    case bestCommentCollection
+    case bestComment
+    
+    var identifier: String {
+        switch self {
+        case .weatherCardCollection:
+            return "HomeWeatherCardCollectionCell"
+        case .weatherTempCard:
+            return "HomeWeatherTempCardCell"
+        case .weatherStatusCard:
+            return "HomeWeatherStatusCardCell"
+        case .weatherDustCard:
+            return "HomeWeatherDustCardCell"
+        case .weatherLifeCard:
+            return "HomeWeatherLifeCardCell"
+        case .weatherWeekCard:
+            return "HomeWeatherWeekCardCell"
+        case .weatherMenu:
+            return "HomeWeatherMenuCell"
+        case .bestCommentCollection:
+            return "HomeBestCommentCollectionCell"
+        case .bestComment:
+            return "HomeBestCommentCell"
+        }
+    }
+    
+    var size: CGSize {
+        switch self {
+        case .weatherCardCollection:
+            return CGSize(width: UIScreen.main.bounds.width, height: 420)
+        case .weatherTempCard, .weatherStatusCard, .weatherDustCard, .weatherLifeCard, .weatherWeekCard:
+            return CGSize(width: UIScreen.main.bounds.width, height: 390)
+        case .weatherMenu:
+            return CGSize(width: 24, height: 17)
+        case .bestCommentCollection, .bestComment:
+            return CGSize(width: UIScreen.main.bounds.width, height: 90)
+        }
+    }
+}
+
+protocol WeatherCardCell: class {
+    func flipCard()
+}
+
+protocol HomeBGColorControlDelegate {
+    func updateThemeColor(_ color: UIColor)
+}
+
 class HomeViewController: UIViewController {
-    @IBOutlet fileprivate weak var commentContainer: UIView!
-    @IBOutlet fileprivate weak var topContainer: UIView!
-    @IBOutlet fileprivate weak var topContainerHeight: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var inputContainer: UIView!
-    @IBOutlet fileprivate weak var inputContainerHeight: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var tapGestureRecognizableView: UIView!
-    @IBOutlet fileprivate weak var homeScrollView: UIScrollView!
+    @IBOutlet fileprivate weak var collectionView: UICollectionView!
+    @IBOutlet fileprivate weak var backgroundColorView: UIView!
+    @IBOutlet fileprivate weak var refreshControl: HomeRefreshControl!
+    @IBOutlet fileprivate weak var commentView: UIView!
+    @IBOutlet fileprivate weak var commentViewTop: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var commentViewHeight: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var commentHeaderView: UIView!
+    @IBOutlet fileprivate weak var commentHeaderTempLabel: UILabel!
+    @IBOutlet fileprivate weak var commentHeaderStatusLabel: UILabel!
+    @IBOutlet fileprivate weak var bottomView: UIView!
     
-    fileprivate let maxTopViewHeight: CGFloat = 462
-    fileprivate let minTopViewHeight: CGFloat = 124
-    fileprivate var bottomInputViewController: HomeBottomInputViewController!
-    fileprivate var commentViewController: HomeCommentViewController!
-    fileprivate var topViewController: HomeTopViewController!
+    fileprivate let homeDataController: HomeDataController = HomeDataController()
+    fileprivate let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
+    fileprivate var commentViewController: HomeCommentViewController?
     fileprivate var notification: NotificationCenter = NotificationCenter.default
-    fileprivate var keyboardHeight: CGFloat = 0
-    fileprivate var previousScrollOffset: CGPoint = .zero
     
-    var isKeyboardToggled: Bool = false {
+    var isCommentOpened: Bool = false
+    
+    private var homeData: HomeData? {
         didSet {
-            updateBottomInputView()
+            updateView()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareObservers()
-        prepareKeyboardResign()
-        updateBottomInputView()
-        updateScrollView(commentViewController.scrollView)
+        prepareCells()
+        reloadData()
+        
+        commentViewHeight.constant = view.bounds.height
+    }
+    
+    fileprivate func prepareCells() {
+        collectionView.register(cellTypes: homeCellDatasource)
     }
     
     fileprivate func prepareObservers() {
-        notification.addObserver(self, selector: #selector(updateKeyboardHeight(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notification.addObserver(self, selector: #selector(reloadOnEvent), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(handleReachabilityChange), name: .reachabilityChanged, object: nil)
     }
     
-    fileprivate func prepareKeyboardResign() {
-        let recognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        tapGestureRecognizableView?.addGestureRecognizer(recognizer)
-    }
-    
-    func registerComment(_ text: String) {
-        commentViewController.registerComment(text)
+    deinit {
+        notification.removeObserver(self, name: .LoginSuccess, object: nil)
     }
 }
 
 extension HomeViewController {
-    @objc fileprivate func updateKeyboardHeight(notification: NSNotification) {
-        if let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            keyboardHeight = keyboardRect.height
+    @objc private func handleReachabilityChange() {
+        guard RWNetworkManager.shared.isConnected, homeData == nil else {
+            return
         }
-        isKeyboardToggled = true
+        reloadData()
     }
     
-    @objc func dismissKeyboard() {
-        bottomInputViewController.dismissKeyboard()
+    @objc private func reloadOnEvent() {
+        reloadData()
+    }
+    
+    private func reloadData(completion: (() -> Void)? = nil) {
+        let location: RWLocation = RWLocationManager.shared.currentLocation
+        RootViewController.shared().startLoading()
+        RWLocationManager.shared.updateLocation()
+        homeDataController.requestData(for: location) { [weak self] homeData in
+            RootViewController.shared().stopLoading()
+            self?.homeData = homeData
+            completion?()
+        }
     }
 }
 
 extension HomeViewController {
-    fileprivate func updateBottomInputView() {
-        if isKeyboardToggled {
-            tapGestureRecognizableView.isHidden = false
-            view.bringSubviewToFront(tapGestureRecognizableView)
-            inputContainerHeight.constant = keyboardHeight + 60
-        } else {
-            tapGestureRecognizableView.isHidden = true
-            view.sendSubviewToBack(tapGestureRecognizableView)
-            inputContainerHeight.constant = 60
-        }
-    }
-    
-    fileprivate func updateScrollView(_ scrollView: UIScrollView) {
-        homeScrollView.addGestureRecognizer(scrollView.panGestureRecognizer)
+    func updateView() {
+        collectionView.reloadData()
     }
 }
 
-extension HomeViewController {
-    func scrollTopView(_ scrollView: UIScrollView) {
-        let scrollOffset: CGFloat = scrollView.contentOffset.y
-        let scrollAmount: CGFloat = abs(scrollOffset - previousScrollOffset.y)
-        let isNeutral: Bool = scrollOffset <= 0
-        let isScrollUp: Bool = scrollOffset > previousScrollOffset.y
-        let isScrollDown: Bool = scrollOffset < previousScrollOffset.y
-        let isTopViewOpening: Bool = scrollOffset < maxTopViewHeight
-        
-        if isNeutral {
-            let newHeight: CGFloat = maxTopViewHeight
-            let translationOffset: CGFloat = scrollOffset
-            let alpha: CGFloat = 1.0
-            
-            topContainerHeight.constant = newHeight
-            topContainer.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
-            topContainer.alpha = alpha
-            
-        } else if isScrollUp {
-            let newHeight: CGFloat = max(minTopViewHeight, min(maxTopViewHeight, topContainerHeight.constant - scrollAmount))
-            let translationOffset: CGFloat = (maxTopViewHeight - newHeight) / 2
-            let alpha: CGFloat = (newHeight - minTopViewHeight) / maxTopViewHeight
-            
-            topContainerHeight.constant = newHeight
-            topViewController.viewsToTransform.forEach {
-                $0.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
-                $0.alpha = alpha
-            }
-            topViewController.foldView.alpha = 1.0 - alpha
-            
-        } else if isScrollDown, isTopViewOpening {
-            let newHeight: CGFloat = max(minTopViewHeight, min(maxTopViewHeight, topContainerHeight.constant + scrollAmount))
-            let translationOffset: CGFloat = (maxTopViewHeight - newHeight) / 2
-            let alpha: CGFloat = newHeight / maxTopViewHeight
-            
-            topContainerHeight.constant = newHeight
-            topViewController.viewsToTransform.forEach {
-                $0.transform = CGAffineTransform(translationX: 0, y: -translationOffset)
-                $0.alpha = alpha
-            }
-            topViewController.foldView.alpha = 1.0 - alpha
+extension HomeViewController: HomeBGColorControlDelegate {
+    func updateThemeColor(_ color: UIColor) {
+        UIView.animate(withDuration: 0.5) { [weak self] in
+            self?.backgroundColorView.backgroundColor = color
         }
-        previousScrollOffset = scrollView.contentOffset
     }
 }
 
 extension HomeViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "HomeTop" {
-            topViewController = segue.destination as? HomeTopViewController
-        } else if segue.identifier == "HomeComment" {
+        if segue.identifier == "HomeComment" {
             commentViewController = segue.destination as? HomeCommentViewController
-        } else if segue.identifier == "HomeBottomInput" {
-            bottomInputViewController = segue.destination as? HomeBottomInputViewController
         }
+    }
+}
+
+// MARK: IBActions
+extension HomeViewController {
+    @IBAction func onRefreshToggled(_ sender: HomeRefreshControl) {
+        reloadData {
+            sender.stopRefreshing()
+        }
+    }
+}
+
+extension HomeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        refreshControl?.scrollRefeshControl(scrollView)
+    }
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellType: HomeCellType = homeCellDatasource[indexPath.item]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+        
+        if let weatherCollectionCell = cell as? HomeWeatherCardCollectionCell {
+            if let cardDatasource = homeData?.homeCards {
+                weatherCollectionCell.cardDatasource = cardDatasource
+            }
+            weatherCollectionCell.selectedMenu = .today
+            weatherCollectionCell.bgControlDelegate = self
+        } else if let bestCommentCollectionCell = cell as? HomeBestCommentCollectionCell {
+            if homeData?.bestComments.isEmpty ?? true {
+                bestCommentCollectionCell.comments = [HomeData.defaultComment]
+            } else {
+                bestCommentCollectionCell.comments = homeData?.bestComments ?? []
+            }
+        }
+
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return homeCellDatasource.count
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return homeCellDatasource[indexPath.item].size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .zero
+    }
+}
+
+extension UICollectionView {
+    // Home 이외에서도 사용될 경우 CellType으로 통합
+    func register(cellTypes: [HomeCellType]) {
+        cellTypes.forEach {
+            let nib: UINib = UINib(nibName: $0.identifier, bundle: nil)
+            register(nib, forCellWithReuseIdentifier: $0.identifier)
+        }
+    }
+}
+
+extension HomeViewController {
+    func openCommentView(completion: (() -> Void)? = nil) {
+        let todayInfo = homeData?.homeCards[.today]?.first as? RWHomeTempCard
+        commentHeaderView.backgroundColor = todayInfo?.mainColor
+        commentHeaderTempLabel.text = todayInfo?.currentTemp.tempFormat
+        commentHeaderStatusLabel.text = todayInfo?.type.title ?? ""
+        
+        view.bringSubviewToFront(commentHeaderView)
+        view.bringSubviewToFront(commentView)
+        view.bringSubviewToFront(bottomView)
+        let animations: () -> Void = { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            RootViewController.shared().navigationView.alpha = 0.0
+            self.commentViewTop.constant = self.view.bounds.height - 140
+            self.commentViewHeight.constant = self.view.bounds.height - 140
+            self.commentHeaderView.alpha = 1.0
+            self.bottomView.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut, animations: animations) { [weak self] _ in
+            self?.commentViewController?.isOpened = true
+            UIView.animate(withDuration: 0.15, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                self?.commentHeaderTempLabel.alpha = 1.0
+                self?.commentHeaderStatusLabel.alpha = 1.0
+                }, completion: { _ in
+                    completion?()
+            })
+        }
+        isCommentOpened = true
+    }
+    
+    func closeCommentView(completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.25, animations: { [weak self] in
+            RootViewController.shared().navigationView.alpha = 1.0
+            self?.commentViewTop.constant = 50
+            self?.commentHeaderView.alpha = 0.0
+            self?.commentHeaderTempLabel.alpha = 0.0
+            self?.commentHeaderStatusLabel.alpha = 0.0
+            self?.bottomView.alpha = 1.0
+            self?.view.layoutIfNeeded()
+            }, completion: { [weak self] _ in
+                guard let `self` = self else {
+                    return
+                }
+                self.commentViewController?.isOpened = false
+                self.commentViewHeight.constant = self.view.bounds.height
+                self.view.sendSubviewToBack(self.commentHeaderView)
+                completion?()
+        })
+        isCommentOpened = false
+    }
+    
+    @IBAction func onCommentViewTapped(_ sender: UIGestureRecognizer) {
+        let touchLocationY: CGFloat = sender.location(in: view).y
+        switch sender.state {
+        case .changed:
+            commentViewTop.constant = view.bounds.height - touchLocationY + 30
+        case .ended:
+            
+            if !isCommentOpened {
+                if touchLocationY < (view.bounds.height * 3) / 4 {
+                    openCommentView()
+                } else {
+                    closeCommentView()
+                }
+            } else {
+                if touchLocationY < view.bounds.height / 4 {
+                    openCommentView()
+                } else {
+                    closeCommentView()
+                }
+            }
+        default:
+            break
+        }
+    }
+}
+
+extension HomeViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if let commentViewController = commentViewController {
+            if commentView.frame.contains(touch.location(in: view)) {
+                var shouldReceiveTouch = true
+                commentViewController.viewsToIgnoreRootGesture.forEach {
+                    if $0.frame.contains(touch.location(in: commentViewController.view)) {
+                        shouldReceiveTouch = false
+                    }
+                }
+                if commentViewController.gestureHandleView.frame.contains(touch.location(in: commentViewController.view)) {
+                    shouldReceiveTouch = true
+                }
+                return shouldReceiveTouch
+            } else {
+                return false
+            }
+        }
+        
+        return false
     }
 }

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeWeatherWeekCardCell" id="7Rw-Rr-1Y8" userLabel="HomeWeatherWeekCardCell" customClass="HomeWeatherWeekCardCell" customModule="RealWeather" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cd9-lR-OK3">
+                        <rect key="frame" x="40" y="15" width="295" height="360"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번주 날씨는" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="41O-E4-7uo">
+                                <rect key="frame" x="24" y="36" width="120" height="26.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="22"/>
+                                <color key="textColor" red="0.12941176469999999" green="0.1450980392" blue="0.16078431369999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PfO-Tb-PuC">
+                                <rect key="frame" x="0.0" y="86.5" width="295" height="273.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="7Rw-Rr-1Y8" id="ex7-wz-lSb"/>
+                                    <outlet property="delegate" destination="7Rw-Rr-1Y8" id="W1B-Rh-yD6"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="PfO-Tb-PuC" secondAttribute="trailing" id="3KV-zY-hFA"/>
+                            <constraint firstAttribute="height" constant="360" id="6HG-sh-apl"/>
+                            <constraint firstItem="41O-E4-7uo" firstAttribute="leading" secondItem="cd9-lR-OK3" secondAttribute="leading" constant="24" id="AKA-tY-z1J"/>
+                            <constraint firstItem="PfO-Tb-PuC" firstAttribute="top" secondItem="41O-E4-7uo" secondAttribute="bottom" constant="24" id="GmT-lE-2Jp"/>
+                            <constraint firstItem="41O-E4-7uo" firstAttribute="top" secondItem="cd9-lR-OK3" secondAttribute="top" constant="36" id="gbU-OR-pP2"/>
+                            <constraint firstAttribute="bottom" secondItem="PfO-Tb-PuC" secondAttribute="bottom" id="rgJ-Me-Ovu"/>
+                            <constraint firstItem="PfO-Tb-PuC" firstAttribute="leading" secondItem="cd9-lR-OK3" secondAttribute="leading" id="sva-ay-FtA"/>
+                            <constraint firstAttribute="width" constant="295" id="uBg-lW-Hmn"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <real key="value" value="20.600000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="cd9-lR-OK3" firstAttribute="centerX" secondItem="LTY-Yn-jn0" secondAttribute="centerX" id="aui-wm-aB5"/>
+                <constraint firstItem="cd9-lR-OK3" firstAttribute="centerY" secondItem="LTY-Yn-jn0" secondAttribute="centerY" id="iVK-YI-kJt"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="LTY-Yn-jn0"/>
+            <size key="customSize" width="254" height="101"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <real key="value" value="13.1"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cardView" destination="cd9-lR-OK3" id="PyY-OC-S5T"/>
+                <outlet property="tableView" destination="PfO-Tb-PuC" id="BsV-aY-LC5"/>
+            </connections>
+            <point key="canvasLocation" x="290.57971014492756" y="-114.50892857142857"/>
+        </collectionViewCell>
+    </objects>
+</document>
