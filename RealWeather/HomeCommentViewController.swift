@@ -48,6 +48,7 @@ class HomeCommentViewController: UIViewController {
         super.viewDidLoad()
         self.commentCollectionView.dataSource = self
         self.commentCollectionView.delegate = self
+        self.commentTextField.commentDelegate = self
         self.indicator.hidesWhenStopped = true
     
         
