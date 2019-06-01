@@ -8,26 +8,37 @@
 
 import UIKit
 
-protocol CommentDelegate {
-    func getHeader(header: CommentHeaderView)
-}
-
 class HomeCommentViewController: UIViewController {
-    @IBOutlet weak var commentCollectionView: UICollectionView!
-    @IBOutlet weak var commentTextFieldBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var commentTextField: CommentTextField!
-    @IBOutlet weak var weatherView: UIView!
-    @IBOutlet weak var weatherViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textFieldView: UIView!
-    @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var emptyCommentImg: UIImageView!
-    @IBOutlet weak var emptyCommentLabel: UILabel!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet private weak var commentCollectionView: UICollectionView!
+    @IBOutlet private weak var commentTextFieldBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var commentTextField: CommentTextField!
+    @IBOutlet private weak var weatherView: UIView!
+    @IBOutlet private weak var weatherViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var textFieldView: UIView!
+    @IBOutlet private weak var emptyCommentImg: UIImageView!
+    @IBOutlet private weak var emptyCommentLabel: UILabel!
+    @IBOutlet private weak var indicator: UIActivityIndicatorView!
+    @IBOutlet private weak var scrollHandleView: UIView!
     
     private var commentList: [RWComment] = []
     private var currentRange: Range = .recent
     private var timer: Timer?
-    var commentDelegate: CommentDelegate?
+    var viewsToIgnoreRootGesture: [UIView] {
+        return [commentCollectionView, commentTextField]
+    }
+    var gestureHandleView: UIView {
+        return scrollHandleView
+    }
+    var isOpened: Bool = false {
+        didSet {
+            if isOpened {
+                setComment(false)
+                turnTimer(true)
+            } else {
+                turnTimer(false)
+            }
+        }
+    }
     
     private let dataController = HomeCommentDataController()
     
@@ -36,12 +47,8 @@ class HomeCommentViewController: UIViewController {
         super.viewDidLoad()
         self.commentCollectionView.dataSource = self
         self.commentCollectionView.delegate = self
-        self.commentTextField.commentDelegate = self
         self.indicator.hidesWhenStopped = true
         self.weatherViewHeightConstraint.constant = 0
-        if let bottomArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
-            bottomViewHeightConstraint.constant = bottomArea
-        }
         
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
         
@@ -191,7 +198,6 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
         header.initView()
         header.delegate = self
         header.isUserInteractionEnabled = true
-        commentDelegate?.getHeader(header: header)
         return header
     }
     

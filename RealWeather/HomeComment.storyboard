@@ -77,6 +77,13 @@
                                     <constraint firstItem="O1t-9p-clT" firstAttribute="centerX" secondItem="GAy-HS-Onz" secondAttribute="centerX" id="ry5-Hx-fG2"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3x3-Qn-KqF">
+                                <rect key="frame" x="0.0" y="84" width="414" height="54"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="PkU-xK-Oey"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hmH-so-TRi">
                                 <rect key="frame" x="0.0" y="84" width="414" height="590"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -295,46 +302,47 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CqF-ed-7zB">
                                 <rect key="frame" x="0.0" y="736" width="414" height="0.0"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" id="k0V-eS-wJx"/>
-                                </constraints>
                             </view>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="HZJ-4c-vlV">
                                 <rect key="frame" x="197" y="358" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="3x3-Qn-KqF" firstAttribute="top" secondItem="hmH-so-TRi" secondAttribute="top" id="1hW-Wq-P4g"/>
                             <constraint firstItem="vs7-wV-MOv" firstAttribute="bottom" secondItem="FkL-gv-d51" secondAttribute="bottom" id="27g-GT-fxT"/>
                             <constraint firstItem="vs7-wV-MOv" firstAttribute="trailing" secondItem="GAy-HS-Onz" secondAttribute="trailing" id="288-sm-9gq"/>
                             <constraint firstItem="fMc-xm-e64" firstAttribute="leading" secondItem="vs7-wV-MOv" secondAttribute="leading" id="3sT-PX-PoU"/>
+                            <constraint firstItem="3x3-Qn-KqF" firstAttribute="leading" secondItem="hmH-so-TRi" secondAttribute="leading" id="53i-tk-9TB"/>
                             <constraint firstItem="GAy-HS-Onz" firstAttribute="leading" secondItem="vs7-wV-MOv" secondAttribute="leading" id="71q-Vt-hWZ"/>
                             <constraint firstItem="vs7-wV-MOv" firstAttribute="trailing" secondItem="fMc-xm-e64" secondAttribute="trailing" id="74e-gI-wEj"/>
                             <constraint firstItem="HZJ-4c-vlV" firstAttribute="centerX" secondItem="yFt-Oc-zcL" secondAttribute="centerX" id="Bif-nM-fDt"/>
                             <constraint firstItem="HZJ-4c-vlV" firstAttribute="centerY" secondItem="yFt-Oc-zcL" secondAttribute="centerY" id="Bjt-3Z-iqR"/>
+                            <constraint firstItem="vs7-wV-MOv" firstAttribute="bottom" secondItem="GAy-HS-Onz" secondAttribute="bottom" constant="62" id="C0C-jX-usB"/>
                             <constraint firstAttribute="bottom" secondItem="CqF-ed-7zB" secondAttribute="bottom" id="GXu-Ty-kpS"/>
+                            <constraint firstItem="vs7-wV-MOv" firstAttribute="bottom" secondItem="hmH-so-TRi" secondAttribute="bottom" constant="62" id="Lh7-CH-b1H"/>
+                            <constraint firstItem="3x3-Qn-KqF" firstAttribute="trailing" secondItem="hmH-so-TRi" secondAttribute="trailing" id="Miv-ai-Uwe"/>
                             <constraint firstItem="vs7-wV-MOv" firstAttribute="trailing" secondItem="FkL-gv-d51" secondAttribute="trailing" id="SWl-he-7iJ"/>
-                            <constraint firstItem="FkL-gv-d51" firstAttribute="top" secondItem="GAy-HS-Onz" secondAttribute="bottom" id="Wga-Tk-73Y"/>
                             <constraint firstItem="vs7-wV-MOv" firstAttribute="trailing" secondItem="CqF-ed-7zB" secondAttribute="trailing" id="X44-c8-lHe"/>
-                            <constraint firstItem="FkL-gv-d51" firstAttribute="top" secondItem="hmH-so-TRi" secondAttribute="bottom" id="XxJ-pq-LN9"/>
                             <constraint firstItem="CqF-ed-7zB" firstAttribute="leading" secondItem="vs7-wV-MOv" secondAttribute="leading" id="Zac-de-R6r"/>
                             <constraint firstItem="GAy-HS-Onz" firstAttribute="height" secondItem="hmH-so-TRi" secondAttribute="height" constant="-54" id="cad-BA-um6"/>
                             <constraint firstItem="hmH-so-TRi" firstAttribute="leading" secondItem="vs7-wV-MOv" secondAttribute="leading" id="dXf-4O-Xdt"/>
                             <constraint firstItem="hmH-so-TRi" firstAttribute="top" secondItem="fMc-xm-e64" secondAttribute="bottom" id="eTX-Ir-32L"/>
                             <constraint firstItem="fMc-xm-e64" firstAttribute="top" secondItem="vs7-wV-MOv" secondAttribute="top" id="ihP-H1-rb7"/>
                             <constraint firstItem="FkL-gv-d51" firstAttribute="leading" secondItem="vs7-wV-MOv" secondAttribute="leading" id="qTN-RN-nBg"/>
+                            <constraint firstItem="CqF-ed-7zB" firstAttribute="top" secondItem="vs7-wV-MOv" secondAttribute="bottom" id="wms-5Q-Ecs"/>
                             <constraint firstItem="vs7-wV-MOv" firstAttribute="trailing" secondItem="hmH-so-TRi" secondAttribute="trailing" id="wsj-1V-SYC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="vs7-wV-MOv"/>
                     </view>
                     <connections>
-                        <outlet property="bottomViewHeightConstraint" destination="k0V-eS-wJx" id="V4z-Hf-aTk"/>
                         <outlet property="commentCollectionView" destination="hmH-so-TRi" id="6W2-s7-Vmn"/>
                         <outlet property="commentTextField" destination="EmC-4z-1ow" id="BvC-vH-N3Q"/>
                         <outlet property="commentTextFieldBottomConstraint" destination="27g-GT-fxT" id="R2h-qG-bEi"/>
                         <outlet property="emptyCommentImg" destination="O1t-9p-clT" id="Mvu-jv-GhM"/>
                         <outlet property="emptyCommentLabel" destination="TaG-Sr-chL" id="gwx-P4-4Zo"/>
                         <outlet property="indicator" destination="HZJ-4c-vlV" id="Iyw-Wk-Se9"/>
+                        <outlet property="scrollHandleView" destination="3x3-Qn-KqF" id="m7s-X6-tVf"/>
                         <outlet property="textFieldView" destination="FkL-gv-d51" id="0Qe-mW-1Fk"/>
                         <outlet property="weatherView" destination="fMc-xm-e64" id="zLK-tw-rMc"/>
                         <outlet property="weatherViewHeightConstraint" destination="8tC-Sm-Bff" id="TBZ-WF-ijS"/>

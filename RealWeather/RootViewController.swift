@@ -35,6 +35,9 @@ class RootViewController: UIViewController {
     }
     
     var isDrawerOpen: Bool = false
+    var navigationView: UIView {
+        return homeNavigationBarViewController.view
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
