@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "scale" : "1x",
       "filename" : "temp_cold.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "scale" : "1x"
     },
     {
-      "scale" : "2x",
+      "idiom" : "universal",
       "filename" : "temp_cold@2x.png",
-      "idiom" : "universal"
+      "scale" : "2x"
     },
     {
       "scale" : "3x",
-      "filename" : "temp_cold@3x.png",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "temp_cold@3x.png"
     }
   ],
   "info" : {

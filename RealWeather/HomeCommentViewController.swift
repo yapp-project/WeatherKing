@@ -8,26 +8,38 @@
 
 import UIKit
 
-protocol CommentDelegate {
-    func getHeader(header: CommentHeaderView)
-}
-
 class HomeCommentViewController: UIViewController {
-    @IBOutlet weak var commentCollectionView: UICollectionView!
-    @IBOutlet weak var commentTextFieldBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var commentTextField: CommentTextField!
-    @IBOutlet weak var weatherView: UIView!
-    @IBOutlet weak var weatherViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var textFieldView: UIView!
-    @IBOutlet weak var bottomViewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var emptyCommentImg: UIImageView!
-    @IBOutlet weak var emptyCommentLabel: UILabel!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet private weak var commentCollectionView: UICollectionView!
+    @IBOutlet private weak var commentTextFieldBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var commentTextField: CommentTextField!
+    @IBOutlet private weak var textFieldView: UIView!
+    @IBOutlet private weak var emptyCommentImg: UIImageView!
+    @IBOutlet private weak var emptyCommentLabel: UILabel!
+    @IBOutlet private weak var indicator: UIActivityIndicatorView!
+    @IBOutlet private weak var scrollHandleView: UIView!
     
     private var commentList: [RWComment] = []
     private var currentRange: Range = .recent
     private var timer: Timer?
-    var commentDelegate: CommentDelegate?
+    private var scrollBounceCount: Int = 0
+
+    var viewsToIgnoreRootGesture: [UIView] {
+        return [commentCollectionView, commentTextField]
+    }
+    var gestureHandleView: UIView {
+        return scrollHandleView
+    }
+    var isOpened: Bool = false {
+        didSet {
+            if isOpened {
+                setComment(false)
+                turnTimer(true)
+            } else {
+                turnTimer(false)
+            }
+            scrollBounceCount = 0
+        }
+    }
     
     private let dataController = HomeCommentDataController()
     
@@ -36,22 +48,13 @@ class HomeCommentViewController: UIViewController {
         super.viewDidLoad()
         self.commentCollectionView.dataSource = self
         self.commentCollectionView.delegate = self
-        self.commentTextField.commentDelegate = self
         self.indicator.hidesWhenStopped = true
-        self.weatherViewHeightConstraint.constant = 0
-        if let bottomArea = UIApplication.shared.keyWindow?.safeAreaInsets.bottom {
-            bottomViewHeightConstraint.constant = bottomArea
-        }
+    
         
         self.textFieldView.addBorder(side: .top, color: UIColor.CellBgColor.cgColor, thickness: 1)
-        
-        
-        self.commentCollectionView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 0.5, x: 0, y: -2, blur: 9, spread: 0)
-        
+        scrollHandleView.layer.applySketchShadow(color: UIColor.shadowColor30, alpha: 1, x: 0, y: -2, blur: 9, spread: 0)
         //
-        
-        
-        
+
         
         //        commentList.append(Comment(name: "언더아머", comment: "3대 몇 치냐?", distance: 20, time: 8, likeCount: 1132, hateCount: 250))
         //        commentList.append(Comment(name: "주륵주륵", comment: "밖에 비 온다 주륵주륵", distance: 10, time: 5, likeCount: 341, hateCount: 23))
@@ -185,16 +188,6 @@ extension HomeCommentViewController: UICollectionViewDelegate, UICollectionViewD
         let height = collectionView.frame.width * 100 / 375
         return CGSize(width: collectionView.frame.width, height: height)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "commentHeader", for: indexPath) as? CommentHeaderView else { fatalError() }
-        header.initView()
-        header.delegate = self
-        header.isUserInteractionEnabled = true
-        commentDelegate?.getHeader(header: header)
-        return header
-    }
-    
 }
 
 extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDelegate, CommentCellDelegate {
@@ -294,11 +287,29 @@ extension HomeCommentViewController: CommentTextFieldDelegate, CommentHeaderDele
         
     }
     
-    
-    
+
     func detectTouch() {
         self.commentTextField.endEditing(true)
     }
 }
 
-
+extension HomeCommentViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollOffsetY: CGFloat = scrollView.contentOffset.y
+        if scrollOffsetY > 0 {
+            scrollBounceCount = 0
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y <= 0 {
+            scrollBounceCount += 1
+        }
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if scrollBounceCount > 0, scrollView.contentOffset.y < -40 {
+            (parent as? HomeViewController)?.closeCommentView()
+        }
+    }
+}

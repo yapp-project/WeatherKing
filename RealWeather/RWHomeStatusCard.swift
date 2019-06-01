@@ -24,7 +24,7 @@ class RWHomeStatusCard: RWHomeCard {
     var precipitation: Int = 0
     
     var humidity: Int = 0
-    var windVelocity: Int = 0
+    var windVelocity: Double = 0
     var rainProbability: Int = 0
 }
 

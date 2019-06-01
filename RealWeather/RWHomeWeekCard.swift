@@ -8,15 +8,42 @@
 
 import UIKit
 
-class RWHomeWeekCard: RWHomeCard {
-    var mainColor: UIColor {
-        return type.color
+class RWHomeWeekInfo {
+    var daysAfter: Int
+    var amStatus: String = ""
+    var pmStatus: String = ""
+    var minTemp: Int = 0
+    var maxTemp: Int = 0
+    
+    var image: UIImage? {
+        switch pmStatus {
+        case "구름많음":
+            return #imageLiteral(resourceName: "week_cloud_cloudy")
+        case "구름조금":
+            return #imageLiteral(resourceName: "week_cloud_bitCloudy")
+        case "맑음":
+            return #imageLiteral(resourceName: "week_cloud_sunny")
+        case "비":
+            return #imageLiteral(resourceName: "week_cloud_rain")
+        case "눈":
+            return #imageLiteral(resourceName: "week_cloud_snow")
+        case "천둥번개":
+            return #imageLiteral(resourceName: "week_cloud_thunder")
+        case "안개":
+            return #imageLiteral(resourceName: "week_cloud_foggy")
+        default:
+            return #imageLiteral(resourceName: "week_cloud_sunny")
+        }
     }
     
-    // 컬러 여러가지
-    //    let mainColor: UIColor = .lightishBlue
-    var type: WeatherWeekType = .good
-    var dustDatas: [WeatherDustData] = []
+    init(daysAfter: Int) {
+        self.daysAfter = daysAfter
+    }
+}
+
+class RWHomeWeekCard: RWHomeCard {
+    var mainColor: UIColor = .lightishBlue
+    var weekInfos: [RWHomeWeekInfo] = []
 }
 
 public enum WeatherWeekType {

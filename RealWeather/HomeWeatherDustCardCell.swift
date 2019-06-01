@@ -18,6 +18,14 @@ class HomeWeatherDustCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var fineDustDegreeLabel: UILabel!
     @IBOutlet fileprivate weak var ultraDustDegreeLabel: UILabel!
     
+    @IBOutlet fileprivate weak var pm10DegreeLabel: UILabel!
+    @IBOutlet fileprivate weak var pm25DegreeLabel: UILabel!
+    @IBOutlet fileprivate weak var o3DegreeLabel: UILabel!
+    @IBOutlet fileprivate weak var no2DegreeLabel: UILabel!
+    @IBOutlet fileprivate weak var coDegreeLabel: UILabel!
+    @IBOutlet fileprivate weak var so2DegreeLabel: UILabel!
+    @IBOutlet fileprivate weak var providedTimeLabel: UILabel!
+    
     var dustDatas: [WeatherDustData] = []
     
     func updateView(card: RWHomeDustCard?) {
@@ -33,6 +41,15 @@ class HomeWeatherDustCardCell: UICollectionViewCell {
         ultraDustDegreeLabel.text = "\(ultraDustDegree)"
         fineDustStatusLabel.text = RWHomeDustType.fineDustDescription(fineDust: fineDustDegree)
         ultraDustStatusLabel.text = RWHomeDustType.ultraDustDescription(ultraDust: ultraDustDegree)
+        
+        pm10DegreeLabel.text = "\(card?.fineDustDegree ?? 0)"
+        pm25DegreeLabel.text = "\(card?.ultraDustDegree ?? 0)"
+        o3DegreeLabel.text = "\(card?.o3Degree ?? 0.0)"
+        no2DegreeLabel.text = "\(card?.no2Degree ?? 0.0)"
+        coDegreeLabel.text = "\(card?.coDegree ?? 0.0)"
+        so2DegreeLabel.text = "\(card?.so2Degree ?? 0)"
+        
+        providedTimeLabel.text = card?.providedTime
         
         backView.isHidden = true
         backView.alpha = 0.0
