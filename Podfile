@@ -3,17 +3,17 @@ platform :ios, '10.0'
 use_frameworks!
 inhibit_all_warnings!
 
-target 'RealWeather' do
+target 'WeatherKing' do
   pod 'FBSDKLoginKit', '5.0.0'
   pod 'GoogleSignIn', '4.4.0'
   pod 'ReachabilitySwift', '4.3.1'
 
-  target 'RealWeatherTests' do
+  target 'WeatherKingTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'RealWeatherUITests' do
+  target 'WeatherKingUITests' do
     inherit! :search_paths
     # Pods for testing
   end
