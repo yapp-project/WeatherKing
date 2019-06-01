@@ -282,10 +282,9 @@ extension HomeViewController {
     
     @IBAction func onCommentViewTapped(_ sender: UIGestureRecognizer) {
         let touchLocationY: CGFloat = sender.location(in: view).y
-
         switch sender.state {
         case .changed:
-            commentViewTop.constant = min(view.bounds.height - 140, view.bounds.height - touchLocationY + 30)
+            commentViewTop.constant = view.bounds.height - touchLocationY + 30
         case .ended:
             
             if !isCommentOpened {
@@ -309,9 +308,6 @@ extension HomeViewController {
 
 extension HomeViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if !isCommentOpened && commentView.frame.contains(touch.location(in: view)) {
-            return true
-        }
         
         if let commentViewController = commentViewController {
             if commentView.frame.contains(touch.location(in: view)) {

@@ -157,7 +157,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <panGestureRecognizer minimumNumberOfTouches="1" id="sMi-Nj-MAz">
                     <connections>
-                        <action selector="onCommentViewTapped:" destination="BYZ-38-t0r" id="1Qg-wn-dcZ"/>
+                        <action selector="onCommentViewTapped:" destination="BYZ-38-t0r" id="fdR-Tb-PJO"/>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="HF8-Ml-Y9E"/>
                     </connections>
                 </panGestureRecognizer>
