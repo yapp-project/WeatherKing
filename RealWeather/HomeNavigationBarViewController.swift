@@ -65,5 +65,9 @@ class HomeNavigationBarViewController: UIViewController {
     
     @IBAction func onOpenLocationBtnTapped(_ sender: UIButton) {
         // present location setting view (modal)
+        
+        if let nextView = storyboard?.instantiateViewController(withIdentifier: "locationNavigation") {
+            present(nextView, animated: true, completion: nil)
+        }
     }
 }

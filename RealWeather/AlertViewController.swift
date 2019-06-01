@@ -43,6 +43,7 @@ enum AlertSettingCellType: CaseIterable {
 class AlertViewController: UIViewController {
     
     @IBOutlet fileprivate weak var tableView: UITableView!
+    
     let morningDatePicker = UIDatePicker()
     let nightDatePicker = UIDatePicker()
     let toolbar = UIToolbar()
@@ -62,7 +63,7 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 60
+        
         morningDatePicker.datePickerMode = .time
         morningDatePicker.addTarget(self, action: #selector(self.morningPickerChange(_:)), for: .valueChanged)
         
@@ -74,17 +75,23 @@ class AlertViewController: UIViewController {
         let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.ActionBar))
         
         toolbar.items = [doneBtn]
+        tableView.allowsSelection = false
+        
         
     }
     @objc func ActionBar() {
         view.endEditing(true)
         tableView.reloadData()
     }
+    
     @objc func morningPickerChange(_ send: UIDatePicker) {
         let formatter = DateFormatter()
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         formatter.dateFormat = "a h:mm"
+        formatter.amSymbol = "오전"
+        formatter.pmSymbol = "오후"
+
         let date = formatter.string(from: send.date)
         morningTimeText = date
     }
@@ -94,13 +101,20 @@ class AlertViewController: UIViewController {
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         formatter.dateFormat = "a h:mm"
+        formatter.amSymbol = "오전"
+        formatter.pmSymbol = "오후"
+        
         let date = formatter.string(from: send.date)
         nightTimeText = date
     }
     @IBAction func setTime(_ sender: UIDatePicker) {
-        guard let time = sender.indexPath() else {
-            return
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "a h:mm"
+        let date = dateFormatter.date(from: "오전 7:00")
+        if let formatter = date {
+            morningDatePicker.date = formatter
         }
+        
     }
     
     @IBAction func backBtn(_ sender: Any?) {
@@ -135,22 +149,46 @@ extension AlertViewController: UITableViewDataSource {
             } else {
                 switchCell.updateView(title: cellType.title, isOn: true)
             }
-        } else if let buttonCell = cell as? AlertTableViewButtonCell {
+        }
+        else if let buttonCell = cell as? AlertTableViewButtonCell {
             if cellType == .morning {
+                
                 buttonCell.timeField.inputView = morningDatePicker
                 buttonCell.timeField.inputAccessoryView = toolbar
                 buttonCell.updateView(title: cellType.title,time: morningTimeText ?? "")
+                let formatter = DateFormatter()
+                formatter.dateStyle = .none
+                formatter.timeStyle = .short
+                formatter.dateFormat = "a h:mm"
+                formatter.amSymbol = "오전"
+                formatter.pmSymbol = "오후"
+                
+                let date = formatter.date(from: "오전 7:00")
+                morningDatePicker.date = date!
             } else {
                 buttonCell.timeField.inputView = nightDatePicker
                 buttonCell.timeField.inputAccessoryView = toolbar
                 buttonCell.updateView(title: cellType.title, time: nightTimeText ?? "")
+                let formatter = DateFormatter()
+                formatter.dateStyle = .none
+                formatter.timeStyle = .short
+                formatter.dateFormat = "a h:mm"
+                formatter.amSymbol = "오전"
+                formatter.pmSymbol = "오후"
+                
+                let date = formatter.date(from: "오후 10:00")
+                nightDatePicker.date = date!
             }
         }
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+}
+
+extension AlertViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
 }
 
@@ -182,6 +220,7 @@ class AlertTableViewButtonCell: UITableViewCell {
         self.alertLabel.text = title
         self.timeField.text = time
     }
+    
 }
 
 var indexPathKey: UInt8 = 0

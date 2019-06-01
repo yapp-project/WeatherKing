@@ -69,6 +69,9 @@
 		CE8B43EC22A1A76000EF8E0F /* HomeWeatherWeekCardBackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8B43E922A1A76000EF8E0F /* HomeWeatherWeekCardBackCell.xib */; };
 		CE8B43ED22A1A76000EF8E0F /* HomeWeatherWeekCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43EA22A1A76000EF8E0F /* HomeWeatherWeekCardCell.swift */; };
 		CE8B43EE22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8B43EB22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib */; };
+		CE8B43F222A2167200EF8E0F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */; };
+		CE8B43F322A2167200EF8E0F /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */; };
+		CE8B43F422A2167200EF8E0F /* LocationKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43F122A2167200EF8E0F /* LocationKeyword.swift */; };
 		CEA910F322869C460010C45F /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F222869C460010C45F /* AppKey.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* RWComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* RWComment.swift */; };
@@ -81,7 +84,6 @@
 		CED56D13224A9671008CFD82 /* RWLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D12224A9671008CFD82 /* RWLoginManager.swift */; };
 		E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CD224F949700ECCEC3 /* UnitViewController.swift */; };
 		E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */; };
-		E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */; };
 		E12698D72250044A00ECCEC3 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E12698D62250044A00ECCEC3 /* Start.storyboard */; };
 		E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */; };
 /* End PBXBuildFile section */
@@ -189,6 +191,9 @@
 		CE8B43E922A1A76000EF8E0F /* HomeWeatherWeekCardBackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWeatherWeekCardBackCell.xib; sourceTree = "<group>"; };
 		CE8B43EA22A1A76000EF8E0F /* HomeWeatherWeekCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWeatherWeekCardCell.swift; sourceTree = "<group>"; };
 		CE8B43EB22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWeatherWeekCardCell.xib; sourceTree = "<group>"; };
+		CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
+		CE8B43F122A2167200EF8E0F /* LocationKeyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationKeyword.swift; sourceTree = "<group>"; };
 		CE959F92228B365B00F7299D /* RealWeather.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RealWeather.entitlements; sourceTree = "<group>"; };
 		CEA910F222869C460010C45F /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
@@ -204,7 +209,6 @@
 		DBA1DAA97767B088664DC932 /* Pods_RealWeatherTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealWeatherTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E12698CD224F949700ECCEC3 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
 		E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlldayAlertViewController.swift; sourceTree = "<group>"; };
 		E12698D62250044A00ECCEC3 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNicknameViewController.swift; sourceTree = "<group>"; };
 		EE6A39DFEF20D6D03673B012 /* Pods-RealWeatherUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealWeatherUITests.debug.xcconfig"; path = "Target Support Files/Pods-RealWeatherUITests/Pods-RealWeatherUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -457,10 +461,12 @@
 		CED56D06224A90D3008CFD82 /* Drawer */ = {
 			isa = PBXGroup;
 			children = (
+				CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */,
+				CE8B43F122A2167200EF8E0F /* LocationKeyword.swift */,
+				CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */,
 				CED56D07224A90EB008CFD82 /* DrawerViewController.swift */,
 				E12698CD224F949700ECCEC3 /* UnitViewController.swift */,
 				E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */,
-				E12698D1224F9FE100ECCEC3 /* AlldayAlertViewController.swift */,
 				E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */,
 			);
 			name = Drawer;
@@ -743,12 +749,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8B43CB2299B8A500EF8E0F /* NickNameViewController.swift in Sources */,
-				E12698D2224F9FE100ECCEC3 /* AlldayAlertViewController.swift in Sources */,
 				CED56D13224A9671008CFD82 /* RWLoginManager.swift in Sources */,
 				CE8B43C1229857FB00EF8E0F /* RWUser.swift in Sources */,
 				CED56D11224A9652008CFD82 /* RWLocationManager.swift in Sources */,
 				CE8B43CC2299B8B900EF8E0F /* NotificationViewController.swift in Sources */,
 				CE72AC582274776C00D77543 /* RWHomeStatusCard.swift in Sources */,
+				CE8B43F422A2167200EF8E0F /* LocationKeyword.swift in Sources */,
 				741C8E56224FC828001007AB /* CommentLikeButton.swift in Sources */,
 				CE72AC732274B2AC00D77543 /* UserDefaultsManager.swift in Sources */,
 				CE8B43D2229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift in Sources */,
@@ -762,6 +768,7 @@
 				CEB189D82221845500A1BB38 /* RWComment.swift in Sources */,
 				CE8B43E722A1972100EF8E0F /* HomeRefreshControl.swift in Sources */,
 				741C8E52224FA252001007AB /* CommentTextField.swift in Sources */,
+				CE8B43F222A2167200EF8E0F /* InformationViewController.swift in Sources */,
 				CEB189DE2221866C00A1BB38 /* HomeDataController.swift in Sources */,
 				74415A012221B86A00AA3D67 /* Weather.swift in Sources */,
 				E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */,
@@ -773,6 +780,7 @@
 				CE8352E0229921B800F11842 /* SignUpViewController.swift in Sources */,
 				CE31EB46224E92E1005CA188 /* RWHomeCard.swift in Sources */,
 				CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */,
+				CE8B43F322A2167200EF8E0F /* LocationSearchViewController.swift in Sources */,
 				E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */,
 				CE522F52224F9A5E000C26BF /* HomeWeatherDustCardCell.swift in Sources */,
 				CE31EB4A224EAE30005CA188 /* HomeWeatherMenuCell.swift in Sources */,
