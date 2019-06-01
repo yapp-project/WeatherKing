@@ -166,8 +166,8 @@ extension LocationSearchViewController: UITableViewDelegate {
                 }
             
             let url = "\(startURL)type=2&uid=8156087164dea5fc447685e589be33c638c342d8233d062ab37baf28623da6e5da199bf9ab1cb286ca2639e9ab81e8f5ed24bc5e320c1fdb4ba2b8df7517f7ec&lat=\(latitude)&lng=\(longitude)"
-            RequestURL(url: url, type: .put)
-            
+//            RequestURL(url: url, type: .put)
+            dismiss(animated: true, completion: nil)
             
         } else {
             print("\(current[indexPath.row])")
@@ -177,6 +177,7 @@ extension LocationSearchViewController: UITableViewDelegate {
             locationManager.startUpdatingLocation()
             
             //위도, 경도 전송 후 메인으로 이동
+            dismiss(animated: true, completion: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
