@@ -2,18 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "temp_windy.png",
+      "filename" : "cough_veryhigh.png",
       "scale" : "1x"
     },
     {
       "scale" : "2x",
       "idiom" : "universal",
-      "filename" : "temp_windy@2x.png"
+      "filename" : "cough_veryhigh@2x.png"
     },
     {
       "idiom" : "universal",
-      "filename" : "temp_windy@3x.png",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "cough_veryhigh@3x.png"
     }
   ],
   "info" : {
