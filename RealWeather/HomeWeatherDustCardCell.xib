@@ -53,8 +53,8 @@
                                 <color key="textColor" red="0.67843137249999996" green="0.70980392160000005" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="송파구 측정소 (03.18 12:00)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lQ-bS-e5F">
-                                <rect key="frame" x="24" y="313.5" width="126" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="송파구 측정소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0lQ-bS-e5F">
+                                <rect key="frame" x="24" y="313.5" width="60" height="14"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="11"/>
                                 <color key="textColor" red="0.67843137249999996" green="0.70980392160000005" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -334,9 +334,16 @@
             <connections>
                 <outlet property="backView" destination="P2M-ws-pHb" id="GR1-ae-xw2"/>
                 <outlet property="cardView" destination="Ci1-7c-WxM" id="J3m-L4-tpm"/>
+                <outlet property="coDegreeLabel" destination="nuz-TE-sMW" id="xAZ-hQ-KSp"/>
                 <outlet property="fineDustDegreeLabel" destination="wLu-cc-uxO" id="uKW-Cn-NF8"/>
                 <outlet property="fineDustStatusLabel" destination="abY-dv-oo4" id="gqh-Ri-pGs"/>
                 <outlet property="imageView" destination="KPI-qD-T2T" id="ZVK-IO-xLw"/>
+                <outlet property="no2DegreeLabel" destination="L9m-FX-4dE" id="jpU-1G-o7O"/>
+                <outlet property="o3DegreeLabel" destination="UfP-r2-KNC" id="3s1-MW-7ad"/>
+                <outlet property="pm10DegreeLabel" destination="KZp-6A-1Dq" id="p2I-9S-Dqr"/>
+                <outlet property="pm25DegreeLabel" destination="D6B-Yp-9nf" id="K6D-T1-8eQ"/>
+                <outlet property="providedTimeLabel" destination="0lQ-bS-e5F" id="kJj-4B-1de"/>
+                <outlet property="so2DegreeLabel" destination="fra-ov-5Ec" id="imh-5x-8O6"/>
                 <outlet property="titleLabel" destination="6nv-Zt-GNZ" id="gIE-eO-LQi"/>
                 <outlet property="ultraDustDegreeLabel" destination="LZx-Te-Xrx" id="yOb-MY-pjI"/>
                 <outlet property="ultraDustStatusLabel" destination="i2h-Q8-m1C" id="QWk-wA-4Dw"/>

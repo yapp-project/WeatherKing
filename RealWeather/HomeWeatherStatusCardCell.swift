@@ -16,6 +16,10 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var imageView: UIImageView!
     @IBOutlet fileprivate weak var backView: UIView!
     
+    @IBOutlet fileprivate weak var humidityLabel: UILabel!
+    @IBOutlet fileprivate weak var windVelocityLabel: UILabel!
+    @IBOutlet fileprivate weak var rainProbabilityLabel: UILabel!
+    
     func updateView(card: RWHomeStatusCard?) {
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
         cardView.backgroundColor = card?.mainColor
@@ -23,10 +27,28 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
         imageView.image = card?.type.image
         statusLabel.text = card?.type.rawValue
         
-        // TODO: 임시처리
-        rainAndSnowDegreeLabel.isHidden = true
         backView.isHidden = true
         backView.alpha = 0.0
+        
+        let targetTimeData = card?.timeTempDatas.filter { $0.time == .am12 }.first
+        guard let timeData = targetTimeData else {
+            rainAndSnowDegreeLabel.isHidden = true
+            return
+        }
+        
+        if timeData.rainfall > 0 {
+            rainAndSnowDegreeLabel.isHidden = false
+            rainAndSnowDegreeLabel.text = "강수량 \(timeData.rainfall)mm"
+        } else if timeData.snowfall > 0 {
+            rainAndSnowDegreeLabel.isHidden = false
+            rainAndSnowDegreeLabel.text = "적설량 \(timeData.snowfall)cm"
+        } else {
+            rainAndSnowDegreeLabel.isHidden = true
+        }
+        
+        humidityLabel.text = "\(timeData.humidity)"
+        windVelocityLabel.text = "\(timeData.windVelocity)"
+        rainProbabilityLabel.text = "\(timeData.rainPop)"
     }
 }
 
@@ -49,27 +71,3 @@ extension HomeWeatherStatusCardCell: WeatherCardCell {
         }
     }
 }
-
-// TODO: 추후 연결
-//extension HomeWeatherStatusCardCell: UICollectionViewDelegate {
-//
-//}
-//
-//extension HomeWeatherStatusCardCell: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return statusDatas.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-//        return cell
-//    }
-//}
-//
-//extension HomeWeatherStatusCardCell: UICollectionViewDelegateFlowLayout {
-//
-//}
-//
-//class HomeWeatherStatusCardBackCell: UICollectionViewCell {
-//    
-//}
