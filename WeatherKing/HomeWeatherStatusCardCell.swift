@@ -19,18 +19,24 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var humidityLabel: UILabel!
     @IBOutlet fileprivate weak var windVelocityLabel: UILabel!
     @IBOutlet fileprivate weak var rainProbabilityLabel: UILabel!
-    
-    func updateView(card: RWHomeStatusCard?) {
+}
+
+extension HomeWeatherStatusCardCell: HomeWeatherCardCell {
+    func updateView(card: RWHomeCard?) {
+        guard let statusCard = card as? RWHomeStatusCard else {
+            return
+        }
+        
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
         cardView.backgroundColor = card?.mainColor
-        titleLabel.text = card?.type.description
-        imageView.image = card?.type.image
-        statusLabel.text = card?.type.rawValue
+        titleLabel.text = statusCard.type.description
+        imageView.image = statusCard.type.image
+        statusLabel.text = statusCard.type.rawValue
         
         backView.isHidden = true
         backView.alpha = 0.0
         
-        let targetTimeData = card?.timeTempDatas.filter { $0.time == .am12 }.first
+        let targetTimeData = statusCard.timeTempDatas.filter { $0.time == .am12 }.first
         guard let timeData = targetTimeData else {
             rainAndSnowDegreeLabel.isHidden = true
             return
@@ -50,9 +56,7 @@ class HomeWeatherStatusCardCell: UICollectionViewCell {
         windVelocityLabel.text = "\(timeData.windVelocity)"
         rainProbabilityLabel.text = "\(timeData.rainPop)"
     }
-}
-
-extension HomeWeatherStatusCardCell: WeatherCardCell {
+    
     func flipCard() {
         if backView.isHidden {
             self.backView.isHidden = false

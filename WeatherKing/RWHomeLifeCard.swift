@@ -9,6 +9,7 @@
 import UIKit
 
 class RWHomeLifeCard: RWHomeCard {
+    let cellType: HomeCellType = .weatherLifeCard
     var mainColor: UIColor {
         if let _ = coughDegree {
             return RWHomeCoughDegree.color

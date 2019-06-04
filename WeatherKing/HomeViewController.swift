@@ -56,8 +56,15 @@ public enum HomeCellType {
     }
 }
 
-protocol WeatherCardCell: class {
+protocol HomeWeatherCardCell: UICollectionViewCell {
+    func updateView(card: RWHomeCard?)
     func flipCard()
+}
+
+extension HomeWeatherCardCell {
+    func flipCard() {
+        // Does nothing
+    }
 }
 
 protocol HomeBGColorControlDelegate {
@@ -126,10 +133,8 @@ extension HomeViewController {
     
     private func reloadData(completion: (() -> Void)? = nil) {
         let location: RWLocation = RWLocationManager.shared.currentLocation
-        RootViewController.shared().startLoading()
         RWLocationManager.shared.updateLocation()
         homeDataController.requestData(for: location) { [weak self] homeData in
-            RootViewController.shared().stopLoading()
             self?.homeData = homeData
             completion?()
         }

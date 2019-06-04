@@ -27,36 +27,39 @@ class HomeWeatherDustCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var providedTimeLabel: UILabel!
     
     var dustDatas: [WeatherDustData] = []
-    
-    func updateView(card: RWHomeDustCard?) {
-        cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
-        cardView.backgroundColor = card?.type.color
-        titleLabel.text = card?.type.title
-        imageView.image = card?.type.image
+}
+
+extension HomeWeatherDustCardCell: HomeWeatherCardCell {
+    func updateView(card: RWHomeCard?) {
+        guard let dustCard = card as? RWHomeDustCard else {
+            return
+        }
         
-        let fineDustDegree: Int = card?.fineDustDegree ?? 0
-        let ultraDustDegree: Int = card?.ultraDustDegree ?? 0
+        cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
+        cardView.backgroundColor = dustCard.type.color
+        titleLabel.text = dustCard.type.title
+        imageView.image = dustCard.type.image
+        
+        let fineDustDegree: Int = dustCard.fineDustDegree
+        let ultraDustDegree: Int = dustCard.ultraDustDegree
         
         fineDustDegreeLabel.text = "\(fineDustDegree)"
         ultraDustDegreeLabel.text = "\(ultraDustDegree)"
         fineDustStatusLabel.text = RWHomeDustType.fineDustDescription(fineDust: fineDustDegree)
         ultraDustStatusLabel.text = RWHomeDustType.ultraDustDescription(ultraDust: ultraDustDegree)
         
-        pm10DegreeLabel.text = "\(card?.fineDustDegree ?? 0)"
-        pm25DegreeLabel.text = "\(card?.ultraDustDegree ?? 0)"
-        o3DegreeLabel.text = "\(card?.o3Degree ?? 0.0)"
-        no2DegreeLabel.text = "\(card?.no2Degree ?? 0.0)"
-        coDegreeLabel.text = "\(card?.coDegree ?? 0.0)"
-        so2DegreeLabel.text = "\(card?.so2Degree ?? 0)"
-        
-        providedTimeLabel.text = card?.providedTime
+        pm10DegreeLabel.text = "\(dustCard.fineDustDegree)"
+        pm25DegreeLabel.text = "\(dustCard.ultraDustDegree)"
+        o3DegreeLabel.text = "\(dustCard.o3Degree)"
+        no2DegreeLabel.text = "\(dustCard.no2Degree)"
+        coDegreeLabel.text = "\(dustCard.coDegree)"
+        so2DegreeLabel.text = "\(dustCard.so2Degree)"
+        providedTimeLabel.text = dustCard.providedTime
         
         backView.isHidden = true
         backView.alpha = 0.0
     }
-}
-
-extension HomeWeatherDustCardCell: WeatherCardCell {
+    
     func flipCard() {
         if backView.isHidden {
             self.backView.isHidden = false

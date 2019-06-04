@@ -68,10 +68,9 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // TODO: 한 타입으로 묶어서 정리 필요
         if collectionView == menuCollectionView {
             let cellType: HomeCellType = .weatherMenu
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
+            let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
             
             if let menuCell = cell as? HomeWeatherMenuCell {
                 let title: String = menuDatasource[indexPath.item].title
@@ -80,50 +79,14 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDataSource {
             }
             return cell
             
-        } else if let tempCard = cards[indexPath.item] as? RWHomeTempCard {
-            let cellType: HomeCellType = .weatherTempCard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
-            
-            if let cardCell = cell as? HomeWeatherTempCardCell {
-                cardCell.updateView(card: tempCard)
-            }
-            return cell
-            
-        } else if let statusCard = cards[indexPath.item] as? RWHomeStatusCard {
-            let cellType: HomeCellType = .weatherStatusCard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
-            
-            if let cardCell = cell as? HomeWeatherStatusCardCell {
-                cardCell.updateView(card: statusCard)
-            }
-            return cell
-            
-        } else if let dustCard = cards[indexPath.item] as? RWHomeDustCard {
-            let cellType: HomeCellType = .weatherDustCard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
-            
-            if let cardCell = cell as? HomeWeatherDustCardCell {
-                cardCell.updateView(card: dustCard)
-            }
-            return cell
-        } else if let lifeCard = cards[indexPath.item] as? RWHomeLifeCard {
-            let cellType: HomeCellType = .weatherLifeCard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
-            
-            if let cardCell = cell as? HomeWeatherLifeCardCell {
-                cardCell.updateView(card: lifeCard)
-            }
-            return cell
-        } else if let weekCard = cards[indexPath.item] as? RWHomeWeekCard {
-            let cellType: HomeCellType = .weatherWeekCard
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath)
-            
-            if let cardCell = cell as? HomeWeatherWeekCardCell {
-                cardCell.updateView(card: weekCard)
-            }
-            return cell
         } else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: HomeCellType.weatherTempCard.identifier, for: indexPath)
+            let card: RWHomeCard = cards[indexPath.item]
+            let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: card.cellType.identifier, for: indexPath)
+            
+            if let cardCell = cell as? HomeWeatherCardCell {
+                cardCell.updateView(card: card)
+            }
+            return cell
         }
     }
 }
@@ -133,8 +96,7 @@ extension HomeWeatherCardCollectionCell: UICollectionViewDelegate {
         
         if collectionView == menuCollectionView {
             selectedMenu = menuDatasource[indexPath.item]
-            // TODO: protocol로 flipcard 하나로 묶을 것
-        } else if let cardCell = collectionView.cellForItem(at: indexPath) as? WeatherCardCell {
+        } else if let cardCell = collectionView.cellForItem(at: indexPath) as? HomeWeatherCardCell {
             cardCell.flipCard()
         }
     }

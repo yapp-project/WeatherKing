@@ -19,17 +19,18 @@ class HomeWeatherWeekCardCell: UICollectionViewCell {
         let nib: UINib = UINib(nibName: "HomeWeatherWeekCardBackCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "HomeWeatherWeekCardBackCell")
     }
-    
-    func updateView(card: RWHomeWeekCard?) {
-        weekInfos = card?.weekInfos ?? []
+}
+
+extension HomeWeatherWeekCardCell: HomeWeatherCardCell {
+    func updateView(card: RWHomeCard?) {
+        guard let weekCard = card as? RWHomeWeekCard else {
+            return
+        }
+        
+        weekInfos = weekCard.weekInfos
         tableView.reloadData()
         
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
-    }
-}
-
-extension HomeWeatherWeekCardCell: WeatherCardCell {
-    func flipCard() {
     }
 }
 

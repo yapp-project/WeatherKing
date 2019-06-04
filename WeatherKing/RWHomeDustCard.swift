@@ -9,6 +9,7 @@
 import UIKit
 
 class RWHomeDustCard: RWHomeCard {
+    let cellType: HomeCellType = .weatherDustCard
     var mainColor: UIColor {
         return type.color
     }

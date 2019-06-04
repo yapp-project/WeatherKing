@@ -14,21 +14,21 @@ class HomeWeatherLifeCardCell: UICollectionViewCell {
     @IBOutlet fileprivate weak var clotheLabel: UILabel!
     @IBOutlet fileprivate weak var imageView: UIImageView!
     @IBOutlet fileprivate weak var backView: UIView!
-    
-    func updateView(card: RWHomeLifeCard?) {
+}
+
+extension HomeWeatherLifeCardCell: HomeWeatherCardCell {
+    func updateView(card: RWHomeCard?) {
+        guard let lifeCard = card as? RWHomeLifeCard else {
+            return
+        }
+        
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
-        cardView.backgroundColor = card?.mainColor
-        titleLabel.text = card?.title
-        imageView.image = card?.image
-        clotheLabel.text = card?.tempDegree?.clotheDescription
+        cardView.backgroundColor = lifeCard.mainColor
+        titleLabel.text = lifeCard.title
+        imageView.image = lifeCard.image
+        clotheLabel.text = lifeCard.tempDegree?.clotheDescription
         
         backView.isHidden = true
         backView.alpha = 0.0
-    }
-}
-
-extension HomeWeatherLifeCardCell: WeatherCardCell {
-    func flipCard() {
-        
     }
 }
