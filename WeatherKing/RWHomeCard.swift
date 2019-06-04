@@ -10,4 +10,5 @@ import UIKit
 
 protocol RWHomeCard {
     var mainColor: UIColor { get }
+    var cellType: HomeCellType { get }
 }

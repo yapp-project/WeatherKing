@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class RWHomeStatusCard: RWHomeCard {
+    let cellType: HomeCellType = .weatherStatusCard
     // 밤일 경우 색상 어둡게 변경 -> 현재 시간 가져오는 유틸 제작 필요
     var mainColor: UIColor {
         return #colorLiteral(red: 0, green: 0.8658255339, blue: 0.650185287, alpha: 1)

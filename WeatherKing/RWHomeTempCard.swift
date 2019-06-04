@@ -29,6 +29,7 @@ enum RWHomeDateType {
 
 class RWHomeTempCard: RWHomeCard {
     let mainColor: UIColor = .lightishBlue
+    let cellType: HomeCellType = .weatherTempCard
     var dateType: RWHomeDateType = .today
     var type: RWHomeTempDegree = .upTo5c
     var timeTempDatas: [RWHomeTempTimeData] = []

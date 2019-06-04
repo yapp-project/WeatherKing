@@ -42,7 +42,8 @@ class RWHomeWeekInfo {
 }
 
 class RWHomeWeekCard: RWHomeCard {
-    var mainColor: UIColor = .lightishBlue
+    let mainColor: UIColor = .lightishBlue
+    let cellType: HomeCellType = .weatherWeekCard
     var weekInfos: [RWHomeWeekInfo] = []
 }
 

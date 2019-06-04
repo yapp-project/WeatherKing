@@ -25,25 +25,30 @@ class HomeWeatherTempCardCell: UICollectionViewCell {
         let nib: UINib = UINib(nibName: "HomeWeatherTempCardBackCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "HomeWeatherTempCardBackCell")
     }
+}
+
+extension HomeWeatherTempCardCell: HomeWeatherCardCell {
     
-    func updateView(card: RWHomeTempCard?) {
+    func updateView(card: RWHomeCard?) {
+        guard let tempCard = card as? RWHomeTempCard else {
+            return
+        }
+        
         backView.isHidden = true
         backView.alpha = 0.0
         
-        timeTempDatas = card?.timeTempDatas ?? []
+        timeTempDatas = tempCard.timeTempDatas
         tableView.reloadData()
         
         cardView.layer.applySketchShadow(color: .cardShadowColor, alpha: 1, x: 0, y: 5, blur: 8, spread: 0)
-        cardView.backgroundColor = card?.mainColor
-        titleLabel.text = "\(card?.dateType.description ?? "") \(card?.currentTemp.tempFormat ?? "")"
-        imageView.image = card?.type.image
-        descriptionLabel.text = card?.type.title
-//        estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
-        minMaxTempLabel.text = (card?.minTemp.tempFormat ?? "") + " / " + (card?.maxTemp.tempFormat ?? "")
+        cardView.backgroundColor = tempCard.mainColor
+        titleLabel.text = "\(tempCard.dateType.description) \(tempCard.currentTemp.tempFormat)"
+        imageView.image = tempCard.type.image
+        descriptionLabel.text = tempCard.type.title
+        //        estimatedTempLabel.text = "체감온도 " + (card?.estimatedTemp.tempFormat ?? "")
+        minMaxTempLabel.text = (tempCard.minTemp.tempFormat) + " / " + (tempCard.maxTemp.tempFormat)
     }
-}
-
-extension HomeWeatherTempCardCell: WeatherCardCell {
+    
     func flipCard() {
         if backView.isHidden {
             self.backView.isHidden = false
