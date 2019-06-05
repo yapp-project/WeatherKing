@@ -81,7 +81,7 @@ extension RWLoginDataController {
             return nil
         }
         
-        var region = RWRegion()
+        let region = RWRegion()
         if let regionData = jsons["region"] as? [String: Any] {
             region.cityName = (regionData["cityName"] as? String) ?? ""
             region.sidoName = (regionData["sidoName"] as? String) ?? ""

@@ -28,7 +28,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="BYZ-38-t0r" customClass="HomeViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -60,7 +60,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="400.33333333333331"/>
                                 <color key="backgroundColor" red="0.31759470701217651" green="0.35950374603271484" blue="0.90201312303543091" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vif-eN-nPf" customClass="HomeRefreshControl" customModule="RealWeather" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vif-eN-nPf" customClass="HomeRefreshControl" customModule="WeatherKing" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114" width="375" height="50"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="UqS-tg-F0d">
@@ -167,8 +167,8 @@
         <!--HomeCommentViewController-->
         <scene sceneID="bif-F0-H8k">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hTZ-Qq-ylm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="HomeComment" referencedIdentifier="HomeCommentViewController" id="QSc-Bt-Wsm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTZ-Qq-ylm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="300" y="103"/>
         </scene>

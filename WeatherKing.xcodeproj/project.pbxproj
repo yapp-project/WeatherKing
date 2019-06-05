@@ -67,7 +67,6 @@
 		CE8B43EE22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8B43EB22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib */; };
 		CE8B43F222A2167200EF8E0F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */; };
 		CE8B43F322A2167200EF8E0F /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */; };
-		CE8B43F422A2167200EF8E0F /* LocationKeyword.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43F122A2167200EF8E0F /* LocationKeyword.swift */; };
 		CEA910F322869C460010C45F /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F222869C460010C45F /* AppKey.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
 		CEB189D82221845500A1BB38 /* RWComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D72221845500A1BB38 /* RWComment.swift */; };
@@ -176,7 +175,6 @@
 		CE8B43EB22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWeatherWeekCardCell.xib; sourceTree = "<group>"; };
 		CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
 		CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
-		CE8B43F122A2167200EF8E0F /* LocationKeyword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationKeyword.swift; sourceTree = "<group>"; };
 		CE959F92228B365B00F7299D /* WeatherKing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherKing.entitlements; sourceTree = "<group>"; };
 		CEA910F222869C460010C45F /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
 		CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +245,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CE1A40E822A76E0F000D7D6E /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		CE20384D222164A200ED9BA7 = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +287,7 @@
 				CEB189D62221844500A1BB38 /* Model */,
 				CE20388D22216E4500ED9BA7 /* Home */,
 				CED56D06224A90D3008CFD82 /* Drawer */,
+				CE1A40E822A76E0F000D7D6E /* Search */,
 				CE31EB4B224EB015005CA188 /* Extensions */,
 				CE8352D9229921A500F11842 /* Start */,
 				CE20389022216E9400ED9BA7 /* Storyboard */,
@@ -441,8 +448,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */,
-				CE8B43F122A2167200EF8E0F /* LocationKeyword.swift */,
-				CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */,
 				CED56D07224A90EB008CFD82 /* DrawerViewController.swift */,
 				E12698CD224F949700ECCEC3 /* UnitViewController.swift */,
 				E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */,
@@ -732,7 +737,6 @@
 				CED56D11224A9652008CFD82 /* RWLocationManager.swift in Sources */,
 				CE8B43CC2299B8B900EF8E0F /* NotificationViewController.swift in Sources */,
 				CE72AC582274776C00D77543 /* RWHomeStatusCard.swift in Sources */,
-				CE8B43F422A2167200EF8E0F /* LocationKeyword.swift in Sources */,
 				741C8E56224FC828001007AB /* CommentLikeButton.swift in Sources */,
 				CE72AC732274B2AC00D77543 /* UserDefaultsManager.swift in Sources */,
 				CE8B43D2229EEF5000EF8E0F /* HomeWeatherLifeCardCell.swift in Sources */,

@@ -133,7 +133,7 @@ extension HomeViewController {
     
     private func reloadData(completion: (() -> Void)? = nil) {
         let location: RWLocation = RWLocationManager.shared.currentLocation
-        RWLocationManager.shared.updateLocation()
+        RWLocationManager.shared.updateCurrentLocation()
         homeDataController.requestData(for: location) { [weak self] homeData in
             self?.homeData = homeData
             completion?()
