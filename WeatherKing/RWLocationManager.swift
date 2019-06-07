@@ -115,24 +115,23 @@ class RWLocationDataController {
         }
     }
     
-    // TODO: 서버 에러 처리됨. 확인 필요
     func requestUserLocationChange(of user: RWUser?, to location: RWLocation, completion: @escaping (RWUser?) -> Void) {
         guard let user = user else {
             completion(nil)
             return
         }
         
-        let queries: [URLQueryItem] = [
-            URLQueryItem(name: "type", value: "\(user.loginMethod.rawValue)"),
-            URLQueryItem(name: "uid", value: "\(user.uniqueID)"),
-            URLQueryItem(name: "lat", value: "\(location.latitude)"),
-            URLQueryItem(name: "lng", value: "\(location.longitude)")
+        let json: [String: Any] = [
+            "type": user.loginMethod.rawValue,
+            "uid" : user.uniqueID,
+            "lat" : location.latitude,
+            "lng" : location.longitude
         ]
         
         requestor.cancel()
         requestor.method = .put
         requestor.baseURLPath = AppCommon.baseURL + "/setting/location"
-        requestor.fetch(with: queries) { data, error in
+        requestor.fetch(with: json) { data, error in
             let completionInMainThread = { (completion: @escaping (RWUser?) -> Void, result: RWUser?) in
                 DispatchQueue.main.async {
                     completion(result)

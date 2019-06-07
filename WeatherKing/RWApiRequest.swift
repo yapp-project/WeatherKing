@@ -88,10 +88,32 @@ extension RWApiRequest {
         }
         fetch(with: request, completion: completion)
     }
+    
+    public func fetch(with json: [String: Any], encoding: String.Encoding = .utf8, completion: @escaping RWApiResult) {
+        guard let jsonBody = try? String(data: JSONSerialization.data(withJSONObject: json), encoding: encoding) else {
+            completion(nil, nil)
+            return
+        }
+        
+        guard let url = URL(string: baseURLPath) else {
+            completion(nil, nil)
+            return
+        }
+        
+        var request: URLRequest = URLRequest(url: url)
+        request.httpMethod = method.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.timeoutInterval = timeout
+        
+        if method != .get {
+            request.httpBody = jsonBody?.data(using: String.Encoding.ascii, allowLossyConversion: true)
+        }
+        fetch(with: request, completion: completion)
+    }
 }
 
 extension RWApiRequest {
-    public func fetch(with request: URLRequest, completion: @escaping RWApiResult) {
+    private func fetch(with request: URLRequest, completion: @escaping RWApiResult) {
         dataTask = urlSession.dataTask(with: request) { [weak self] data, serverResponse, error in
             do {
                 try self?.printServerResponse(data, error: error)
