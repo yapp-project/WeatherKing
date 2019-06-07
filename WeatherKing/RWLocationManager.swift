@@ -196,10 +196,10 @@ public extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
         var location: RWLocation = RWLocation()
         
         location.name = (self["address_name"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
-        if let latitudeStr = (self["y"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) {
+        if let latitudeStr = (self["y"] as? String) {
             location.latitude = Double(latitudeStr) ?? 0.0
         }
-        if let longitudeStr = (self["x"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) {
+        if let longitudeStr = (self["x"] as? String) {
             location.longitude = Double(longitudeStr) ?? 0.0
         }
         return location
