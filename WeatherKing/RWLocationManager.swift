@@ -27,6 +27,15 @@ class RWLocationManager: NSObject {
     private let coreLocationManager = CLLocationManager()
     private let dataController = RWLocationDataController()
     
+    var isAuthorized: Bool {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways, .authorizedWhenInUse:
+            return true
+        case .denied, .notDetermined, .restricted:
+            return false
+        }
+    }
+    
     var currentLocation: RWLocation = RWLocation()
     
     override init() {

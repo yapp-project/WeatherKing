@@ -67,7 +67,7 @@ extension LocationSearchViewController {
 
 extension LocationSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if locationsFound.isEmpty && isCurrentLocationUpdated {
+        if (locationsFound.isEmpty && isCurrentLocationUpdated) || locationManager.isAuthorized == false {
             return 1
         } else if !locationsFound.isEmpty {
             return locationsFound.count
@@ -80,7 +80,7 @@ extension LocationSearchViewController: UITableViewDataSource {
         let cell: UITableViewCell
         let cellTitle: String
         
-        if locationsFound.isEmpty && isCurrentLocationUpdated {
+        if locationsFound.isEmpty && isCurrentLocationUpdated || locationManager.isAuthorized == false {
             cell = tableView.dequeueReusableCell(withIdentifier: "currentSearchCell", for: indexPath)
             cellTitle = "현재 위치로 날씨보기"
         } else {
@@ -101,8 +101,15 @@ extension LocationSearchViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard locationsFound.indices.contains(indexPath.item) else {
-            locationManager.updateUserLocation(locationManager.currentLocation) { [weak self] in
-                self?.dismiss(animated: true, completion: nil)
+            if locationManager.isAuthorized {
+                locationManager.updateUserLocation(locationManager.currentLocation) { [weak self] in
+                    self?.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                let alertController: UIAlertController = UIAlertController(title: "현재 위치 확인을 위해 권한이 필요합니다.", message: "설정 > 날씨왕에서 권한 설정을 변경해주세요.", preferredStyle: .alert)
+                let confirmAction: UIAlertAction = UIAlertAction(title: "확인", style: .default)
+                alertController.addAction(confirmAction)
+                present(alertController, animated: true, completion: nil)
             }
             return
         }
