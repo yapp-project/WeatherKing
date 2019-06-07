@@ -26,6 +26,7 @@ class HomeNavigationBarViewController: UIViewController {
     
     func prepareObservers() {
         notification.addObserver(self, selector: #selector(updateView), name: .UserLocationDidUpdated, object: nil)
+        notification.addObserver(self, selector: #selector(updateView), name: .LoginSuccess, object: nil)
     }
     
     // MARK: 현재 위치를 이용할지, 유저 위치를 이용할지 스펙 확인 필요. (현재 위치 이용시 데이터 갱신)

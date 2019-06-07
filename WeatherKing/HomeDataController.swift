@@ -208,7 +208,3 @@ extension HomeDataController {
         return HomeData(bestComments: bestComments, homeCards: homeCards)
     }
 }
-
-extension HomeDataController {
-    
-}
