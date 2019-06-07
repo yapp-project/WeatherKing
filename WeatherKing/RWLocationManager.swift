@@ -200,7 +200,7 @@ public extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
             location.latitude = Double(latitudeStr) ?? 0.0
         }
         if let longitudeStr = (self["x"] as? String)?.trimmingCharacters(in: .whitespacesAndNewlines) {
-            location.latitude = Double(longitudeStr) ?? 0.0
+            location.longitude = Double(longitudeStr) ?? 0.0
         }
         return location
     }
