@@ -201,6 +201,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c7u-6i-jkc" userLabel="Keyboard Resign View">
+                                <rect key="frame" x="50" y="20" width="325" height="60.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="84d-Qg-0po" appends="YES" id="6Kp-9u-tta"/>
+                                </connections>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTd-uS-Uha">
                                 <rect key="frame" x="0.0" y="20" width="375" height="60.5"/>
                                 <subviews>
@@ -344,7 +351,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="FY2-pS-T72" firstAttribute="trailing" secondItem="qTd-uS-Uha" secondAttribute="trailing" id="1x2-99-LNf"/>
+                            <constraint firstItem="c7u-6i-jkc" firstAttribute="leading" secondItem="49e-9v-PV2" secondAttribute="trailing" id="9sh-Bj-lp6"/>
+                            <constraint firstItem="c7u-6i-jkc" firstAttribute="bottom" secondItem="qTd-uS-Uha" secondAttribute="bottom" id="KFG-Uh-vna"/>
                             <constraint firstItem="2Qk-xu-aZD" firstAttribute="top" secondItem="Grz-Id-Nna" secondAttribute="bottom" id="L78-wO-yUO"/>
+                            <constraint firstItem="c7u-6i-jkc" firstAttribute="trailing" secondItem="qTd-uS-Uha" secondAttribute="trailing" id="Sg0-rt-BcG"/>
                             <constraint firstItem="qTd-uS-Uha" firstAttribute="bottom" secondItem="Grz-Id-Nna" secondAttribute="top" id="Tjz-q8-ESZ"/>
                             <constraint firstItem="FY2-pS-T72" firstAttribute="bottom" secondItem="2Qk-xu-aZD" secondAttribute="bottom" id="UZz-lm-0gv"/>
                             <constraint firstItem="qTd-uS-Uha" firstAttribute="top" secondItem="FY2-pS-T72" secondAttribute="top" id="aco-df-LmK"/>
@@ -353,6 +363,7 @@
                             <constraint firstItem="2Qk-xu-aZD" firstAttribute="leading" secondItem="FY2-pS-T72" secondAttribute="leading" id="cpc-fP-vge"/>
                             <constraint firstItem="Grz-Id-Nna" firstAttribute="trailing" secondItem="FY2-pS-T72" secondAttribute="trailing" id="jTM-wx-7ft"/>
                             <constraint firstItem="Grz-Id-Nna" firstAttribute="leading" secondItem="FY2-pS-T72" secondAttribute="leading" id="ml4-3i-dL0"/>
+                            <constraint firstItem="c7u-6i-jkc" firstAttribute="top" secondItem="qTd-uS-Uha" secondAttribute="top" id="tKs-Wb-fng"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FY2-pS-T72"/>
                     </view>
@@ -366,11 +377,18 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
+                        <outlet property="keyboardResignView" destination="c7u-6i-jkc" id="KvI-Nx-kwF"/>
                         <outlet property="searchBar" destination="Grz-Id-Nna" id="BRB-8j-Sz8"/>
                         <outlet property="tableView" destination="2Qk-xu-aZD" id="CXm-Pe-bKq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sae-KG-a2G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="84d-Qg-0po">
+                    <connections>
+                        <action selector="onKeyboardResignViewTapped:" destination="WVJ-k6-Woh" id="rBW-YU-cZw"/>
+                        <outlet property="delegate" destination="WVJ-k6-Woh" id="l93-Uc-a8e"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1188" y="121"/>
         </scene>

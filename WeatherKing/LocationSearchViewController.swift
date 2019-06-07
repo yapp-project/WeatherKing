@@ -12,6 +12,7 @@ import CoreLocation
 class LocationSearchViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var keyboardResignView: UIView!
     
     private let locationManager = RWLocationManager.shared
     private let notification = NotificationCenter.default
@@ -63,11 +64,16 @@ extension LocationSearchViewController {
     @IBAction func onBackButtonTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func onKeyboardResignViewTapped(_ sender: Any) {
+        searchBar.resignFirstResponder()
+    }
 }
 
 extension LocationSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (locationsFound.isEmpty && isCurrentLocationUpdated) || locationManager.isAuthorized == false {
+        if (locationsFound.isEmpty && isCurrentLocationUpdated) ||
+            (locationsFound.isEmpty && locationManager.isAuthorized == false) {
             return 1
         } else if !locationsFound.isEmpty {
             return locationsFound.count
@@ -80,7 +86,8 @@ extension LocationSearchViewController: UITableViewDataSource {
         let cell: UITableViewCell
         let cellTitle: String
         
-        if locationsFound.isEmpty && isCurrentLocationUpdated || locationManager.isAuthorized == false {
+        if (locationsFound.isEmpty && isCurrentLocationUpdated) ||
+            (locationsFound.isEmpty && locationManager.isAuthorized == false) {
             cell = tableView.dequeueReusableCell(withIdentifier: "currentSearchCell", for: indexPath)
             cellTitle = "현재 위치로 날씨보기"
         } else {
@@ -89,7 +96,7 @@ extension LocationSearchViewController: UITableViewDataSource {
         }
         
         if let locationCell = cell as? LocationSearchCell {
-            locationCell.update(title: cellTitle)
+            locationCell.update(searchText: searchBar.text ?? "", title: cellTitle)
         }
         
         return cell
@@ -98,6 +105,9 @@ extension LocationSearchViewController: UITableViewDataSource {
 
 extension LocationSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.contentView.backgroundColor = #colorLiteral(red: 0.3058823529, green: 0.3607843137, blue: 0.937254902, alpha: 0.05)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard locationsFound.indices.contains(indexPath.item) else {
@@ -125,12 +135,30 @@ extension LocationSearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         requestSearch(for: searchText)
     }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        keyboardResignView.isHidden = false
+        view.bringSubviewToFront(keyboardResignView)
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        keyboardResignView.isHidden = true
+        view.sendSubviewToBack(keyboardResignView)
+    }
 }
 
 class LocationSearchCell: UITableViewCell {
     @IBOutlet private weak var location: UILabel!
     
-    func update(title: String) {
-        self.location.text = title
+    func update(searchText: String, title: String) {
+        let attributedString = NSMutableAttributedString(string: title, attributes: [
+            .font: UIFont.systemFont(ofSize: 15),
+            .foregroundColor: UIColor.charcoalGrey
+        ])
+        let titleString = NSString(string: title)
+        let highlightRange = titleString.range(of: searchText)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.purpleishBlue, range: highlightRange)
+        
+        location.attributedText = attributedString
     }
 }
