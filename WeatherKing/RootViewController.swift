@@ -33,9 +33,7 @@ class RootViewController: UIViewController {
     fileprivate let notification: NotificationCenter = NotificationCenter.default
     
     var drawerWidth: CGFloat {
-        let drawerRatio: CGFloat = drawerViewWidth.constant
-        let screenWidth: CGFloat = UIScreen.main.bounds.width
-        return screenWidth * drawerRatio
+        return drawerViewWidth.constant
     }
     
     var isDrawerOpen: Bool = false
@@ -46,10 +44,17 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareObservers()
+        setDrawerWidth()
     }
     
     private func prepareObservers() {
         notification.addObserver(self, selector: #selector(updateView), name: .LoginSuccess, object: nil)
+    }
+    
+    private func setDrawerWidth() {
+        let drawerRatio: CGFloat = 0.8
+        let screenWidth: CGFloat = view.frame.width
+        drawerViewWidth.constant = screenWidth * drawerRatio
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,8 +139,6 @@ extension RootViewController {
     }
     
     func closeDrawer(completion: (() -> Void)? = nil) {
-        
-        
         let animations: () -> Void = { [weak self] in
             guard let `self` = self else {
                 return

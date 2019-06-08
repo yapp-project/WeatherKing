@@ -9,7 +9,7 @@
 import UIKit
 import MessageUI
 
-enum MenuSetting: CaseIterable {
+enum MenuSetting: String, CaseIterable {
     case degree
     case notification
     case feedback
@@ -22,33 +22,51 @@ enum MenuSetting: CaseIterable {
         case .notification:
             return "알림설정"
         case .feedback:
-            return "피드백 보내지"
+            return "피드백 보내기"
         case .review:
             return "앱 평가하기"
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .degree:
+            return #imageLiteral(resourceName: "icDegree")
+        case .notification:
+            return #imageLiteral(resourceName: "icNotification")
+        case .feedback:
+            return #imageLiteral(resourceName: "icFeedback")
+        case .review:
+            return #imageLiteral(resourceName: "icReview")
         }
     }
 }
 
 class DrawerViewController: UIViewController {
-    var menuImg = ["icDegree","icNotification","icFeedback","icReview"]
-    var menuDatasource: [MenuSetting] = MenuSetting.allCases
-    fileprivate var previousTouchLocation: CGFloat?
+    @IBOutlet private weak var nicknameButtonView: UIButton!
     
-    @IBAction func ModifiyNicknameAction(_ sender: Any) {
-        if let nextView = storyboard?.instantiateViewController(withIdentifier: "settingNick") {
-            present(nextView,animated: true,completion: nil)
-        }
-    }
-    @IBAction func ModifiyNicknameAction02(_ sender: Any) {
-        if let nextView = storyboard?.instantiateViewController(withIdentifier: "settingNick") {
-            present(nextView,animated: true,completion: nil)
-        }
+    private let menuDatasource: [MenuSetting] = MenuSetting.allCases
+    private let notification: NotificationCenter = NotificationCenter.default
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateNickNameLabel()
+        prepareObservers()
     }
     
-    @IBAction func InformationAction(_ sender: Any) {
-        if let nextView = storyboard?.instantiateViewController(withIdentifier: "webviewNavigation") {
-            present(nextView, animated: true, completion: nil)
-        }
+    private func prepareObservers() {
+        notification.addObserver(self, selector: #selector(updateNickNameLabel), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(updateNickNameLabel), name: .UserNicknameDidChanged, object: nil)
+    }
+    
+    deinit {
+        notification.removeObserver(self, name: .LoginSuccess, object: nil)
+        notification.removeObserver(self, name: .UserNicknameDidChanged, object: nil)
+    }
+    
+    @objc func updateNickNameLabel() {
+        let nickname: String = RWLoginManager.shared.user?.nickname ?? ""
+        nicknameButtonView.setTitle(nickname, for: .normal)
     }
 }
 
@@ -58,14 +76,11 @@ extension DrawerViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellType: MenuSetting = menuDatasource[indexPath.row]
+        let menu: MenuSetting = menuDatasource[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath)
         let menuCell = cell as? MenuCollectionViewCell
         
-        let image = UIImage(named: menuImg[indexPath.row])
-        let title = cellType.title
-        
-        menuCell?.updateView(image: image, title: title)
+        menuCell?.updateView(image: menu.image, title: menu.title)
     
         return cell
     }
@@ -73,25 +88,18 @@ extension DrawerViewController: UICollectionViewDataSource {
 
 extension DrawerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cellType: MenuSetting = menuDatasource[indexPath.row]
+        let menu: MenuSetting = menuDatasource[indexPath.row]
         collectionView.deselectItem(at: indexPath, animated: true)
         
-        if cellType == .degree {
-            if let nextView = storyboard?.instantiateViewController(withIdentifier: "unitNavigation") {
-                present(nextView, animated: true, completion: nil)
-            }
-        } else if cellType == .notification {
-            if let nextView = storyboard?.instantiateViewController(withIdentifier: "alertNavigation") {
-                present(nextView, animated: true, completion: nil)
-            }
-        } else if cellType == .feedback {
+        if menu == .degree || menu == .notification {
+            performSegue(withIdentifier: menu.rawValue, sender: nil)
+        } else if menu == .feedback {
             let alert = UIAlertController(title: "더 나은 날씨왕을 위해 아쉬운 점을 알려줄래요?", message: "", preferredStyle: .alert)
             let afterBtn = UIAlertAction(title: "나중에 하기", style: .default, handler: nil)
             let feedbackBtn = UIAlertAction(title: "피드백 보내기", style: .default, handler: { Action in
                 let mailComposeViewController = self.configuredMailComposeViewController()
                 if MFMailComposeViewController.canSendMail() {
                     self.present(mailComposeViewController, animated: true, completion: nil)
-                    print("can send mail")
                 } else {
                     self.showSendMailErrorAlert()
                 }
@@ -99,7 +107,7 @@ extension DrawerViewController: UICollectionViewDelegate {
             alert.addAction(afterBtn)
             alert.addAction(feedbackBtn)
             self.present(alert,animated: true, completion: nil)
-        } else if cellType == .review {
+        } else if menu == .review {
             let alert = UIAlertController(title: "날씨왕이 도움 되고 있다면 앱스토어에 리뷰를 남겨주세요! 날씨왕 팀에게 큰 힘이 될거에요.", message: "", preferredStyle: .alert)
             let afterBtn = UIAlertAction(title: "나중에 하기", style: .default, handler: nil)
             let reviewBtn = UIAlertAction(title: "리뷰 쓰러 가기", style: .default, handler: { Action in
@@ -117,6 +125,20 @@ extension DrawerViewController: UICollectionViewDelegate {
             alert.addAction(reviewBtn)
             self.present(alert,animated: true, completion: nil)
         }
+    }
+}
+
+extension DrawerViewController {
+    @IBAction func onEditNickNameButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "nickname", sender: nil)
+    }
+    
+    @IBAction func onPrivacyGuideButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "privacy", sender: nil)
+    }
+    
+    @IBAction func onSignOutButtonTapped(_ sender: UIButton) {
+//        performSegue(withIdentifier: "privacy", sender: nil)
     }
 }
 
@@ -142,13 +164,11 @@ extension DrawerViewController: MFMailComposeViewControllerDelegate {
         sendMailErrorAlert.show()
     }
 }
-
 class MenuCollectionViewCell: UICollectionViewCell {
+    @IBOutlet private weak var cellImage: UIImageView!
+    @IBOutlet private weak var cellName: UILabel!
     
-    @IBOutlet weak var cellImage: UIImageView!
-    @IBOutlet weak var cellName: UILabel!
-    
-    func updateView(image: UIImage?, title: String ) {
+    func updateView(image: UIImage?, title: String) {
         self.cellImage.image = image
         self.cellName.text = title
     }

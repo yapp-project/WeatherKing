@@ -183,7 +183,7 @@ extension RWLocationDataController {
             user?._id = (jsons["_id"] as? String) ?? ""
             user?.salt = (jsons["salt"] as? String) ?? ""
             user?.uniqueID = (jsons["uid"] as? String) ?? ""
-            user?.nickname = (jsons["cityName"] as? String) ?? ""
+            user?.nickname = (jsons["nickname"] as? String) ?? ""
             user?.location.latitude = (jsons["lat"] as? Double) ?? 0.0
             user?.location.longitude = (jsons["lng"] as? Double) ?? 0.0
             user?.region = region

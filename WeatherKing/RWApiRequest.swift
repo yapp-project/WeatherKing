@@ -106,7 +106,7 @@ extension RWApiRequest {
         request.timeoutInterval = timeout
         
         if method != .get {
-            request.httpBody = jsonBody?.data(using: String.Encoding.ascii, allowLossyConversion: true)
+            request.httpBody = jsonBody?.data(using: encoding, allowLossyConversion: true)
         }
         fetch(with: request, completion: completion)
     }
