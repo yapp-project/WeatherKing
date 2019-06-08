@@ -103,6 +103,12 @@
                                     <segue destination="QSc-Bt-Wsm" kind="embed" identifier="HomeComment" id="mLK-8j-szo"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ry-iX-hAA">
+                                <rect key="frame" x="0.0" y="583" width="375" height="50"/>
+                                <connections>
+                                    <action selector="onCommentToggleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="evz-I3-uh3"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ybR-EE-WJB">
                                 <rect key="frame" x="0.0" y="633" width="375" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -115,6 +121,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="Szh-Ia-lli" secondAttribute="leading" id="3jk-Z4-5As"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="3q9-OG-Ugi" secondAttribute="top" constant="50" id="69S-03-FbP"/>
                             <constraint firstItem="Szh-Ia-lli" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="IcY-4u-1Yu"/>
+                            <constraint firstItem="9ry-iX-hAA" firstAttribute="trailing" secondItem="3q9-OG-Ugi" secondAttribute="trailing" id="Iq2-3w-Zqv"/>
+                            <constraint firstItem="9ry-iX-hAA" firstAttribute="leading" secondItem="3q9-OG-Ugi" secondAttribute="leading" id="MT9-e7-t3N"/>
                             <constraint firstItem="DvN-Ov-QGx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Oe1-TP-Zeq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZL8-Bx-3eA" secondAttribute="trailing" id="Oeu-Fl-HGv"/>
                             <constraint firstItem="Szh-Ia-lli" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="QBD-Pc-qKF"/>
@@ -122,6 +130,7 @@
                             <constraint firstItem="ZL8-Bx-3eA" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.6" id="QTb-JD-BbD"/>
                             <constraint firstItem="vif-eN-nPf" firstAttribute="top" secondItem="sha-SK-tFY" secondAttribute="top" id="Sfx-qR-UAp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vif-eN-nPf" secondAttribute="trailing" id="TO3-Dq-EeT"/>
+                            <constraint firstItem="ybR-EE-WJB" firstAttribute="top" secondItem="9ry-iX-hAA" secondAttribute="bottom" id="UBr-YO-ncW"/>
                             <constraint firstItem="sha-SK-tFY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UsW-hT-tM5"/>
                             <constraint firstAttribute="bottom" secondItem="ybR-EE-WJB" secondAttribute="bottom" id="VEx-TR-QwH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ybR-EE-WJB" secondAttribute="trailing" id="XIF-ZA-Bxe"/>
@@ -132,6 +141,7 @@
                             <constraint firstItem="vif-eN-nPf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cDc-7o-d6m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Szh-Ia-lli" secondAttribute="bottom" id="cjR-DJ-8xh"/>
                             <constraint firstAttribute="bottom" secondItem="sha-SK-tFY" secondAttribute="bottom" id="iRg-9X-XqB"/>
+                            <constraint firstItem="9ry-iX-hAA" firstAttribute="top" secondItem="3q9-OG-Ugi" secondAttribute="top" id="suY-iO-UYj"/>
                             <constraint firstItem="3q9-OG-Ugi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="u7H-qu-iks"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -148,6 +158,7 @@
                         <outlet property="commentHeaderStatusLabel" destination="vWd-oj-KMy" id="Vi9-Yj-W2R"/>
                         <outlet property="commentHeaderTempLabel" destination="DvN-Ov-QGx" id="FFx-Je-1nb"/>
                         <outlet property="commentHeaderView" destination="Szh-Ia-lli" id="Jw0-hT-lSV"/>
+                        <outlet property="commentToggleButtonView" destination="9ry-iX-hAA" id="NlP-mP-ckR"/>
                         <outlet property="commentView" destination="3q9-OG-Ugi" id="NdS-Mx-OOK"/>
                         <outlet property="commentViewHeight" destination="OFn-T7-ctG" id="Mp1-b5-v7S"/>
                         <outlet property="commentViewTop" destination="69S-03-FbP" id="KNd-hA-4us"/>

@@ -72,21 +72,22 @@ protocol HomeBGColorControlDelegate {
 }
 
 class HomeViewController: UIViewController {
-    @IBOutlet fileprivate weak var collectionView: UICollectionView!
-    @IBOutlet fileprivate weak var backgroundColorView: UIView!
-    @IBOutlet fileprivate weak var refreshControl: HomeRefreshControl!
-    @IBOutlet fileprivate weak var commentView: UIView!
-    @IBOutlet fileprivate weak var commentViewTop: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var commentViewHeight: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var commentHeaderView: UIView!
-    @IBOutlet fileprivate weak var commentHeaderTempLabel: UILabel!
-    @IBOutlet fileprivate weak var commentHeaderStatusLabel: UILabel!
-    @IBOutlet fileprivate weak var bottomView: UIView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var backgroundColorView: UIView!
+    @IBOutlet private weak var refreshControl: HomeRefreshControl!
+    @IBOutlet private weak var commentView: UIView!
+    @IBOutlet private weak var commentViewTop: NSLayoutConstraint!
+    @IBOutlet private weak var commentViewHeight: NSLayoutConstraint!
+    @IBOutlet private weak var commentHeaderView: UIView!
+    @IBOutlet private weak var commentHeaderTempLabel: UILabel!
+    @IBOutlet private weak var commentHeaderStatusLabel: UILabel!
+    @IBOutlet private weak var commentToggleButtonView: UIButton!
+    @IBOutlet private weak var bottomView: UIView!
     
-    fileprivate let homeDataController: HomeDataController = HomeDataController()
-    fileprivate let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
-    fileprivate var commentViewController: HomeCommentViewController?
-    fileprivate var notification: NotificationCenter = NotificationCenter.default
+    private let homeDataController: HomeDataController = HomeDataController()
+    private let homeCellDatasource: [HomeCellType] = [.bestCommentCollection, .weatherCardCollection]
+    private var commentViewController: HomeCommentViewController?
+    private var notification: NotificationCenter = NotificationCenter.default
     
     var isCommentOpened: Bool = false
     
@@ -241,6 +242,7 @@ extension HomeViewController {
         view.bringSubviewToFront(commentHeaderView)
         view.bringSubviewToFront(commentView)
         view.bringSubviewToFront(bottomView)
+        view.bringSubviewToFront(commentToggleButtonView)
         let animations: () -> Void = { [weak self] in
             guard let `self` = self else {
                 return
@@ -280,6 +282,7 @@ extension HomeViewController {
                 self.commentViewController?.isOpened = false
                 self.commentViewHeight.constant = self.view.bounds.height
                 self.view.sendSubviewToBack(self.commentHeaderView)
+                self.view.bringSubviewToFront(self.commentToggleButtonView)
                 completion?()
         })
         isCommentOpened = false
@@ -291,7 +294,6 @@ extension HomeViewController {
         case .changed:
             commentViewTop.constant = view.bounds.height - touchLocationY + 30
         case .ended:
-            
             if !isCommentOpened {
                 if touchLocationY < (view.bounds.height * 3) / 4 {
                     openCommentView()
@@ -305,9 +307,16 @@ extension HomeViewController {
                     closeCommentView()
                 }
             }
-        default:
+        case .began, .cancelled, .failed, .possible:
             break
         }
+    }
+    
+    @IBAction func onCommentToggleButtonTapped(_ sender: UIButton) {
+        guard !isCommentOpened else {
+            return
+        }
+        openCommentView()
     }
 }
 

@@ -18,6 +18,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hHD-d6-HZV" userLabel="Drawer Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCY-Hb-jHh">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <connections>
+                                            <action selector="onDrawerBackgroundTapped:" destination="Gpz-3N-PJb" eventType="touchUpInside" id="kah-cR-tYn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="CCY-Hb-jHh" firstAttribute="leading" secondItem="hHD-d6-HZV" secondAttribute="leading" id="94X-Rd-QrE"/>
+                                    <constraint firstAttribute="trailing" secondItem="CCY-Hb-jHh" secondAttribute="trailing" id="9nf-JR-jkf"/>
+                                    <constraint firstItem="CCY-Hb-jHh" firstAttribute="top" secondItem="hHD-d6-HZV" secondAttribute="top" id="hUG-jd-63W"/>
+                                    <constraint firstAttribute="bottom" secondItem="CCY-Hb-jHh" secondAttribute="bottom" id="xpR-YR-NpH"/>
+                                </constraints>
+                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYf-tE-nAP" userLabel="Loading View">
                                 <rect key="frame" x="147.5" y="303.5" width="80" height="80"/>
                                 <subviews>
@@ -70,33 +88,52 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="faK-Vt-DQY" secondAttribute="bottom" id="3vl-20-tlS"/>
+                            <constraint firstItem="hHD-d6-HZV" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" id="7We-dF-qIr"/>
                             <constraint firstItem="JQe-vo-K86" firstAttribute="width" secondItem="MUS-AO-8nY" secondAttribute="width" constant="0.80000000000000004" id="8cO-J0-vT3"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="leading" secondItem="MUS-AO-8nY" secondAttribute="leading" id="AS9-uh-UiU"/>
                             <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="c4d-2b-VoE" secondAttribute="trailing" id="Aae-9q-u1m"/>
                             <constraint firstItem="dYf-tE-nAP" firstAttribute="centerY" secondItem="d5J-lt-mFp" secondAttribute="centerY" id="BPe-nv-FRX"/>
                             <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="faK-Vt-DQY" secondAttribute="trailing" id="M7g-9T-95D"/>
                             <constraint firstAttribute="bottom" secondItem="JQe-vo-K86" secondAttribute="bottom" id="NRY-r0-dYL"/>
+                            <constraint firstItem="dYf-tE-nAP" firstAttribute="top" secondItem="d5J-lt-mFp" secondAttribute="top" constant="283.5" id="SKy-m7-SRz"/>
+                            <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="dYf-tE-nAP" secondAttribute="trailing" constant="147.5" id="WX5-jF-fll"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="trailing" secondItem="MUS-AO-8nY" secondAttribute="trailing" id="Xus-59-ikl"/>
                             <constraint firstItem="JQe-vo-K86" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="Z6j-7Y-QhS"/>
                             <constraint firstItem="faK-Vt-DQY" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" id="b67-MM-lXG"/>
+                            <constraint firstAttribute="bottom" secondItem="hHD-d6-HZV" secondAttribute="bottom" id="cib-GA-nuh"/>
+                            <constraint firstItem="d5J-lt-mFp" firstAttribute="bottom" secondItem="dYf-tE-nAP" secondAttribute="bottom" constant="283.5" id="gON-qn-Cbo"/>
                             <constraint firstItem="faK-Vt-DQY" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="h96-qV-k62"/>
                             <constraint firstItem="JQe-vo-K86" firstAttribute="trailing" secondItem="d5J-lt-mFp" secondAttribute="leading" id="hlo-U7-Fcv"/>
                             <constraint firstItem="c4d-2b-VoE" firstAttribute="top" secondItem="d5J-lt-mFp" secondAttribute="top" constant="10" id="iNK-sa-8o7"/>
+                            <constraint firstItem="hHD-d6-HZV" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="kHY-5t-AQj"/>
                             <constraint firstItem="dYf-tE-nAP" firstAttribute="centerX" secondItem="d5J-lt-mFp" secondAttribute="centerX" id="m3s-kU-V3i"/>
                             <constraint firstItem="c4d-2b-VoE" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" id="nXT-0S-l0S"/>
+                            <constraint firstItem="d5J-lt-mFp" firstAttribute="trailing" secondItem="hHD-d6-HZV" secondAttribute="trailing" id="pvv-gy-XcC"/>
+                            <constraint firstItem="dYf-tE-nAP" firstAttribute="leading" secondItem="d5J-lt-mFp" secondAttribute="leading" constant="147.5" id="qBT-5i-lCS"/>
                             <constraint firstItem="iQP-P0-PwP" firstAttribute="top" secondItem="MUS-AO-8nY" secondAttribute="top" id="qhH-zW-B6m"/>
                             <constraint firstAttribute="bottom" secondItem="iQP-P0-PwP" secondAttribute="bottom" id="x3y-iA-hb1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="d5J-lt-mFp"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="lZq-c1-czf" appends="YES" id="ysd-cM-y2W"/>
+                        </connections>
                     </view>
                     <connections>
-                        <outlet property="drawerViewLeading" destination="hlo-U7-Fcv" id="evZ-Ai-z9X"/>
+                        <outlet property="drawerBackgroundView" destination="hHD-d6-HZV" id="JYC-mh-KTk"/>
+                        <outlet property="drawerContrainerView" destination="JQe-vo-K86" id="f96-wc-ifD"/>
+                        <outlet property="drawerViewTrailing" destination="hlo-U7-Fcv" id="4ah-dz-EAB"/>
                         <outlet property="drawerViewWidth" destination="8cO-J0-vT3" id="tS4-ha-oJ0"/>
                         <outlet property="loadingController" destination="N3T-Om-cYb" id="y2b-iS-GvN"/>
                         <outlet property="splashView" destination="faK-Vt-DQY" id="yRZ-pN-Upt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-19-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="lZq-c1-czf">
+                    <connections>
+                        <action selector="onDrawerTapped:" destination="Gpz-3N-PJb" id="nCw-uQ-S52"/>
+                        <outlet property="delegate" destination="Gpz-3N-PJb" id="xnD-xz-tzb"/>
+                    </connections>
+                </panGestureRecognizer>
                 <customObject id="N3T-Om-cYb" customClass="RWLoadingController" customModule="WeatherKing" customModuleProvider="target">
                     <connections>
                         <outlet property="activityIndicator" destination="ruY-6o-9qB" id="uH6-P5-Myd"/>
@@ -288,7 +325,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NC4-3M-ehb" userLabel="Bottom Line View">
-                                                    <rect key="frame" x="20" y="59" width="335" height="0.5"/>
+                                                    <rect key="frame" x="20" y="59.5" width="335" height="0.5"/>
                                                     <color key="backgroundColor" red="0.87058823529999996" green="0.8862745098" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="S2D-yn-WZa"/>
@@ -321,7 +358,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWX-WS-zd3" userLabel="Bottom Line View">
-                                                    <rect key="frame" x="20" y="52" width="335" height="0.5"/>
+                                                    <rect key="frame" x="20" y="52.5" width="335" height="0.5"/>
                                                     <color key="backgroundColor" red="0.87058823529411766" green="0.88627450980392153" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="Hbw-wL-a7i"/>

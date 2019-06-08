@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 class RootViewController: UIViewController {
-    @IBOutlet fileprivate weak var splashView: UIView!
-    @IBOutlet fileprivate weak var drawerViewLeading: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var drawerViewWidth: NSLayoutConstraint!
-    @IBOutlet fileprivate weak var loadingController: RWLoadingController!
     
     class func shared() -> RootViewController {
         guard let RootVC = UIApplication.shared.delegate?.window??.rootViewController as? RootViewController else {
@@ -22,8 +18,16 @@ class RootViewController: UIViewController {
         return RootVC
     }
     
+    @IBOutlet private weak var splashView: UIView!
+    @IBOutlet private weak var drawerViewTrailing: NSLayoutConstraint!
+    @IBOutlet private weak var drawerViewWidth: NSLayoutConstraint!
+    @IBOutlet private weak var loadingController: RWLoadingController!
+    @IBOutlet private weak var drawerBackgroundView: UIView!
+    @IBOutlet private weak var drawerContrainerView: UIView!
+    
     fileprivate var drawerViewController: DrawerViewController!
     fileprivate var homeNavigationController: UINavigationController!
+    fileprivate var prevTouchLocationX: CGFloat = .zero
     var homeNavigationBarViewController: HomeNavigationBarViewController!
     
     fileprivate let notification: NotificationCenter = NotificationCenter.default
@@ -111,36 +115,79 @@ extension RootViewController {
 }
 
 extension RootViewController {
-    func finishDraggingDrawer() {
-        if isDrawerOpen {
-            closeDrawer()
-        } else {
-            openDrawer()
-        }
-    }
-    
-    func moveDrawer(offset: CGFloat) {
-        drawerViewLeading.constant = min(drawerWidth, max(0, drawerViewLeading.constant + offset))
-    }
-    
-    func openDrawer() {
-        drawerViewLeading.constant = drawerWidth
+    func openDrawer(completion: (() -> Void)? = nil) {
+        view.bringSubviewToFront(drawerBackgroundView)
+        view.bringSubviewToFront(drawerContrainerView)
         
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.view.layoutIfNeeded()
-        }) { [weak self] _ in
+        let animations: () -> Void = { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            self.drawerViewTrailing.constant = self.drawerWidth
+            self.drawerBackgroundView.alpha = 0.7
+            self.view.layoutIfNeeded()
+        }
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseInOut, animations: animations) { [weak self] _ in
             self?.isDrawerOpen = true
+            completion?()
         }
     }
     
-    func closeDrawer() {
-        drawerViewLeading.constant = 0
+    func closeDrawer(completion: (() -> Void)? = nil) {
         
-        UIView.animate(withDuration: 0.5, animations: { [weak self] in
-            self?.view.layoutIfNeeded()
-        }) { [weak self] _ in
-            self?.isDrawerOpen = false
+        
+        let animations: () -> Void = { [weak self] in
+            guard let `self` = self else {
+                return
+            }
+            self.drawerViewTrailing.constant = 0
+            self.drawerBackgroundView.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }
+        UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseInOut, animations: animations) { [weak self] _ in
+            guard let `self` = self else {
+                completion?()
+                return
+            }
+            
+            self.isDrawerOpen = false
+            self.view.sendSubviewToBack(self.drawerBackgroundView)
+            self.view.sendSubviewToBack(self.drawerContrainerView)
+            completion?()
+        }
+    }
+    
+    @IBAction func onDrawerBackgroundTapped(_ sender: UIButton) {
+        closeDrawer()
+    }
+    
+    @IBAction func onDrawerTapped(_ sender: UIGestureRecognizer) {
+        let touchLocationX: CGFloat = sender.location(in: view).x
+        switch sender.state {
+        case .began:
+            prevTouchLocationX = touchLocationX
+        case .changed:
+            if isDrawerOpen {
+                let scrollAmount: CGFloat = prevTouchLocationX - touchLocationX
+                drawerViewTrailing.constant = min(drawerWidth, max(0, drawerViewTrailing.constant - scrollAmount))
+                prevTouchLocationX = touchLocationX
+            }
+        case .ended:
+            if isDrawerOpen {
+                if touchLocationX > drawerWidth - 10 {
+                    openDrawer()
+                } else {
+                    closeDrawer()
+                }
+            }
+        default:
+            break
         }
     }
 }
 
+extension RootViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return drawerContrainerView.frame.contains(touch.location(in: view))
+    }
+}
