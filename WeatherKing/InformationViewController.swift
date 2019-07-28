@@ -14,10 +14,12 @@ class InformationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         textview.isEditable = false
     }
-    @IBAction func backAction(_ sender: Any) {
+}
+
+extension InformationViewController {
+    @IBAction func onBackButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 }

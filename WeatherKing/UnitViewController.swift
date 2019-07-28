@@ -18,10 +18,11 @@ class UnitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-    
-    @IBAction func backBtn(_ sender: Any) {
+}
+
+extension UnitViewController {
+    @IBAction func onBackButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 }

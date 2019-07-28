@@ -117,7 +117,7 @@ class AlertViewController: UIViewController {
         
     }
     
-    @IBAction func backBtn(_ sender: Any?) {
+    @IBAction func onBackButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     

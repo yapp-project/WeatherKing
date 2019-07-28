@@ -65,7 +65,7 @@ class DrawerViewController: UIViewController {
     }
     
     @objc func updateNickNameLabel() {
-        let nickname: String = RWLoginManager.shared.user?.nickname ?? ""
+        let nickname: String = RWLoginManager.shared.user?.nickname ?? "미등록"
         nicknameButtonView.setTitle(nickname, for: .normal)
     }
 }
@@ -96,7 +96,11 @@ extension DrawerViewController: UICollectionViewDelegate {
         } else if menu == .feedback {
             let alert = UIAlertController(title: "더 나은 날씨왕을 위해 아쉬운 점을 알려줄래요?", message: "", preferredStyle: .alert)
             let afterBtn = UIAlertAction(title: "나중에 하기", style: .default, handler: nil)
-            let feedbackBtn = UIAlertAction(title: "피드백 보내기", style: .default, handler: { Action in
+            let feedbackBtn = UIAlertAction(title: "피드백 보내기", style: .default, handler: { [weak self] action in
+                guard let `self` = self else {
+                    return
+                }
+                
                 let mailComposeViewController = self.configuredMailComposeViewController()
                 if MFMailComposeViewController.canSendMail() {
                     self.present(mailComposeViewController, animated: true, completion: nil)
@@ -110,7 +114,7 @@ extension DrawerViewController: UICollectionViewDelegate {
         } else if menu == .review {
             let alert = UIAlertController(title: "날씨왕이 도움 되고 있다면 앱스토어에 리뷰를 남겨주세요! 날씨왕 팀에게 큰 힘이 될거에요.", message: "", preferredStyle: .alert)
             let afterBtn = UIAlertAction(title: "나중에 하기", style: .default, handler: nil)
-            let reviewBtn = UIAlertAction(title: "리뷰 쓰러 가기", style: .default, handler: { Action in
+            let reviewBtn = UIAlertAction(title: "리뷰 쓰러 가기", style: .default, handler: { action in
                 let appID = "109099ab6216b849f8ac4ee65bf3510761637288"  //  수정
                 
                 if let reviewURL = URL(string: "itms-apps://itunes.apple.com/app/itunes-u/id\(appID)?ls=1&mt=8&action=write-review"), UIApplication.shared.canOpenURL(reviewURL) {
@@ -139,6 +143,17 @@ extension DrawerViewController {
     
     @IBAction func onSignOutButtonTapped(_ sender: UIButton) {
 //        performSegue(withIdentifier: "privacy", sender: nil)
+    }
+}
+
+extension DrawerViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // viewWidth - leftInset
+        return CGSize(width: view.frame.width - 21, height: 64)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .zero
     }
 }
 
