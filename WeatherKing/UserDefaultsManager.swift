@@ -13,6 +13,7 @@ public class UserDefaultsManager {
     public static let EverydayNotificationSetting = AppDefaults<Bool>(key: "EverydayNotificationSetting", defaultValue: true)
     public static let RainNotificationSetting = AppDefaults<Bool>(key: "RainNotificationSetting", defaultValue: true)
     public static let UltradustNotificationSetting = AppDefaults<Bool>(key: "UltradustNotificationSetting", defaultValue: true)
+    public static let TemperatureUnitSetting = AppDefaults<Int>(key: "TemperatureUnitSetting", defaultValue: 0)
 }
 
 public class AppDefaults<T>: NSObject {

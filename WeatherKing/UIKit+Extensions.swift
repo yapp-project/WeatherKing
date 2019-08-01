@@ -184,4 +184,29 @@ extension Double {
     }
 }
 
+extension UILabel {
+    @objc var kern: NSNumber? {
+        get {
+            return  nil
+        }
+        set(newValue) {
+            if let kerningPoint = newValue {
+                let mutableText = attributedText?.mutableCopy() as? NSMutableAttributedString ?? NSMutableAttributedString(string: "")
+                mutableText.addAttribute(.kern, value: kerningPoint, range: NSRange(location: 0, length: attributedText?.length ?? 0))
+                attributedText = mutableText
+            }
+        }
+    }
+    
+    var attributedString: String? {
+        get {
+            return attributedText?.string
+        }
+        set {
+            let mutableText = attributedText?.mutableCopy() as? NSMutableAttributedString ?? NSMutableAttributedString(string: "")
+            mutableText.replaceCharacters(in: NSRange(location: 0, length: mutableText.mutableString.length), with: newValue ?? "")
+            attributedText = mutableText
+        }
+    }
+}
 

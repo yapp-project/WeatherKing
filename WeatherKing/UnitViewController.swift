@@ -8,16 +8,39 @@
 
 import UIKit
 
+enum WKTemperatureUnit: Int, CaseIterable {
+    case celsius
+    case fahrenheit
+    
+    var symbolText: String {
+        switch self {
+        case .celsius:
+            return "°C"
+        case .fahrenheit:
+            return "°F"
+        }
+    }
+}
 
 class UnitViewController: UIViewController {
-    var unit = ["℃","℉"]
-    var unitCheck = ["check",""]
-    var image: UIImage?
-    var titleColor: UIColor? = UIColor(red: 52, green: 58, blue: 64)
-    var checkImage: UIImage?
+    @IBOutlet private weak var tableView: UITableView!
+    
+    let menuDatasource: [WKTemperatureUnit] = WKTemperatureUnit.allCases
+    var selectedTempUnit: WKTemperatureUnit = .celsius {
+        didSet {
+            UserDefaultsManager.TemperatureUnitSetting.set(selectedTempUnit.rawValue)
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadTempUnitSetting()
+    }
+    
+    private func loadTempUnitSetting() {
+        let tempUnitIndex: Int = UserDefaultsManager.TemperatureUnitSetting.get()
+        selectedTempUnit = WKTemperatureUnit(rawValue: tempUnitIndex) ?? .celsius
     }
 }
 
@@ -29,42 +52,26 @@ extension UnitViewController {
 
 extension UnitViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return unit.count
+        return menuDatasource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "unitCell", for: indexPath)
-        cell.saveIndexPath(indexPath: indexPath)
-        let unitCell = cell as? UnitTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: UnitTableViewCell.identifier, for: indexPath)
+        cell.selectionStyle = .none
         
-        unitCell?.update(title: unit[indexPath.row], check: UIImage(named: unitCheck[indexPath.row]))
-        
-        
+        if let unitCell = cell as? UnitTableViewCell {
+            let tempUnit = menuDatasource[indexPath.row]
+            let isSelected = tempUnit == selectedTempUnit
+            unitCell.update(title: tempUnit.symbolText, isSelected: isSelected)
+        }
         return cell
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
     }
 }
 
 extension UnitViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("click \(unit[indexPath.row])")
-        
-        if indexPath.row == 0 {
-            tableView.reloadData()
-            unitCheck.removeAll()
-            unitCheck.insert("check", at: 0)
-            unitCheck.insert("", at: 1)
-        } else if indexPath.row == 1 {
-            tableView.reloadData()
-            unitCheck.remove(at: 0)
-            unitCheck.insert("", at: 0)
-            unitCheck.insert("check", at: 1)
-        } else {
-            print("else")
-        }
+        selectedTempUnit = menuDatasource[indexPath.row]
     }
 }
 
@@ -72,14 +79,11 @@ class UnitTableViewCell: UITableViewCell {
     @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var unitCheck: UIImageView!
     
-    override func saveIndexPath(indexPath: IndexPath) {
-        super.saveIndexPath(indexPath: indexPath)
-        unitLabel.saveIndexPath(indexPath: indexPath)
-        
-    }
+    static let identifier: String = "unitCell"
     
-    func update(title: String, check: UIImage?) {
-        self.unitLabel.text = title
-        self.unitCheck.image = check
+    func update(title: String, isSelected: Bool) {
+        self.unitLabel.attributedString = title
+        self.unitLabel.textColor = isSelected ? .purpleishBlue : .charcoalGrey
+        self.unitCheck.isHidden = !isSelected
     }
 }
