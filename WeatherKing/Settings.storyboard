@@ -346,9 +346,6 @@
                     <navigationItem key="navigationItem" title="개인정보처리방침" id="ty7-Op-qhX">
                         <barButtonItem key="leftBarButtonItem" image="icBack" id="IW7-KJ-u5l">
                             <color key="tintColor" red="0.20392156859999999" green="0.2274509804" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="backAction:" destination="BWd-4A-AKy" id="bCT-b5-XJN"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -824,6 +821,9 @@
                                         <state key="normal" title="로그아웃">
                                             <color key="titleColor" red="0.52549019610000003" green="0.5568627451" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="onSignOutButtonTapped:" destination="Hza-uX-Hyx" eventType="touchUpInside" id="lx0-e9-a8d"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTp-bc-XS1" userLabel="Border Line View">
                                         <rect key="frame" x="101" y="9" width="1" height="8"/>
@@ -840,7 +840,6 @@
                                             <color key="titleColor" red="0.52549019610000003" green="0.5568627451" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="InformationAction:" destination="Hza-uX-Hyx" eventType="touchUpInside" id="Yzb-UH-NeI"/>
                                             <action selector="onPrivacyGuideButtonTapped:" destination="Hza-uX-Hyx" eventType="touchUpInside" id="OrS-Tn-pQK"/>
                                         </connections>
                                     </button>
