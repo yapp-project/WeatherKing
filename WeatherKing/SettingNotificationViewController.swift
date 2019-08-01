@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum NotificationSettingCellType: CaseIterable {
+enum NotificationSettingCellType: Int, CaseIterable {
     case allday //매일알림
     case morning    //아침시간
     case night  //저녁시간
@@ -41,19 +41,55 @@ enum NotificationSettingCellType: CaseIterable {
 }
 
 class SettingNotificationViewController: UIViewController {
+    @IBOutlet private weak var tableView: UITableView!
     
-    @IBOutlet fileprivate weak var tableView: UITableView!
+    private var menuDatasource: [NotificationSettingCellType] = NotificationSettingCellType.allCases
+    private let morningDatePicker = UIDatePicker()
+    private let nightDatePicker = UIDatePicker()
+    private let toolbar = UIToolbar()
     
-    let morningDatePicker = UIDatePicker()
-    let nightDatePicker = UIDatePicker()
-    let toolbar = UIToolbar()
-    var morningTimeText: String? = "오전 7:00"
-    var nightTimeText: String? = "오후 10:00"
-    var menuDatasource: [NotificationSettingCellType] = NotificationSettingCellType.allCases
-    var isAllday: Bool?
+    private var amNotificationTime: Double = 0 {
+        didSet {
+            let startOfDayInTime: Double = Date().startOfDay.timeIntervalSince1970
+            let convertedTime: Double = amNotificationTime - startOfDayInTime
+            UserDefaultsManager.EverydayAMNotificaitonTime.set(convertedTime)
+        }
+    }
+    private var pmNotificationTime: Double = 0 {
+        didSet {
+            let startOfDayInTime: Double = Date().startOfDay.timeIntervalSince1970
+            let convertedTime: Double = pmNotificationTime - startOfDayInTime
+            UserDefaultsManager.EverydayPMNotificaitonTime.set(convertedTime)
+        }
+    }
+    private var isEverydayNotiEnabled: Bool = false {
+        didSet {
+            UserDefaultsManager.EverydayNotificationSetting.set(isEverydayNotiEnabled)
+        }
+    }
+    private var isRainNotiEnabled: Bool = false {
+        didSet {
+            UserDefaultsManager.RainNotificationSetting.set(isRainNotiEnabled)
+        }
+    }
+    private var isFineDustNotiEnabled: Bool = false {
+        didSet {
+            UserDefaultsManager.FineDustNotificationSetting.set(isFineDustNotiEnabled)
+        }
+    }
     
-    func updateMenu() {
-        if isAllday == true {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.allowsSelection = false
+        prepareDatePickers()
+        loadSettings()
+        updateMenu()
+    }
+}
+
+extension SettingNotificationViewController {
+    private func updateMenu() {
+        if isEverydayNotiEnabled {
             menuDatasource = NotificationSettingCellType.allCases
         } else {
             menuDatasource = [.allday, .rain, .dust]
@@ -61,60 +97,47 @@ class SettingNotificationViewController: UIViewController {
         tableView.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    private func loadSettings() {
+        amNotificationTime = UserDefaultsManager.EverydayAMNotificaitonTime.get() + Date().startOfDay.timeIntervalSince1970
+        pmNotificationTime = UserDefaultsManager.EverydayPMNotificaitonTime.get() + Date().startOfDay.timeIntervalSince1970
+        isEverydayNotiEnabled = UserDefaultsManager.EverydayNotificationSetting.get()
+        isFineDustNotiEnabled = UserDefaultsManager.FineDustNotificationSetting.get()
+        isRainNotiEnabled = UserDefaultsManager.RainNotificationSetting.get()
+    }
+    
+    private func prepareDatePickers() {
         morningDatePicker.datePickerMode = .time
+        morningDatePicker.minimumDate = Date().startOfDay
+        morningDatePicker.maximumDate = Date().getSpecificTimeOfDay(hour: 11, minute: 59)
+        morningDatePicker.timeZone = TimeZone(secondsFromGMT: 0)
         morningDatePicker.addTarget(self, action: #selector(self.morningPickerChange(_:)), for: .valueChanged)
         
         nightDatePicker.datePickerMode = .time
+        nightDatePicker.minimumDate = Date().getSpecificTimeOfDay(hour: 12)
+        nightDatePicker.maximumDate = Date().getSpecificTimeOfDay(hour: 23, minute: 59)
+        nightDatePicker.timeZone = TimeZone(secondsFromGMT: 0)
         nightDatePicker.addTarget(self, action: #selector(self.nightPickerChange(_:)), for: .valueChanged)
         
         toolbar.sizeToFit()
         
-        let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.ActionBar))
-        
+        let doneBtn = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(onDatePickerDoneButtonTapped))
         toolbar.items = [doneBtn]
-        tableView.allowsSelection = false
-        
-        
     }
-    @objc func ActionBar() {
+    
+}
+extension SettingNotificationViewController {
+    
+    @objc private func onDatePickerDoneButtonTapped() {
         view.endEditing(true)
         tableView.reloadData()
     }
     
-    @objc func morningPickerChange(_ send: UIDatePicker) {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        formatter.dateFormat = "a h:mm"
-        formatter.amSymbol = "오전"
-        formatter.pmSymbol = "오후"
-
-        let date = formatter.string(from: send.date)
-        morningTimeText = date
+    @objc private func morningPickerChange(_ send: UIDatePicker) {
+        amNotificationTime = send.date.timeIntervalSince1970
     }
     
     @objc func nightPickerChange(_ send: UIDatePicker) {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        formatter.dateFormat = "a h:mm"
-        formatter.amSymbol = "오전"
-        formatter.pmSymbol = "오후"
-        
-        let date = formatter.string(from: send.date)
-        nightTimeText = date
-    }
-    @IBAction func setTime(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "a h:mm"
-        let date = dateFormatter.date(from: "오전 7:00")
-        if let formatter = date {
-            morningDatePicker.date = formatter
-        }
-        
+        pmNotificationTime = send.date.timeIntervalSince1970
     }
     
     @IBAction func onBackButtonTapped(_ sender: UIButton) {
@@ -122,13 +145,18 @@ class SettingNotificationViewController: UIViewController {
     }
     
     @IBAction func onSwitchToggled(_ sender: UISwitch) {
-        guard let indexPath = sender.indexPath() else {
+        guard let indexPath = sender.indexPath(), let cellType = NotificationSettingCellType(rawValue: indexPath.row) else {
             return
         }
-        if indexPath.row == 0 {
-            isAllday = sender.isOn
-            updateMenu()
+        switch cellType {
+        case .allday:
+            isEverydayNotiEnabled = sender.isOn
+        case .dust, .morning:
+            isFineDustNotiEnabled = sender.isOn
+        case .rain, .night:
+            isRainNotiEnabled = sender.isOn
         }
+        updateMenu()
     }
 }
 
@@ -143,93 +171,62 @@ extension SettingNotificationViewController: UITableViewDataSource {
         cell.saveIndexPath(indexPath: indexPath)
         
         if let switchCell = cell as? SettingNotificationSwitchCell {
-            
-            if cellType == .allday {
-                switchCell.updateView(title: cellType.title, isOn: isAllday)
-            } else {
-                switchCell.updateView(title: cellType.title, isOn: true)
+            switch cellType {
+            case .allday:
+                switchCell.configureCell(title: cellType.title, isOn: isEverydayNotiEnabled)
+            case .dust:
+                switchCell.configureCell(title: cellType.title, isOn: isFineDustNotiEnabled)
+            case .rain:
+                switchCell.configureCell(title: cellType.title, isOn: isRainNotiEnabled)
+            case .morning, .night:
+                break
             }
-        }
-        else if let buttonCell = cell as? SettingNotificationButtonCell {
+        } else if let buttonCell = cell as? SettingNotificationButtonCell {
             if cellType == .morning {
-                
-                buttonCell.timeField.inputView = morningDatePicker
-                buttonCell.timeField.inputAccessoryView = toolbar
-                buttonCell.updateView(title: cellType.title,time: morningTimeText ?? "")
-                let formatter = DateFormatter()
-                formatter.dateStyle = .none
-                formatter.timeStyle = .short
-                formatter.dateFormat = "a h:mm"
-                formatter.amSymbol = "오전"
-                formatter.pmSymbol = "오후"
-                
-                let date = formatter.date(from: "오전 7:00")
-                morningDatePicker.date = date!
+                morningDatePicker.date = Date(timeIntervalSince1970: amNotificationTime)
+                buttonCell.configureDatePicker(morningDatePicker, toolbar: toolbar)
+                buttonCell.configureCell(cellType.title, timeText: amNotificationTime.simpleTimeTextFormat)
             } else {
-                buttonCell.timeField.inputView = nightDatePicker
-                buttonCell.timeField.inputAccessoryView = toolbar
-                buttonCell.updateView(title: cellType.title, time: nightTimeText ?? "")
-                let formatter = DateFormatter()
-                formatter.dateStyle = .none
-                formatter.timeStyle = .short
-                formatter.dateFormat = "a h:mm"
-                formatter.amSymbol = "오전"
-                formatter.pmSymbol = "오후"
-                
-                let date = formatter.date(from: "오후 10:00")
-                nightDatePicker.date = date!
+                nightDatePicker.date = Date(timeIntervalSince1970: pmNotificationTime)
+                buttonCell.configureDatePicker(nightDatePicker, toolbar: toolbar)
+                buttonCell.configureCell(cellType.title, timeText: pmNotificationTime.simpleTimeTextFormat)
             }
         }
         return cell
     }
 }
 
-extension SettingNotificationViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-    }
-}
-
 class SettingNotificationSwitchCell: UITableViewCell {
-    @IBOutlet fileprivate weak var alertLabel: UILabel!
-    @IBOutlet fileprivate weak var alertSwitch: UISwitch!
+    @IBOutlet private weak var alertLabel: UILabel!
+    @IBOutlet private weak var alertSwitch: UISwitch!
 
     override func saveIndexPath(indexPath: IndexPath) {
         super.saveIndexPath(indexPath: indexPath)
         alertSwitch.saveIndexPath(indexPath: indexPath)
     }
     
-    func updateView(title: String, isOn: Bool?) {
-        self.alertLabel.text = title
-        self.alertSwitch.isOn = isOn ?? true
+    func configureCell(title: String, isOn: Bool) {
+        alertLabel.text = title
+        alertSwitch.isOn = isOn
     }
 }
 
 class SettingNotificationButtonCell: UITableViewCell {
-    @IBOutlet fileprivate weak var alertLabel: UILabel!
-    @IBOutlet weak var timeField: UITextField!
+    @IBOutlet private weak var alertLabel: UILabel!
+    @IBOutlet private weak var timeField: UITextField!
+    
+    func configureDatePicker(_ datePicker: UIDatePicker, toolbar: UIToolbar) {
+        timeField.inputView = datePicker
+        timeField.inputAccessoryView = toolbar
+    }
     
     override func saveIndexPath(indexPath: IndexPath) {
         super.saveIndexPath(indexPath: indexPath)
         timeField.saveIndexPath(indexPath: indexPath)
     }
     
-    func updateView(title: String, time: String) {
+    func configureCell(_ title: String, timeText: String) {
         self.alertLabel.text = title
-        self.timeField.text = time
-    }
-    
-}
-
-var indexPathKey: UInt8 = 0
-extension NSObject {
-    @objc func saveIndexPath(indexPath: IndexPath) {
-        objc_setAssociatedObject(self, &indexPathKey, indexPath, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-    }
-    
-    func indexPath() -> IndexPath? {
-        return objc_getAssociatedObject(self, &indexPathKey) as? IndexPath
+        self.timeField.text = timeText
     }
 }

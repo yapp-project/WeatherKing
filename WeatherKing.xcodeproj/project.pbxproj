@@ -14,6 +14,7 @@
 		741C8E52224FA252001007AB /* CommentTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E51224FA252001007AB /* CommentTextField.swift */; };
 		741C8E56224FC828001007AB /* CommentLikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741C8E55224FC828001007AB /* CommentLikeButton.swift */; };
 		CE0653DD22A2268B00616400 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE72AC6A2274A26800D77543 /* KakaoOpenSDK.framework */; };
+		CE0F7FB622F2FE46001A0F6F /* Foundation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F7FB522F2FE46001A0F6F /* Foundation+Extensions.swift */; };
 		CE20385A222164A200ED9BA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE203859222164A200ED9BA7 /* AppDelegate.swift */; };
 		CE20385F222164A200ED9BA7 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE20385D222164A200ED9BA7 /* Home.storyboard */; };
 		CE203861222164A400ED9BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE203860222164A400ED9BA7 /* Assets.xcassets */; };
@@ -114,6 +115,7 @@
 		741C8E51224FA252001007AB /* CommentTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTextField.swift; sourceTree = "<group>"; };
 		741C8E55224FC828001007AB /* CommentLikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentLikeButton.swift; sourceTree = "<group>"; };
 		AB0C1B72142480D065CB6D7B /* Pods-WeatherKing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherKing.debug.xcconfig"; path = "Target Support Files/Pods-WeatherKing/Pods-WeatherKing.debug.xcconfig"; sourceTree = "<group>"; };
+		CE0F7FB522F2FE46001A0F6F /* Foundation+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extensions.swift"; sourceTree = "<group>"; };
 		CE203856222164A200ED9BA7 /* WeatherKing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherKing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE203859222164A200ED9BA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE20385E222164A200ED9BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				CE31EB4C224EB042005CA188 /* UIKit+Extensions.swift */,
+				CE0F7FB522F2FE46001A0F6F /* Foundation+Extensions.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -779,6 +782,7 @@
 				CE522F4C224F91FE000C26BF /* RootViewController.swift in Sources */,
 				CE8B43ED22A1A76000EF8E0F /* HomeWeatherWeekCardCell.swift in Sources */,
 				CE31EB42224E81EB005CA188 /* HomeBestCommentCollectionCell.swift in Sources */,
+				CE0F7FB622F2FE46001A0F6F /* Foundation+Extensions.swift in Sources */,
 				CE20388A22216D9A00ED9BA7 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

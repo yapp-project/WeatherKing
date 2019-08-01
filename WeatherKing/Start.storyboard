@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="os8-QQ-7sl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="os8-QQ-7sl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +28,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="9BL-ld-fuc">
             <objects>
-                <viewController id="Z4P-c4-fNt" customClass="SignUpViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Z4P-c4-fNt" customClass="SignUpViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v9P-x8-wm5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -204,7 +204,7 @@
         <!--Nick Name View Controller-->
         <scene sceneID="z8E-ag-9Dm">
             <objects>
-                <viewController id="rhE-KH-meD" customClass="NickNameViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="rhE-KH-meD" customClass="NickNameViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="08P-gU-fr9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -365,7 +365,7 @@
         <!--Splash View Controller-->
         <scene sceneID="f2n-AS-HAQ">
             <objects>
-                <viewController id="os8-QQ-7sl" customClass="SplashViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="os8-QQ-7sl" customClass="SplashViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zUK-5b-QQP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -397,7 +397,7 @@
         <!--Notification View Controller-->
         <scene sceneID="W9S-2I-Xmn">
             <objects>
-                <viewController id="klT-dI-SqE" customClass="NotificationViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="klT-dI-SqE" customClass="NotificationViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KoH-gO-RzY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -466,7 +466,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fdO-G1-Uol">
                                 <rect key="frame" x="40" y="282" width="295" height="193.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nk3-rT-aZY" userLabel="Check Button View" customClass="NotificationCheckView" customModule="RealWeather" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nk3-rT-aZY" userLabel="Check Button View" customClass="NotificationCheckView" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매일 알람" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XJ3-8S-Y96">
@@ -528,7 +528,7 @@
                                             <outlet property="checkImageView" destination="aaa-wp-L29" id="A1S-RA-OTQ"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0R-oL-VcH" userLabel="Check Button View" customClass="NotificationCheckView" customModule="RealWeather" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0R-oL-VcH" userLabel="Check Button View" customClass="NotificationCheckView" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="64.5" width="295" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비소식 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icR-C8-LYJ">
@@ -537,7 +537,7 @@
                                                 <color key="textColor" red="0.20392156859999999" green="0.2274509804" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNd-Qn-gQv" customClass="CheckBoxView" customModule="RealWeather" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNd-Qn-gQv" customClass="CheckBoxView" customModule="WeatherKing" customModuleProvider="target">
                                                 <rect key="frame" x="271" y="20.5" width="24" height="24"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkBox1" translatesAutoresizingMaskIntoConstraints="NO" id="ufw-xE-Ogm">
@@ -590,7 +590,7 @@
                                             <outlet property="checkImageView" destination="ufw-xE-Ogm" id="Q2n-TN-XWO"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-AZ-l1A" userLabel="Check Button View" customClass="NotificationCheckView" customModule="RealWeather" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XH5-AZ-l1A" userLabel="Check Button View" customClass="NotificationCheckView" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="129" width="295" height="64.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미세먼지 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abI-L8-glG">
@@ -599,7 +599,7 @@
                                                 <color key="textColor" red="0.20392156859999999" green="0.2274509804" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gp1-Mm-Z35" customClass="CheckBoxView" customModule="RealWeather" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gp1-Mm-Z35" customClass="CheckBoxView" customModule="WeatherKing" customModuleProvider="target">
                                                 <rect key="frame" x="271" y="20.5" width="24" height="24"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkBox1" translatesAutoresizingMaskIntoConstraints="NO" id="sdP-tV-2Bw">
@@ -683,8 +683,8 @@
                     <connections>
                         <outlet property="confirmButtonView" destination="5Ej-3U-7rF" id="fQB-Gm-YVF"/>
                         <outlet property="everydayNotiCheckView" destination="nk3-rT-aZY" id="dLy-He-Luf"/>
+                        <outlet property="fineDustNotiCheckView" destination="XH5-AZ-l1A" id="kXT-RN-jtk"/>
                         <outlet property="rainNotiCheckView" destination="R0R-oL-VcH" id="aQs-QT-Y79"/>
-                        <outlet property="ultraDustNotiCheckView" destination="XH5-AZ-l1A" id="lTp-MA-Prt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JJa-Im-4iQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

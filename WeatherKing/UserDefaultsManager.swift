@@ -11,8 +11,10 @@ import Foundation
 public class UserDefaultsManager {
     public static let LastLoginMethod = AppDefaults<Int>(key: "LastLoginMethod", defaultValue: 4)
     public static let EverydayNotificationSetting = AppDefaults<Bool>(key: "EverydayNotificationSetting", defaultValue: true)
+    public static let EverydayAMNotificaitonTime = AppDefaults<Double>(key: "EverydayAMNotificaitonTime", defaultValue: AppCommon.notificationDefaultAMTime)
+    public static let EverydayPMNotificaitonTime = AppDefaults<Double>(key: "EverydayPMNotificaitonTime", defaultValue: AppCommon.notificationDefaultPMTime)
     public static let RainNotificationSetting = AppDefaults<Bool>(key: "RainNotificationSetting", defaultValue: true)
-    public static let UltradustNotificationSetting = AppDefaults<Bool>(key: "UltradustNotificationSetting", defaultValue: true)
+    public static let FineDustNotificationSetting = AppDefaults<Bool>(key: "FineDustNotificationSetting", defaultValue: true)
     public static let TemperatureUnitSetting = AppDefaults<Int>(key: "TemperatureUnitSetting", defaultValue: 0)
 }
 

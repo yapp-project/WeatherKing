@@ -172,18 +172,6 @@ extension UIColor {
 
 }
 
-extension Int {
-    var tempFormat: String {
-        return "\(self)°"
-    }
-}
-
-extension Double {
-    var tempFormat: String {
-        return "\(self)°"
-    }
-}
-
 extension UILabel {
     @objc var kern: NSNumber? {
         get {
