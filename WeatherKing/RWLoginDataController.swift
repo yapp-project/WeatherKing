@@ -11,7 +11,7 @@ import Foundation
 class RWLoginDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
-    func register(user: RWUser, completion: @escaping (Bool?) -> Void) {
+    func register(user: RWUser, completion: @escaping (Bool?, RWApiError?) -> Void) {
         let queries: [URLQueryItem] = [
             URLQueryItem(name: "type", value: "\(user.loginMethod.rawValue)"),
             URLQueryItem(name: "nickname", value: user.nickname),
@@ -23,28 +23,28 @@ class RWLoginDataController {
         requestor.cancel()
         requestor.method = .post
         requestor.baseURLPath = AppCommon.baseURL + "/main/register"
-        requestor.fetch(with: queries) { data, error in
-            let completionInMainThread = { (completion: @escaping (Bool?) -> Void, result: Bool?) in
+        requestor.fetch(with: queries) { data, apiError in
+            let completionInMainThread = { (completion: @escaping (Bool?, RWApiError?) -> Void, result: Bool?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(result)
+                    completion(result, error)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let result: Bool? = try self.parseRegisterResult(data)
-                completionInMainThread(completion, result)
+                completionInMainThread(completion, result, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }
     
-    func login(user: RWUser, completion: @escaping (RWUser?) -> Void) {
+    func login(user: RWUser, completion: @escaping (RWUser?, RWApiError?) -> Void) {
         let queries: [URLQueryItem] = [
             URLQueryItem(name: "type", value: "\(user.loginMethod.rawValue)"),
             URLQueryItem(name: "userid", value: user.userID)
@@ -53,23 +53,23 @@ class RWLoginDataController {
         requestor.cancel()
         requestor.method = .post
         requestor.baseURLPath = AppCommon.baseURL + "/main/login"
-        requestor.fetch(with: queries) { data, error in
-            let completionInMainThread = { (completion: @escaping (RWUser?) -> Void, user: RWUser?) in
+        requestor.fetch(with: queries) { data, apiError in
+            let completionInMainThread = { (completion: @escaping (RWUser?, RWApiError?) -> Void, user: RWUser?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(user)
+                    completion(user, error)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let user: RWUser? = try self.parseUserInfo(data)
-                completionInMainThread(completion, user)
+                completionInMainThread(completion, user, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }

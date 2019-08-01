@@ -24,7 +24,7 @@ struct HomeData {
 class HomeDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
-    func requestData(for location: RWLocation, completion: @escaping (HomeData?) -> Void) {
+    func requestData(for location: RWLocation, completion: @escaping (HomeData?, RWApiError?) -> Void) {
         let queries: [URLQueryItem] = [
             URLQueryItem(name: "lat", value: "\(location.latitude)"),
             URLQueryItem(name: "lng", value: "\(location.longitude)")
@@ -33,23 +33,23 @@ class HomeDataController {
         requestor.cancel()
         requestor.method = .get
         requestor.baseURLPath = AppCommon.baseURL + "/main"
-        requestor.fetch(with: queries) { [weak self] data, error in
-            let completionInMainThread = { (completion: @escaping (HomeData?) -> Void, result: HomeData?) in
+        requestor.fetch(with: queries) { [weak self] data, apiError in
+            let completionInMainThread = { (completion: @escaping (HomeData?, RWApiError?) -> Void, result: HomeData?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(result)
+                    completion(result, apiError)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let homeData: HomeData? = try self?.parseHomeData(data)
-                completionInMainThread(completion, homeData)
+                completionInMainThread(completion, homeData, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }

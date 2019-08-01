@@ -11,6 +11,7 @@ import UIKit
 enum NickNameStatus {
     case waitingForInput
     case waitingForServerCheck
+    case serverError
     case available
     case currentlyInUse
     case irregularCharacter
@@ -21,6 +22,8 @@ enum NickNameStatus {
             return ""
         case .waitingForServerCheck:
             return "중복 닉네임 체크 중입니다."
+        case .serverError:
+            return "서버 상태가 불안정합니다."
         case .available:
             return "사용할 수 있는 닉네임입니다."
         case .currentlyInUse:
@@ -74,7 +77,7 @@ extension NickNameViewController {
     
     private func updateButton() {
         switch nickNameStatus {
-        case .waitingForInput, .currentlyInUse, .irregularCharacter, .waitingForServerCheck:
+        case .waitingForInput, .currentlyInUse, .irregularCharacter, .waitingForServerCheck, .serverError:
             nickNameConfirmButton.backgroundColor = #colorLiteral(red: 0.8745098039, green: 0.8862745098, blue: 0.9019607843, alpha: 1)
             nickNameConfirmButton.isUserInteractionEnabled = false
         case .available:
@@ -134,8 +137,12 @@ extension NickNameViewController {
             if isIrrgular {
                 nickNameStatus = .irregularCharacter
             } else {
-                dataController.checkIfNicknameExists(currentText) { [weak self] result in
-                    guard let result = result, result else {
+                dataController.checkIfNicknameExists(currentText) { [weak self] result, error in
+                    guard let result = result, error == nil else {
+                        self?.nickNameStatus = .serverError
+                        return
+                    }
+                    guard result else {
                         self?.nickNameStatus = .currentlyInUse
                         return
                     }
@@ -165,36 +172,36 @@ extension NickNameViewController: UITextFieldDelegate {
 class NickNameDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
-    func checkIfNicknameExists(_ nickname: String, completion: @escaping (Bool?) -> Void) {
+    func checkIfNicknameExists(_ nickname: String, completion: @escaping (Bool?, RWApiError?) -> Void) {
         let queries: [URLQueryItem] = [URLQueryItem(name: "nickname", value: nickname)]
         
         requestor.cancel()
         requestor.method = .get
         requestor.baseURLPath = AppCommon.baseURL + "/main/nickname"
-        requestor.fetch(with: queries) { [weak self] data, error in
-            let completionInMainThread = { (completion: @escaping (Bool?) -> Void, result: Bool?) in
+        requestor.fetch(with: queries) { [weak self] data, apiError in
+            let completionInMainThread = { (completion: @escaping (Bool?, RWApiError?) -> Void, result: Bool?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(result)
+                    completion(result, error)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let result: Bool? = try self?.parseCheckResult(data)
-                completionInMainThread(completion, result)
+                completionInMainThread(completion, result, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }
     
-    func requestNicknameChange(_ nickname: String, completion: @escaping (RWUser?) -> Void) {
+    func requestNicknameChange(_ nickname: String, completion: @escaping (RWUser?, RWApiError?) -> Void) {
         guard let user = RWLoginManager.shared.user else {
-            completion(nil)
+            completion(nil, .clientError(nil))
             return
         }
         
@@ -207,23 +214,23 @@ class NickNameDataController {
         requestor.cancel()
         requestor.method = .put
         requestor.baseURLPath = AppCommon.baseURL + "/setting/user"
-        requestor.fetch(with: jsonBody) { [weak self] data, error in
-            let completionInMainThread = { (completion: @escaping (RWUser?) -> Void, result: RWUser?) in
+        requestor.fetch(with: jsonBody) { [weak self] data, apiError in
+            let completionInMainThread = { (completion: @escaping (RWUser?, RWApiError?) -> Void, result: RWUser?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(result)
+                    completion(result, apiError)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let userInfo: RWUser? = try self?.parseUserInfo(data)
-                completionInMainThread(completion, userInfo)
+                completionInMainThread(completion, userInfo, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }

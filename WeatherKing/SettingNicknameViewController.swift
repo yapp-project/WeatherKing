@@ -65,7 +65,7 @@ extension SettingNicknameViewController {
     
     private func updateButton() {
         switch nickNameStatus {
-        case .waitingForInput, .currentlyInUse, .irregularCharacter, .waitingForServerCheck:
+        case .waitingForInput, .currentlyInUse, .irregularCharacter, .waitingForServerCheck, .serverError:
             nickNameConfirmButton.isEnabled = false
         case .available:
             nickNameConfirmButton.isEnabled = true
@@ -79,8 +79,8 @@ extension SettingNicknameViewController {
             return
         }
         
-        dataController.requestNicknameChange(nickname) { [weak self] result in
-            guard let result = result else {
+        dataController.requestNicknameChange(nickname) { [weak self] result, error in
+            guard let result = result, error == nil else {
                 return
             }
             RWLoginManager.shared.user = result
@@ -120,8 +120,13 @@ extension SettingNicknameViewController {
             if isIrrgular {
                 nickNameStatus = .irregularCharacter
             } else {
-                dataController.checkIfNicknameExists(currentText) { [weak self] result in
-                    guard let result = result, result else {
+                dataController.checkIfNicknameExists(currentText) { [weak self] result, error in
+                    guard let result = result, error == nil else {
+                        self?.nickNameStatus = .serverError
+                        return
+                    }
+                    
+                    guard result else {
                         self?.nickNameStatus = .currentlyInUse
                         return
                     }

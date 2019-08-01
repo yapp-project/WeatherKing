@@ -65,14 +65,15 @@ class RootViewController: UIViewController {
         } else if segue.identifier == "HomeNavigationBar" {
             homeNavigationBarViewController = segue.destination as? HomeNavigationBarViewController
         } else if segue.identifier == "Splash" {
-            let splashVC = segue.destination as? SplashViewController
-            
-            splashVC?.loginSegueHandler = { [weak self] in
-                self?.splashView.isHidden = true
-            }
-            splashVC?.completionHandler = { [weak self] in
-                self?.removeSplashView()
-            }
+//            let splashVC = segue.destination as? SplashViewController
+//
+//            splashVC?.loginSegueHandler = { [weak self] in
+//                self?.splashView.isHidden = true
+//            }
+//            splashVC?.completionHandler = { [weak self] in
+//                self?.removeSplashView()
+//            }
+            removeSplashView()
         }
     }
 }
@@ -90,11 +91,11 @@ extension RootViewController {
 // MARK: Loading Controller
 extension RootViewController {
     func startLoading() {
-        loadingController?.startLoading()
+//        loadingController?.startLoading()
     }
     
     func stopLoading() {
-        loadingController?.stopLoading()
+//        loadingController?.stopLoading()
     }
 }
 

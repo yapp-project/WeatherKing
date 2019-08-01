@@ -24,31 +24,35 @@ enum Accuse: String {
 class HomeCommentDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
-    func requestComment(completion: @escaping ([RWComment]?) -> Void) {
-        guard let user = RWLoginManager.shared.user else { completion(nil); return }
+    func requestComment(completion: @escaping ([RWComment]?, RWApiError?) -> Void) {
+        guard let user = RWLoginManager.shared.user else {
+            completion(nil, .loginRequired(nil))
+            return
+        }
+        
         let queryItems: [URLQueryItem] = [URLQueryItem(name: "uid", value: user.uniqueID),
                                           URLQueryItem(name: "type", value: String(user.loginMethod.rawValue))]
         
         requestor.cancel()
         requestor.baseURLPath = "http://15.164.86.162:3000/api/board/list"
         requestor.method = .get
-        requestor.fetch(with: queryItems) { [weak self] data, error in
-            let completionInMainThread = { (completion: @escaping ([RWComment]?) -> Void, result: [RWComment]?) in
+        requestor.fetch(with: queryItems) { [weak self] data, apiError in
+            let completionInMainThread = { (completion: @escaping ([RWComment]?, RWApiError?) -> Void, result: [RWComment]?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(result)
+                    completion(result, error)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let list: [RWComment]? = try self?.parseComments(with: data)
-                completionInMainThread(completion, list)
+                completionInMainThread(completion, list, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }
