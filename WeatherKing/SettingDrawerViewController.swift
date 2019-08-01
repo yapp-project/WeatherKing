@@ -1,5 +1,5 @@
 //
-//  DrawerViewController.swift
+//  SettingDrawerViewController.swift
 //  WeatherKing
 //
 //  Created by SangDon Kim on 27/03/2019.
@@ -42,7 +42,7 @@ enum MenuSetting: String, CaseIterable {
     }
 }
 
-class DrawerViewController: UIViewController {
+class SettingDrawerViewController: UIViewController {
     @IBOutlet private weak var nicknameButtonView: UIButton!
     
     private let menuDatasource: [MenuSetting] = MenuSetting.allCases
@@ -70,7 +70,7 @@ class DrawerViewController: UIViewController {
     }
 }
 
-extension DrawerViewController: UICollectionViewDataSource {
+extension SettingDrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return menuDatasource.count
     }
@@ -78,7 +78,7 @@ extension DrawerViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let menu: MenuSetting = menuDatasource[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "menuCell", for: indexPath)
-        let menuCell = cell as? MenuCollectionViewCell
+        let menuCell = cell as? SettingDrawerMenuCell
         
         menuCell?.updateView(image: menu.image, title: menu.title)
     
@@ -86,7 +86,7 @@ extension DrawerViewController: UICollectionViewDataSource {
     }
 }
 
-extension DrawerViewController: UICollectionViewDelegate {
+extension SettingDrawerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let menu: MenuSetting = menuDatasource[indexPath.row]
         collectionView.deselectItem(at: indexPath, animated: true)
@@ -132,7 +132,7 @@ extension DrawerViewController: UICollectionViewDelegate {
     }
 }
 
-extension DrawerViewController {
+extension SettingDrawerViewController {
     @IBAction func onEditNickNameButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "nickname", sender: nil)
     }
@@ -146,7 +146,7 @@ extension DrawerViewController {
     }
 }
 
-extension DrawerViewController: UICollectionViewDelegateFlowLayout {
+extension SettingDrawerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // viewWidth - leftInset
         return CGSize(width: view.frame.width - 21, height: 64)
@@ -157,7 +157,7 @@ extension DrawerViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension DrawerViewController: MFMailComposeViewControllerDelegate {
+extension SettingDrawerViewController: MFMailComposeViewControllerDelegate {
     
     func mailComposeController(_ controller: MFMailComposeViewController,
                                didFinishWith result: MFMailComposeResult, error: Error?) {
@@ -179,7 +179,7 @@ extension DrawerViewController: MFMailComposeViewControllerDelegate {
         sendMailErrorAlert.show()
     }
 }
-class MenuCollectionViewCell: UICollectionViewCell {
+class SettingDrawerMenuCell: UICollectionViewCell {
     @IBOutlet private weak var cellImage: UIImageView!
     @IBOutlet private weak var cellName: UILabel!
     

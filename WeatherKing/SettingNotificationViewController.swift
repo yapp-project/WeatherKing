@@ -1,5 +1,5 @@
 //
-//  AlertViewController.swift
+//  SettingNotificationViewController.swift
 //  WeatherKing
 //
 //  Created by yoo on 2019. 3. 30..
@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum AlertSettingCellType: CaseIterable {
+enum NotificationSettingCellType: CaseIterable {
     case allday //매일알림
     case morning    //아침시간
     case night  //저녁시간
@@ -40,7 +40,7 @@ enum AlertSettingCellType: CaseIterable {
     }
 }
 
-class AlertViewController: UIViewController {
+class SettingNotificationViewController: UIViewController {
     
     @IBOutlet fileprivate weak var tableView: UITableView!
     
@@ -49,12 +49,12 @@ class AlertViewController: UIViewController {
     let toolbar = UIToolbar()
     var morningTimeText: String? = "오전 7:00"
     var nightTimeText: String? = "오후 10:00"
-    var menuDatasource: [AlertSettingCellType] = AlertSettingCellType.allCases
+    var menuDatasource: [NotificationSettingCellType] = NotificationSettingCellType.allCases
     var isAllday: Bool?
     
     func updateMenu() {
         if isAllday == true {
-            menuDatasource = AlertSettingCellType.allCases
+            menuDatasource = NotificationSettingCellType.allCases
         } else {
             menuDatasource = [.allday, .rain, .dust]
         }
@@ -132,17 +132,17 @@ class AlertViewController: UIViewController {
     }
 }
 
-extension AlertViewController: UITableViewDataSource {
+extension SettingNotificationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuDatasource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellType: AlertSettingCellType = menuDatasource[indexPath.row]
+        let cellType: NotificationSettingCellType = menuDatasource[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: cellType.identifier, for: indexPath)
         cell.saveIndexPath(indexPath: indexPath)
         
-        if let switchCell = cell as? AlertTableViewSwitchCell {
+        if let switchCell = cell as? SettingNotificationSwitchCell {
             
             if cellType == .allday {
                 switchCell.updateView(title: cellType.title, isOn: isAllday)
@@ -150,7 +150,7 @@ extension AlertViewController: UITableViewDataSource {
                 switchCell.updateView(title: cellType.title, isOn: true)
             }
         }
-        else if let buttonCell = cell as? AlertTableViewButtonCell {
+        else if let buttonCell = cell as? SettingNotificationButtonCell {
             if cellType == .morning {
                 
                 buttonCell.timeField.inputView = morningDatePicker
@@ -184,7 +184,7 @@ extension AlertViewController: UITableViewDataSource {
     }
 }
 
-extension AlertViewController: UITableViewDelegate {
+extension SettingNotificationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
@@ -192,7 +192,7 @@ extension AlertViewController: UITableViewDelegate {
     }
 }
 
-class AlertTableViewSwitchCell: UITableViewCell {
+class SettingNotificationSwitchCell: UITableViewCell {
     @IBOutlet fileprivate weak var alertLabel: UILabel!
     @IBOutlet fileprivate weak var alertSwitch: UISwitch!
 
@@ -207,7 +207,7 @@ class AlertTableViewSwitchCell: UITableViewCell {
     }
 }
 
-class AlertTableViewButtonCell: UITableViewCell {
+class SettingNotificationButtonCell: UITableViewCell {
     @IBOutlet fileprivate weak var alertLabel: UILabel!
     @IBOutlet weak var timeField: UITextField!
     

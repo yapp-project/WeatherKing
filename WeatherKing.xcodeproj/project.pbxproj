@@ -65,7 +65,7 @@
 		CE8B43EC22A1A76000EF8E0F /* HomeWeatherWeekCardBackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8B43E922A1A76000EF8E0F /* HomeWeatherWeekCardBackCell.xib */; };
 		CE8B43ED22A1A76000EF8E0F /* HomeWeatherWeekCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43EA22A1A76000EF8E0F /* HomeWeatherWeekCardCell.swift */; };
 		CE8B43EE22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8B43EB22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib */; };
-		CE8B43F222A2167200EF8E0F /* InformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */; };
+		CE8B43F222A2167200EF8E0F /* SettingPrivacyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43EF22A2167200EF8E0F /* SettingPrivacyInfoViewController.swift */; };
 		CE8B43F322A2167200EF8E0F /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */; };
 		CEA910F322869C460010C45F /* AppKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA910F222869C460010C45F /* AppKey.swift */; };
 		CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189D42221753F00A1BB38 /* HomeCommentViewController.swift */; };
@@ -73,12 +73,12 @@
 		CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */; };
 		CEB189DE2221866C00A1BB38 /* HomeDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DD2221866C00A1BB38 /* HomeDataController.swift */; };
 		CEB189E0222186D300A1BB38 /* HomeCommentDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */; };
-		CED56D08224A90EB008CFD82 /* DrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D07224A90EB008CFD82 /* DrawerViewController.swift */; };
+		CED56D08224A90EB008CFD82 /* SettingDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D07224A90EB008CFD82 /* SettingDrawerViewController.swift */; };
 		CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D09224A919E008CFD82 /* HomeNavigationBarViewController.swift */; };
 		CED56D11224A9652008CFD82 /* RWLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D10224A9652008CFD82 /* RWLocationManager.swift */; };
 		CED56D13224A9671008CFD82 /* RWLoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED56D12224A9671008CFD82 /* RWLoginManager.swift */; };
-		E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CD224F949700ECCEC3 /* UnitViewController.swift */; };
-		E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */; };
+		E12698CE224F949700ECCEC3 /* SettingTempUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CD224F949700ECCEC3 /* SettingTempUnitViewController.swift */; };
+		E12698D0224F9A6D00ECCEC3 /* SettingNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698CF224F9A6D00ECCEC3 /* SettingNotificationViewController.swift */; };
 		E12698D72250044A00ECCEC3 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E12698D62250044A00ECCEC3 /* Start.storyboard */; };
 		E12698DB22502E0D00ECCEC3 /* SettingNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */; };
 		E492F43C833165968ADA8782 /* Pods_WeatherKing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7393C3DC84E5BEF96F9E7B9B /* Pods_WeatherKing.framework */; };
@@ -173,7 +173,7 @@
 		CE8B43E922A1A76000EF8E0F /* HomeWeatherWeekCardBackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWeatherWeekCardBackCell.xib; sourceTree = "<group>"; };
 		CE8B43EA22A1A76000EF8E0F /* HomeWeatherWeekCardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWeatherWeekCardCell.swift; sourceTree = "<group>"; };
 		CE8B43EB22A1A76000EF8E0F /* HomeWeatherWeekCardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeWeatherWeekCardCell.xib; sourceTree = "<group>"; };
-		CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
+		CE8B43EF22A2167200EF8E0F /* SettingPrivacyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingPrivacyInfoViewController.swift; sourceTree = "<group>"; };
 		CE8B43F022A2167200EF8E0F /* LocationSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		CE959F92228B365B00F7299D /* WeatherKing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherKing.entitlements; sourceTree = "<group>"; };
 		CEA910F222869C460010C45F /* AppKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppKey.swift; sourceTree = "<group>"; };
@@ -182,13 +182,13 @@
 		CEB189DB222185FA00A1BB38 /* RWApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWApiRequest.swift; sourceTree = "<group>"; };
 		CEB189DD2221866C00A1BB38 /* HomeDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataController.swift; sourceTree = "<group>"; };
 		CEB189DF222186D300A1BB38 /* HomeCommentDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentDataController.swift; sourceTree = "<group>"; };
-		CED56D07224A90EB008CFD82 /* DrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewController.swift; sourceTree = "<group>"; };
+		CED56D07224A90EB008CFD82 /* SettingDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDrawerViewController.swift; sourceTree = "<group>"; };
 		CED56D09224A919E008CFD82 /* HomeNavigationBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationBarViewController.swift; sourceTree = "<group>"; };
 		CED56D10224A9652008CFD82 /* RWLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWLocationManager.swift; sourceTree = "<group>"; };
 		CED56D12224A9671008CFD82 /* RWLoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWLoginManager.swift; sourceTree = "<group>"; };
 		E0D9047FC0B600A26EEE9730 /* Pods_WeatherKingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherKingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E12698CD224F949700ECCEC3 /* UnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitViewController.swift; sourceTree = "<group>"; };
-		E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		E12698CD224F949700ECCEC3 /* SettingTempUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTempUnitViewController.swift; sourceTree = "<group>"; };
+		E12698CF224F9A6D00ECCEC3 /* SettingNotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationViewController.swift; sourceTree = "<group>"; };
 		E12698D62250044A00ECCEC3 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNicknameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -447,10 +447,10 @@
 		CED56D06224A90D3008CFD82 /* Drawer */ = {
 			isa = PBXGroup;
 			children = (
-				CE8B43EF22A2167200EF8E0F /* InformationViewController.swift */,
-				CED56D07224A90EB008CFD82 /* DrawerViewController.swift */,
-				E12698CD224F949700ECCEC3 /* UnitViewController.swift */,
-				E12698CF224F9A6D00ECCEC3 /* AlertViewController.swift */,
+				CE8B43EF22A2167200EF8E0F /* SettingPrivacyInfoViewController.swift */,
+				CED56D07224A90EB008CFD82 /* SettingDrawerViewController.swift */,
+				E12698CD224F949700ECCEC3 /* SettingTempUnitViewController.swift */,
+				E12698CF224F9A6D00ECCEC3 /* SettingNotificationViewController.swift */,
 				E12698DA22502E0D00ECCEC3 /* SettingNicknameViewController.swift */,
 			);
 			name = Drawer;
@@ -750,9 +750,9 @@
 				CEB189D82221845500A1BB38 /* RWComment.swift in Sources */,
 				CE8B43E722A1972100EF8E0F /* HomeRefreshControl.swift in Sources */,
 				741C8E52224FA252001007AB /* CommentTextField.swift in Sources */,
-				CE8B43F222A2167200EF8E0F /* InformationViewController.swift in Sources */,
+				CE8B43F222A2167200EF8E0F /* SettingPrivacyInfoViewController.swift in Sources */,
 				CEB189DE2221866C00A1BB38 /* HomeDataController.swift in Sources */,
-				E12698CE224F949700ECCEC3 /* UnitViewController.swift in Sources */,
+				E12698CE224F949700ECCEC3 /* SettingTempUnitViewController.swift in Sources */,
 				CE31EB3E224E819B005CA188 /* HomeWeatherCardCollectionCell.swift in Sources */,
 				CEB189DC222185FA00A1BB38 /* RWApiRequest.swift in Sources */,
 				CE8B43BD2297C88800EF8E0F /* AppCommon.swift in Sources */,
@@ -762,13 +762,13 @@
 				CE31EB46224E92E1005CA188 /* RWHomeCard.swift in Sources */,
 				CED56D0A224A919E008CFD82 /* HomeNavigationBarViewController.swift in Sources */,
 				CE8B43F322A2167200EF8E0F /* LocationSearchViewController.swift in Sources */,
-				E12698D0224F9A6D00ECCEC3 /* AlertViewController.swift in Sources */,
+				E12698D0224F9A6D00ECCEC3 /* SettingNotificationViewController.swift in Sources */,
 				CE522F52224F9A5E000C26BF /* HomeWeatherDustCardCell.swift in Sources */,
 				CE31EB4A224EAE30005CA188 /* HomeWeatherMenuCell.swift in Sources */,
 				CE8B43BF229857D700EF8E0F /* RWLoginDataController.swift in Sources */,
 				CEB189D52221753F00A1BB38 /* HomeCommentViewController.swift in Sources */,
 				741C8E50224FA1C0001007AB /* CommentHeaderView.swift in Sources */,
-				CED56D08224A90EB008CFD82 /* DrawerViewController.swift in Sources */,
+				CED56D08224A90EB008CFD82 /* SettingDrawerViewController.swift in Sources */,
 				CE31EB4D224EB042005CA188 /* UIKit+Extensions.swift in Sources */,
 				CE522F4E224F9A2D000C26BF /* HomeWeatherTempCardCell.swift in Sources */,
 				CE8352DE229921B800F11842 /* SplashViewController.swift in Sources */,

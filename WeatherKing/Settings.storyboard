@@ -186,7 +186,7 @@
         <!--개인정보처리방침-->
         <scene sceneID="03P-bI-6WO">
             <objects>
-                <viewController id="BWd-4A-AKy" customClass="InformationViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BWd-4A-AKy" customClass="SettingPrivacyInfoViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1fz-ko-Xqg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,7 +362,7 @@
         <!--알림 설정-->
         <scene sceneID="t69-Pr-sNh">
             <objects>
-                <viewController id="r0e-FT-P3c" customClass="AlertViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="r0e-FT-P3c" customClass="SettingNotificationViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gMJ-v9-sNW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -419,7 +419,7 @@
                                 <rect key="frame" x="0.0" y="80.5" width="375" height="586.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="60" reuseIdentifier="switchCell" rowHeight="60" id="h4u-4e-23y" customClass="AlertTableViewSwitchCell" customModule="WeatherKing" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="60" reuseIdentifier="switchCell" rowHeight="60" id="h4u-4e-23y" customClass="SettingNotificationSwitchCell" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h4u-4e-23y" id="QvC-BH-2yF">
@@ -453,7 +453,7 @@
                                             <outlet property="alertSwitch" destination="0wy-B5-7FS" id="kd1-b0-fTJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="alertCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="60" reuseIdentifier="buttonCell" rowHeight="60" id="QU9-6d-m2G" customClass="AlertTableViewButtonCell" customModule="WeatherKing" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="alertCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="60" reuseIdentifier="buttonCell" rowHeight="60" id="QU9-6d-m2G" customClass="SettingNotificationButtonCell" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QU9-6d-m2G" id="lMs-WK-51R">
@@ -531,7 +531,7 @@
         <!--단위-->
         <scene sceneID="cFp-KR-Elj">
             <objects>
-                <viewController id="mjj-vc-3hi" customClass="UnitViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mjj-vc-3hi" customClass="SettingTempUnitViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nJs-qF-F6O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -588,7 +588,7 @@
                                 <rect key="frame" x="0.0" y="80.5" width="375" height="586.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="unitCell" rowHeight="60" id="qkL-Ss-Xwb" customClass="UnitTableViewCell" customModule="WeatherKing" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="unitCell" rowHeight="60" id="qkL-Ss-Xwb" customClass="SettingTempUnitCell" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qkL-Ss-Xwb" id="taY-cK-6FV">
@@ -672,10 +672,10 @@
             </objects>
             <point key="canvasLocation" x="1601" y="187"/>
         </scene>
-        <!--Drawer View Controller-->
+        <!--Setting Drawer View Controller-->
         <scene sceneID="tHz-wg-BSV">
             <objects>
-                <viewController storyboardIdentifier="DrawerViewController" id="Hza-uX-Hyx" customClass="DrawerViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DrawerViewController" id="Hza-uX-Hyx" customClass="SettingDrawerViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VuS-eA-95e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -725,7 +725,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCell" id="9dt-lv-x6Z" customClass="MenuCollectionViewCell" customModule="WeatherKing" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCell" id="9dt-lv-x6Z" customClass="SettingDrawerMenuCell" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="23.5" y="0.0" width="308" height="63"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

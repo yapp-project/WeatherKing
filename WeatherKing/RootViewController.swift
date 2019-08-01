@@ -25,7 +25,7 @@ class RootViewController: UIViewController {
     @IBOutlet private weak var drawerBackgroundView: UIView!
     @IBOutlet private weak var drawerContrainerView: UIView!
     
-    fileprivate var drawerViewController: DrawerViewController!
+    fileprivate var drawerViewController: SettingDrawerViewController!
     fileprivate var homeNavigationController: UINavigationController!
     fileprivate var prevTouchLocationX: CGFloat = .zero
     var homeNavigationBarViewController: HomeNavigationBarViewController!
@@ -61,7 +61,7 @@ class RootViewController: UIViewController {
         if segue.identifier == "Home" {
             homeNavigationController = segue.destination as? UINavigationController
         } else if segue.identifier == "Drawer" {
-            drawerViewController = segue.destination as? DrawerViewController
+            drawerViewController = segue.destination as? SettingDrawerViewController
         } else if segue.identifier == "HomeNavigationBar" {
             homeNavigationBarViewController = segue.destination as? HomeNavigationBarViewController
         } else if segue.identifier == "Splash" {

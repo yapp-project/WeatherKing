@@ -1,5 +1,5 @@
 //
-//  InformationViewController.swift
+//  SettingPrivacyInfoViewController.swift
 //  WeatherKing
 //
 //  Created by yoo on 2019. 5. 23..
@@ -8,9 +8,8 @@
 
 import UIKit
 
-class InformationViewController: UIViewController {
-    
-    @IBOutlet weak var textview: UITextView!
+class SettingPrivacyInfoViewController: UIViewController {
+    @IBOutlet private weak var textview: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +17,7 @@ class InformationViewController: UIViewController {
     }
 }
 
-extension InformationViewController {
+extension SettingPrivacyInfoViewController {
     @IBAction func onBackButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }

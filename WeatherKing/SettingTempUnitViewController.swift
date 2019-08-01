@@ -1,5 +1,5 @@
 //
-//  UnitViewController.swift
+//  SettingTempUnitViewController.swift
 //  WeatherKing
 //
 //  Created by yoo on 2019. 3. 30..
@@ -22,7 +22,7 @@ enum WKTemperatureUnit: Int, CaseIterable {
     }
 }
 
-class UnitViewController: UIViewController {
+class SettingTempUnitViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     
     let menuDatasource: [WKTemperatureUnit] = WKTemperatureUnit.allCases
@@ -44,22 +44,22 @@ class UnitViewController: UIViewController {
     }
 }
 
-extension UnitViewController {
+extension SettingTempUnitViewController {
     @IBAction func onBackButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
 }
 
-extension UnitViewController: UITableViewDataSource {
+extension SettingTempUnitViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuDatasource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: UnitTableViewCell.identifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingTempUnitCell.identifier, for: indexPath)
         cell.selectionStyle = .none
         
-        if let unitCell = cell as? UnitTableViewCell {
+        if let unitCell = cell as? SettingTempUnitCell {
             let tempUnit = menuDatasource[indexPath.row]
             let isSelected = tempUnit == selectedTempUnit
             unitCell.update(title: tempUnit.symbolText, isSelected: isSelected)
@@ -68,14 +68,14 @@ extension UnitViewController: UITableViewDataSource {
     }
 }
 
-extension UnitViewController: UITableViewDelegate {
+extension SettingTempUnitViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         selectedTempUnit = menuDatasource[indexPath.row]
     }
 }
 
-class UnitTableViewCell: UITableViewCell {
+class SettingTempUnitCell: UITableViewCell {
     @IBOutlet weak var unitLabel: UILabel!
     @IBOutlet weak var unitCheck: UIImageView!
     
