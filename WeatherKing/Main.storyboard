@@ -127,6 +127,7 @@
                         <outlet property="drawerViewWidth" destination="J2w-cr-GPW" id="y3Z-Kk-IDr"/>
                         <outlet property="loadingController" destination="N3T-Om-cYb" id="y2b-iS-GvN"/>
                         <outlet property="splashView" destination="faK-Vt-DQY" id="yRZ-pN-Upt"/>
+                        <segue destination="6j6-Sh-nZ3" kind="presentation" identifier="Login" id="YFt-wd-qTl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0Q-19-loE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -474,6 +475,14 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1188" y="121"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="xvk-70-AMb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Start" referencedIdentifier="Login" id="6j6-Sh-nZ3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iuQ-D7-Mne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="470" y="208"/>
         </scene>
     </scenes>
     <resources>

@@ -142,7 +142,8 @@ extension SettingDrawerViewController {
     }
     
     @IBAction func onSignOutButtonTapped(_ sender: UIButton) {
-//        performSegue(withIdentifier: "privacy", sender: nil)
+        RWLoginManager.shared.logout()
+        (parent as? RootViewController)?.closeDrawer()
     }
 }
 

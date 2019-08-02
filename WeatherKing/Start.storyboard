@@ -13,7 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="kec-RV-qRw">
             <objects>
-                <navigationController modalTransitionStyle="crossDissolve" navigationBarHidden="YES" id="Yji-Tm-i0c" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Login" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="Yji-Tm-i0c" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zsr-ie-0Yu">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -49,6 +49,7 @@ class RootViewController: UIViewController {
     
     private func prepareObservers() {
         notification.addObserver(self, selector: #selector(updateView), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(presentLoginView), name: .LogoutSuccess, object: nil)
     }
     
     private func setDrawerWidth() {
@@ -65,15 +66,14 @@ class RootViewController: UIViewController {
         } else if segue.identifier == "HomeNavigationBar" {
             homeNavigationBarViewController = segue.destination as? HomeNavigationBarViewController
         } else if segue.identifier == "Splash" {
-//            let splashVC = segue.destination as? SplashViewController
-//
-//            splashVC?.loginSegueHandler = { [weak self] in
-//                self?.splashView.isHidden = true
-//            }
-//            splashVC?.completionHandler = { [weak self] in
-//                self?.removeSplashView()
-//            }
-            removeSplashView()
+            let splashVC = segue.destination as? SplashViewController
+
+            splashVC?.loginSegueHandler = { [weak self] in
+                self?.splashView.isHidden = true
+            }
+            splashVC?.completionHandler = { [weak self] in
+                self?.removeSplashView()
+            }
         }
     }
 }
@@ -81,6 +81,11 @@ class RootViewController: UIViewController {
 extension RootViewController {
     @objc func updateView() {
         homeNavigationBarViewController.updateView()
+    }
+    
+    @objc
+    func presentLoginView() {
+        performSegue(withIdentifier: "Login", sender: nil)
     }
     
     func removeSplashView() {

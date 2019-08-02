@@ -36,7 +36,7 @@ class RWLoginManager: NSObject {
             
             if user != nil {
                 notification.post(name: .LoginSuccess, object: nil)
-            } else if oldValue != nil {
+            } else {
                 notification.post(name: .LogoutSuccess, object: nil)
             }
         }
@@ -142,6 +142,7 @@ extension RWLoginManager {
 extension RWLoginManager {
     public func logout() {
         guard let method = user?.loginMethod else {
+            invalidateUserLogin()
             return
         }
         
