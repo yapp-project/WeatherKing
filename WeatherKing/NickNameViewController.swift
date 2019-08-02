@@ -10,6 +10,8 @@ import UIKit
 
 enum NickNameStatus {
     case waitingForInput
+    case waitingForServerCheck
+    case serverError
     case available
     case currentlyInUse
     case irregularCharacter
@@ -18,6 +20,10 @@ enum NickNameStatus {
         switch self {
         case .waitingForInput:
             return ""
+        case .waitingForServerCheck:
+            return "중복 닉네임 체크 중입니다."
+        case .serverError:
+            return "서버 상태가 불안정합니다."
         case .available:
             return "사용할 수 있는 닉네임입니다."
         case .currentlyInUse:
@@ -36,6 +42,7 @@ class NickNameViewController: UIViewController {
     @IBOutlet private weak var nickNameClearButtonView: UIView!
     
     static let segueIdentifier: String = "NickName"
+    private let dataController = NickNameDataController()
     private let maxNickNameCount: Int = 8
     private var nickNameStatus: NickNameStatus = .waitingForInput {
         didSet {
@@ -70,7 +77,7 @@ extension NickNameViewController {
     
     private func updateButton() {
         switch nickNameStatus {
-        case .waitingForInput, .currentlyInUse, .irregularCharacter:
+        case .waitingForInput, .currentlyInUse, .irregularCharacter, .waitingForServerCheck, .serverError:
             nickNameConfirmButton.backgroundColor = #colorLiteral(red: 0.8745098039, green: 0.8862745098, blue: 0.9019607843, alpha: 1)
             nickNameConfirmButton.isUserInteractionEnabled = false
         case .available:
@@ -130,8 +137,18 @@ extension NickNameViewController {
             if isIrrgular {
                 nickNameStatus = .irregularCharacter
             } else {
-                // TODO: 서버 연결 후 이미 사용중인 닉네임 분기
-                nickNameStatus = .available
+                dataController.checkIfNicknameExists(currentText) { [weak self] result, error in
+                    guard let result = result, error == nil else {
+                        self?.nickNameStatus = .serverError
+                        return
+                    }
+                    guard result else {
+                        self?.nickNameStatus = .currentlyInUse
+                        return
+                    }
+                    self?.nickNameStatus = .available
+                }
+//                nickNameStatus = .waitingForServerCheck
             }
         }
         updateView()
@@ -149,5 +166,108 @@ extension NickNameViewController: UITextFieldDelegate {
         } else {
             return false
         }
+    }
+}
+
+class NickNameDataController {
+    private let requestor: RWApiRequest = RWApiRequest()
+    
+    func checkIfNicknameExists(_ nickname: String, completion: @escaping (Bool?, RWApiError?) -> Void) {
+        let queries: [URLQueryItem] = [URLQueryItem(name: "nickname", value: nickname)]
+        
+        requestor.cancel()
+        requestor.method = .get
+        requestor.baseURLPath = AppCommon.baseURL + "/main/nickname"
+        requestor.fetch(with: queries) { [weak self] data, apiError in
+            let completionInMainThread = { (completion: @escaping (Bool?, RWApiError?) -> Void, result: Bool?, error: RWApiError?) in
+                DispatchQueue.main.async {
+                    completion(result, error)
+                }
+            }
+            
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
+                return
+            }
+            
+            do {
+                let result: Bool? = try self?.parseCheckResult(data)
+                completionInMainThread(completion, result, apiError)
+            } catch {
+                completionInMainThread(completion, nil, apiError)
+            }
+        }
+    }
+    
+    func requestNicknameChange(_ nickname: String, completion: @escaping (RWUser?, RWApiError?) -> Void) {
+        guard let user = RWLoginManager.shared.user else {
+            completion(nil, .clientError(nil))
+            return
+        }
+        
+        let jsonBody: [String: Any] = [
+            "type": user.loginMethod.rawValue,
+            "uid": user.uniqueID,
+            "newName": "\(nickname)"
+        ]
+        
+        requestor.cancel()
+        requestor.method = .put
+        requestor.baseURLPath = AppCommon.baseURL + "/setting/user"
+        requestor.fetch(with: jsonBody) { [weak self] data, apiError in
+            let completionInMainThread = { (completion: @escaping (RWUser?, RWApiError?) -> Void, result: RWUser?, error: RWApiError?) in
+                DispatchQueue.main.async {
+                    completion(result, apiError)
+                }
+            }
+            
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
+                return
+            }
+            
+            do {
+                let userInfo: RWUser? = try self?.parseUserInfo(data)
+                completionInMainThread(completion, userInfo, apiError)
+            } catch {
+                completionInMainThread(completion, nil, apiError)
+            }
+        }
+    }
+    
+    private func parseCheckResult(_ data: Data?) throws -> Bool? {
+        guard let data = data, let jsons = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+            return nil
+        }
+        return jsons["status"] as? Bool
+    }
+    
+    private func parseUserInfo(_ data: Data?) throws -> RWUser? {
+        guard let data = data, let jsons = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+            return nil
+        }
+        
+        let region = RWRegion()
+        if let regionData = jsons["region"] as? [String: Any] {
+            region.cityName = (regionData["cityName"] as? String) ?? ""
+            region.sidoName = (regionData["sidoName"] as? String) ?? ""
+            region.townName = (regionData["townName"] as? String) ?? ""
+            region.pos = (regionData["pos"] as? String) ?? ""
+        }
+        
+        var user: RWUser?
+        if let loginType = jsons["type"] as? String, let loginMethod = SignUpMethod(rawValue: Int(loginType) ?? 5) {
+            let userID: String = (jsons["userid"] as? String) ?? ""
+            user = RWUser(userID: userID, loginMethod: loginMethod)
+            user?._id = (jsons["_id"] as? String) ?? ""
+            user?.salt = (jsons["salt"] as? String) ?? ""
+            user?.uniqueID = (jsons["uid"] as? String) ?? ""
+            user?.nickname = (jsons["nickname"] as? String) ?? ""
+            user?.location.latitude = (jsons["lat"] as? Double) ?? 0.0
+            user?.location.longitude = (jsons["lng"] as? Double) ?? 0.0
+            user?.region = region
+            user?.__v = (jsons["__v"] as? Int) ?? 0
+        }
+        return user
     }
 }

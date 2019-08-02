@@ -50,7 +50,7 @@ class RWLocationManager: NSObject {
         coreLocationManager.startUpdatingLocation()
     }
     
-    func search(for keyword: String, completion: @escaping ([RWLocation]?) -> Void) {
+    func search(for keyword: String, completion: @escaping ([RWLocation]?, RWApiError?) -> Void) {
         dataController.requestLocations(for: keyword, completion: completion)
     }
     
@@ -60,7 +60,12 @@ class RWLocationManager: NSObject {
             return
         }
         
-        dataController.requestUserLocationChange(of: user, to: location) { [weak self] user in
+        dataController.requestUserLocationChange(of: user, to: location) { [weak self] user, error in
+            guard error == nil else {
+                completion?() // TODO: 서버 에러 처리
+                return
+            }
+            
             guard user != nil else {
                 completion?()
                 return
@@ -97,36 +102,36 @@ extension RWLocationManager: CLLocationManagerDelegate {
 class RWLocationDataController {
     private let requestor: RWApiRequest = RWApiRequest()
     
-    func requestLocations(for keyword: String, completion: @escaping ([RWLocation]?) -> Void) {
+    func requestLocations(for keyword: String, completion: @escaping ([RWLocation]?, RWApiError?) -> Void) {
         let queries: [URLQueryItem] = [URLQueryItem(name: "keyword", value: keyword)]
         
         requestor.cancel()
         requestor.method = .get
         requestor.baseURLPath = AppCommon.baseURL + "/setting/location"
-        requestor.fetch(with: queries) { data, error in
-            let completionInMainThread = { (completion: @escaping ([RWLocation]?) -> Void, result: [RWLocation]?) in
+        requestor.fetch(with: queries) { data, apiError in
+            let completionInMainThread = { (completion: @escaping ([RWLocation]?, RWApiError?) -> Void, result: [RWLocation]?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(result)
+                    completion(result, error)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let locationDatas: [RWLocation]? = try self.parseLocations(data)
-                completionInMainThread(completion, locationDatas)
+                completionInMainThread(completion, locationDatas, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }
     
-    func requestUserLocationChange(of user: RWUser?, to location: RWLocation, completion: @escaping (RWUser?) -> Void) {
+    func requestUserLocationChange(of user: RWUser?, to location: RWLocation, completion: @escaping (RWUser?, RWApiError?) -> Void) {
         guard let user = user else {
-            completion(nil)
+            completion(nil, .loginRequired(nil))
             return
         }
         
@@ -140,23 +145,23 @@ class RWLocationDataController {
         requestor.cancel()
         requestor.method = .put
         requestor.baseURLPath = AppCommon.baseURL + "/setting/location"
-        requestor.fetch(with: json) { data, error in
-            let completionInMainThread = { (completion: @escaping (RWUser?) -> Void, result: RWUser?) in
+        requestor.fetch(with: json) { data, apiError in
+            let completionInMainThread = { (completion: @escaping (RWUser?, RWApiError?) -> Void, result: RWUser?, error: RWApiError?) in
                 DispatchQueue.main.async {
-                    completion(result)
+                    completion(result, error)
                 }
             }
             
-            guard let data = data, error == nil else {
-                completionInMainThread(completion, nil)
+            guard let data = data else {
+                completionInMainThread(completion, nil, apiError)
                 return
             }
             
             do {
                 let userData: RWUser? = try self.parseUserInfo(data)
-                completionInMainThread(completion, userData)
+                completionInMainThread(completion, userData, apiError)
             } catch {
-                completionInMainThread(completion, nil)
+                completionInMainThread(completion, nil, apiError)
             }
         }
     }
@@ -183,7 +188,7 @@ extension RWLocationDataController {
             user?._id = (jsons["_id"] as? String) ?? ""
             user?.salt = (jsons["salt"] as? String) ?? ""
             user?.uniqueID = (jsons["uid"] as? String) ?? ""
-            user?.nickname = (jsons["cityName"] as? String) ?? ""
+            user?.nickname = (jsons["nickname"] as? String) ?? ""
             user?.location.latitude = (jsons["lat"] as? Double) ?? 0.0
             user?.location.longitude = (jsons["lng"] as? Double) ?? 0.0
             user?.region = region

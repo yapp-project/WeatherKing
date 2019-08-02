@@ -15,7 +15,16 @@ public enum HTTPMethod: String {
     case put = "PUT"
 }
 
-public typealias RWApiResult = (_ data: Data?, _ error: Error?) -> Void
+public typealias RWApiResult = (_ data: Data?, _ error: RWApiError?) -> Void
+
+public enum RWApiError: Error {
+    case invalidURL(Error?)
+    case invalidParameter(Error?)
+    case loginRequired(Error?)
+    case clientError(Error?)
+    case serverError(Error?)
+    case retryFailed(Error?)
+}
 
 public enum RWApiResponse {
     case success(Int)
@@ -56,7 +65,7 @@ public class RWApiRequest {
 extension RWApiRequest {
     public func fetch(with queryItems: [URLQueryItem], completion: @escaping RWApiResult) {
         guard var urlComponents = URLComponents(string: baseURLPath) else {
-            completion(nil, nil)
+            completion(nil, .invalidURL(nil))
             return
         }
         
@@ -65,7 +74,7 @@ extension RWApiRequest {
         }
         
         guard let url = urlComponents.url else {
-            completion(nil, nil)
+            completion(nil, .invalidParameter(nil))
             return
         }
         
@@ -91,12 +100,12 @@ extension RWApiRequest {
     
     public func fetch(with json: [String: Any], encoding: String.Encoding = .utf8, completion: @escaping RWApiResult) {
         guard let jsonBody = try? String(data: JSONSerialization.data(withJSONObject: json), encoding: encoding) else {
-            completion(nil, nil)
+            completion(nil, .invalidParameter(nil))
             return
         }
         
         guard let url = URL(string: baseURLPath) else {
-            completion(nil, nil)
+            completion(nil, .invalidURL(nil))
             return
         }
         
@@ -106,7 +115,7 @@ extension RWApiRequest {
         request.timeoutInterval = timeout
         
         if method != .get {
-            request.httpBody = jsonBody?.data(using: String.Encoding.ascii, allowLossyConversion: true)
+            request.httpBody = jsonBody?.data(using: encoding, allowLossyConversion: true)
         }
         fetch(with: request, completion: completion)
     }
@@ -121,19 +130,16 @@ extension RWApiRequest {
                 AppCommon.eprint("Failed to print server response due to \(error.localizedDescription)")
             }
             
-            guard error == nil else {
-                completion(nil, error)
-                return
-            }
-
             let response: RWApiResponse = RWApiResponse(from: serverResponse)
             switch response {
             case .success:
                 completion(data, nil)
             case .retryRequired:
                 self?.retry(of: request, error: error, completion: completion)
-            case .clientError, .serverError:
-                completion(nil, error)
+            case .clientError:
+                completion(nil, .clientError(error))
+            case .serverError:
+                completion(nil, .serverError(error))
             }
             
             self?.retryCount = 0
@@ -156,7 +162,7 @@ extension RWApiRequest {
   
     private func retry(of request: URLRequest, error: Error?, completion: @escaping RWApiResult) {
         guard retryCount < Constant.maximumRetryCount else {
-            completion(nil, error)
+            completion(nil, .retryFailed(error))
             return
         }
         

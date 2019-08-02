@@ -137,12 +137,12 @@ class HomeCommentViewController: UIViewController {
             self.indicator.isHidden = false
             self.indicator.startAnimating()
         }
-        self.dataController.requestComment(completion: { [unowned self] data in
+        self.dataController.requestComment(completion: { [unowned self] data, error in
             if isLoading {
                 self.indicator.isHidden = true
             }
             
-            guard var data = data else {
+            guard var data = data, error == nil else {
                 self.commentList.removeAll()
                 self.commentCollectionView.reloadData()
                 self.emptyCommentImg.isHidden = false

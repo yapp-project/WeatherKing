@@ -11,18 +11,18 @@ import UIKit
 enum NotificationSetting: Int {
     case everyday
     case rain
-    case ultradust
+    case finedust
 }
 
 class NotificationViewController: UIViewController {
-    @IBOutlet private weak var ultraDustNotiCheckView: NotificationCheckView!
+    @IBOutlet private weak var fineDustNotiCheckView: NotificationCheckView!
     @IBOutlet private weak var everydayNotiCheckView: NotificationCheckView!
     @IBOutlet private weak var rainNotiCheckView: NotificationCheckView!
     @IBOutlet private weak var confirmButtonView: UIButton!
     
     static let segueIdentifier: String = "Notification"
     
-    private var selectedSettings: [NotificationSetting] = [.everyday, .rain, .ultradust]
+    private var selectedSettings: [NotificationSetting] = [.everyday, .rain, .finedust]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,8 +51,8 @@ extension NotificationViewController {
             everydayNotiCheckView.isSelected = !everydayNotiCheckView.isSelected
         case .rain:
             rainNotiCheckView.isSelected = !rainNotiCheckView.isSelected
-        case .ultradust:
-            ultraDustNotiCheckView.isSelected = !ultraDustNotiCheckView.isSelected
+        case .finedust:
+            fineDustNotiCheckView.isSelected = !fineDustNotiCheckView.isSelected
         }
         
         if let indexToRemove = selectedSettings.firstIndex(of: selectedSetting) {
@@ -66,11 +66,11 @@ extension NotificationViewController {
     @IBAction func onConfirmBtnTapped(_ sender: UIButton) {
         let isEverydayNotiEnabled: Bool = selectedSettings.contains(.everyday)
         let isRainNotiEnabled: Bool = selectedSettings.contains(.rain)
-        let isUltradustNotiEnabled: Bool = selectedSettings.contains(.ultradust)
+        let isFineDustNotiEnabled: Bool = selectedSettings.contains(.finedust)
         
         UserDefaultsManager.EverydayNotificationSetting.set(isEverydayNotiEnabled)
         UserDefaultsManager.RainNotificationSetting.set(isRainNotiEnabled)
-        UserDefaultsManager.UltradustNotificationSetting.set(isUltradustNotiEnabled)
+        UserDefaultsManager.FineDustNotificationSetting.set(isFineDustNotiEnabled)
         
         (presentingViewController as? RootViewController)?.removeSplashView()
         dismiss(animated: true, completion: nil)

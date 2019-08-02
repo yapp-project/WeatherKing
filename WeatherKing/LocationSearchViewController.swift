@@ -48,7 +48,11 @@ class LocationSearchViewController: UIViewController {
 
 extension LocationSearchViewController {
     func requestSearch(for keyword: String, completion: (() -> Void)? = nil) {
-        locationManager.search(for: keyword) { [weak self] locationsFound in
+        locationManager.search(for: keyword) { [weak self] locationsFound, error in
+            guard error == nil else {
+                completion?() // TODO: 에러 처리 추가
+                return
+            }
             self?.locationsFound = locationsFound ?? []
             self?.tableView.reloadData()
             completion?()

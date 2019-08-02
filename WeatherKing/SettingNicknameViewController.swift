@@ -8,106 +8,147 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let UserNicknameDidChanged = Notification.Name("UserNicknameDidChanged")
+}
+
 class SettingNicknameViewController: UIViewController {
-    @IBOutlet weak var nickField: UITextField!
-    @IBOutlet weak var textCount: UILabel!
-    @IBOutlet weak var message: UILabel!
-    var isInput = false
-    @IBOutlet weak var okBtn: UIBarButtonItem!
+    @IBOutlet private weak var nickNameField: UITextField!
+    @IBOutlet private weak var nickNameInfoLabel: UILabel!
+    @IBOutlet private weak var nickNameCountLabel: UILabel!
+    @IBOutlet private weak var nickNameConfirmButton: UIButton!
+    @IBOutlet private weak var nickNameClearButtonView: UIView!
     
-    var currentNickName: String = ""
+    static let segueIdentifier: String = "nickname"
+    private let dataController = NickNameDataController()
+    private let maxNickNameCount: Int = 8
+    private var nickNameStatus: NickNameStatus = .waitingForInput {
+        didSet {
+            updateView()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        okBtn.isEnabled = false
-        okBtn.tintColor = UIColor(red: 173, green: 181, blue: 189, a: 1)
-        nickField.text = "프로출근러"
-        currentNickName = "프로출근러"
+        prepareTextField()
+        updateView()
+    }
+    
+    private func prepareTextField() {
+        setLeftPaddingForTextField()
+        nickNameField.text = RWLoginManager.shared.user?.nickname ?? ""
+    }
+    
+    private func setLeftPaddingForTextField() {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: nickNameField.frame.height))
+        nickNameField.leftView = paddingView
+        nickNameField.leftViewMode = .always
+    }
+}
 
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.BarAction))
-        toolbar.items = [doneBtn]
-        nickField.inputAccessoryView = toolbar
-        
+extension SettingNicknameViewController {
+    private func updateView() {
+        updateButton()
+        updateNameCountLabel()
+        updateInfoLabel()
     }
     
-    @IBAction func TextfieldEditingChanged(_ sender: UITextField) {
-        if let count = sender.text?.count {
-            textCount.text = "\(count) / 8"
-        } else {
-            print("nil")
+    private func updateNameCountLabel() {
+        let nameCount: Int = nickNameField.text?.count ?? 0
+        nickNameCountLabel.text = "\(nameCount)" + "/" + "\(maxNickNameCount)"
+        nickNameClearButtonView.isHidden = nameCount < 1
+    }
+    
+    private func updateInfoLabel() {
+        nickNameInfoLabel.text = nickNameStatus.infoText
+    }
+    
+    private func updateButton() {
+        switch nickNameStatus {
+        case .waitingForInput, .currentlyInUse, .irregularCharacter, .waitingForServerCheck, .serverError:
+            nickNameConfirmButton.isEnabled = false
+        case .available:
+            nickNameConfirmButton.isEnabled = true
         }
-        if sender.text != nickField.text {
-            checkString(newText: sender.text ?? "", isInput: false)
-        } else {
-            if sender.text == "" {
-                checkString(newText: sender.text ?? "", isInput: false)
-            } else {
-                checkString(newText: sender.text ?? "", isInput: true)
+    }
+}
+
+extension SettingNicknameViewController {
+    @IBAction func onConfirmNickNameBtnTapped(_ sender: UIButton) {
+        guard RWLoginManager.shared.user != nil, let nickname = nickNameField.text else {
+            return
+        }
+        
+        dataController.requestNicknameChange(nickname) { [weak self] result, error in
+            guard let result = result, error == nil else {
+                return
             }
+            RWLoginManager.shared.user = result
+            NotificationCenter.default.post(name: .UserNicknameDidChanged, object: nil)
+            self?.dismiss(animated: true, completion: nil)
         }
-        
-    }
-    @objc func BarAction() {
-        view.endEditing(true)
     }
     
-    @IBAction func backAction(_ sender: Any) {
+    @IBAction func onNicknameClearBtnTapped(_ sender: UIButton) {
+        nickNameField.text?.removeAll()
+        nickNameStatus = .waitingForInput
+    }
+    
+    @IBAction func onBackButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     
-    func checkString(newText:String, isInput: Bool) -> Void {
-        let filter:String = "[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ]"
-        let regex = try! NSRegularExpression(pattern: filter, options: [])
-        let list = regex.matches(in:newText, options: [], range:NSRange.init(location: 0, length:newText.count))
-        if isInput == true {
-            if(list.count != newText.count){
-                message.text = "닉네임은 한글, 영문, 숫자만 사용할 수 있습니다."
-                okBtn.isEnabled = false
-                okBtn.tintColor = UIColor(red: 173, green: 181, blue: 189, a: 1)
-                return
-            }
-            //[이미 사용중인 닉네임입니다.] 추가하기
-            
-            message.text = "사용할 수 있는 닉네임입니다."
-            okBtn.isEnabled = true
-            okBtn.tintColor = UIColor(red: 78, green: 92, blue: 239, a: 1)
-            print("ok")
-            return
-        } else {
-            message.text = "닉네임을 입력해주세요."
-            okBtn.isEnabled = false
-            okBtn.tintColor = UIColor(red: 173, green: 181, blue: 189, a: 1)
-            print("ok 2")
+    @IBAction func onBackroundViewTapped(_ sender: Any) {
+        nickNameField.resignFirstResponder()
+    }
+    
+    @IBAction func onNickNameFieldChanged(_ sender: UITextField) {
+        guard let text = sender.text, text.isEmpty == false else {
+            nickNameStatus = .waitingForInput
             return
         }
+        
+        if let currentText = sender.text {
+            let length: Int = (currentText as NSString).length
+            let range: NSRange = NSRange(location: 0, length: length)
+            let regex: NSRegularExpression? = try? NSRegularExpression(pattern: "^[ㄱ-ㅎㅏ-ㅣ가-힣0-9a-zA-Z//s]{0,10}$", options: .caseInsensitive)
+            let result = regex?.matches(in: currentText, options: .anchored, range: range).map {
+                (currentText as NSString).substring(with: $0.range)
+            }
+            
+            let isIrrgular: Bool = !currentText.isEmpty && (result?.isEmpty ?? true)
+            if isIrrgular {
+                nickNameStatus = .irregularCharacter
+            } else {
+                dataController.checkIfNicknameExists(currentText) { [weak self] result, error in
+                    guard let result = result, error == nil else {
+                        self?.nickNameStatus = .serverError
+                        return
+                    }
+                    
+                    guard result else {
+                        self?.nickNameStatus = .currentlyInUse
+                        return
+                    }
+                    self?.nickNameStatus = .available
+                }
+                //                nickNameStatus = .waitingForServerCheck
+            }
+        }
+        updateView()
     }
 }
 
 extension SettingNicknameViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print("string : \(string)")
+        let currentText: NSString = (textField.text as NSString?) ?? ""
+        let expectedText = currentText.replacingCharacters(in: range, with: string)
+        let textCount = expectedText.count
         
-//        let inputText: String = textField.text ?? ""
-//        if currentNickName != inputText {
-//            isInput = true
-//        } else {
-//            isInput = false
-//        }
-//        currentNickName = inputText
-        
-        if string == "" {
-            isInput = false
+        if textCount <= maxNickNameCount {
+            return true
         } else {
-            isInput = true
+            return false
         }
-        guard let text = nickField.text else { return false }
-        print("text : \(text)")
-        let newLength = text.characters.count + string.characters.count - range.length
-        
-        return newLength <= 8
     }
-    
 }

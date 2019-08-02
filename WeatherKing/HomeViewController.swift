@@ -135,7 +135,12 @@ extension HomeViewController {
     private func reloadData(completion: (() -> Void)? = nil) {
         let location: RWLocation = RWLocationManager.shared.currentLocation
         RWLocationManager.shared.updateCurrentLocation()
-        homeDataController.requestData(for: location) { [weak self] homeData in
+        homeDataController.requestData(for: location) { [weak self] homeData, error in
+            guard error == nil else {
+                completion?() // TODO: 에러 처리
+                return
+            }
+            
             self?.homeData = homeData
             completion?()
         }

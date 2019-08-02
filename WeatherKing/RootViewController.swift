@@ -25,7 +25,7 @@ class RootViewController: UIViewController {
     @IBOutlet private weak var drawerBackgroundView: UIView!
     @IBOutlet private weak var drawerContrainerView: UIView!
     
-    fileprivate var drawerViewController: DrawerViewController!
+    fileprivate var drawerViewController: SettingDrawerViewController!
     fileprivate var homeNavigationController: UINavigationController!
     fileprivate var prevTouchLocationX: CGFloat = .zero
     var homeNavigationBarViewController: HomeNavigationBarViewController!
@@ -33,9 +33,7 @@ class RootViewController: UIViewController {
     fileprivate let notification: NotificationCenter = NotificationCenter.default
     
     var drawerWidth: CGFloat {
-        let drawerRatio: CGFloat = drawerViewWidth.constant
-        let screenWidth: CGFloat = UIScreen.main.bounds.width
-        return screenWidth * drawerRatio
+        return drawerViewWidth.constant
     }
     
     var isDrawerOpen: Bool = false
@@ -46,22 +44,30 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareObservers()
+        setDrawerWidth()
     }
     
     private func prepareObservers() {
         notification.addObserver(self, selector: #selector(updateView), name: .LoginSuccess, object: nil)
+        notification.addObserver(self, selector: #selector(presentLoginView), name: .LogoutSuccess, object: nil)
+    }
+    
+    private func setDrawerWidth() {
+        let drawerRatio: CGFloat = 0.8
+        let screenWidth: CGFloat = view.frame.width
+        drawerViewWidth.constant = screenWidth * drawerRatio
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Home" {
             homeNavigationController = segue.destination as? UINavigationController
         } else if segue.identifier == "Drawer" {
-            drawerViewController = segue.destination as? DrawerViewController
+            drawerViewController = segue.destination as? SettingDrawerViewController
         } else if segue.identifier == "HomeNavigationBar" {
             homeNavigationBarViewController = segue.destination as? HomeNavigationBarViewController
         } else if segue.identifier == "Splash" {
             let splashVC = segue.destination as? SplashViewController
-            
+
             splashVC?.loginSegueHandler = { [weak self] in
                 self?.splashView.isHidden = true
             }
@@ -77,6 +83,11 @@ extension RootViewController {
         homeNavigationBarViewController.updateView()
     }
     
+    @objc
+    func presentLoginView() {
+        performSegue(withIdentifier: "Login", sender: nil)
+    }
+    
     func removeSplashView() {
         splashView.removeFromSuperview()
     }
@@ -85,11 +96,11 @@ extension RootViewController {
 // MARK: Loading Controller
 extension RootViewController {
     func startLoading() {
-        loadingController?.startLoading()
+//        loadingController?.startLoading()
     }
     
     func stopLoading() {
-        loadingController?.stopLoading()
+//        loadingController?.stopLoading()
     }
 }
 
@@ -134,8 +145,6 @@ extension RootViewController {
     }
     
     func closeDrawer(completion: (() -> Void)? = nil) {
-        
-        
         let animations: () -> Void = { [weak self] in
             guard let `self` = self else {
                 return

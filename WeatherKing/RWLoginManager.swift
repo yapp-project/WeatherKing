@@ -36,7 +36,7 @@ class RWLoginManager: NSObject {
             
             if user != nil {
                 notification.post(name: .LoginSuccess, object: nil)
-            } else if oldValue != nil {
+            } else {
                 notification.post(name: .LogoutSuccess, object: nil)
             }
         }
@@ -64,8 +64,13 @@ class RWLoginManager: NSObject {
 
 extension RWLoginManager {
     public func register(user: RWUser, completion: @escaping (Bool) -> Void) {
-        requestor.register(user: user) { [weak self] result in
-            guard let result = result, result else {
+        requestor.register(user: user) { [weak self] result, error in
+            guard let result = result, error == nil else {
+                completion(false) // TODO: 서버 에러 처리
+                return
+            }
+            
+            guard result else {
                 completion(false)
                 return
             }
@@ -75,7 +80,12 @@ extension RWLoginManager {
     }
     
     public func login(user: RWUser, completion: ((Bool) -> Void)? = nil) {
-        requestor.login(user: user) { [weak self] resultUserInfo in
+        requestor.login(user: user) { [weak self] resultUserInfo, error in
+            guard error == nil else {
+                completion?(false) // TODO: 서버 에러 처리
+                return
+            }
+            
             guard let resultUserInfo = resultUserInfo else {
                 self?.notification.post(name: .UserRegistrationNeeded, object: user)
                 completion?(false)
@@ -132,6 +142,7 @@ extension RWLoginManager {
 extension RWLoginManager {
     public func logout() {
         guard let method = user?.loginMethod else {
+            invalidateUserLogin()
             return
         }
         
