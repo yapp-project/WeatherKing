@@ -13,7 +13,7 @@
         <!--Home Comment View Controller-->
         <scene sceneID="YR0-dW-gdh">
             <objects>
-                <viewController storyboardIdentifier="HomeCommentViewController" id="GWh-Tz-jYK" customClass="HomeCommentViewController" customModule="RealWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeCommentViewController" id="GWh-Tz-jYK" customClass="HomeCommentViewController" customModule="WeatherKing" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yFt-Oc-zcL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +78,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="commentCell" id="0BF-2O-791" customClass="CommentCell" customModule="RealWeather" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="commentCell" id="0BF-2O-791" customClass="CommentCell" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="39.666666666666664" y="0.0" width="335" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -128,7 +128,7 @@
                                                         <action selector="settingComment:" destination="0BF-2O-791" eventType="touchUpInside" id="0LJ-k1-mBr"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sk-Eb-Arv" customClass="CommentLikeButton" customModule="RealWeather" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sk-Eb-Arv" customClass="CommentLikeButton" customModule="WeatherKing" customModuleProvider="target">
                                                     <rect key="frame" x="275" y="62.333333333333343" width="32" height="15"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                                     <state key="normal" title="132" image="icHateDown">
@@ -138,7 +138,7 @@
                                                         <action selector="hateComment:" destination="0BF-2O-791" eventType="touchUpInside" id="jYX-tx-oTA"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRp-wa-Uom" customClass="CommentLikeButton" customModule="RealWeather" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nRp-wa-Uom" customClass="CommentLikeButton" customModule="WeatherKing" customModuleProvider="target">
                                                     <rect key="frame" x="227" y="62.333333333333343" width="32" height="15"/>
                                                     <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                                     <state key="normal" title="132" image="icLikeDown">
@@ -206,7 +206,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FkL-gv-d51">
                                 <rect key="frame" x="0.0" y="674" width="414" height="62"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="날씨왕에 도전해보세요!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EmC-4z-1ow" customClass="CommentTextField" customModule="RealWeather" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="오늘의 날씨를 한마디로 말하자면?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EmC-4z-1ow" customClass="CommentTextField" customModule="WeatherKing" customModuleProvider="target">
                                         <rect key="frame" x="16" y="11" width="382" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
